@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>From Linear Regression to Neural Networks</title>
+
+    <meta name="description" content="How are linear regression, logistic regression and neural networks related? What is overfitting and how do we fight it? In this post, we find answers to these questions in an interactive way by working with a real-world dataset on penguins." />
+    <link rel="icon" href="http://localhost:2368/content/images/size/w256h256/2021/11/cartoon-head-jeroen-1.png" type="image/png" />
+    <link rel="canonical" href="http://localhost:2368/from-linear-regression-to-neural-networks/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="Jeroen Overschie" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="From Linear Regression to Neural Networks" />
+    <meta property="og:description" content="How are linear regression, logistic regression and neural networks related? What is overfitting and how do we fight it? In this post, we find answers to these questions in an interactive way by working with a real-world dataset on penguins." />
+    <meta property="og:url" content="http://localhost:2368/from-linear-regression-to-neural-networks/" />
+    <meta property="og:image" content="http://localhost:2368/content/images/2021/11/linear-regression-to-neural-networks.png" />
+    <meta property="article:published_time" content="2021-04-17T22:00:00.000Z" />
+    <meta property="article:modified_time" content="2021-12-23T10:57:41.000Z" />
+    <meta property="article:tag" content="Data Science" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="From Linear Regression to Neural Networks" />
+    <meta name="twitter:description" content="How are linear regression, logistic regression and neural networks related? What is overfitting and how do we fight it? In this post, we find answers to these questions in an interactive way by working with a real-world dataset on penguins." />
+    <meta name="twitter:url" content="http://localhost:2368/from-linear-regression-to-neural-networks/" />
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2021/11/linear-regression-to-neural-networks.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Jeroen Overschie" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Data Science" />
+    <meta property="og:image:width" content="1358" />
+    <meta property="og:image:height" content="886" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Jeroen Overschie",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/size/w256h256/2021/11/cartoon-head-jeroen-1.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Jeroen Overschie",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.gravatar.com/avatar/b37b136916ade32aada1f345482aafa4?s=250&r=x&d=mp",
+            "width": 250,
+            "height": 250
+        },
+        "url": "http://localhost:2368/author/jeroen/",
+        "sameAs": []
+    },
+    "headline": "From Linear Regression to Neural Networks",
+    "url": "http://localhost:2368/from-linear-regression-to-neural-networks/",
+    "datePublished": "2021-04-17T22:00:00.000Z",
+    "dateModified": "2021-12-23T10:57:41.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2021/11/linear-regression-to-neural-networks.png",
+        "width": 1358,
+        "height": 886
+    },
+    "keywords": "Data Science",
+    "description": "How are linear regression, logistic regression and neural networks related? What is overfitting and how do we fight it? In this post, we find answers to these questions in an interactive way by working with a real-world dataset on penguins.",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.2" />
+    <link rel="alternate" type="application/rss+xml" title="Jeroen Overschie" href="http://localhost:2368/rss/" />
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: var(--ghost-accent-color, #1292EE);
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content blockquote.kg-blockquote-alt {
+        font-size: 1.2em;
+        font-style: italic;
+        line-height: 1.6em;
+        text-align: center;
+        color: #738a94;
+        padding: 0.75em 3em 1.25em;
+    }
+
+    .post-content blockquote.kg-blockquote-alt::before {
+        display: none;
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #15171a;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 3px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-toggle-card-icon {
+        display: none;
+    }
+
+    .kg-toggle-content {
+        margin-top: 0.8rem;
+    }
+
+    .kg-product-card-container {
+        background: transparent;
+        padding: 20px;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: inset 0 0 0 1px rgb(124 139 154 / 25%);
+    }
+
+    .kg-product-card-description p {
+        margin-top: 1.5em;
+    }
+
+    .kg-product-card-description ul {
+        margin-left: 24px;
+    }
+
+    .kg-product-card-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+    }
+
+    .kg-product-card-rating-star {
+        height: 28px;
+        width: 20px;
+        margin-right: 2px;
+    }
+
+    .kg-product-card-rating-star svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    opacity: 0.15;
+    }
+
+    .kg-product-card-rating-active.kg-product-card-rating-star svg {
+    opacity: 1;
+    }
+
+    .kg-nft-card-container {
+        position: relative;
+        display: flex;
+        flex: auto;
+        flex-direction: column;
+        text-decoration: none;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        box-shadow: 0 2px 6px -2px rgb(0 0 0 / 10%), 0 0 1px rgb(0 0 0 / 40%);
+        width: 100%;
+        max-width: 512px;
+        color: #15212A;
+        background: #fff;
+        border-radius: 5px;
+        transition: none;
+        margin: 0 auto;
+    }
+
+    .kg-nft-metadata {
+        padding: 2.0rem;
+    }
+
+    .kg-nft-image-container {
+        position: relative;
+    }
+
+    .kg-nft-image {
+        display: flex;
+        border-radius: 5px 5px 0 0;
+    }
+
+    .kg-nft-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .kg-nft-header h4.kg-nft-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+        margin: 0;
+        color: #15212A;
+    }
+
+    .kg-nft-header amp-img {
+        max-width: 114px;
+        max-height: 26px;
+    }
+
+    .kg-nft-opensea-logo {
+        margin-top: 2px;
+        width: 100px;
+    }
+
+    .kg-nft-creator {
+        font-family: inherit;
+        color: #95A1AD;
+    }
+
+    .kg-nft-creator span {
+        font-weight: 500;
+        color: #15212A;
+    }
+
+    .kg-nft-card p.kg-nft-description {
+        font-size: 1.4rem;
+        line-height: 1.4em;
+        margin: 2.0rem 0 0;
+        color: #222;
+    }
+
+    .kg-button-card {
+        display: flex;
+        position: static;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .kg-btn {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 2.0rem;
+        height: 4.0rem;
+        line-height: 4.0rem;
+        font-size: 1.65rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .kg-btn:hover {
+        opacity: 0.85;
+    }
+
+    .kg-btn-accent {
+        background-color: var(--ghost-accent-color, #1292EE);
+        color: #fff;
+    }
+
+    .kg-callout-card {
+        display: flex;
+        padding: 20px 28px;
+        border-radius: 3px;
+    }
+
+    .kg-callout-card-grey {
+        background: rgba(124, 139, 154, 0.13);
+    }
+
+    .kg-callout-card-white {
+        background: transparent;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-callout-card-blue {
+        background: rgba(33, 172, 232, 0.12);
+    }
+
+    .kg-callout-card-green {
+        background: rgba(52, 183, 67, 0.12);
+    }
+
+    .kg-callout-card-yellow {
+        background: rgba(240, 165, 15, 0.13);
+    }
+
+    .kg-callout-card-red {
+        background: rgba(209, 46, 46, 0.11);
+    }
+
+    .kg-callout-card-pink {
+        background: rgba(225, 71, 174, 0.11);
+    }
+
+    .kg-callout-card-purple {
+        background: rgba(135, 85, 236, 0.12);
+    }
+
+    .kg-callout-card-accent {
+        background: var(--ghost-accent-color);
+        color: #fff;
+    }
+
+    .kg-callout-card-accent a {
+        color: #fff;
+    }
+
+    .kg-callout-emoji {
+        padding-right: 16px;
+        line-height: 1.3;
+        font-size: 1.25em;
+    }
+
+    .kg-header-card {
+        padding: 6em 3em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .kg-header-card.kg-size-small {
+        padding-top: 4em;
+        padding-bottom: 4em;
+    }
+
+    .kg-header-card.kg-size-large {
+        padding-top: 12em;
+        padding-bottom: 12em;
+    }
+
+    .kg-header-card.kg-width-full {
+        padding-left: 4em;
+        padding-right: 4em;
+    }
+
+    .kg-header-card.kg-align-left {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .kg-header-card.kg-style-dark {
+        background: #15171a;
+        color: #ffffff;
+    }
+
+    .kg-header-card.kg-style-light {
+        color: #15171a;
+        border: 1px solid rgba(124, 139, 154, 0.25);
+        border-width: 1px 0;
+    }
+
+    .kg-header-card.kg-style-accent {
+        background-color: var(--ghost-accent-color);
+    }
+
+    .kg-header-card.kg-style-image {
+        background-color: #e7e7eb;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .kg-header-card h2 {
+        font-size: 4em;
+        font-weight: 700;
+        line-height: 1.1em;
+        margin: 0;
+    }
+
+    .kg-header-card h2 strong {
+        font-weight: 800;
+    }
+
+    .kg-header-card.kg-size-small h2 {
+        font-size: 3em;
+    }
+
+    .kg-header-card.kg-size-large h2 {
+        font-size: 5em;
+    }
+
+    .kg-header-card h3 {
+        font-size: 1.25em;
+        font-weight: 500;
+        line-height: 1.3em;
+        margin: 0;
+    }
+
+    .kg-header-card h3 strong {
+        font-weight: 600;
+    }
+
+    .kg-header-card.kg-size-small h3 {
+        font-size: 1em;
+    }
+
+    .kg-header-card.kg-size-large h3 {
+        font-size: 1.5em;
+    }
+
+    .kg-header-card:not(.kg-style-light) h2,
+    .kg-header-card:not(.kg-style-light) h3 {
+        color: #ffffff;
+    }
+
+    .kg-header-card a.kg-header-card-button {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 1.2em;
+        height: 2.4em;
+        line-height: 1em;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-size: 0.95em;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+        background-color: var(--ghost-accent-color);
+        color: #ffffff;
+        margin: 1.75em 0 0;
+    }
+
+    .kg-header-card a.kg-header-card-button:hover {
+        opacity: 0.85;
+    }
+
+    .kg-header-card.kg-size-large a.kg-header-card-button {
+        margin-top: 2em;
+    }
+
+    .kg-header-card.kg-size-small a.kg-header-card-button {
+        margin-top: 1.5em;
+    }
+
+    .kg-header-card.kg-style-image a.kg-header-card-button,
+    .kg-header-card.kg-style-dark a.kg-header-card-button {
+        background: #ffffff;
+        color: #15171a;
+    }
+
+    .kg-header-card.kg-style-accent a.kg-header-card-button {
+        background: #ffffff;
+        color: var(--ghost-accent-color);
+    }
+
+    .kg-audio-card {
+        display: flex;
+        width: 100%;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-audio-thumbnail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        min-width: 80px;
+        height: 80px;
+        background: transparent;
+        object-fit: cover;
+        aspect-ratio: 1/1;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .kg-audio-thumbnail.placeholder {
+        background: var(--ghost-accent-color);
+    }
+
+    .kg-audio-thumbnail.placeholder svg {
+        width: 24px;
+        height: 24px;
+        fill: white;
+    }
+
+    .kg-audio-player-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        --seek-before-width: 0%;
+        --volume-before-width: 100%;
+        --buffered-width: 0%;
+    }
+
+    .kg-audio-title {
+        width: 100%;
+        padding: 8px 12px 0;
+        border: none;
+        font-family: inherit;
+        font-size: 1.1em;
+        font-weight: 700;
+        background: transparent;
+    }
+
+    .kg-audio-player {
+        display: none;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+
+    :root {--ghost-accent-color: #FF1A75;}
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    <script async custom-element="amp-anim" src="https://cdn.ampproject.org/v0/amp-anim-0.1.js"></script>
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="http://localhost:2368">
+                <amp-img class="site-icon" src="http://localhost:2368/content/images/2021/11/cartoon-head-jeroen-1.png" width="50" height="50" layout="fixed" alt="Jeroen Overschie"></amp-img>
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">From Linear Regression to Neural Networks</h1>
+                <section class="post-meta">
+                    Jeroen Overschie -
+                    <time class="post-date" datetime="2021-04-18">18 Apr 2021</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="http://localhost:2368/content/images/2021/11/linear-regression-to-neural-networks.png" width="600" height="340" layout="responsive" 
+                alt="From Linear Regression to Neural Networks"
+                ></amp-img>
+            </figure>
+            <section class="post-content">
+
+                <p>These days there exists much hype around sophisticated machine learning methods such as Neural Networks — they are massively powerful models that allow us to fit very flexible models. However, we do not always require the full complexity of a Neural Network: sometimes, a simpler model will do the job just fine. In this project, we take a journey starting from the most fundamental statistical machinery to model data distributions, linear regression, to then explain the benefits of constructing more complex models, such as logistic regression or a Neural Network. In this way, this text aims to build a bridge from the statistical, analytical world to the more approximative world of Machine Learning. We will not shy away from the math, whilst still working with tangible examples at all times: we will work with real-world datasets and we will get to apply our models as we go on. Let's start!</p><h2>Linear Regression <small>(<a href="https://dunnkers.com/linear-regression-to-neural-networks/linear-regression.html">Code</a>)</small></h2><p>First, we will explore linear regression, for it is an easy to understand model upon which we can build more sophisticated concepts. We will use a <a href="https://github.com/allisonhorst/penguins">dataset</a> on Antarctican penguins (Gorman et al., 2014) to conduct a regression between the penguin <em>flipper length</em> as independent variable $X$ and the penguin <em>body mass</em> as the dependent variable $Y$. We can analytically solve Linear Regression by minimizing the <em>Residual Sum-of-Squares</em> cost function (Hastie et al., 2009):</p><p>$$\text{R}(\beta) = (Y - X \beta)^T (Y - X \beta)$$</p><p>In which $X$ is our <em>design matrix.</em> Regression using this loss function is also referred to as "Ordinary Least Squares". The mean of the cost function $\text{R}$ over all samples is called Mean Squared Error, or MSE. Our design matrix is built by appending each data row with a bias constant of 1 - an alternative would be to first center our data to get rid of the intercept entirely. To now minimize our cost function we differentiate $\text{R}$ with respect to $\beta$, giving us the following unique minimum:</p><p>$$\hat{\beta} = (X^T X)^{-1} X^T Y$$</p><p>... which results in the estimated least-squares coefficients given the training data, also called the <em>normal equation</em>. We can classify by simply multiplying our input data with the found coefficient matrix: $\hat{Y} = X \hat{\beta}$. Let's observe our fitted regression line onto the data:</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>Linear Regression fit on Penguin data using the normal equation. Using a validation data split of ¼ testing data and ¾ training data.</figcaption></figure><p>We can observe visually that our estimator explains both the training and testing data reasonably well: the line positioned itself along the mean of the data. This is in fact the proposition we make in least-squares - we assume the target to be Gaussian distributed; which in the case of modeling this natural phenomenon, penguins, seems to fit quite well.</p><p>Because at the moment we are very curious, we would also like to explore using a more flexible model. Note that our normal equation we defined above tries to find whatever parameters make the system of linear equations produce the best predictions on our target variable. This means, that hypothetically, we could add any linear combination of explanatory variables we like: such create estimators of a higher-order polynomial form. This is called <strong>polynomial regression</strong>. To illustrate, a design matrix for one explanatory variable $X_1$ would look as follows:</p><p>$$X= \left[\begin{array}{ccccc}1 &amp; x_{1} &amp; x_{1}^{2} &amp; \ldots &amp; x_{1}^{d} \\ 1 &amp; x_{2} &amp; x_{2}^{2} &amp; \ldots &amp; x_{2}^{d} \\ 1 &amp; x_{3} &amp; x_{3}^{2} &amp; \ldots &amp; x_{3}^{d} \\ \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 1 &amp; x_{n} &amp; x_{n}^{2} &amp; \ldots &amp; x_{n}^{d}\end{array}\right]$$</p><p>Which results in $d$-th degree polynomial regression. The case $d=1$ is just normal linear regression. For example sake, let us sample only $n=10$ samples from our training dataset, and try to fit those with a polynomial regressors of increasing degrees. Let us observe what happens to the training and testing loss accordingly:</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>Polynomial fits of various degrees on just $n=10$ training dataset samples. Testing dataset remained unchanged.</figcaption></figure><p>It can be observed that although for some degrees the losses remain almost the same, we suffer from overfitting after the degree passes $d=30$. We can also visually show how the polynomials of varying degrees fit our data:</p><figure class="kg-card kg-image-card"></figure><p>We can indeed observe that the polynomials of higher degree definitely do not better explain our data. Also, the polynomials tend to get rather erratic beyond the last data points of the training data - which is important to consider whenever predicting outside the training data value ranges. Generally, polynomials of exceedingly high degree can overfit too easily and should only be considered in very special cases.</p><p>Up till now our experiments have been relatively simple - we used only one explanatory and one response variable. Let us now explore an example in which we use all available explanatory variables to predict body mass, to see whether we can achieve an even better fit. Because we are now at risk of suffering from <em>multicolinearity</em>; the situation where multiple explanatory variables are highly linearly related to each other, we will use an extension of linear regression which can deal with such a situation. The technique is called <strong>Ridge Regression</strong>.</p><h3 id="ridge-regression">Ridge Regression</h3><p>In Ridge Regression, we aim to tamper the least squares tendency to get as 'flexible' as possible to fit the data best it can. This might, however, cause parameters to get very large. We therefore like to add a penalty on the regression parameters $\beta$; we penalise the loss function with a square of the parameter vector $\beta$ scaled by new hyperparameter $\lambda$. This is called a <em>shrinkage method</em>, or also: <strong>regularization.</strong> This causes the squared loss function to become:</p><p>$$\text{R}(\beta) = (Y - X \beta)^T (Y - X \beta)+\lambda \beta^T \beta$$</p><p>This is called regularization with an $L^2$ norm; which generalization is called Tikhonov regularization, which allows for the case where not every parameter scalar is regularized equally. If we were to use an $L^1$ norm instead, we would speak of LASSO regression. If we were to now derive the solutions of $\beta$ given this new cost function by differentiation w.r.t. $\beta$:</p><p>$$\hat{\beta}^{\text {ridge }}=\left(\mathbf{X}^{T} \mathbf{X}+\lambda \mathbf{I}\right)^{-1} \mathbf{X}^{T} \mathbf{Y}$$</p><p>In which $\lambda$ will be a scaling constant that controls the amount of regularization that is applied. Note $\mathbf{I}$ is the $p\times p$ identity matrix - in which $p$ are the amount of data dimensions used. An important intuition to be known about Ridge Regression, is that directions in the column space of $X$ with small variance will be shrinked the most; this behavior can be easily shown be deconstructing the least-squares fitted vector using a Singular Value Decomposition. That said, let us see whether we can benefit from this new technique in our experiment.</p><p>In the next experiment, we will now use <strong>all</strong> available quantitative variables to try and predict the Penguin body mass. The Penguin- bill length, bill depth and flipper length will be used as independent variables. Note, however, they might be somewhat correlated: see <a href="https://dunnkers.com/linear-regression-to-neural-networks/images/penguin-pairplot.svg">this pairplot</a> on the Penguin data for details. This poses an interesting challenge for our regression. Let us combine this with varying dataset sample sizes and varying settings of $\lambda$ to see the effects on our loss.</p><figure class="kg-card kg-image-card"></figure><p>Ridge Regression using all quantitative variables in the Penguin dataset to predict body mass. Varying subset sizes of the dataset $n$ as well as different regularization strengths $\lambda$ are shown.</p><p>It can be observed, that using including all quantitative variables did improve the loss on predicting the Penguin body mass using Ridge Regression. In fact, the penalty imposed probably pulled the hyperplane angle down such that the error in fact increased. Ridge Regression is a very powerful technique, nonetheless, and most importantly introduced us to the concept of regularization. In the next chapters on Logistic Regression in Neural Networks, we assume all our models to use $L^2$ regularization.</p><p>Now, the data we fit up until now had only a small dimensionality - this is perhaps a drastic oversimplification in comparison to the real world. How does the analytic way of solving linear regression using the normal equation fare with <strong>higher-dimensional data</strong>?</p><h3 id="high-dimensional-data">High-dimensional data</h3><p>In the real world, datasets might be of very high dimensionality: think of images, speech, or a biomedical dataset storing DNA sequences. These datasets cause different computational strain on the equations to be solved to fit a linear regression model: so let us <strong>simulate</strong> such a high-dimensional situation.</p><p>In our simulation the amount of dimensions will configured to outmatch the amount of dataset samples ($p \gg n$), which extra dimensions we will create by simply adding some noise columns to the design matrix $X$. The noise will be drawn from a Gaussian distribution $\epsilon \sim \mathcal{N}(0, 1)$. We can now run an experiment by fitting our linear regression model to the higher-dimensional noised dataset, benchmarking the fitting times of the algorithm.</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>Linear Regression fitting times for lower- and higher- dimensional Penguin data.</figcaption></figure><p>We can observe that the normal equation takes <strong>a lot</strong> longer to compute for higher-dimensional data. In fact, numerically computing the matrix inverse is very computationally expensive, i.e. computing $(X^TX)^{-1}$. Luckily, there are computationally cheaper techniques to do a regression in higher-dimensional spaces. One such technique is an iterative procedure, called <strong>Gradient Descent</strong>.</p><h3 id="gradient-descent">Gradient Descent</h3><p>Instead of trying to analytically solve the system of linear equations at once, we can choose an iterative procedure instead, such as Gradient Descent. It works by computing the gradient of the cost function with respect to the model weights - such that we can then move in the opposite direction of the gradient in parameter space. Given some loss function $R(\beta)$ and $R_i(\beta)$, which computes the empirical loss for entire dataset and for the $i$-th observation, respectively, we can define one gradient descent step as:</p><p>$$\begin{aligned} \beta^{(r + 1)} &amp;= \beta^{(r)} - \gamma \nabla_{\beta^{(r)}} R(\beta^{(r)}) \\ &amp;= \beta^{(r)} - \gamma \sum_{i=1}^N \frac{\partial R_i(\beta^{(r)})}{\partial \beta^{(r)}}\\ \end{aligned}$$</p><p>In which $\gamma$ is the learning rate and $r$ indicates some iteration - given some initial parameters $\beta^0$ and $N$ training samples. Using this equation, we are able to reduce the loss in every iteration, until we converge. Convergence occurs when every element of the gradient is zero - or very close to it. Although gradient descent is used in this vanilla form, two modifications are common: (1) <strong>subsampling</strong> and  using a (2) <strong>learning rate schedule</strong>.</p><ol><li>Although in a scenario in which our loss function landscape is convex the vanilla variant does converge toward the global optimum relatively easily, this might not be the case for non-convex error landscapes. We are at risk of getting stuck in local extremes. In this case, it is desirable to introduce some randomness — allowing us to jump out local extrema. We can introduce randomness by instead of computing the gradient over the entire sample set, we can do so for a random sample of the dataset called a <em>minibatch</em> (Goodfellow et al., 2014). A side effect is a lighter computational burden per iteration; sometimes causing faster convergence. Because the introduced randomness makes the procedure stochastic instead of deterministic, we call this algorithm <em>Stochastic</em> Gradient Descent, or simply <strong>SGD</strong>.</li><li>Accommodating SGD is often a learning rate schedule: making the learning rate parameter $\gamma$ dependent on the iteration number $r$ such that $\gamma = \gamma^{(r)}$. In this way, we made the learning rate adaptive over time, allowing us to create a custom learning rate scheme. Many schemes (Dogo et al., 2018) exist - which can be used to avoid spending a long time on flat areas in the error landscape called plateaus, or to avoid 'overshooting' the optimal solution. Even, a technique analogous with <em>momentum</em> (Qian, 1999) in physics might be used: a particle traveling through space is 'accelerated' by the loss gradient, causing the gradient to change faster if it keeps going in the same direction.</li></ol><p>So, let's now redefine our gradient descent formula to accommodate for these modifications:</p><p>$$\beta^{(r+1)}=\beta^{(r)}-\gamma^{(r)} \frac{1}{m} \sum_{i=1}^m \frac{\partial R_i(\beta^{(r)})}{\partial \beta^{(r)}} $$</p><p>... where we, before each iteration, randomly shuffle our training dataset such that we draw $m$ random samples each step. The variable $m$ denotes the <em>batch size</em> - which can be anywhere between 1 and the amount of dataset samples minus one $N - 1$. The smaller the batch size, the more stochastic the procedure will get.</p><p>Using gradient descent for our linear regression is straight-forward. We differentiate the cost function with respect to the weights; the least squares derivative is then as follows:</p><p>$$\begin{aligned} \frac{\partial R_i(\beta^{(r)})}{\partial \beta^{(r)}} &amp;= \frac{\partial}{\partial \beta^{(r)}} (y_i - x_i \beta^{(r)})^2\\ &amp;= 2 (y_i - x_i \beta^{(r)})\\ \end{aligned}$$</p><p>We then run the algorithm in a loop, to iteratively get closer to the optimum parameter values.</p><p>Now, using this newly introduced iterative optimization procedure, let's see whether we can solve linear regression faster. First, we will compare SGD and the analytic method for our Penguin dataset with standard Gaussian noise dimensions added such that $p=2000$.</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>Fitting time and MSE loss differences of Linear Regression solved using SGD and analytically using the normal equation. 10 experiments are shown; each one is a dot. SGD uses $\gamma^0=0.001$ with an inverse scaling schedule of $\gamma^{r+1} = \frac{\gamma^0}{t^{0.25}}$ and 20 thousand iterations maximum.</figcaption></figure><p>Indeed - our iterative procedure is faster for such a high-dimensional dataset. Because the analytic method always finds the optimum value, it is most plausible that SGD does not achieve the same performance - as can be seen in the MSE loss in the figure. Only in a couple of runs does SGD achieve near-optimum performance - in the other cases the algorithm was either stopped by its maximum iterations limit or it got stuck in some local extrema and has not gotten out yet. If we wanted to get better results, we could have used a more lenient maximum amount of iterations or a stricter convergence condition. This is a clear trade-off between computational workload and the optimality of the solution. We can run some more experiments for various levels of augmented dimensions:</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>Fitting time and MSE loss for several degrees of dataset dimensionality. For each dimensionality, the average and its 95% confidence intervals over 10 experiments are shown. Loss plot is the average of the training and testing set.</figcaption></figure><p>In which we can empirically show that for our experiment, the analytic computation time grows about exponentially whilst SGD causes only a mild increase in computational time. SGD does suffer a higher loss due to its approximative nature - but this might just be worth the trade-off.</p><p>Now that we have gotten familiar with Gradient Descent, we can explore a realm of techniques that rely on being solved iteratively. Instead of doing regression, we will now try to <strong>classify</strong> penguins by their species type — a method for doing so is <strong>Logistic Regression</strong>.</p><h2>Logistic Regression <small>(<a href="https://dunnkers.com/linear-regression-to-neural-networks/logistic-regression.html">Code</a>)</small></h2><p>In general, linear regression is no good for classification. There is no notion incorporated into the objective function to desire a hyperplane that best separates two classes. Even if we would encode qualitative target variables in a quantitative way, i.e. in zeros or ones, a normal equation fit would result in predicted values outside the target range.</p><p>Therefore, we require a different scheme. In Logistic Regression, we first want to make sure all estimations remain in $[0,1]$. This can be done using the <strong>Sigmoid function</strong>:</p><p>$$S(z)=\frac{e^z}{e^z+1}=\frac{1}{1+e^{-z}}$$</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>Sigmoid function $S(z)$. Given any number $z \in \mathbb{R}$ the function always returns a number in $[0, 1]$. Image: <a href="https://en.wikipedia.org/wiki/Sigmoid_function#/media/File:Logistic-curve.svg">source</a>.</figcaption></figure><p>Also called the <em>Logistic function.</em> So, the goal is to predict some class $G \in \{1,\dots,K\}$ given inputs $X$. We assume an intercept constant of 1 to be embedded in $X$. Now let us take a closer look at the case where $K=2$, i.e. the binary or <strong>binomial</strong> case.</p><p>If we were to encode our class targets $Y$ as either ones or zeros, i.e. $Y \in \{0,1\}$, we can predict values using $X \beta$ and pull them through a sigmoid $S(X\beta)$ to obtain the probabilities whether samples belongs to the class encoded as 1. This can be written as:</p><p>$$\begin{aligned} \Pr(G=2|X;\beta)&amp;=S(X\beta)\\ &amp;=\frac{1}{1+\exp(-X\beta)}\\ &amp;=p(X;\beta) \end{aligned}$$</p><p>Because we consider only two classes, we can compute one probability and infer the other one, like so:</p><p>$$\begin{aligned} \Pr(G=1|X;\beta)&amp;=1-p(X;\beta) \end{aligned}$$</p><p>For which it can be easily seen that both probabilities form a <em>probability vector</em>, i.e. their values sum to 1. Note we can consider the targets as a sequence of <em>Bernoulli trials</em> $y_i,\dots,y_N$ - each outcome a binary - assuming all observations are independent of one another. This allows us to write:</p><p>$$\begin{aligned} \Pr (y| X;\beta)&amp;=p(X;\beta)^y(1-p(X;\beta))^{(1-y)}\\ \end{aligned}$$</p><p>So, how to approximate $\beta$? Like in linear regression, we can optimize a loss function to obtain an estimator $\hat{\beta}$. We can express the loss function as a likelihood using <em>Maximum Likelihood Estimation</em>. First, we express our objective into a conditional <strong>likelihood</strong> function.</p><p>$$\begin{aligned} L(\beta)&amp;=\Pr (Y| X;\beta)\\ &amp;=\prod_{i=1}^N \Pr (y_i|X=x_i;\beta)\\ &amp;=\prod_{i=1}^N p(x_i;\beta)^{y_i}(1-p(x_i;\beta))^{(1-y_i)} \end{aligned}$$</p><p>The likelihood becomes easier to maximize in practice if we rewrite the product to a sum using a logarithm; such scaling does not change the resulting parameters. We obtain the <strong>log-likelihood</strong> (Bischop, 2006):</p><p>$$\begin{aligned} \ell(\beta)&amp;=\log L(\beta)\\ &amp;=\sum_{i=1}^{N}\left\{y_{i} \log p\left(x_{i} ; \beta\right)+\left(1-y_{i}\right) \log \left(1-p\left(x_{i} ; \beta\right)\right)\right\}\\ &amp;=\sum_{i=1}^{N}\left\{y_{i} \beta^{T} x_{i}-\log \left(1+e^{\beta^{T} x_{i}}\right)\right\} \end{aligned}$$</p><p>Also called the <strong><em>logistic loss</em></strong>; which multi-dimensional counterpart is the <em>cross-entropy</em> loss. We can maximize this likelihood function by computing its gradient:</p><p>$$\frac{\partial \ell(\beta)}{\partial \beta}=\sum_{i=1}^{N} x_{i}\left(y_{i}-p\left(x_{i} ; \beta\right)\right)$$</p><p>...resulting in $p+1$ equations nonlinear in $\beta$. The equation is <em>transcendental</em>: meaning no closed-form solution exists and hence we cannot simply solve for zero. It is possible, however, to use numerical approximations: Newton-Raphson method based strategies can be used, such as Newton Conjugate-Gradient, or quasi-Newton procedures might be used such as L-BFGS (Zhu et al., 1997). Different strategies have varying benefits based on the problem type, e.g. the amount of samples $n$ or dimensions $p$. Since the gradient can be approximated just fine, we can also simply use Gradient Descent, i.e. SGD.</p><p>In the case where more response variables are to be predicted, i.e. $K&gt;2$, a <strong>multinomial</strong> variant of Logistic Regression can be used. For easier implementation, some software implementations just perform multiple binomial logistic regressions in order to conduct a multinomial one; which is called a One-versus-All strategy. The resulting probabilities are then normalized to still output a probability vector (Pedregosa et al., 2001).</p><p>That theory out of the way, let's fit a Logistic Regression model to our penguin data! We will try to classify whether a penguin is a Chinstrap yes or no, in other words: we will perform a binomial logistic regression. We will perform 30K iterations, each iteration an epoch over the training data:</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>Logistic Regression model fit on a binary penguin classification task. The model converged at 88.2% training-, 89.7% testing accuracy and a loss of 0.304 on the training set.</figcaption></figure><p>We can observe that the model converged to a stable state already after about 10K epochs - we could have implemented an early stopping rule; for example by checking whether validation scores stop improving or when our loss is no longer changing much. We can also visualize our model fit over time: by predicting over a grid of values at every time step during training. This yields the following animation:</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>Logistic Regression model fit using SGD with constant learning rate of $\gamma=0.001$ and $L^2$ regularization using $\alpha=0.0005$.</figcaption></figure><p>Clearly, our decision boundary is not optimal yet - whilst the data is somewhat Gaussian distributed our model linearly separates the data. We can do better — we need some way to introduce more non-linearity into our model. A model that does just so is a <strong>Neural Network</strong>.</p><h2>Neural Network <small>(<a href="https://dunnkers.com/linear-regression-to-neural-networks/neural-network.html">Code</a>)</small></h2><p>At last, we arrive at the Neural Network. Using the previously learned concepts, we are really not that far off from assembling a Neural Network. Really, a single-layer Neural Network essentially just a linear model, like before. The difference is, that we conduct some extra projections in order to make the data better linearly separable. In a Neural Network, we aim to find the parameters facilitating such projections automatically. We call each such projection a <em>Hidden Layer</em>. After having conducted a suitable projection,  we can pull the projected data through a logistic function to estimate a probability - similarly to logistic regression. One such architecture is like so:</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>Neural Network architecture for 2-dimensional inputs and a 1-dimensional output with $l=3$ hidden layers each containing 5 neurons (image generated using <a href="http://alexlenail.me/NN-SVG/">NN-SVG</a>).</figcaption></figure><p>So, given one input vector $x_i$, we can compute its estimated value by feeding its values through the network from left to right, in each layer multiplying with its parameter vector. We call this type of network <em>feed-forward</em>. Networks that do not feed forward include <em>recurrent</em> or <em>recursive</em> networks, though we will only concern ourselves with feed-forward networks for now.</p><p>An essential component of any such network is an <strong><em>activation function</em>;</strong> a <em>non-linear</em> differentiable function mapping $\mathbb{R} \rightarrow \mathbb{R}$, aimed to overcome model linearity constraints. We apply the activation function to every hidden node; we compute the total input, add a bias, and then activate. This process is somewhat analogous to what happens in neurons in the brain - hence the name Neural Network. Among many possible activation functions (Nwankpa et al., 2018), a popular choice is the Rectified Linear Unit, or <strong>ReLU</strong>: $\sigma(z)=\max\{0, z\}$. It looks as follows:</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>ReLU activation function $\sigma(z)=\max \{0,z\}$. The function is easily seen to be piecewise-linear.</figcaption></figure><p>Also because ReLU is just a max operation, it is fast to compute (e.g. compared to a sigmoid). Using our activation function, we can define a <em>forward-pass</em> through our network, as follows:</p><p>$$\begin{aligned} h^{(1)}&amp;=\sigma(X W^{(1)} + b^{(1)})\\ h^{(2)}&amp;=\sigma(h^{(1)} W^{(2)} + b^{(2)})\\ h^{(3)}&amp;=\sigma(h^{(2)} W^{(3)} + b^{(3)})\\ \hat{Y}&amp;=S(h^{(3)}W^{(4)}+b^{(4)}) \end{aligned}$$</p><p>In which $h$ resembles the intermediate projections indexed by its hidden layer; and the parameters $\beta$ mapping every two layers together are accessible through $W$. A bias vector is accessible through $b$, such to add a bias term to every node in the layer. Finally, we apply a Sigmoid to the results of the last layer to receive probability estimates; in the case of multi-class outputs its multi-dimensional counterpart is used, the <em>Softmax</em>, which normalizes the logistic function such to produce a probability vector. Do note that the activation function <em>could</em> differ per layer; and in practice, this might happen. In our case, we will just use one activation function for all hidden layers in our network.</p><p>We are also going to have to define a <strong>cost function</strong>, such to be able to optimize the parameters based on its gradient. We can do so using the minimizing the negative log-likelihood using Maximum Likelihood, given some loss function such as:</p><p>$$ R(\theta)=-\mathbb{E}_{\mathbf{x}, \mathbf{y}\sim\hat{p}_{\text{data }}}\log p_{\operatorname{model}}(\boldsymbol{y}\mid\boldsymbol{x}) $$</p><p>In which we combined weights $W$ and biases $b$ into a single parameter term $\theta$. Our cost function says to quantify the chance of encountering a target $y$ given an input vector $x$. Suitable loss functions to be used are log-loss/cross-entropy, or simply squared error:</p><p>$$ R(\theta)=\frac{1}{2}\mathbb{E}_{\mathbf{x}, \mathbf{y}\sim\hat{p}_{\text{data }}}\|\boldsymbol{y}-f(\boldsymbol{x} ; \boldsymbol{\theta})\|^{2}+ \text{const} $$</p><p>Assuming $p_{\text{model}}(y|x)$ to be Gaussian distributed. Of course, in any implementation we can only approach the expected value by averaging over a discrete set of observations; thus allowing us to compute the loss of our network.</p><p>Now that we are able to do a forward pass by (1) making predictions given a set of parameters $\theta$ and (2) computing its loss using a cost function $R(\theta)$, we will have to figure out how to actually <strong>train</strong> our network. Because our computation involves quite some operations by now, computing the gradient of the cost function is not trivial - to approximate the full gradient one would have to compute partial derivatives with respect to every weight separately. Luckily, we can exploit the calculus chain rule to break up the problem into smaller pieces: allowing us to much more efficiently re-use previously computed answers. The algorithm using this trick is called <strong>back-propagation</strong>.</p><p>In back-propagation, we re-visit the network in reverse order; i.e. starting at the output layer and working our way back to the input layer. We then use the calculus derivative chain rule (Goodfellow et al., 2014):</p><p>$$\begin{aligned} \frac{\partial z}{\partial x_{i}}&amp;=\sum_{j} \frac{\partial z}{\partial y_{j}} \frac{\partial y_{j}}{\partial x_{i}}\\ &amp;\text{in vector notation:}\\ \nabla_{\boldsymbol{x}} z&amp;=\left(\frac{\partial \boldsymbol{y}}{\partial \boldsymbol{x}}\right)^{\top} \nabla_{\boldsymbol{y}} z \end{aligned}$$</p><p>...to compute the gradient in modular fashion. Note we need to consider the network in its entirety when computing the partial derivatives; the output activation, the loss function, node activations and the biases. To systematically apply back-prop to a network often these functions are abstracted as being an <em>operation</em> - which can then be assembled in a <em>computational graph</em>. Given a suitable such graph, many generic back-prop implementations can be used.</p><p>Once we have now computed the derivative of the cost function $R(\theta)$, our situation became similar to when we iteratively solved linear- or logistic regression: we can now use just Gradient Descent to move in the error landscape.</p><p>Now that we know how to train a Neural Network, let's apply it! We aim to get better accuracy for our Penguin classification problem than using our Logistic Regression model.</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>Neural Network fit on a binary penguin classification task. The model converged at 96.5% training-, 94.9% testing accuracy and a loss of 0.108 on the training set.</figcaption></figure><p>Indeed, our more flexible Neural Network model better fits the data. The NN achieves 94.9% testing accuracy, in comparison to 89.7% testing accuracy for the Logistic Regression model. Let's see how our model is fitted over time:</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>Neural Network fit performing a binary classification task on penguin species. Has 3 hidden layers of 5 nodes each; uses $L^2$ regularization with $\alpha=0.0005$ and a constant learning rate of $\gamma=0.001$.</figcaption></figure><p>In which it can be observed that the model converged after some 750 iterations. Intuitively, the decision region looks to have been approximated fairly well - it might just have been slightly 'stretched' out.</p><h3 id="ending-note">Ending note</h3><p>Now that we have been able to fit a more 'complicated' data distribution, we conclude our journey from simple statistical models such a linear regression up to Neural Networks. Having a diverse set of statistical and iterative techniques in your tool belt is essential for any Machine Learning practitioner: even though immensely powerful models are available and widespread today, sometimes a simpler model will do just fine.</p><p>In tandem with how the bias/variance dilemma is fundamental to understanding how to construct good distribution learning models, one should always take into account not to overreach on model complexity given a learning task (Occam's Razor; Rasmussen et al., 2001): use an as simple as possible model, wherever possible.</p><h2 id="citations">Citations</h2><ul><li><a href="https://doi.org/10.1371/journal.pone.0090081">Gorman KB, Williams TD, Fraser WR (2014). Ecological sexual dimorphism and environmental variability within a community of Antarctic penguins (genus Pygoscelis). PLoS ONE 9(3):e90081.</a></li><li><a href="https://web.stanford.edu/~hastie/ElemStatLearn/">Hastie, T., Tibshirani, R., &amp; Friedman, J. (2009). The elements of statistical learning: data mining, inference, and prediction. Springer Science &amp; Business Media.</a></li><li><a href="https://ieeexplore.ieee.org/abstract/document/8769211">Dogo, E. M., Afolabi, O. J., Nwulu, N. I., Twala, B., &amp; Aigbavboa, C. O. (2018, December). A comparative analysis of gradient descent-based optimization algorithms on convolutional neural networks. In 2018 International Conference on Computational Techniques, Electronics and Mechanical Systems (CTEMS) (pp. 92-99). IEEE.</a></li><li><a href="http://users.isr.ist.utl.pt/~wurmd/Livros/school/Bishop%20-%20Pattern%20Recognition%20And%20Machine%20Learning%20-%20Springer%20%202006.pdf">Bishop, C. M. (2006). Pattern Recognition and Machine Learning. Springer.</a></li><li><a href="https://www.deeplearningbook.org/">Goodfellow, I., Bengio, Y., Courville, A., &amp; Bengio, Y. (2016). Deep learning (Vol. 1, No. 2). Cambridge: MIT press.</a></li><li><a href="https://www.sciencedirect.com/science/article/pii/S0893608098001166?casa_token=1Cj40vh2xXcAAAAA:Km2rWQK3qSQfFRp5u8RFongBdcCNOAGpBpa3g0nQO3lq7lUSG9ocYx2ExZfaz55dOWsAl102MDc">Qian, N. (1999). On the momentum term in gradient descent learning algorithms. Neural networks, 12(1), 145-151.</a></li><li><a href="https://dl.acm.org/doi/abs/10.1145/279232.279236?casa_token=vPvVfjPO5LYAAAAA:HRqyyBJ8KBVy09S8331ZV2pKZOfJrK820r6kuf9kxvpXi5y5DVQxGZzKN4eHeHYBaZ-DGqubi-oUaw">Zhu, C., Byrd, R. H., Lu, P., &amp; Nocedal, J. (1997). Algorithm 778: L-BFGS-B: Fortran subroutines for large-scale bound-constrained optimization. ACM Transactions on Mathematical Software (TOMS), 23(4), 550-560.</a></li><li><a href="https://www.jmlr.org/papers/volume12/pedregosa11a/pedregosa11a.pdf?source=post_page---------------------------">Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., ... &amp; Duchesnay, E. (2011). Scikit-learn: Machine learning in Python. the Journal of machine Learning research, 12, 2825-2830.</a></li><li><a href="https://arxiv.org/abs/1811.03378">Nwankpa, C., Ijomah, W., Gachagan, A., &amp; Marshall, S. (2018). Activation functions: Comparison of trends in practice and research for deep learning. arXiv preprint arXiv:1811.03378.</a></li><li><a href="https://books.google.nl/books?hl=en&amp;lr=&amp;id=Mgs2FwtgNxwC&amp;oi=fnd&amp;pg=PA294&amp;dq=occams+razor&amp;ots=EMXQ4ohtev&amp;sig=KRoX-dtpPwJNdPLujn4Qz7O3sI0&amp;redir_esc=y#v=onepage&amp;q&amp;f=false">Rasmussen, C. E., &amp; Ghahramani, Z. (2001). Occam's razor. Advances in neural information processing systems, 294-300.</a></li></ul><p></p><h2 id="code">Code</h2><p>The code is freely available on Github, see:</p><figure class="kg-card kg-image-card kg-card-hascaption"><a href="https://github.com/dunnkers/linear-regression-to-neural-networks"></a><figcaption><a href="https://github.com/dunnkers/linear-regression-to-neural-networks">linear-regression-to-neural-networks</a></figcaption></figure><p></p><p></p>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+            <amp-img class="site-icon" src="http://localhost:2368/content/images/2021/11/cartoon-head-jeroen-1.png" width="50" height="50" layout="fixed" alt="Jeroen Overschie"></amp-img>
+        <h3>Jeroen Overschie</h3>
+            <p>I write about Data Science, Software Engineering &amp; Life ✨</p>
+        <p><a href="http://localhost:2368">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>

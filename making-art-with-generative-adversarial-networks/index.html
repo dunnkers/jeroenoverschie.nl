@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Making Art with Generative Adversarial Networks</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,700;0,800;1,400;1,700&family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+
+    <link rel="stylesheet" href="/assets/built/screen.css?v=c64d4a8fc3">
+
+    <meta name="description" content="Can computers make art? To find out, we tried ourselves. We used Generative Adversarial Networks to try to paint new Van Gogh paintings." />
+    <link rel="icon" href="http://localhost:2368/content/images/size/w256h256/2021/11/cartoon-head-jeroen-1.png" type="image/png" />
+    <link rel="canonical" href="http://localhost:2368/making-art-with-generative-adversarial-networks/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="http://localhost:2368/making-art-with-generative-adversarial-networks/amp/" />
+    
+    <meta property="og:site_name" content="Jeroen Overschie" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Making Art with Generative Adversarial Networks" />
+    <meta property="og:description" content="Can computers make art? To find out, we tried ourselves. We used Generative Adversarial Networks to try to paint new Van Gogh paintings." />
+    <meta property="og:url" content="http://localhost:2368/making-art-with-generative-adversarial-networks/" />
+    <meta property="og:image" content="http://localhost:2368/content/images/2021/11/morphing-1.png" />
+    <meta property="article:published_time" content="2021-04-08T22:00:00.000Z" />
+    <meta property="article:modified_time" content="2021-11-28T21:28:08.000Z" />
+    <meta property="article:tag" content="Data Science" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Making Art with Generative Adversarial Networks" />
+    <meta name="twitter:description" content="Can computers make art? To find out, we tried ourselves. We used Generative Adversarial Networks to try to paint new Van Gogh paintings." />
+    <meta name="twitter:url" content="http://localhost:2368/making-art-with-generative-adversarial-networks/" />
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2021/11/morphing-1.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Jeroen Overschie" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Data Science" />
+    <meta property="og:image:width" content="1081" />
+    <meta property="og:image:height" content="540" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Jeroen Overschie",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/size/w256h256/2021/11/cartoon-head-jeroen-1.png",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Jeroen Overschie",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.gravatar.com/avatar/b37b136916ade32aada1f345482aafa4?s=250&r=x&d=mp",
+            "width": 250,
+            "height": 250
+        },
+        "url": "http://localhost:2368/author/jeroen/",
+        "sameAs": []
+    },
+    "headline": "Making Art with Generative Adversarial Networks",
+    "url": "http://localhost:2368/making-art-with-generative-adversarial-networks/",
+    "datePublished": "2021-04-08T22:00:00.000Z",
+    "dateModified": "2021-11-28T21:28:08.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2021/11/morphing-1.png",
+        "width": 1081,
+        "height": 540
+    },
+    "keywords": "Data Science",
+    "description": "Can computers make art? To find out, we tried ourselves. We used Generative Adversarial Networks to try to paint new Van Gogh paintings.",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.2" />
+    <link rel="alternate" type="application/rss+xml" title="Jeroen Overschie" href="http://localhost:2368/rss/" />
+    
+    <script defer src="/public/cards.min.js?v=c64d4a8fc3"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=c64d4a8fc3">
+</head>
+
+<body class="post-template tag-data-science">
+    <div class="site">
+        <header id="site-header" class="site-header">
+    <div class="header-inner">
+        <div class="header-brand">
+            <a class="logo" href="http://localhost:2368">
+                    <span class="logo-text">Jeroen Overschie</span>
+            </a>
+
+            <div class="burger">
+                <div class="burger-bar"></div>
+                <div class="burger-bar"></div>
+            </div>
+        </div>
+
+        <nav class="header-nav">
+                        <a class="menu-item menu-item-data-science" href="http://localhost:2368/tag/data-science/">Data Science</a>
+        <a class="menu-item menu-item-software-engineering" href="http://localhost:2368/tag/software-engineering/">Software Engineering</a>
+
+        </nav>
+
+        <div class="header-actions">
+            <div class="social">
+
+            </div>
+
+        </div>
+    </div>
+</header>
+
+        <div class="site-content">
+            
+<div class="content-area">
+    <main class="site-main">
+            <article class="single post tag-data-science">
+    <header class="single-header kg-canvas">
+            <div class="single-meta">
+                <span class="single-meta-item single-meta-date">
+                    <time datetime="2021-04-09">
+                        Apr 9, 2021
+                    </time>
+                </span>
+
+                <span class="single-meta-item single-meta-length">
+                    2 min read
+                </span>
+
+                    <span class="single-meta-item single-meta-tag">
+                        <a class="post-tag post-tag-data-science" href="/tag/data-science/">Data Science</a>
+                    </span>
+            </div>
+
+        <h1 class="single-title">Making Art with Generative Adversarial Networks</h1>
+
+            <div class="single-excerpt">
+                Can computers make art? To find out, we tried ourselves. We used Generative Adversarial Networks to try to paint new Van Gogh paintings.
+            </div>
+
+                <figure class="single-media kg-width-wide">
+                    <img srcset="/content/images/size/w400/2021/11/morphing-1.png 400w,
+/content/images/size/w750/2021/11/morphing-1.png 750w,
+/content/images/size/w960/2021/11/morphing-1.png 960w,
+/content/images/size/w1140/2021/11/morphing-1.png 1140w" sizes="(min-width: 1023px) 920px, calc(90vw)" src="/content/images/size/w960/2021/11/morphing-1.png" alt="Making Art with Generative Adversarial Networks">
+                        <figcaption>Note: the people on the left are <strong>not</strong> real people. Nor is the art next to it. They were created by an AI – to be specific, by a Generative Adversarial Network.</figcaption>
+                </figure>
+    </header>
+
+    <div class="single-content gh-content kg-canvas">
+        <p>Generative Adversarial Networks (<a href="https://arxiv.org/abs/1406.2661">GAN's</a>) are a relatively new type of technique for generating samples from a learned distribution, in which two networks are simultaneously trained whilst competing against each other. Applications for GAN’s are numerous, including image up-sampling, image generation, and the recently quite popular <strong>Deep Fakes</strong>. In this project, we aim to train such a Generative Adversarial Network ourselves, with the purpose of image generation, specifically. As the generation of human faces has been widely studied, we have chosen a different topic, namely: the generation of paintings. While large datasets of paintings are available, we have opted to restrict ourselves to one artist, as we believe this will give a better chance at producing realistic paintings. For this, we have chosen the Dutch artist <em>Vincent van Gogh</em>, who is known for his unique style.</p><h2 id="how">How</h2><p>There are many GAN architectures around. Some popular of which the <a href="https://arxiv.org/abs/1511.06434">DCGAN</a> and the <a href="https://arxiv.org/abs/1812.04948">StyleGAN</a>. We decided to train both and compare the results.</p><ul><li>DCGAN. A GAN architecture that has been around for a while. Was trained using <a href="https://www.tensorflow.org/">TensorFlow</a>.</li><li>StyleGAN. A popular GAN architecture for generating faces, provisioned by NVIDIA Research. Also trained using TensorFlow.</li></ul><p>Both were trained on the <a href="https://www.kaggle.com/ipythonx/van-gogh-paintings">Van Gogh dataset</a>, as available on Kaggle. Because the dataset contained only a limited amount of paintings (painting is, of course, a very time consuming activity), we decided to augment the dataset. Among others, we applied rotation- and shearing operations, and modified the brightness, such that we get more training data.</p><p>The StyleGAN showed the most promising results. Starting out with a seed previously used to generate a face, we managed to train a GAN that produced something that remotely resembled art. Given that a computer is doing this, that's pretty neat!</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="http://localhost:2368/content/images/2021/11/retrain_morphing.png" class="kg-image" alt loading="lazy" width="1621" height="540" srcset="http://localhost:2368/content/images/size/w600/2021/11/retrain_morphing.png 600w, http://localhost:2368/content/images/size/w1000/2021/11/retrain_morphing.png 1000w, http://localhost:2368/content/images/size/w1600/2021/11/retrain_morphing.png 1600w, http://localhost:2368/content/images/2021/11/retrain_morphing.png 1621w" sizes="(min-width: 1200px) 1200px"><figcaption>Progressively grown StyleGAN. The adversarial network first takes on the task of creating low-resolution art, and then progressively makes sharper images (fakes).</figcaption></figure><p></p><h2 id="more-reading">More reading</h2><p>To read a more detailed report on this project, check out the Github page:</p><figure class="kg-card kg-image-card kg-card-hascaption"><a href="https://github.com/dunnkers/generative-adversarial-networks"><img src="http://localhost:2368/content/images/2021/11/github32-2.png" class="kg-image" alt loading="lazy" width="32" height="32"></a><figcaption><a href="https://github.com/dunnkers/generative-adversarial-networks">generative-adversarial-networks</a></figcaption></figure>
+    </div>
+
+        <footer class="single-footer container small">
+            <div class="single-footer-left">
+                    <div class="navigation navigation-previous">
+                        <a class="navigation-link" href="/finding-god-components-in-apache-tika/" aria-label="Previous post">
+                            <span class="navigation-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M26.667 14.667v2.667h-16L18 24.667l-1.893 1.893L5.547 16l10.56-10.56L18 7.333l-7.333 7.333h16z"></path>
+</svg></span>
+                        </a>
+                    </div>
+            </div>
+
+            <div class="single-footer-middle">
+                    <div class="single-footer-top">
+                        <h3 class="single-footer-title">Published by:</h3>
+                        <div class="author-list">
+                                <div class="author-image-placeholder u-placeholder square">
+                                    <a href="/author/jeroen/" title="Jeroen Overschie">
+                                            <img class="author-image u-object-fit" src="https://www.gravatar.com/avatar/b37b136916ade32aada1f345482aafa4?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp" alt="Jeroen Overschie" loading="lazy">
+                                    </a>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="single-footer-bottom">
+                        <div class="share">
+                            <a class="share-link share-link-facebook"
+                                href="https://www.facebook.com/sharer.php?u=http://localhost:2368/making-art-with-generative-adversarial-networks/"
+                                target="_blank" rel="noopener noreferrer">
+                                <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.9981 11.9991C23.9981 5.37216 18.626 0 11.9991 0C5.37216 0 0 5.37216 0 11.9991C0 17.9882 4.38789 22.9522 10.1242 23.8524V15.4676H7.07758V11.9991H10.1242V9.35553C10.1242 6.34826 11.9156 4.68714 14.6564 4.68714C15.9692 4.68714 17.3424 4.92149 17.3424 4.92149V7.87439H15.8294C14.3388 7.87439 13.8739 8.79933 13.8739 9.74824V11.9991H17.2018L16.6698 15.4676H13.8739V23.8524C19.6103 22.9522 23.9981 17.9882 23.9981 11.9991Z"/></svg>                                Share
+                            </a>
+                            <a class="share-link share-link-twitter"
+                                href="https://twitter.com/intent/tweet?url=http://localhost:2368/making-art-with-generative-adversarial-networks/&text=Making%20Art%20with%20Generative%20Adversarial%20Networks"
+                                target="_blank" rel="noopener noreferrer">
+                                <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z"/></svg>                                Tweet
+                            </a>
+                        </div>
+                    </div>
+            </div>
+
+            <div class="single-footer-right">
+                    <div class="navigation navigation-next">
+                        <a class="navigation-link" href="/from-linear-regression-to-neural-networks/" aria-label="Next post">
+                            <span class="navigation-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M5.333 14.667v2.667h16L14 24.667l1.893 1.893L26.453 16 15.893 5.44 14 7.333l7.333 7.333h-16z"></path>
+</svg></span>
+                        </a>
+                    </div>
+            </div>
+        </footer>
+</article>                        <section class="related-wrapper">
+            <div class="container small">
+                <h3 class="related-title">You might also like...</h3>
+                <div class="post-feed related-feed">
+                        <article class="feed post featured" data-month="April 2021">
+    <div class="feed-calendar">
+        <div class="feed-calendar-month">
+            Apr
+        </div>
+        <div class="feed-calendar-day">
+            18
+        </div>
+    </div>
+            <div class="feed-image u-placeholder rectangle">
+                    <img class="u-object-fit"
+                        srcset="/content/images/size/w400/2021/11/linear-regression-to-neural-networks.png 400w,
+/content/images/size/w750/2021/11/linear-regression-to-neural-networks.png 750w,
+/content/images/size/w960/2021/11/linear-regression-to-neural-networks.png 960w,
+/content/images/size/w1140/2021/11/linear-regression-to-neural-networks.png 1140w"
+                        sizes="(min-width: 576px) 160px, 90vw"
+                        src="/content/images/size/w750/2021/11/linear-regression-to-neural-networks.png"
+                        alt="From Linear Regression to Neural Networks"
+                        loading="lazy"
+                    >
+            </div>
+    <div class="feed-wrapper">
+        <h2 class="feed-title">From Linear Regression to Neural Networks</h2>
+            <div class="feed-excerpt">How are linear regression, logistic regression and neural networks related? What is overfitting and how do we fight it? In this post, we find answers to these questions in an interactive way by working with a real-world dataset on penguins.</div>
+        <div class="feed-right">
+            <time class="feed-date" datetime="2021-04-18">
+                Apr 18, 2021
+            </time>
+            <div class="feed-visibility feed-visibility-public">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M16 23.027L24.24 28l-2.187-9.373 7.28-6.307-9.587-.827-3.747-8.827-3.747 8.827-9.587.827 7.267 6.307L7.759 28l8.24-4.973z"></path>
+</svg>            </div>
+                <div class="feed-length">
+                    20 min read
+                </div>
+            <div class="feed-icon">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg>            </div>
+        </div>
+    </div>
+    <a class="u-permalink" href="/from-linear-regression-to-neural-networks/" aria-label="From Linear Regression to Neural Networks"></a>
+</article>                        <article class="feed post featured" data-month="October 2020">
+    <div class="feed-calendar">
+        <div class="feed-calendar-month">
+            Oct
+        </div>
+        <div class="feed-calendar-day">
+            29
+        </div>
+    </div>
+            <div class="feed-image u-placeholder rectangle">
+                    <img class="u-object-fit"
+                        srcset="/content/images/size/w400/2021/11/neural-network-backdoors.png 400w,
+/content/images/size/w750/2021/11/neural-network-backdoors.png 750w,
+/content/images/size/w960/2021/11/neural-network-backdoors.png 960w,
+/content/images/size/w1140/2021/11/neural-network-backdoors.png 1140w"
+                        sizes="(min-width: 576px) 160px, 90vw"
+                        src="/content/images/size/w750/2021/11/neural-network-backdoors.png"
+                        alt="Backdoors in Neural Networks"
+                        loading="lazy"
+                    >
+            </div>
+    <div class="feed-wrapper">
+        <h2 class="feed-title">Backdoors in Neural Networks</h2>
+            <div class="feed-excerpt">In this project, we demonstrated how Neural Networks can be vulnerable to a Backdoor attack.</div>
+        <div class="feed-right">
+            <time class="feed-date" datetime="2020-10-29">
+                Oct 29, 2020
+            </time>
+            <div class="feed-visibility feed-visibility-public">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M16 23.027L24.24 28l-2.187-9.373 7.28-6.307-9.587-.827-3.747-8.827-3.747 8.827-9.587.827 7.267 6.307L7.759 28l8.24-4.973z"></path>
+</svg>            </div>
+                <div class="feed-length">
+                    4 min read
+                </div>
+            <div class="feed-icon">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg>            </div>
+        </div>
+    </div>
+    <a class="u-permalink" href="/backdoors-in-neural-networks/" aria-label="Backdoors in Neural Networks"></a>
+</article>                        <article class="feed post" data-month="March 2020">
+    <div class="feed-calendar">
+        <div class="feed-calendar-month">
+            Mar
+        </div>
+        <div class="feed-calendar-day">
+            01
+        </div>
+    </div>
+            <div class="feed-image u-placeholder rectangle">
+                    <img class="u-object-fit"
+                        srcset="/content/images/size/w400/2021/11/Screen-Shot-2021-11-28-at-18.12.40-1.png 400w,
+/content/images/size/w750/2021/11/Screen-Shot-2021-11-28-at-18.12.40-1.png 750w,
+/content/images/size/w960/2021/11/Screen-Shot-2021-11-28-at-18.12.40-1.png 960w,
+/content/images/size/w1140/2021/11/Screen-Shot-2021-11-28-at-18.12.40-1.png 1140w"
+                        sizes="(min-width: 576px) 160px, 90vw"
+                        src="/content/images/size/w750/2021/11/Screen-Shot-2021-11-28-at-18.12.40-1.png"
+                        alt="COVID-19 Dashboard"
+                        loading="lazy"
+                    >
+            </div>
+    <div class="feed-wrapper">
+        <h2 class="feed-title">COVID-19 Dashboard</h2>
+            <div class="feed-excerpt">What parts of the world are susceptible to Corona outbreak? We used Big Data and Data Engineering in this project to find out.</div>
+        <div class="feed-right">
+            <time class="feed-date" datetime="2020-03-01">
+                Mar 1, 2020
+            </time>
+            <div class="feed-visibility feed-visibility-public">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M16 23.027L24.24 28l-2.187-9.373 7.28-6.307-9.587-.827-3.747-8.827-3.747 8.827-9.587.827 7.267 6.307L7.759 28l8.24-4.973z"></path>
+</svg>            </div>
+                <div class="feed-length">
+                    2 min read
+                </div>
+            <div class="feed-icon">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg>            </div>
+        </div>
+    </div>
+    <a class="u-permalink" href="/covid-19-dashboard/" aria-label="COVID-19 Dashboard"></a>
+</article>                </div>
+            </div>
+        </section>
+                </main>
+</div>
+
+
+        </div>
+
+        <footer class="site-footer container">
+    <div class="footer-inner">
+        <div class="footer-left">
+            <div class="copyright">
+                Jeroen Overschie © 2022
+            </div>
+        </div>
+
+        <nav class="footer-nav">
+                    <a class="menu-item menu-item-data-privacy" href="http://localhost:2368/privacy/">Data &amp; privacy</a>
+            <span class="sep">•</span>
+        <a class="menu-item menu-item-contact" href="http://localhost:2368/contact/">Contact</a>
+
+        </nav>
+
+        <div class="footer-right">
+            <div class="social">
+
+            </div>
+        </div>
+    </div>
+</footer>        <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe.
+        It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides.
+          PhotoSwipe keeps only 3 of them in the DOM to save memory.
+          Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>    </div>
+
+    <script>
+        if (document.body.classList.contains('with-full-cover') && (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.platform))) {
+            document.getElementsByClassName('cover')[0].style.height = window.innerHeight + 'px';
+        }
+    </script>
+
+    <script src="/assets/built/main.min.js?v=c64d4a8fc3"></script>
+
+    
+</body>
+
+</html>
