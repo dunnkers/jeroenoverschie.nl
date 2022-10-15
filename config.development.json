@@ -7,7 +7,7 @@
   "database": {
     "client": "sqlite3",
     "connection": {
-      "filename": "/Users/dunnkers/git/jeroenoverschie.nl/content/data/ghost-local.db"
+      "filename": "/workspaces/jeroenoverschie.nl/content/data/ghost-local.db"
     }
   },
   "mail": {
@@ -21,6 +21,6 @@
   },
   "process": "local",
   "paths": {
-    "contentPath": "/Users/dunnkers/git/jeroenoverschie.nl/content"
+    "contentPath": "/workspaces/jeroenoverschie.nl/content"
   }
 }
