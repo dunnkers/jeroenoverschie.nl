@@ -27,7 +27,8 @@ OR, better:
 Run:
 
 ```
-gssg
+npm run build
+npm run deploy
 ```
 
-Which will generate the website at `/static`. Upload it to GitHub pages.
+Which will generate the website at `/static`, replace `localhost` with the website name, and upload it to GitHub pages 🙌🏻.
