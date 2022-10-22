@@ -4,37 +4,30 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
-    <title>Finding &#x27;God&#x27; components in Apache Tika</title>
+    <title>pyspark-bucketmap</title>
 
+    <meta name="description" content="pyspark-bucketmap is a tiny module for pyspark which allows you to bucketize DataFrame rows and map their values easily." />
     <link rel="icon" href="https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg" type="image/png" />
-    <link rel="canonical" href="https://jeroenoverschie.nl/finding-god-components-in-apache-tika/" />
+    <link rel="canonical" href="https://jeroenoverschie.nl/pyspark-bucketmap/" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
     
     <meta property="og:site_name" content="Jeroen Overschie" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Finding &#x27;God&#x27; components in Apache Tika" />
-    <meta property="og:description" content="How did big, bulky software components come into being? In this project, we explore the evolution of so-called God Components; pieces of software with a large number of classes or lines of code that got very large over time. Our analysis was run on the Apache Tika codebase.
-
-In this" />
-    <meta property="og:url" content="https://jeroenoverschie.nl/finding-god-components-in-apache-tika/" />
-    <meta property="og:image" content="https://jeroenoverschie.nl/content/images/2021/11/god-components-apache-tika.png" />
-    <meta property="article:published_time" content="2021-01-16T23:00:00.000Z" />
-    <meta property="article:modified_time" content="2021-11-28T20:19:15.000Z" />
-    <meta property="article:tag" content="Software Engineering" />
+    <meta property="og:title" content="pyspark-bucketmap" />
+    <meta property="og:description" content="pyspark-bucketmap is a tiny module for pyspark which allows you to bucketize DataFrame rows and map their values easily." />
+    <meta property="og:url" content="https://jeroenoverschie.nl/pyspark-bucketmap/" />
+    <meta property="article:published_time" content="2022-10-22T10:01:09.000Z" />
+    <meta property="article:modified_time" content="2022-10-22T10:10:05.000Z" />
+    <meta property="article:tag" content="Code snippets" />
     
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Finding &#x27;God&#x27; components in Apache Tika" />
-    <meta name="twitter:description" content="How did big, bulky software components come into being? In this project, we explore the evolution of so-called God Components; pieces of software with a large number of classes or lines of code that got very large over time. Our analysis was run on the Apache Tika codebase.
-
-In this" />
-    <meta name="twitter:url" content="https://jeroenoverschie.nl/finding-god-components-in-apache-tika/" />
-    <meta name="twitter:image" content="https://jeroenoverschie.nl/content/images/2021/11/god-components-apache-tika.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="pyspark-bucketmap" />
+    <meta name="twitter:description" content="pyspark-bucketmap is a tiny module for pyspark which allows you to bucketize DataFrame rows and map their values easily." />
+    <meta name="twitter:url" content="https://jeroenoverschie.nl/pyspark-bucketmap/" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Jeroen Overschie" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Software Engineering" />
-    <meta property="og:image:width" content="1790" />
-    <meta property="og:image:height" content="946" />
+    <meta name="twitter:data2" content="Code snippets" />
     
     <script type="application/ld+json">
 {
@@ -61,18 +54,12 @@ In this" />
         "url": "https://jeroenoverschie.nl/author/jeroen/",
         "sameAs": []
     },
-    "headline": "Finding &#x27;God&#x27; components in Apache Tika",
-    "url": "https://jeroenoverschie.nl/finding-god-components-in-apache-tika/",
-    "datePublished": "2021-01-16T23:00:00.000Z",
-    "dateModified": "2021-11-28T20:19:15.000Z",
-    "image": {
-        "@type": "ImageObject",
-        "url": "https://jeroenoverschie.nl/content/images/2021/11/god-components-apache-tika.png",
-        "width": 1790,
-        "height": 946
-    },
-    "keywords": "Software Engineering",
-    "description": "How did big, bulky software components come into being? In this project, we explore the evolution of so-called God Components; pieces of software with a large number of classes or lines of code that got very large over time. Our analysis was run on the Apache Tika codebase.\n\nIn this project, we set the following goals:\n\n * Search through the Java code programmatically and find components that exceed a certain size threshold\n * Find out how those components evolved over time. Did certain develope",
+    "headline": "pyspark-bucketmap",
+    "url": "https://jeroenoverschie.nl/pyspark-bucketmap/",
+    "datePublished": "2022-10-22T10:01:09.000Z",
+    "dateModified": "2022-10-22T10:10:05.000Z",
+    "keywords": "Code snippets",
+    "description": "pyspark-bucketmap is a tiny module for pyspark which allows you to bucketize DataFrame rows and map their values easily.",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://jeroenoverschie.nl/"
@@ -1067,20 +1054,262 @@ In this" />
         <article class="post">
 
             <header class="post-header">
-                <h1 class="post-title">Finding &#x27;God&#x27; components in Apache Tika</h1>
+                <h1 class="post-title">pyspark-bucketmap</h1>
                 <section class="post-meta">
                     Jeroen Overschie -
-                    <time class="post-date" datetime="2021-01-17">17 Jan 2021</time>
+                    <time class="post-date" datetime="2022-10-22">22 Oct 2022</time>
                 </section>
             </header>
-            <figure class="post-image">
-                <amp-img src="https://jeroenoverschie.nl/content/images/2021/11/god-components-apache-tika.png" width="600" height="340" layout="responsive" 
-                alt="Finding &#x27;God&#x27; components in Apache Tika"
-                ></amp-img>
-            </figure>
             <section class="post-content">
 
-                <p>How did big, bulky software components come into being? In this project, we explore the evolution of so-called <em><a href="https://en.wikipedia.org/wiki/God_object">God Components</a></em>; pieces of software with a large number of classes or lines of code that got very large over time. Our analysis was run on the <a href="https://tika.apache.org/" rel="nofollow">Apache Tika</a> codebase.</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>Apache Tika is a software package for extracting metadata and text from many file extensions.</figcaption></figure><p>In this project, we set the following <strong>goals</strong>:</p><ul><li>Search through the Java code programmatically and find components that exceed a certain size threshold</li><li>Find out how those components evolved over time. Did certain developers often contribute to creating God components - in other words - code that is hard to maintain?</li></ul><p>To find out, we took roughly the following <strong>steps</strong>:</p><ol><li>Using a Python script, we created an index of the Tika codebase at every point in time. That is, we created a list of every Commit ID in the project.</li><li>For every commit, we run <a href="https://www.designite-tools.com/">Designite</a> - which is a tool to find architectural smells in Java projects. Because so many versions of the codebase had to be analyzed, this stage of the analysis was done on the University's supercomputer, <a href="https://www.rug.nl/society-business/centre-for-information-technology/research/services/hpc/facilities/peregrine-hpc-cluster?lang=en">Peregrine</a>.</li><li>Using a Jupyter Notebook, we aggregate and summarize all information outputted by Designite. The amount of data to parse was large, so it was important to map-reduce as quickly as possible without losing critical information.</li></ol><p>Such, we were able to visualize exactly at which time a component has been a God Component in the Tika codebase:</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>Chart indicating when components started- and stopped being a 'God Component'.</figcaption></figure><p>For more results, check out the complete Jupyter Notebook:</p><figure class="kg-card kg-bookmark-card kg-card-hascaption"><a class="kg-bookmark-container" href="https://dunnkers.com/god-components/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">God Components in Apache Tika</div><div class="kg-bookmark-description">How do God Components evolve in Apache Tika? A qualitative and quantitative analysis.</div><div class="kg-bookmark-metadata"><span class="kg-bookmark-publisher">Jeroen Overschie</span></div></div></a><figcaption>A Jupyter Notebook showing the final results of the analysis.</figcaption></figure><h3 id="further-reading">Further reading</h3><p>For more information, check out the Github page:</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption><a href="https://github.com/dunnkers/god-components/">god-components</a></figcaption></figure><p></p>
+                <p>Have you ever heard of pyspark's <a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.feature.Bucketizer.html"><code>Bucketizer</code></a>? It can be really useful! Although you perhaps won't need it for some simple transformation, it can be really useful for certain usecases.</p>
+<p>In this blogpost, we will:</p>
+<ol>
+<li>Explore the <code>Bucketizer</code> class</li>
+<li>Combine it with <code>create_map</code></li>
+<li>Use a module so we don't have to write the logic ourselves 🗝🥳</li>
+</ol>
+<p>Let's get started!</p>
+<h2 id="the-problem">The problem</h2>
+<p>First, let's boot up a local spark session:</p>
+<pre><code class="language-python">from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.getOrCreate()
+spark
+</code></pre>
+<p>Say we have this dataset containing some persons:</p>
+<pre><code class="language-python">from pyspark.sql import Row
+
+people = spark.createDataFrame(
+    [
+        Row(age=12, name="Damian"),
+        Row(age=15, name="Jake"),
+        Row(age=18, name="Dominic"),
+        Row(age=20, name="John"),
+        Row(age=27, name="Jerry"),
+        Row(age=101, name="Jerry's Grandpa"),
+    ]
+)
+people
+</code></pre>
+<p>Okay, that's great. Now, what we would like to do, is map each person's age to an age category.</p>
+<table>
+<thead>
+<tr>
+<th>age range</th>
+<th>life phase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 to 12</td>
+<td>Child</td>
+</tr>
+<tr>
+<td>12 to 18</td>
+<td>Teenager</td>
+</tr>
+<tr>
+<td>18 to 25</td>
+<td>Young adulthood</td>
+</tr>
+<tr>
+<td>25 to 70</td>
+<td>Adult</td>
+</tr>
+<tr>
+<td>70 and beyond</td>
+<td>Elderly</td>
+</tr>
+</tbody>
+</table>
+<p>How best to go about this?</p>
+<h2 id="using-bucketizer-createmap">Using <code>Bucketizer</code> + <code>create_map</code></h2>
+<p>We can use pyspark's <code>Bucketizer</code> for this. It works like so:</p>
+<pre><code class="language-python">from pyspark.ml.feature import Bucketizer
+from pyspark.sql import DataFrame
+
+bucketizer = Bucketizer(
+    inputCol="age",
+    outputCol="life phase",
+    splits=[
+        -float("inf"), 0, 12, 18, 25, 70, float("inf")
+    ]
+)
+bucketed: DataFrame = bucketizer.transform(people)
+bucketed.show()
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>age</th>
+<th>name</th>
+<th>life phase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12</td>
+<td>Damian</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Jake</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Dominic</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>20</td>
+<td>John</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Jerry</td>
+<td>4.0</td>
+</tr>
+<tr>
+<td>101</td>
+<td>Jerry's Grandpa</td>
+<td>5.0</td>
+</tr>
+</tbody>
+</table>
+<p>Cool! We just put our ages in buckets, represented by numbers. Let's now map each bucket to a life phase.</p>
+<pre><code class="language-python">from pyspark.sql.functions import lit, create_map
+from typing import Dict
+from pyspark.sql.column import Column
+
+range_mapper = create_map(
+    [lit(0.0), lit("Not yet born")]
+    + [lit(1.0), lit("Child")]
+    + [lit(2.0), lit("Teenager")]
+    + [lit(3.0), lit("Young adulthood")]
+    + [lit(4.0), lit("Adult")]
+    + [lit(5.0), lit("Elderly")]
+)
+people_phase_column: Column = bucketed["life phase"]
+people_with_phase: DataFrame = bucketed.withColumn(
+    "life phase", range_mapper[people_phase_column]
+)
+people_with_phase.show()
+
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>age</th>
+<th>name</th>
+<th>life phase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12</td>
+<td>Damian</td>
+<td>Teenager</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Jake</td>
+<td>Teenager</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Dominic</td>
+<td>Young adulthood</td>
+</tr>
+<tr>
+<td>20</td>
+<td>John</td>
+<td>Young adulthood</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Jerry</td>
+<td>Adult</td>
+</tr>
+<tr>
+<td>101</td>
+<td>Jerry's Grandpa</td>
+<td>Elderly</td>
+</tr>
+</tbody>
+</table>
+<p>🎉 Success!</p>
+<p>Using a combination of <code>Bucketizer</code> and <code>create_map</code>, we managed to map people's age to their life phases.</p>
+<h2 id="pyspark-bucketmap"><code>pyspark-bucketmap</code></h2>
+<p>🎁 As a bonus, I put all of the above in a neat little module, which you can install simply using <code>pip</code>.</p>
+<pre><code class="language-python">%pip install pyspark-bucketmap
+</code></pre>
+<p>Define the splits and mappings like before. Each dictionary key is a mapping to the n-th bucket (for example, bucket 1 refers to the range <code>0</code> to <code>12</code>).</p>
+<pre><code class="language-python">from typing import List
+
+splits: List[float] = [-float("inf"), 0, 12, 18, 25, 70, float("inf")]
+mapping: Dict[int, Column] = {
+    0: lit("Not yet born"),
+    1: lit("Child"),
+    2: lit("Teenager"),
+    3: lit("Young adulthood"),
+    4: lit("Adult"),
+    5: lit("Elderly"),
+}
+</code></pre>
+<p>Then, simply import <code>pyspark_bucketmap.BucketMap</code> and call <code>transform()</code>.</p>
+<pre><code class="language-python">from pyspark_bucketmap import BucketMap
+from typing import List, Dict
+
+bucket_mapper = BucketMap(
+    splits=splits, mapping=mapping, inputCol="age", outputCol="phase"
+)
+phases_actual: DataFrame = bucket_mapper.transform(people).select("name", "phase")
+phases_actual.show()
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>phase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Damian</td>
+<td>Teenager</td>
+</tr>
+<tr>
+<td>Jake</td>
+<td>Teenager</td>
+</tr>
+<tr>
+<td>Dominic</td>
+<td>Young adulthood</td>
+</tr>
+<tr>
+<td>John</td>
+<td>Young adulthood</td>
+</tr>
+<tr>
+<td>Jerry</td>
+<td>Adult</td>
+</tr>
+<tr>
+<td>Jerry's Grandpa</td>
+<td>Elderly</td>
+</tr>
+</tbody>
+</table>
+<p>Cheers 🙏🏻</p>
+<p>You can find the module here:<br />
+<a href="https://github.com/dunnkers/pyspark-bucketmap">https://github.com/dunnkers/pyspark-bucketmap</a></p>
+<hr></hr>
+<p>Written by <a href="https://jeroenoverschie.nl/">Jeroen Overschie</a>, working at <a href="https://godatadriven.com/">GoDataDriven</a>.</p>
+
 
             </section>
 

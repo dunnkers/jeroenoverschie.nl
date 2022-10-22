@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>pyspark-bucketmap</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,700;0,800;1,400;1,700&family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+
+    <link rel="stylesheet" href="/assets/built/screen.css?v=e908cb265e">
+
+    <meta name="description" content="pyspark-bucketmap is a tiny module for pyspark which allows you to bucketize DataFrame rows and map their values easily." />
+    <link rel="icon" href="https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg" type="image/png" />
+    <link rel="canonical" href="https://jeroenoverschie.nl/pyspark-bucketmap/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="https://jeroenoverschie.nl/pyspark-bucketmap/amp/" />
+    
+    <meta property="og:site_name" content="Jeroen Overschie" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="pyspark-bucketmap" />
+    <meta property="og:description" content="pyspark-bucketmap is a tiny module for pyspark which allows you to bucketize DataFrame rows and map their values easily." />
+    <meta property="og:url" content="https://jeroenoverschie.nl/pyspark-bucketmap/" />
+    <meta property="article:published_time" content="2022-10-22T10:01:09.000Z" />
+    <meta property="article:modified_time" content="2022-10-22T10:10:05.000Z" />
+    <meta property="article:tag" content="Code snippets" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="pyspark-bucketmap" />
+    <meta name="twitter:description" content="pyspark-bucketmap is a tiny module for pyspark which allows you to bucketize DataFrame rows and map their values easily." />
+    <meta name="twitter:url" content="https://jeroenoverschie.nl/pyspark-bucketmap/" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Jeroen Overschie" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Code snippets" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Jeroen Overschie",
+        "url": "https://jeroenoverschie.nl/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Jeroen Overschie",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.gravatar.com/avatar/b37b136916ade32aada1f345482aafa4?s=250&r=x&d=mp",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://jeroenoverschie.nl/author/jeroen/",
+        "sameAs": []
+    },
+    "headline": "pyspark-bucketmap",
+    "url": "https://jeroenoverschie.nl/pyspark-bucketmap/",
+    "datePublished": "2022-10-22T10:01:09.000Z",
+    "dateModified": "2022-10-22T10:10:05.000Z",
+    "keywords": "Code snippets",
+    "description": "pyspark-bucketmap is a tiny module for pyspark which allows you to bucketize DataFrame rows and map their values easily.",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://jeroenoverschie.nl/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.19" />
+    <link rel="alternate" type="application/rss+xml" title="Jeroen Overschie" href="https://jeroenoverschie.nl/rss/" />
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="489b5afdd4c5385878c360bd9b" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://jeroenoverschie.nl/" crossorigin="anonymous"></script>
+    <script defer src="/public/cards.min.js?v=e908cb265e"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=e908cb265e">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+</head>
+
+<body class="post-template tag-code-snippets tag-hash-noindex">
+    <div class="site">
+        <header id="site-header" class="site-header">
+    <div class="header-inner">
+        <div class="header-brand">
+            <a class="logo" href="https://jeroenoverschie.nl">
+                    <span class="logo-text">Jeroen Overschie</span>
+            </a>
+
+            <div class="burger">
+                <div class="burger-bar"></div>
+                <div class="burger-bar"></div>
+            </div>
+        </div>
+
+        <nav class="header-nav">
+                        <a class="menu-item menu-item-data-science" href="https://jeroenoverschie.nl/tag/data-science/">Data Science</a>
+        <a class="menu-item menu-item-software-engineering" href="https://jeroenoverschie.nl/tag/software-engineering/">Software Engineering</a>
+        <a class="menu-item menu-item-code-snippets" href="https://jeroenoverschie.nl/tag/code-snippets/">Code snippets</a>
+
+        </nav>
+
+        <div class="header-actions">
+            <div class="social">
+
+            </div>
+
+        </div>
+    </div>
+</header>
+
+        <div class="site-content">
+            
+<div class="content-area">
+    <main class="site-main">
+            <article class="single post tag-code-snippets tag-hash-noindex no-image">
+    <header class="single-header kg-canvas">
+            <div class="single-meta">
+                <span class="single-meta-item single-meta-date">
+                    <time datetime="2022-10-22">
+                        Oct 22, 2022
+                    </time>
+                </span>
+
+                <span class="single-meta-item single-meta-length">
+                    2 min read
+                </span>
+
+                    <span class="single-meta-item single-meta-tag">
+                        <a class="post-tag post-tag-code-snippets" href="/tag/code-snippets/">Code snippets</a>
+                    </span>
+            </div>
+
+        <h1 class="single-title">pyspark-bucketmap</h1>
+
+            <div class="single-excerpt">
+                pyspark-bucketmap is a tiny module for pyspark which allows you to bucketize DataFrame rows and map their values easily.
+            </div>
+
+    </header>
+
+    <div class="single-content gh-content kg-canvas">
+        <!--kg-card-begin: markdown--><p>Have you ever heard of pyspark's <a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.feature.Bucketizer.html"><code>Bucketizer</code></a>? It can be really useful! Although you perhaps won't need it for some simple transformation, it can be really useful for certain usecases.</p>
+<p>In this blogpost, we will:</p>
+<ol>
+<li>Explore the <code>Bucketizer</code> class</li>
+<li>Combine it with <code>create_map</code></li>
+<li>Use a module so we don't have to write the logic ourselves 🗝🥳</li>
+</ol>
+<p>Let's get started!</p>
+<h2 id="the-problem">The problem</h2>
+<p>First, let's boot up a local spark session:</p>
+<pre><code class="language-python">from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.getOrCreate()
+spark
+</code></pre>
+<p>Say we have this dataset containing some persons:</p>
+<pre><code class="language-python">from pyspark.sql import Row
+
+people = spark.createDataFrame(
+    [
+        Row(age=12, name=&quot;Damian&quot;),
+        Row(age=15, name=&quot;Jake&quot;),
+        Row(age=18, name=&quot;Dominic&quot;),
+        Row(age=20, name=&quot;John&quot;),
+        Row(age=27, name=&quot;Jerry&quot;),
+        Row(age=101, name=&quot;Jerry's Grandpa&quot;),
+    ]
+)
+people
+</code></pre>
+<p>Okay, that's great. Now, what we would like to do, is map each person's age to an age category.</p>
+<table>
+<thead>
+<tr>
+<th>age range</th>
+<th>life phase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 to 12</td>
+<td>Child</td>
+</tr>
+<tr>
+<td>12 to 18</td>
+<td>Teenager</td>
+</tr>
+<tr>
+<td>18 to 25</td>
+<td>Young adulthood</td>
+</tr>
+<tr>
+<td>25 to 70</td>
+<td>Adult</td>
+</tr>
+<tr>
+<td>70 and beyond</td>
+<td>Elderly</td>
+</tr>
+</tbody>
+</table>
+<p>How best to go about this?</p>
+<h2 id="using-bucketizer-createmap">Using <code>Bucketizer</code> + <code>create_map</code></h2>
+<p>We can use pyspark's <code>Bucketizer</code> for this. It works like so:</p>
+<pre><code class="language-python">from pyspark.ml.feature import Bucketizer
+from pyspark.sql import DataFrame
+
+bucketizer = Bucketizer(
+    inputCol=&quot;age&quot;,
+    outputCol=&quot;life phase&quot;,
+    splits=[
+        -float(&quot;inf&quot;), 0, 12, 18, 25, 70, float(&quot;inf&quot;)
+    ]
+)
+bucketed: DataFrame = bucketizer.transform(people)
+bucketed.show()
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>age</th>
+<th>name</th>
+<th>life phase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12</td>
+<td>Damian</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Jake</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Dominic</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>20</td>
+<td>John</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Jerry</td>
+<td>4.0</td>
+</tr>
+<tr>
+<td>101</td>
+<td>Jerry's Grandpa</td>
+<td>5.0</td>
+</tr>
+</tbody>
+</table>
+<p>Cool! We just put our ages in buckets, represented by numbers. Let's now map each bucket to a life phase.</p>
+<pre><code class="language-python">from pyspark.sql.functions import lit, create_map
+from typing import Dict
+from pyspark.sql.column import Column
+
+range_mapper = create_map(
+    [lit(0.0), lit(&quot;Not yet born&quot;)]
+    + [lit(1.0), lit(&quot;Child&quot;)]
+    + [lit(2.0), lit(&quot;Teenager&quot;)]
+    + [lit(3.0), lit(&quot;Young adulthood&quot;)]
+    + [lit(4.0), lit(&quot;Adult&quot;)]
+    + [lit(5.0), lit(&quot;Elderly&quot;)]
+)
+people_phase_column: Column = bucketed[&quot;life phase&quot;]
+people_with_phase: DataFrame = bucketed.withColumn(
+    &quot;life phase&quot;, range_mapper[people_phase_column]
+)
+people_with_phase.show()
+
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>age</th>
+<th>name</th>
+<th>life phase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12</td>
+<td>Damian</td>
+<td>Teenager</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Jake</td>
+<td>Teenager</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Dominic</td>
+<td>Young adulthood</td>
+</tr>
+<tr>
+<td>20</td>
+<td>John</td>
+<td>Young adulthood</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Jerry</td>
+<td>Adult</td>
+</tr>
+<tr>
+<td>101</td>
+<td>Jerry's Grandpa</td>
+<td>Elderly</td>
+</tr>
+</tbody>
+</table>
+<p>🎉 Success!</p>
+<p>Using a combination of <code>Bucketizer</code> and <code>create_map</code>, we managed to map people's age to their life phases.</p>
+<h2 id="pyspark-bucketmap"><code>pyspark-bucketmap</code></h2>
+<p>🎁 As a bonus, I put all of the above in a neat little module, which you can install simply using <code>pip</code>.</p>
+<pre><code class="language-python">%pip install pyspark-bucketmap
+</code></pre>
+<p>Define the splits and mappings like before. Each dictionary key is a mapping to the n-th bucket (for example, bucket 1 refers to the range <code>0</code> to <code>12</code>).</p>
+<pre><code class="language-python">from typing import List
+
+splits: List[float] = [-float(&quot;inf&quot;), 0, 12, 18, 25, 70, float(&quot;inf&quot;)]
+mapping: Dict[int, Column] = {
+    0: lit(&quot;Not yet born&quot;),
+    1: lit(&quot;Child&quot;),
+    2: lit(&quot;Teenager&quot;),
+    3: lit(&quot;Young adulthood&quot;),
+    4: lit(&quot;Adult&quot;),
+    5: lit(&quot;Elderly&quot;),
+}
+</code></pre>
+<p>Then, simply import <code>pyspark_bucketmap.BucketMap</code> and call <code>transform()</code>.</p>
+<pre><code class="language-python">from pyspark_bucketmap import BucketMap
+from typing import List, Dict
+
+bucket_mapper = BucketMap(
+    splits=splits, mapping=mapping, inputCol=&quot;age&quot;, outputCol=&quot;phase&quot;
+)
+phases_actual: DataFrame = bucket_mapper.transform(people).select(&quot;name&quot;, &quot;phase&quot;)
+phases_actual.show()
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>phase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Damian</td>
+<td>Teenager</td>
+</tr>
+<tr>
+<td>Jake</td>
+<td>Teenager</td>
+</tr>
+<tr>
+<td>Dominic</td>
+<td>Young adulthood</td>
+</tr>
+<tr>
+<td>John</td>
+<td>Young adulthood</td>
+</tr>
+<tr>
+<td>Jerry</td>
+<td>Adult</td>
+</tr>
+<tr>
+<td>Jerry's Grandpa</td>
+<td>Elderly</td>
+</tr>
+</tbody>
+</table>
+<p>Cheers 🙏🏻</p>
+<p>You can find the module here:<br>
+<a href="https://github.com/dunnkers/pyspark-bucketmap">https://github.com/dunnkers/pyspark-bucketmap</a></p>
+<hr>
+<p>Written by <a href="https://jeroenoverschie.nl/">Jeroen Overschie</a>, working at <a href="https://godatadriven.com/">GoDataDriven</a>.</p>
+<!--kg-card-end: markdown-->
+    </div>
+
+        <footer class="single-footer container small">
+            <div class="single-footer-left">
+                    <div class="navigation navigation-previous">
+                        <a class="navigation-link" href="/from-linear-regression-to-neural-networks/" aria-label="Previous post">
+                            <span class="navigation-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M26.667 14.667v2.667h-16L18 24.667l-1.893 1.893L5.547 16l10.56-10.56L18 7.333l-7.333 7.333h16z"></path>
+</svg></span>
+                        </a>
+                    </div>
+            </div>
+
+            <div class="single-footer-middle">
+                    <div class="single-footer-top">
+                        <h3 class="single-footer-title">Published by:</h3>
+                        <div class="author-list">
+                                <div class="author-image-placeholder u-placeholder square">
+                                    <a href="/author/jeroen/" title="Jeroen Overschie">
+                                            <img class="author-image u-object-fit" src="https://www.gravatar.com/avatar/b37b136916ade32aada1f345482aafa4?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp" alt="Jeroen Overschie" loading="lazy">
+                                    </a>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+
+            <div class="single-footer-right">
+            </div>
+        </footer>
+</article>                                </main>
+</div>
+
+
+        </div>
+
+        <footer class="site-footer container">
+    <div class="footer-inner">
+        <div class="footer-left">
+            <div class="copyright">
+                Jeroen Overschie © 2022
+            </div>
+        </div>
+
+        <nav class="footer-nav">
+                    <a class="menu-item menu-item-data-privacy" href="https://jeroenoverschie.nl/privacy/">Data &amp; privacy</a>
+            <span class="sep">•</span>
+        <a class="menu-item menu-item-contact" href="https://jeroenoverschie.nl/contact/">Contact</a>
+
+        </nav>
+
+        <div class="footer-right">
+            <div class="social">
+
+            </div>
+        </div>
+    </div>
+</footer>        <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe.
+        It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides.
+          PhotoSwipe keeps only 3 of them in the DOM to save memory.
+          Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>    </div>
+
+    <script>
+        if (document.body.classList.contains('with-full-cover') && (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.platform))) {
+            document.getElementsByClassName('cover')[0].style.height = window.innerHeight + 'px';
+        }
+    </script>
+
+    <script src="/assets/built/main.min.js?v=e908cb265e"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-python.min.js" integrity="sha512-3qtI9+9JXi658yli19POddU1RouYtkTEhTHo6X5ilOvMiDfNvo6GIS6k2Ukrsx8MyaKSXeVrnIWeyH8G5EOyIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+
+</html>
