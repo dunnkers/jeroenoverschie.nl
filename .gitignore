@@ -5,3 +5,4 @@ content/themes
 .DS_Store
 .ghostpid
 static
+node_modules
