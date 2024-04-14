@@ -18,7 +18,7 @@
     <meta property="og:url" content="https://jeroenoverschie.nl/scaling-up-bringing-your-azure-devops-ci-cd-setup-to-the-next-level/" />
     <meta property="og:image" content="https://jeroenoverschie.nl/content/images/2024/01/scaling-up-your-azure-devops-ci-cd-setup-banner.jpg" />
     <meta property="article:published_time" content="2023-12-08T11:02:00.000Z" />
-    <meta property="article:modified_time" content="2024-01-07T14:58:49.000Z" />
+    <meta property="article:modified_time" content="2024-04-14T11:51:24.000Z" />
     <meta property="article:tag" content="Software Engineering" />
     
     <meta name="twitter:card" content="summary_large_image" />
@@ -63,7 +63,7 @@
     "headline": "Scaling up: bringing your Azure DevOps CI/CD setup to the next level 🚀 (on Xebia.com ⧉)",
     "url": "https://jeroenoverschie.nl/scaling-up-bringing-your-azure-devops-ci-cd-setup-to-the-next-level/",
     "datePublished": "2023-12-08T11:02:00.000Z",
-    "dateModified": "2024-01-07T14:58:49.000Z",
+    "dateModified": "2024-04-14T11:51:24.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://jeroenoverschie.nl/content/images/2024/01/scaling-up-your-azure-devops-ci-cd-setup-banner.jpg",
@@ -1079,7 +1079,283 @@
             </figure>
             <section class="post-content">
 
-                <p> </p>
+                <p> <strong><strong>Introduction</strong></strong></p><p>Azure DevOps pipelines are a great way to automate your CI/CD process. Most often, they are configured on a per project basis. This works fine when you have few projects. But what if you have many projects? In this blog post, we will show you how you can scale up your Azure DevOps CI/CD setup for reusability and easy maintenance.</p><h2 id="your-typical-devops-pipeline"><strong><strong>Your typical DevOps pipeline</strong></strong></h2><p>A typical DevOps pipeline is placed inside the project repository. Let’s consider a pipeline for a Python project. It includes the following steps:</p><ul><li><strong>quality checks</strong> such as code formatting and linting</li><li><strong>building a package</strong> such as a Python wheel</li><li><strong>releasing a package</strong> to Python package registry (such as <a href="https://learn.microsoft.com/en-us/azure/devops/artifacts/start-using-azure-artifacts?view=azure-devops&amp;tabs=nugettfs%2Cnuget%2Corgstorage">Azure Artifacts</a> or PyPi)</li></ul><p>Using an Azure DevOps pipeline, we can achieve this like so:</p><pre><code class="language-yaml">trigger:
+- main
+
+steps:
+# Python setup &amp; dependencies
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: 3.10
+
+- script: |
+    pip install .[dev,build,release]
+  displayName: 'Install dependencies'
+
+# Code Quality
+- script: |
+    black --check .
+  displayName: 'Formatting'
+
+- script: |
+    flake8 .
+  displayName: 'Linting'
+
+- script: |
+    pytest .
+  displayName: 'Testing'
+
+# Build
+- script: |
+    echo $(Build.BuildNumber) &gt; version.txt
+  displayName: 'Set version number'
+
+- script: |
+    pip wheel \
+      --no-deps \
+      --wheel-dir dist/ \
+      .
+  displayName: 'Build wheel'
+
+# Publish
+- task: TwineAuthenticate@1
+  inputs:
+    artifactFeed: 'better-devops-pipelines-blogpost/devops-pipelines-blogpost'
+  displayName: 'Authenticate pip with twine'
+
+- script: |
+    twine upload \
+      --config-file $(PYPIRC_PATH) \
+      --repository devops-pipelines-blogpost \
+      dist/*.whl
+  displayName: 'Publish wheel with twine'
+</code></pre><p>Well, that is great, right? We have achieved all the goals we desired:</p><ul><li>Code quality checks using <em>black</em>, <em>flake8</em> and <em>pytest</em>.</li><li>Build and package the project as a Python <em>wheel</em>.</li><li>Publish the package to a registry of choice, in this case <em>Azure Artifacts</em>.</li></ul><h2 id="growing-pains"><strong><strong>Growing pains</strong></strong></h2><p>A DevOps pipeline like the above works fine for a single project. But, … what if we want to scale up? Say our company grows, we create more repositories and more projects need to be packaged and released. Will we simply copy this pipeline and paste it into a new repository? Given that we are growing in size, can we be more efficient than just running this pipeline from start to finish?</p><p>The answer is no – we do not have to copy/paste all these pipelines into a new repo, and the answer is yes – we can be more efficient in running these pipelines. Let’s see how.</p><h2 id="scaling-up-properly"><strong><strong>Scaling up properly</strong></strong></h2><p>Let’s see how we can create scalable DevOps pipelines. First, we are going to introduce <strong>DevOps pipeline <a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/process/templates?view=azure-devops&amp;pivots=templates-includes">templates</a></strong>. These are modular pieces of pipeline that we can reuse across various pipelines and also across various projects residing in different repositories.</p><p>Let’s see how we can use pipeline templates to our advantage.</p><h3 id="1-devops-template-setup"><strong><strong>1. DevOps template setup</strong></strong></h3><p>Let’s rewrite pieces of our pipeline into DevOps pipeline templates. Important to know here is that you can write templates for either <code>stages</code>, <code>jobs</code> or <code>steps</code>. The hierarchy is as follows:</p><pre><code class="language-yaml">stages:
+- stage: Stage1
+  jobs:
+  - job: Job1
+    steps:
+    - step: Step1
+</code></pre><p>This can be illustrated in an image like so:</p><figure class="kg-card kg-image-card"></figure><p>We can then create a template in one file, for example for <code>steps</code>:</p><p><strong>templates/code-quality.yml</strong></p><pre><code class="language-yaml">steps:
+- script: |
+    echo "Hello world!"
+</code></pre><p>.. and reuse it in our former pipeline:</p><pre><code class="language-yaml">stages:
+- stage: Stage1
+  jobs:
+  - job: Job1
+    steps:
+    - template: templates/code-quality.yml
+</code></pre><p>… or for those who prefer a more visual way of displaying it:</p><figure class="kg-card kg-image-card"></figure><p>That’s how easy it is to use DevOps pipeline templates! Let’s now apply it to our own usecase.</p><h4 id="code-quality-checks-template"><strong><strong>Code quality checks template</strong></strong></h4><p>First, let’s put the code quality checks pipeline into a template. We are also making the pipeline more extensive so it outputs test results and coverage reports. Remember, we are only defining this template once and then reusing it in other places.</p><p><strong>templates/code-quality.yml</strong></p><pre><code class="language-yaml">steps:
+# Code Quality
+- script: |
+    black --check .
+  displayName: 'Formatting'
+
+- script: |
+    flake8 .
+  displayName: 'Linting'
+
+- script: |
+    pytest \
+      --junitxml=junit/test-results.xml \
+      --cov=. \
+      --cov-report=xml:coverage.xml \
+      .
+  displayName: 'Testing'
+
+# Publish test results + coverage
+- task: PublishTestResults@2
+  condition: succeededOrFailed()
+  inputs:
+    testResultsFiles: '**/test-*.xml'
+    testRunTitle: 'Publish test results'
+    failTaskOnFailedTests: true
+  displayName: 'Publish test results'
+
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: '**/coverage.xml'
+  displayName: 'Publish test coverage'
+</code></pre><p>… which we are using like so:</p><pre><code class="language-yaml">steps:
+- template: templates/code-quality.yml
+</code></pre><p>Easy! Also note we included two additional tasks: one to publish the test results and another to publish code coverage reports. That information is super useful to display inside DevOps. Lucky for us, DevOps has support for that:</p><figure class="kg-card kg-image-card"></figure><p>… clicking on the test results brings us to the <em>Tests</em> view, where we can exactly which test failed (if any failed):</p><figure class="kg-card kg-image-card"></figure><p>Lastly, there’s also a view explaining which lines of code you covered with tests and which you did not:</p><figure class="kg-card kg-image-card"></figure><p>Those come in very useful when you are working on testing your code!</p><p>Now, we have defined this all in DevOps <em>templates</em>. That gives us a more comfortable position to define more elaborate pipeline steps because we will <em>import</em> those templates instead of copy/pasting them.</p><p>That said, we can summarise the benefits of using DevOps templates like so:</p><ul><li>Define once, reuse everywhere<br />We can reuse this code quality checks pipeline in both the same project multiple times but also from other repositories. If you are importing from another repo, see ‘<a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/process/templates?view=azure-devops&amp;pivots=templates-includes#use-other-repositories">Use other repositories</a>‘ for setup.</li><li>Make it failproof<br />You can invest into making just this template very good; instead of having multiple bad versions hanging around in your organisation.</li><li>Reduce complexity<br />Abstracting away commonly used code can be efficient for the readability of your pipeline. This allows newcomers to easily understand the different parts of your CI/CD setup using DevOps pipelines.</li></ul><h3 id="2-passing-data-between-templates"><strong><strong>2. Passing data between templates</strong></strong></h3><p>Let’s go a step further and also abstract away the build and release steps into templates. We are going to use the following template for <strong>building a Python wheel</strong>:</p><pre><code class="language-yaml">steps:
+# Build wheel
+- script: |
+    echo $(Build.BuildNumber) &gt; version.txt
+  displayName: 'Set version number'
+
+- script: |
+    pip wheel \
+      --no-deps \
+      --wheel-dir dist/ \
+      .
+  displayName: 'Build wheel'
+
+# Upload wheel as artifact
+- task: CopyFiles@2
+  inputs:
+    contents: dist/**
+    targetFolder: $(Build.ArtifactStagingDirectory)
+  displayName: 'Copy wheel to artifacts directory'
+
+- publish: '$(Build.ArtifactStagingDirectory)/dist'
+  artifact: wheelFiles
+  displayName: 'Upload wheel as artifact'
+</code></pre><p>This definition is slightly different than the one we defined before, in the initial pipeline. This pipeline uses <strong><a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/artifacts/pipeline-artifacts?view=azure-devops&amp;tabs=yaml">artifacts</a></strong>. These allow us to <em>pass</em> data between jobs or stages. This is useful when we want to split up our pipeline into smaller pieces. Splitting up the process into smaller segments gives us more visibility and control over the process. Another benefit of this, is that when we split the Python wheel build and release process, is that we give ourselves the ability to <em>release to multiple providers at once</em>.</p><p>When this pipeline is ran we can see an artifact (a wheel file) has been added:</p><figure class="kg-card kg-image-card"></figure><p>… with the actual wheel file in there:</p><figure class="kg-card kg-image-card"></figure><p>This is also useful so we can inspect what the build pipeline has produced. We can now <em>download</em> this wheel file from the artifacts again. We will do this in the publish pipeline.</p><p><strong>template/publish-wheel.yml</strong></p><pre><code class="language-yaml">parameters:
+- name: artifactFeed
+  type: string
+- name: repositoryName
+  type: string
+
+steps:
+# Retrieve wheel
+- download: current
+  artifact: wheelFiles
+  displayName: 'Download artifacts'
+
+# Publish wheel
+- task: TwineAuthenticate@1
+  inputs:
+    artifactFeed: ${{ parameters.artifactFeed }}
+  displayName: 'Authenticate pip with twine'
+
+- script: |
+    twine upload \
+      --config-file $(PYPIRC_PATH) \
+      --repository ${{ parameters.repositoryName }} \
+      $(Pipeline.Workspace)/wheelFiles/*.whl
+  displayName: 'Publish wheel with twine'
+</code></pre><p>… both the build- and release pipeline can be used like so:</p><pre><code class="language-yaml">- stage: Build
+  jobs:
+  - job: BuildWheel
+    steps:
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: 3.10
+
+    - script: |
+        pip install .[build]
+      displayName: 'Install dependencies'
+
+    - template: templates/build-wheel.yml
+
+
+- stage: Publish
+  jobs:
+  - job: PublishWheel
+    steps:
+    - script: |
+        pip install twine==4.0.2
+      displayName: 'Install twine'
+
+    - template: templates/publish-wheel.yml
+      parameters:
+        artifactFeed: 'better-devops-pipelines-blogpost/devops-pipelines-blogpost'
+        repositoryName: 'devops-pipelines-blogpost'
+</code></pre><p>And here we have another new feature coming in. <a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/process/stages?view=azure-devops&amp;tabs=yaml">Stages</a>. These allow us to execute pipelines that depend on each other. We have now split up our pipeline into 2 stages:</p><ol><li>Build stage</li><li>Publish stage</li></ol><p>Using stages makes it easy to see what is going on. It provides transparency and allows you to easily track the progress of the pipeline. You can also launch stages separately, skipping previous stages, as long as the necessary dependencies are in place. For example, dependencies can include artifacts, which were generated in previous stage.</p><h4 id="improving-the-release-process"><strong><strong>Improving the release process</strong></strong></h4><p>So what is another advantage of this setup? Say that you are releasing your package to <strong>two pip registries</strong>. Doing that is easy using this setup by creating two jobs in the publish stage:</p><pre><code class="language-yaml">- stage: Publish
+  jobs:
+  - job: PublishToRegistryOne
+    steps:
+    - script: |
+        pip install twine==4.0.2
+      displayName: 'Install twine'
+
+    - template: templates/publish-wheel.yml
+      parameters:
+        artifactFeed: 'better-devops-pipelines-blogpost/registry-1'
+        repositoryName: 'devops-pipelines-blogpost'
+
+  - job: PublishToRegistryTwo
+    steps:
+    - script: |
+        pip install twine==4.0.2
+      displayName: 'Install twine'
+
+    - template: templates/publish-wheel.yml
+      parameters:
+        artifactFeed: 'better-devops-pipelines-blogpost/registry-2'
+        repositoryName: 'devops-pipelines-blogpost'
+</code></pre><p>As you can see, we can use the defined templates to scale our pipelines. What is essential here, is that thanks to using the artifacts, we can build our wheel <em>once</em> and consume that same wheel <em>multiple</em> times.</p><p>Additionally, the publishing jobs launch <strong>in parallel</strong> by default (unless dependencies are explicitly defined). This speeds up your release process.</p><h3 id="3-automate-using-a-strategy-matrix"><strong><strong>3. Automate using a strategy matrix</strong></strong></h3><p>Let’s go back to the code quality stage for a minute. In the code quality stage, we are first installing a certain Python version, and then running all quality checks. However, we might need guarantees that our code works for multiple Python versions. This is often the case when releasing a package, for example. How can we easily automate running our Code Quality pipeline using our pipeline <em>templates</em>? One option is to manually define a couple jobs and install the correct python version in each job. Another option is to use a <strong><a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/yaml-schema/jobs-job-strategy?view=azure-pipelines">strategy matrix</a></strong>. This allows us to define a matrix of variables that we can use in our pipeline.</p><p>We can improve our <code>CodeQualityChecks</code> job like so:</p><pre><code class="language-yaml">jobs:
+- job: CodeQualityChecks
+  strategy:
+    matrix:
+      Python38:
+        python.version: '3.8'
+      Python39:
+        python.version: '3.9'
+      Python310:
+        python.version: '3.10'
+      Python311:
+        python.version: '3.11'
+
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: $(python.version)
+
+  - script: |
+      pip install .[dev]
+    displayName: 'Install dependencies'
+
+  - template: templates/code-quality.yml
+</code></pre><p>Awesome! The pipeline now runs the entire code quality pipeline for each Python version. Looking at how our pipeline runs now, we can see multiple jobs, one for each Python version:</p><figure class="kg-card kg-image-card"></figure><p>.. as you can see 4 jobs are launched. If no job dependencies are explicitly set, jobs within one stage run in parallel! That greatly speed up the pipeline and lets you iterate faster! That’s definitely a win.</p><h2 id="final-result"><strong><strong>Final result</strong></strong></h2><p>Let’s wrap it up! Our entire pipeline, using <strong>templates</strong>:</p><pre><code class="language-yaml">trigger:
+- main
+
+stages:
+- stage: CodeQuality
+  jobs:
+  - job: CodeQualityChecks
+    strategy:
+      matrix:
+        Python38:
+          python.version: '3.8'
+        Python39:
+          python.version: '3.9'
+        Python310:
+          python.version: '3.10'
+        Python311:
+          python.version: '3.11'
+
+    steps:
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: $(python.version)
+
+    - script: |
+        pip install .[dev]
+      displayName: 'Install dependencies'
+
+    - template: templates/code-quality.yml
+
+
+- stage: Build
+  jobs:
+  - job: BuildWheel
+    steps:
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: 3.10
+
+    - script: |
+        pip install .[build]
+      displayName: 'Install dependencies'
+
+    - template: templates/build-wheel.yml
+
+
+- stage: Publish
+  jobs:
+  - job: PublishWheel
+    steps:
+    - script: |
+        pip install twine==4.0.2
+      displayName: 'Install twine'
+
+    - template: templates/publish-wheel.yml
+      parameters:
+        artifactFeed: 'better-devops-pipelines-blogpost/devops-pipelines-blogpost'
+        repositoryName: 'devops-pipelines-blogpost'
+</code></pre><p>… which uses these templates:</p><ul><li><a href="https://dev.azure.com/godatadriven/_git/better-devops-pipelines-blogpost?path=/02_better_pipeline/templates/code-quality.yml">templates/code-quality.yml</a></li><li><a href="https://dev.azure.com/godatadriven/_git/better-devops-pipelines-blogpost?path=/02_better_pipeline/templates/build-wheel.yml">templates/build-wheel.yml</a></li><li><a href="https://dev.azure.com/godatadriven/_git/better-devops-pipelines-blogpost?path=/02_better_pipeline/templates/publish-wheel.yml">templates/publish-wheel.yml</a></li></ul><p>… for the entire source code see the <a href="https://dev.azure.com/godatadriven/_git/better-devops-pipelines-blogpost">better-devops-pipelines-blogpost</a> repo. The repository contains pipelines that apply above explained principles. The pipelines provide testing, building and releasing for a Python project ✓.</p><h2 id="conclusion"><strong><strong>Conclusion</strong></strong></h2><p>We demonstrated how to scale up your Azure DevOps CI/CD setup making it reusable, maintainable and modular. This helps you maintain a good CI/CD setup as your company grows.</p><p>In short, we achieved the following:</p><ul><li>Create modular DevOps pipelines using <a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/process/templates?view=azure-devops&amp;pivots=templates-includes">templates</a>. This makes it more easy to reuse pipelines across projects and repositories</li><li>Pass data between DevOps pipeline jobs using <a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/artifacts/pipeline-artifacts?view=azure-devops&amp;tabs=yaml">artifacts</a>. This allows us to split up our pipeline into smaller pieces, that can consume artifacts from previous jobs.</li><li>Split up your pipeline in <a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/process/stages?view=azure-devops&amp;tabs=yaml">stages</a> to create more visibility and control over your CI/CD</li></ul><blockquote>An example repository containing good-practice pipelines is available at:<br /><br /><strong><a href="https://dev.azure.com/godatadriven/_git/better-devops-pipelines-blogpost">https://dev.azure.com/godatadriven/_git/better-devops-pipelines-blogpost</a></strong></blockquote><p>Cheers 🙏</p>
 
             </section>
 

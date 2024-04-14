@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,700;0,800;1,400;1,700&family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap">
 
-    <link rel="stylesheet" href="/assets/built/screen.css?v=889b5d3a64">
+    <link rel="stylesheet" href="/assets/built/screen.css?v=fcc068b43c">
 
     <meta name="description" content="Instead of giving other developers a setup document, let’s make sure we also create formal instructions so we can automatically set up the development environment. Devcontainers let us do exactly this." />
     <link rel="icon" href="https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg" type="image/png" />
@@ -24,7 +24,7 @@
     <meta property="og:url" content="https://jeroenoverschie.nl/how-to-create-a-devcontainer-for-your-python-project/" />
     <meta property="og:image" content="https://jeroenoverschie.nl/content/images/2022/12/without-ship-taller-img.png" />
     <meta property="article:published_time" content="2022-11-21T17:36:00.000Z" />
-    <meta property="article:modified_time" content="2024-01-07T14:58:56.000Z" />
+    <meta property="article:modified_time" content="2024-04-14T11:06:58.000Z" />
     <meta property="article:tag" content="Publications" />
     <meta property="article:tag" content="Software Engineering" />
     
@@ -70,7 +70,7 @@
     "headline": "How to create a Devcontainer for your Python project 🐳 (on Xebia.com ⧉)",
     "url": "https://jeroenoverschie.nl/how-to-create-a-devcontainer-for-your-python-project/",
     "datePublished": "2022-11-21T17:36:00.000Z",
-    "dateModified": "2024-01-07T14:58:56.000Z",
+    "dateModified": "2024-04-14T11:06:58.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://jeroenoverschie.nl/content/images/2022/12/without-ship-taller-img.png",
@@ -90,8 +90,8 @@
     <link rel="alternate" type="application/rss+xml" title="Jeroen Overschie" href="https://jeroenoverschie.nl/rss/" />
     
     <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="489b5afdd4c5385878c360bd9b" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://jeroenoverschie.nl/" crossorigin="anonymous"></script>
-    <script defer src="/public/cards.min.js?v=889b5d3a64"></script>
-    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=889b5d3a64">
+    <script defer src="/public/cards.min.js?v=fcc068b43c"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=fcc068b43c">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQB9198LQ6"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -149,7 +149,7 @@
                 </span>
 
                 <span class="single-meta-item single-meta-length">
-                    
+                    10 min read
                 </span>
 
                     <span class="single-meta-item single-meta-tag">
@@ -172,7 +172,161 @@
     </header>
 
     <div class="single-content gh-content kg-canvas">
-        
+        <p>Imagine the following scenario 💭.</p><p>Your company uses Apache Spark to process data, and your team has pyspark set up in a Python project. The codebase is built on a specific Python version, using a certain Java installation, and an accompanying pyspark version that works with the former. To onboard a new member, you will need to pass a list of instructions the developer needs to follow carefully to get their setup working. But not everyone might run this on the same laptop environment: different hardware, and different operating systems. This is getting challenging.<br>But the setup is a one-off, right? Just go through the setup once and you’ll be good. Not entirely. Your code environment will change over time: your team will probably install-, update- or remove packages during the project’s development. This means that if a developer creates a new feature and changes their own environment to do so; he or she also needs to make sure that the other team members change theirs and that the production environment is updated accordingly. This makes it easy to get misaligned environments: between developers, and between development &amp; production.</p><p>We can do better than this! Instead of giving other developers a setup document, let’s make sure we also create formal instructions so we can <em>automatically</em> set up the development environment. <em>Devcontainers</em> let us do exactly this.</p><p><strong>Devcontainers</strong> let you connect your IDE to a running Docker container. In this way, we get the benefits of reproducibility and isolation, whilst getting a native development experience.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://xebia.com/wp-content/uploads/2023/02/devcontainer-overview-4.png.webp" class="kg-image" alt="Devcontainer usage overview" loading="lazy"><figcaption>With Devcontainers you can interact with your IDE like you're used to whilst under the hood running everything inside a Docker container.</figcaption></figure><p></p><p>Devcontainers can help us:</p><ul><li>Get a reproducible development environment</li><li>⚡️ Instantly onboard new team members onto your project</li><li>‍ ‍ ‍ Better align the environments between team members</li><li>⏱ Keeping your dev environment up-to-date &amp; reproducible saves your team time going into production later</li></ul><p>Let’s explore how we can set up a Devcontainer for your Python project!</p><h2 id="creating-your-first-devcontainer"><strong>Creating your first Devcontainer</strong></h2><p>Note that this tutorial is focused on <strong>VSCode</strong>. Other IDE’s like PyCharm support running in Docker containers but support is less comprehensive than on VSCode.</p><h3 id="recap"><strong>Recap</strong></h3><p>To recap, we are trying to create a dev environment that installs: 1) Java, 2) Python and 3) pyspark. And we want to do so <em>automatically</em>, that is, inside a Docker image.</p><h3 id="project-structure"><strong>Project structure</strong></h3><p>Let’s say we have a really simple project that looks like this:</p><pre><code class="language-bash">$ tree .
+.
+├── README.md
+├── requirements.txt
+├── requirements-dev.txt
+├── sales_analysis.py
+└── test_sales_analysis.py</code></pre><p>That is, we have a Python module with an accompanying test, a <code>requirements.txt</code> file describing our production dependencies (pyspark), and a <code>requirements-dev.txt</code> describing dependencies that should be installed in development only (pytest, black, mypy). Now let’s see how we can extend this setup to include a Devcontainer.</p><h3 id="the-devcontainer-folder"><strong>The <code>.devcontainer</code> folder</strong></h3><p>Your Devcontainer spec will live inside the <code>.devcontainer</code> folder. There will be two main files:</p><ul><li><code>devcontainer.json</code></li><li><code>Dockerfile</code></li></ul><p>Create a new file called <code>devcontainer.json</code>:</p><pre><code class="language-json">{
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    }
+}</code></pre><p>This means: as a base for our Devcontainer, use the <code>Dockerfile</code> located in the current directory, and build it with a <em>current working directory</em> (cwd) of <code>..</code>.</p><p>So what does this <code>Dockerfile</code> look like?</p><pre><code class="language-docker">FROM python:3.10
+
+# Install Java
+RUN apt update &amp;&amp; 
+    apt install -y sudo &amp;&amp; 
+    sudo apt install default-jdk -y
+
+## Pip dependencies
+# Upgrade pip
+RUN pip install --upgrade pip
+# Install production dependencies
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt &amp;&amp; 
+    rm /tmp/requirements.txt
+# Install development dependencies
+COPY requirements-dev.txt /tmp/requirements-dev.txt
+RUN pip install -r /tmp/requirements-dev.txt &amp;&amp; 
+    rm /tmp/requirements-dev.txt</code></pre><p>We are building our image on top of <code>python:3.10</code>, which is a Debian-based image. This is one of the Linux distributions that a Devcontainer can be built on. The main requirement is that <strong>Node.js</strong> should be able to run: VSCode automatically installs VSCode Server on the machine. For an extensive list of supported distributions, see <a href="https://code.visualstudio.com/docs/remote/linux">“Remote Development with Linux”</a>.</p><p>On top of <code>python:3.10</code>, we install Java and the required pip packages.</p><h3 id="opening-the-devcontainer"><strong>Opening the Devcontainer</strong></h3><p>The <code>.devcontainer</code> folder is in place, so it’s now time to open our Devcontainer.</p><p>First, make sure you have the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">Dev Containers extension</a> installed in VSCode (previously called “Remote – Containers”. That done, if you open your repo again, the extension should already detect your Devcontainer:</p><figure class="kg-card kg-image-card"><img src="https://xebia.com/wp-content/uploads/2023/02/folder-contains-a-dev-container-config-file.png.webp" class="kg-image" alt="folder contains a dev container config file" loading="lazy"></figure><p>Alternatively, you can open up the command palette (CMD + Shift + P) and select “<em>Dev Containers: Reopen in Container</em>”:</p><figure class="kg-card kg-image-card"><img src="https://xebia.com/wp-content/uploads/2023/02/reopen-in-devcontainer-notification.png.webp" class="kg-image" alt="Dev Containers: Reopen in Container" loading="lazy"></figure><p>Your VSCode is now connected to the Docker container :</p><figure class="kg-card kg-image-card"><img src="https://xebia.com/wp-content/uploads/2023/02/opening-the-devcontainer.gif.webp" class="kg-image" alt="VSCode is now connected to the Docker container" loading="lazy"></figure><h3 id="what-is-happening-under-the-hood"><strong>What is happening under the hood</strong></h3><p>Besides starting the Docker image and attaching the terminal to it, VSCode is doing a couple more things:</p><ol><li><a href="https://code.visualstudio.com/docs/remote/vscode-server"><strong>VSCode Server</strong></a> is being installed on your Devcontainer. VSCode Server is installed as a service in the container itself so your VSCode installation can communicate with the container. For example, install and run extensions.</li><li><strong>Config is copied</strong> over. Config like <code>~/.gitconfig</code> and <code>~/.ssh/known_hosts</code> are copied over to their respective locations in the container.<br>This then allows you to use your Git repo like you do normally, without re-authenticating.</li><li><strong>Filesystem mounts</strong>. VSCode automatically takes care of mounting: 1) The folder you are running the Devcontainer from and 2) your VSCode workspace folder.</li></ol><h3 id="opening-your-repo-directly-in-a-devcontainer"><strong>Opening your repo directly in a Devcontainer</strong></h3><p>Since all instructions on how to configure your dev environment are now defined in a Dockerfile, users can open up your Devcontainer with just one button:</p><figure class="kg-card kg-image-card"><img src="https://xebia.com/wp-content/uploads/2023/11/v1.svg" class="kg-image" alt="Open in Remote - Containers" loading="lazy"></figure><p>Ain’t that cool? You can add a button to your repo like so:</p><pre><code>[
+    ![Open in Remote - Containers](
+        https://xebia.com/wp-content/uploads/2023/11/v1.svg    )
+](
+    https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/godatadriven/python-devcontainer-template
+)</code></pre><p>Just modify the GitHub URL ✓.</p><p>That said, we can see having built a Devcontainer can make our README massively more readable. What kind of README would you rather like?</p><!--kg-card-begin: html--><table style="box-sizing: border-box; border-width: 0px; border-style: solid; border-color: inherit; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; text-indent: 0px; border-collapse: collapse; color: rgb(53, 68, 90); font-family: Proxima, sans-serif; font-size: 18px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><thead style="box-sizing: border-box; border-width: 0px; border-style: solid; border-color: currentcolor; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;"><tr style="box-sizing: border-box; border-width: 0px; border-style: solid; border-color: currentcolor; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;"><th style="box-sizing: border-box; border-width: 0px; border-style: solid; border-color: currentcolor; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; text-align: center;">Manual installation</th><th style="box-sizing: border-box; border-width: 0px; border-style: solid; border-color: currentcolor; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; text-align: center;">Using a Devcontainer</th></tr></thead><tbody style="box-sizing: border-box; border-width: 0px; border-style: solid; border-color: currentcolor; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;"><tr style="box-sizing: border-box; border-width: 0px; border-style: solid; border-color: currentcolor; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ;"><td style="box-sizing: border-box; border-width: 0px; border-style: solid; border-color: currentcolor; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; text-align: center;"><img decoding="async" src="https://xebia.com/wp-content/uploads/2023/02/installation-instructions-manual.png.webp" alt="" data-src-img="https://xebia.com/wp-content/uploads/2023/02/installation-instructions-manual.png" data-src-webp="https://xebia.com/wp-content/uploads/2023/02/installation-instructions-manual.png.webp" data-eio="j" class="ewww_webp_loaded" style="box-sizing: border-box; border-width: 0px; border-style: solid; border-color: currentcolor; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; display: block; vertical-align: middle; max-width: 100%; height: auto; border-radius: 0.5rem;"></td><td style="box-sizing: border-box; border-width: 0px; border-style: solid; border-color: currentcolor; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; text-align: center;"><img decoding="async" src="https://xebia.com/wp-content/uploads/2023/02/installation-instructions-devcontainer.png.webp" alt="" data-src-img="https://xebia.com/wp-content/uploads/2023/02/installation-instructions-devcontainer.png" data-src-webp="https://xebia.com/wp-content/uploads/2023/02/installation-instructions-devcontainer.png.webp" data-eio="j" class="ewww_webp_loaded" style="box-sizing: border-box; border-width: 0px; border-style: solid; border-color: currentcolor; --tw-border-spacing-x: 0; --tw-border-spacing-y: 0; --tw-translate-x: 0; --tw-translate-y: 0; --tw-rotate: 0; --tw-skew-x: 0; --tw-skew-y: 0; --tw-scale-x: 1; --tw-scale-y: 1; --tw-pan-x: ; --tw-pan-y: ; --tw-pinch-zoom: ; --tw-scroll-snap-strictness: proximity; --tw-gradient-from-position: ; --tw-gradient-via-position: ; --tw-gradient-to-position: ; --tw-ordinal: ; --tw-slashed-zero: ; --tw-numeric-figure: ; --tw-numeric-spacing: ; --tw-numeric-fraction: ; --tw-ring-inset: ; --tw-ring-offset-width: 0px; --tw-ring-offset-color: #fff; --tw-ring-color: rgb(59 130 246 / 0.5); --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-shadow-colored: 0 0 #0000; --tw-blur: ; --tw-brightness: ; --tw-contrast: ; --tw-grayscale: ; --tw-hue-rotate: ; --tw-invert: ; --tw-saturate: ; --tw-sepia: ; --tw-drop-shadow: ; --tw-backdrop-blur: ; --tw-backdrop-brightness: ; --tw-backdrop-contrast: ; --tw-backdrop-grayscale: ; --tw-backdrop-hue-rotate: ; --tw-backdrop-invert: ; --tw-backdrop-opacity: ; --tw-backdrop-saturate: ; --tw-backdrop-sepia: ; display: block; vertical-align: middle; max-width: 100%; height: auto; border-radius: 0.5rem;"></td></tr></tbody></table><!--kg-card-end: html--><h2 id="extending-the-devcontainer"><strong>Extending the Devcontainer</strong></h2><p>We have built a working Devcontainer, which is great! But a couple of things are still missing. We still want to:</p><ul><li>Install a non-root user for extra safety and good-practice</li><li>Pass in custom VSCode settings and install extensions by default</li><li>Be able to access Spark UI (port 4040)</li><li>Run Continuous Integration (CI) in the Devcontainer</li></ul><p>Let’s see how.</p><h3 id="installing-a-non-root-user"><strong>Installing a non-root user</strong></h3><p>If you <code>pip install</code> a new package, you will see the following message:</p><figure class="kg-card kg-image-card"><img src="https://xebia.com/wp-content/uploads/2023/02/running-pip-as-root.png.webp" class="kg-image" alt="The warning message: “*WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: [https://pip.pypa.io/warnings/venv](https://pip.pypa.io/warnings/venv)*" loading="lazy"></figure><p>Indeed, it is not recommended to develop as a <em>root</em> user. It is considered a good practice to create a different user with fewer rights to run in production. So let’s go ahead and create a user for this scenario.</p><pre><code class="language-bash"># Add non-root user
+ARG USERNAME=nonroot
+RUN groupadd --gid 1000 $USERNAME &amp;&amp; 
+    useradd --uid 1000 --gid 1000 -m $USERNAME
+## Make sure to reflect new user in PATH
+ENV PATH="/home/${USERNAME}/.local/bin:${PATH}"
+USER $USERNAME</code></pre><p>Add the following property to <code>devcontainer.json</code>:</p><pre><code class="language-json">    "remoteUser": "nonroot"</code></pre><p>That’s great! When we now start the container we should connect as the user <code>nonroot</code>.</p><h3 id="passing-custom-vscode-settings"><strong>Passing custom VSCode settings</strong></h3><p>Our Devcontainer is still a bit bland, without extensions and settings. Besides any custom extensions a user might want to install, we can install some for them by default already. We can define such settings in <code>customizations.vscode</code>:</p><pre><code class="language-json">     "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python"
+            ],
+            "settings": {
+                "python.testing.pytestArgs": [
+                    "."
+                ],
+                "python.testing.unittestEnabled": false,
+                "python.testing.pytestEnabled": true,
+                "python.formatting.provider": "black",
+                "python.linting.mypyEnabled": true,
+                "python.linting.enabled": true
+            }
+        }
+    }</code></pre><p>The defined extensions are always installed in the Devcontainer. However, the defined settings provide just a <strong>default</strong> for the user to use, and can still be overridden by other setting scopes like User Settings, Remote Settings, or Workspace Settings.</p><h3 id="accessing-spark-ui"><strong>Accessing Spark UI</strong></h3><p>Since we are using pyspark, we want to be able to access <strong>Spark UI</strong>. When we start a Spark session, VSCode will ask whether you want to forward the specific port. Since we already know this is Spark UI, we can do so automatically:</p><pre><code class="language-json">    "portsAttributes": {
+        "4040": {
+            "label": "SparkUI",
+            "onAutoForward": "notify"
+        }
+    },
+
+    "forwardPorts": [
+        4040
+    ]</code></pre><p>When we now run our code, we get a notification we can open Spark UI in the browser:</p><figure class="kg-card kg-image-card"><img src="https://xebia.com/wp-content/uploads/2023/02/application-running-on-port-4040.png.webp" class="kg-image" alt="open Spark UI in the browser" loading="lazy"></figure><p>Resulting in the Spark UI as we know it:</p><figure class="kg-card kg-image-card"><img src="https://xebia.com/wp-content/uploads/2023/02/spark-ui-visible-in-localhost-4040.png.webp" class="kg-image" alt="spark UI in the browser" loading="lazy"></figure><p>✨</p><h3 id="running-our-ci-in-the-devcontainer"><strong>Running our CI in the Devcontainer</strong></h3><p>Wouldn’t it be convenient if we could re-use our Devcontainer to run our Continuous Integration (CI) pipeline as well? Indeed, we can do this with Devcontainers. Similarly to how the Devcontainer image is built locally using <code>docker build</code>, the same can be done <em>within</em> a CI/CD pipeline. There are two basic options:</p><ol><li>Build the Docker image <em>within</em> the CI/CD pipeline</li><li>Prebuilding the image</li></ol><p>To pre-build the image, the build step will need to run either periodically or whenever the Docker definition has changed. Since this adds quite some complexity let’s dive into building the Devcontainer as part of the CI/CD pipeline first (for pre-building the image, see the ‘Awesome resources’ section). We will do so using <strong>GitHub Actions</strong>.</p><h4 id="using-devcontainersci"><strong>Using <code>devcontainers/ci</code></strong></h4><p>Luckily, a GitHub Action was already set up for us to do exactly this:</p><p><a href="https://github.com/devcontainers/ci">https://github.com/devcontainers/ci</a></p><p>To now build, push and run a command in the Devcontainer is as easy as:</p><pre><code class="language-yaml">name: Python app
+
+on:
+  pull_request:
+  push:
+    branches:
+      - "**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout (GitHub)
+        uses: actions/checkout@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and run dev container task
+        uses: devcontainers/ci@v0.2
+        with:
+          imageName: ghcr.io/${{ github.repository }}/devcontainer
+          runCmd: pytest .</code></pre><p>That’s great! Whenever this workflow runs on your main branch, the image will be pushed to the configured registry; in this case GitHub Container Registry (GHCR). See below a trace of the executed GitHub Action:</p><figure class="kg-card kg-image-card"><img src="https://xebia.com/wp-content/uploads/2023/02/running-ci-in-the-devcontainer-github-actions.png.webp" class="kg-image" alt="running-ci-in-the-devcontainer-github-actions" loading="lazy"></figure><p>Awesome!</p><h2 id="the-final-devcontainer-definition"><strong>The final Devcontainer definition</strong></h2><p>We built the following Devcontainer definitions. First, <code>devcontainer.json</code>:</p><pre><code class="language-json">{
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+
+    "remoteUser": "nonroot",
+
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python"
+            ],
+            "settings": {
+                "python.testing.pytestArgs": [
+                    "."
+                ],
+                "python.testing.unittestEnabled": false,
+                "python.testing.pytestEnabled": true,
+                "python.formatting.provider": "black",
+                "python.linting.mypyEnabled": true,
+                "python.linting.enabled": true
+            }
+        }
+    },
+
+    "portsAttributes": {
+        "4040": {
+            "label": "SparkUI",
+            "onAutoForward": "notify"
+        }
+    },
+
+    "forwardPorts": [
+        4040
+    ]
+}</code></pre><p>And our <code>Dockerfile</code>:</p><pre><code class="language-docker">FROM python:3.10
+
+# Install Java
+RUN apt update &amp;&amp; 
+    apt install -y sudo &amp;&amp; 
+    sudo apt install default-jdk -y
+
+# Add non-root user
+ARG USERNAME=nonroot
+RUN groupadd --gid 1000 $USERNAME &amp;&amp; 
+    useradd --uid 1000 --gid 1000 -m $USERNAME
+## Make sure to reflect new user in PATH
+ENV PATH="/home/${USERNAME}/.local/bin:${PATH}"
+USER $USERNAME
+
+## Pip dependencies
+# Upgrade pip
+RUN pip install --upgrade pip
+# Install production dependencies
+COPY --chown=nonroot:1000 requirements.txt /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt &amp;&amp; 
+    rm /tmp/requirements.txt
+# Install development dependencies
+COPY --chown=nonroot:1000 requirements-dev.txt /tmp/requirements-dev.txt
+RUN pip install -r /tmp/requirements-dev.txt &amp;&amp; 
+    rm /tmp/requirements-dev.txt</code></pre><blockquote>The full Devcontainer implementation and all the above steps can be found in the various branches of the <a href="https://github.com/godatadriven/python-devcontainer-template">godatadriven/python-devcontainer-template</a> repo.</blockquote><h2 id="docker-images-architecture-three-environments"><strong>Docker images architecture: Three environments</strong></h2><p>With the CI now set up, we can reuse the same Docker image for two purposes. For local development and running our quality checks. And, once we deploy this application to production, we could configure the Devcontainer to use our production image as a base, and install extra dependencies on top. If we want to optimize the CI image to be as lightweight as possible, we could also strip off any extra dependencies that we do not require in the CI environment; things as extra CLI tooling, a better shell such as ZSH, and so forth.</p><p>This sets us up for having 3 different images for our entire lifecycle. One for Development, one for CI, and finally one for production. This can be visualized like so:</p><figure class="kg-card kg-image-card"><img src="https://xebia.com/wp-content/uploads/2023/02/three-environments.png.webp" class="kg-image" alt="three-environments-docker-images-devcontainer" loading="lazy"></figure><p>So, we can see, when using a Devcontainer you can re-use your production image and build on top of it. Install extra tooling, make sure it can talk to VSCode, and you’re done .</p><h2 id="going-further"><strong>Going further</strong></h2><p>There are lots of other resources to explore; Devcontainers are well-documented and there are many posts about it. If you’re up for more, let’s see what else you can do.</p><h3 id="devcontainer-features"><strong>Devcontainer features</strong></h3><p>Devcontainer <a href="https://containers.dev/features">features</a> allow you to easily extend your Docker definition with common additions. Some useful features are:</p><ul><li><a href="https://github.com/devcontainers/features/tree/main/src/common-utils">Common Debian Utilities</a> (Installs ZSH using <em>Oh My ZSH</em>, a non-root user, and useful CLI tools like <code>curl</code>)</li><li><a href="https://github.com/devcontainers/features/tree/main/src/aws-cli">AWS CLI</a></li><li><a href="https://github.com/devcontainers/features/tree/main/src/azure-cli">Azure CLI</a></li><li><a href="https://github.com/devcontainers/features/tree/main/src/git">Git</a></li><li><a href="https://github.com/devcontainers/features/tree/main/src/node">Node.js</a></li><li><a href="https://github.com/devcontainers/features/tree/main/src/python">Python</a></li><li><a href="https://github.com/devcontainers/features/tree/main/src/java">Java</a></li></ul><h3 id="devcontainer-templates"><strong>Devcontainer templates</strong></h3><p>On the official Devcontainer specification website there are <strong>loads</strong> of templates available. Good chance (part of) your setup is in there. A nice way to get a head-start in building your Devcontainer or to get started quickly.</p><p>See: <a href="https://containers.dev/templates">https://containers.dev/templates</a></p><h3 id="mounting-directories"><strong>Mounting directories</strong></h3><p>Re-authenticating your CLI tools is annoying. So one trick is to mount your AWS/Azure/GCP credentials from your local computer into your Devcontainer. This way, authentications done in either environment are shared with the other. You can easily do this by adding this to <code>devcontainer.json</code>:</p><pre><code class="language-json">  "mounts": [
+    "source=/Users/&lt;your_username&gt;/.aws,target=/home/nonroot/.aws,type=bind,consistency=cached"
+  ]</code></pre><p>^ the above example mounts your AWS credentials, but the process should be similar for other cloud providers (GCP / Azure).</p><h3 id="awesome-resources"><strong>Awesome resources</strong></h3><ul><li><a href="https://github.com/devcontainers/ci">devcontainers/ci</a>. Run your CI in your Devcontainers. Built on the <a href="https://github.com/devcontainers/cli">Devcontainer CLI</a>.</li><li><a href="https://containers.dev/">https://containers.dev/</a>. The official Devcontainer specification.</li><li><a href="https://github.com/devcontainers/images">devcontainers/images</a>. A collection of ready-to-use Devcontainer images.</li><li><a href="https://code.visualstudio.com/remote/advancedcontainers/add-nonroot-user">Add a non-root user to a container</a>. More explanations &amp; instructions for adding a non-root user to your <code>Dockerfile</code> and <code>devcontainer.json</code>.</li><li><a href="https://code.visualstudio.com/docs/remote/containers#_prebuilding-dev-container-images">Pre-building dev container images</a></li><li><a href="https://github.com/manekinekko/awesome-devcontainers">awesome-devcontainers</a>. A repo pointing to yet even more awesome resources.</li></ul><h2 id="concluding"><strong>Concluding</strong></h2><p>Devcontainers allow you to connect your IDE to a running Docker container, allowing for a native development experience but with the benefits of reproducibility and isolation. This makes easier to onboard new joiners and align development environments between team members. Devcontainers are very well supported for <strong>VSCode</strong> but are now being standardized in an <a href="https://containers.dev/">open specification</a>. Even though it will probably still take a while to see wide adoption, the specification is a good candidate for the standardization of Devcontainers.</p><h2 id="about"><strong>About</strong></h2><p>This blogpost is written by <a href="https://www.github.com/dunnkers">Jeroen Overschie</a>, working at <a href="https://xebia.com/">Xebia</a>.</p>
     </div>
 
         <footer class="single-footer container small">
@@ -246,6 +400,9 @@
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
     <path d="M16 23.027L24.24 28l-2.187-9.373 7.28-6.307-9.587-.827-3.747-8.827-3.747 8.827-9.587.827 7.267 6.307L7.759 28l8.24-4.973z"></path>
 </svg>            </div>
+                <div class="feed-length">
+                    9 min read
+                </div>
             <div class="feed-icon">
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
     <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
@@ -468,7 +625,7 @@
         }
     </script>
 
-    <script src="/assets/built/main.min.js?v=889b5d3a64"></script>
+    <script src="/assets/built/main.min.js?v=fcc068b43c"></script>
 
     
 </body>
