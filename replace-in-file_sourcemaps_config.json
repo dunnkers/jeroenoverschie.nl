@@ -1,0 +1,5 @@
+{
+    "files": "static/**",
+    "from": "/((sourceMappingURL=main.min.js.map)|(# sourceMappingURL=screen.css.map))/g",
+    "to": ""
+}
