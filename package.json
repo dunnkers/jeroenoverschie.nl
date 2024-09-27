@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "build": "gssg && npx replace-in-file --configFile=replace-in-file_config.js",
+        "build": "gssg && npx replace-in-file --configFile=replace-in-file_config.json && npx replace-in-file --configFile=replace-in-file_sitemap_config.json",
         "predeploy": "echo 'jeroenoverschie.nl' > static/CNAME",
         "deploy": "npx gh-pages -d static"
     }

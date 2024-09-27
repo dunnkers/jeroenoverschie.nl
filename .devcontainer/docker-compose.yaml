@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   ghost:
-    image: "ghost:5.19"
+    image: "ghost:5.94.2"
     ports:
       - 2368:2368
     volumes:
