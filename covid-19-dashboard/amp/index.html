@@ -6,33 +6,33 @@
 
     <title>COVID-19 Dashboard</title>
 
-    <meta name="description" content="What parts of the world are susceptible to Corona outbreak? We used Big Data and Data Engineering in this project to find out." />
-    <link rel="icon" href="https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg" type="image/png" />
-    <link rel="canonical" href="https://jeroenoverschie.nl/covid-19-dashboard/" />
-    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <meta name="description" content="What parts of the world are susceptible to Corona outbreak? We used Big Data and Data Engineering in this project to find out.">
+    <link rel="icon" href="https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg" type="image/png">
+    <link rel="canonical" href="https://jeroenoverschie.nl/covid-19-dashboard/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
     
-    <meta property="og:site_name" content="Jeroen Overschie" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="COVID-19 Dashboard" />
-    <meta property="og:description" content="What parts of the world are susceptible to Corona outbreak? We used Big Data and Data Engineering in this project to find out." />
-    <meta property="og:url" content="https://jeroenoverschie.nl/covid-19-dashboard/" />
-    <meta property="og:image" content="https://jeroenoverschie.nl/content/images/2021/11/Screen-Shot-2021-11-28-at-18.12.40-1.png" />
-    <meta property="article:published_time" content="2020-02-29T23:00:00.000Z" />
-    <meta property="article:modified_time" content="2022-01-06T13:06:59.000Z" />
-    <meta property="article:tag" content="Data Science" />
-    <meta property="article:tag" content="Software Engineering" />
+    <meta property="og:site_name" content="Jeroen Overschie">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="COVID-19 Dashboard">
+    <meta property="og:description" content="What parts of the world are susceptible to Corona outbreak? We used Big Data and Data Engineering in this project to find out.">
+    <meta property="og:url" content="https://jeroenoverschie.nl/covid-19-dashboard/">
+    <meta property="og:image" content="https://jeroenoverschie.nl/content/images/2021/11/Screen-Shot-2021-11-28-at-18.12.40-1.png">
+    <meta property="article:published_time" content="2020-02-29T23:00:00.000Z">
+    <meta property="article:modified_time" content="2022-01-06T13:06:59.000Z">
+    <meta property="article:tag" content="Data Science">
+    <meta property="article:tag" content="Software Engineering">
     
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="COVID-19 Dashboard" />
-    <meta name="twitter:description" content="What parts of the world are susceptible to Corona outbreak? We used Big Data and Data Engineering in this project to find out." />
-    <meta name="twitter:url" content="https://jeroenoverschie.nl/covid-19-dashboard/" />
-    <meta name="twitter:image" content="https://jeroenoverschie.nl/content/images/2021/11/Screen-Shot-2021-11-28-at-18.12.40-1.png" />
-    <meta name="twitter:label1" content="Written by" />
-    <meta name="twitter:data1" content="Jeroen Overschie" />
-    <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Data Science, Software Engineering" />
-    <meta property="og:image:width" content="839" />
-    <meta property="og:image:height" content="512" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="COVID-19 Dashboard">
+    <meta name="twitter:description" content="What parts of the world are susceptible to Corona outbreak? We used Big Data and Data Engineering in this project to find out.">
+    <meta name="twitter:url" content="https://jeroenoverschie.nl/covid-19-dashboard/">
+    <meta name="twitter:image" content="https://jeroenoverschie.nl/content/images/2021/11/Screen-Shot-2021-11-28-at-18.12.40-1.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Jeroen Overschie">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Data Science, Software Engineering">
+    <meta property="og:image:width" content="839">
+    <meta property="og:image:height" content="512">
     
     <script type="application/ld+json">
 {
@@ -73,15 +73,12 @@
     },
     "keywords": "Data Science, Software Engineering",
     "description": "What parts of the world are susceptible to Corona outbreak? We used Big Data and Data Engineering in this project to find out.",
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://jeroenoverschie.nl/"
-    }
+    "mainEntityOfPage": "https://jeroenoverschie.nl/covid-19-dashboard/"
 }
     </script>
 
-    <meta name="generator" content="Ghost 5.19" />
-    <link rel="alternate" type="application/rss+xml" title="Jeroen Overschie" href="https://jeroenoverschie.nl/rss/" />
+    <meta name="generator" content="Ghost 5.94">
+    <link rel="alternate" type="application/rss+xml" title="Jeroen Overschie" href="https://jeroenoverschie.nl/rss/">
 
     <style amp-custom>
     *,
@@ -256,6 +253,16 @@
 
     amp-img img {
         object-fit: cover;
+    }
+    
+    amp-youtube {
+        height: calc(100vw / 1.78);
+        width: 100vw;
+        position: relative;
+    }
+
+    amp-youtube img {
+        position: absolute;
     }
 
     .page-header {
@@ -1080,10 +1087,10 @@
             </figure>
             <section class="post-content">
 
-                <p>We are in the midst of a global pandemic. At the time this project started, the Corona virus was still just a headline for most - but in the meantime it reached and impacted all of our lives. Fighting such a pandemic happens in many ways on multiple scales. We are interested in how this can be done on the societal level: using data. In this project, me and my teammates built a pipeline capable of processing a large dataset and created a visualization of the areas most vulnerable to Corona which includes reported cases in real-time.</p><h3 id="architecture">Architecture</h3><p>To quickly summarize the application: a backend downloads- and processes <a href="https://github.com/CSSEGISandData/COVID-19">Corona data</a> and <a href="https://www.worldpop.org/">population data</a>. A clustering algorithm is applied to determine the most 'vulnerable' areas to Corona outbreak. Then, all resulting insights are stored in a MongoDB database and exposes through an API. A frontend then integrates with Mapbox to show the data visually, on a map. Because we were working with large amounts of data, some sophisticated technologies were required to properly process the data:</p><ul><li>Apache Kafka</li><li>Apache Spark</li><li>Apache Zeppelin to author PySpark scripts</li></ul><p>Brought together, this can be put in a diagram as follows:</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>The Corona dashboard <b>batch</b> processing architecture.</figcaption></figure><p>All components are hosted on Google Cloud Platform (GCP). To also demonstrate merging both batch- and stream data in a single dashboard, also another architecture was built. This time, we took in tweets that are concerned about Corona through the keyword 'Corona' and used a Map-Reduce technique to compute the total amount of Corona-tweets sent by each country in the world. This was then again, stored in a MongoDB database and exposed as an API. See the stream processing architecture below:</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>The Corona dashboard <b>stream</b> processing architecture.</figcaption></figure><p>To conclude both architectures and how they come together in a single application, see the following diagram:</p><figure class="kg-card kg-image-card kg-card-hascaption">
+                <p>We are in the midst of a global pandemic. At the time this project started, the Corona virus was still just a headline for most - but in the meantime it reached and impacted all of our lives. Fighting such a pandemic happens in many ways on multiple scales. We are interested in how this can be done on the societal level: using data. In this project, me and my teammates built a pipeline capable of processing a large dataset and created a visualization of the areas most vulnerable to Corona which includes reported cases in real-time.</p><h3 id="architecture">Architecture</h3><p>To quickly summarize the application: a backend downloads- and processes <a href="https://github.com/CSSEGISandData/COVID-19?ref=localhost">Corona data</a> and <a href="https://www.worldpop.org/?ref=localhost">population data</a>. A clustering algorithm is applied to determine the most 'vulnerable' areas to Corona outbreak. Then, all resulting insights are stored in a MongoDB database and exposes through an API. A frontend then integrates with Mapbox to show the data visually, on a map. Because we were working with large amounts of data, some sophisticated technologies were required to properly process the data:</p><ul><li>Apache Kafka</li><li>Apache Spark</li><li>Apache Zeppelin to author PySpark scripts</li></ul><p>Brought together, this can be put in a diagram as follows:</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>The Corona dashboard <b>batch</b> processing architecture.</figcaption></figure><p>All components are hosted on Google Cloud Platform (GCP). To also demonstrate merging both batch- and stream data in a single dashboard, also another architecture was built. This time, we took in tweets that are concerned about Corona through the keyword 'Corona' and used a Map-Reduce technique to compute the total amount of Corona-tweets sent by each country in the world. This was then again, stored in a MongoDB database and exposed as an API. See the stream processing architecture below:</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>The Corona dashboard <b>stream</b> processing architecture.</figcaption></figure><p>To conclude both architectures and how they come together in a single application, see the following diagram:</p><figure class="kg-card kg-image-card kg-card-hascaption">
     
     <figcaption>Both the batch- and stream processing pipelines visualized in a single diagram.</figcaption>
-</figure><p>To see the front-end in action, see the <a href="https://dunnkers.com/disease-spread/">live dashboard</a>.</p><h3 id="full-report">Full report</h3><p>For further reading, check out the GitHub repository:</p><figure class="kg-card kg-image-card kg-card-hascaption"><a href="https://github.com/dunnkers/disease-spread"></a><figcaption><a href="https://github.com/dunnkers/disease-spread">disease-spread</a></figcaption></figure>
+</figure><p>To see the front-end in action, see the <a href="https://dunnkers.com/disease-spread/?ref=localhost">live dashboard</a>.</p><h3 id="full-report">Full report</h3><p>For further reading, check out the GitHub repository:</p><figure class="kg-card kg-image-card kg-card-hascaption"><a href="https://github.com/dunnkers/disease-spread?ref=localhost"></a><figcaption><a href="https://github.com/dunnkers/disease-spread?ref=localhost">disease-spread</a></figcaption></figure>
 
             </section>
 

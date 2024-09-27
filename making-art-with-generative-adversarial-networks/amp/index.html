@@ -6,32 +6,32 @@
 
     <title>Making Art with Generative Adversarial Networks</title>
 
-    <meta name="description" content="Can computers make art? To find out, we tried ourselves. We used Generative Adversarial Networks to try to paint new Van Gogh paintings." />
-    <link rel="icon" href="https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg" type="image/png" />
-    <link rel="canonical" href="https://jeroenoverschie.nl/making-art-with-generative-adversarial-networks/" />
-    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <meta name="description" content="Can computers make art? To find out, we tried ourselves. We used Generative Adversarial Networks to try to paint new Van Gogh paintings.">
+    <link rel="icon" href="https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg" type="image/png">
+    <link rel="canonical" href="https://jeroenoverschie.nl/making-art-with-generative-adversarial-networks/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
     
-    <meta property="og:site_name" content="Jeroen Overschie" />
-    <meta property="og:type" content="article" />
-    <meta property="og:title" content="Making Art with Generative Adversarial Networks" />
-    <meta property="og:description" content="Can computers make art? To find out, we tried ourselves. We used Generative Adversarial Networks to try to paint new Van Gogh paintings." />
-    <meta property="og:url" content="https://jeroenoverschie.nl/making-art-with-generative-adversarial-networks/" />
-    <meta property="og:image" content="https://jeroenoverschie.nl/content/images/2021/11/morphing-1.png" />
-    <meta property="article:published_time" content="2021-04-08T22:00:00.000Z" />
-    <meta property="article:modified_time" content="2021-11-28T21:28:08.000Z" />
-    <meta property="article:tag" content="Data Science" />
+    <meta property="og:site_name" content="Jeroen Overschie">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Making Art with Generative Adversarial Networks">
+    <meta property="og:description" content="Can computers make art? To find out, we tried ourselves. We used Generative Adversarial Networks to try to paint new Van Gogh paintings.">
+    <meta property="og:url" content="https://jeroenoverschie.nl/making-art-with-generative-adversarial-networks/">
+    <meta property="og:image" content="https://jeroenoverschie.nl/content/images/2021/11/morphing-1.png">
+    <meta property="article:published_time" content="2021-04-08T22:00:00.000Z">
+    <meta property="article:modified_time" content="2021-11-28T21:28:08.000Z">
+    <meta property="article:tag" content="Data Science">
     
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Making Art with Generative Adversarial Networks" />
-    <meta name="twitter:description" content="Can computers make art? To find out, we tried ourselves. We used Generative Adversarial Networks to try to paint new Van Gogh paintings." />
-    <meta name="twitter:url" content="https://jeroenoverschie.nl/making-art-with-generative-adversarial-networks/" />
-    <meta name="twitter:image" content="https://jeroenoverschie.nl/content/images/2021/11/morphing-1.png" />
-    <meta name="twitter:label1" content="Written by" />
-    <meta name="twitter:data1" content="Jeroen Overschie" />
-    <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Data Science" />
-    <meta property="og:image:width" content="1081" />
-    <meta property="og:image:height" content="540" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Making Art with Generative Adversarial Networks">
+    <meta name="twitter:description" content="Can computers make art? To find out, we tried ourselves. We used Generative Adversarial Networks to try to paint new Van Gogh paintings.">
+    <meta name="twitter:url" content="https://jeroenoverschie.nl/making-art-with-generative-adversarial-networks/">
+    <meta name="twitter:image" content="https://jeroenoverschie.nl/content/images/2021/11/morphing-1.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Jeroen Overschie">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Data Science">
+    <meta property="og:image:width" content="1081">
+    <meta property="og:image:height" content="540">
     
     <script type="application/ld+json">
 {
@@ -72,15 +72,12 @@
     },
     "keywords": "Data Science",
     "description": "Can computers make art? To find out, we tried ourselves. We used Generative Adversarial Networks to try to paint new Van Gogh paintings.",
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "https://jeroenoverschie.nl/"
-    }
+    "mainEntityOfPage": "https://jeroenoverschie.nl/making-art-with-generative-adversarial-networks/"
 }
     </script>
 
-    <meta name="generator" content="Ghost 5.19" />
-    <link rel="alternate" type="application/rss+xml" title="Jeroen Overschie" href="https://jeroenoverschie.nl/rss/" />
+    <meta name="generator" content="Ghost 5.94">
+    <link rel="alternate" type="application/rss+xml" title="Jeroen Overschie" href="https://jeroenoverschie.nl/rss/">
 
     <style amp-custom>
     *,
@@ -255,6 +252,16 @@
 
     amp-img img {
         object-fit: cover;
+    }
+    
+    amp-youtube {
+        height: calc(100vw / 1.78);
+        width: 100vw;
+        position: relative;
+    }
+
+    amp-youtube img {
+        position: absolute;
     }
 
     .page-header {
@@ -1079,7 +1086,7 @@
             </figure>
             <section class="post-content">
 
-                <p>Generative Adversarial Networks (<a href="https://arxiv.org/abs/1406.2661">GAN's</a>) are a relatively new type of technique for generating samples from a learned distribution, in which two networks are simultaneously trained whilst competing against each other. Applications for GAN’s are numerous, including image up-sampling, image generation, and the recently quite popular <strong>Deep Fakes</strong>. In this project, we aim to train such a Generative Adversarial Network ourselves, with the purpose of image generation, specifically. As the generation of human faces has been widely studied, we have chosen a different topic, namely: the generation of paintings. While large datasets of paintings are available, we have opted to restrict ourselves to one artist, as we believe this will give a better chance at producing realistic paintings. For this, we have chosen the Dutch artist <em>Vincent van Gogh</em>, who is known for his unique style.</p><h2 id="how">How</h2><p>There are many GAN architectures around. Some popular of which the <a href="https://arxiv.org/abs/1511.06434">DCGAN</a> and the <a href="https://arxiv.org/abs/1812.04948">StyleGAN</a>. We decided to train both and compare the results.</p><ul><li>DCGAN. A GAN architecture that has been around for a while. Was trained using <a href="https://www.tensorflow.org/">TensorFlow</a>.</li><li>StyleGAN. A popular GAN architecture for generating faces, provisioned by NVIDIA Research. Also trained using TensorFlow.</li></ul><p>Both were trained on the <a href="https://www.kaggle.com/ipythonx/van-gogh-paintings">Van Gogh dataset</a>, as available on Kaggle. Because the dataset contained only a limited amount of paintings (painting is, of course, a very time consuming activity), we decided to augment the dataset. Among others, we applied rotation- and shearing operations, and modified the brightness, such that we get more training data.</p><p>The StyleGAN showed the most promising results. Starting out with a seed previously used to generate a face, we managed to train a GAN that produced something that remotely resembled art. Given that a computer is doing this, that's pretty neat!</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><figcaption>Progressively grown StyleGAN. The adversarial network first takes on the task of creating low-resolution art, and then progressively makes sharper images (fakes).</figcaption></figure><p></p><h2 id="more-reading">More reading</h2><p>To read a more detailed report on this project, check out the Github page:</p><figure class="kg-card kg-image-card kg-card-hascaption"><a href="https://github.com/dunnkers/generative-adversarial-networks"></a><figcaption><a href="https://github.com/dunnkers/generative-adversarial-networks">generative-adversarial-networks</a></figcaption></figure>
+                <p>Generative Adversarial Networks (<a href="https://arxiv.org/abs/1406.2661?ref=localhost">GAN's</a>) are a relatively new type of technique for generating samples from a learned distribution, in which two networks are simultaneously trained whilst competing against each other. Applications for GAN’s are numerous, including image up-sampling, image generation, and the recently quite popular <strong>Deep Fakes</strong>. In this project, we aim to train such a Generative Adversarial Network ourselves, with the purpose of image generation, specifically. As the generation of human faces has been widely studied, we have chosen a different topic, namely: the generation of paintings. While large datasets of paintings are available, we have opted to restrict ourselves to one artist, as we believe this will give a better chance at producing realistic paintings. For this, we have chosen the Dutch artist <em>Vincent van Gogh</em>, who is known for his unique style.</p><h2 id="how">How</h2><p>There are many GAN architectures around. Some popular of which the <a href="https://arxiv.org/abs/1511.06434?ref=localhost">DCGAN</a> and the <a href="https://arxiv.org/abs/1812.04948?ref=localhost">StyleGAN</a>. We decided to train both and compare the results.</p><ul><li>DCGAN. A GAN architecture that has been around for a while. Was trained using <a href="https://www.tensorflow.org/?ref=localhost">TensorFlow</a>.</li><li>StyleGAN. A popular GAN architecture for generating faces, provisioned by NVIDIA Research. Also trained using TensorFlow.</li></ul><p>Both were trained on the <a href="https://www.kaggle.com/ipythonx/van-gogh-paintings?ref=localhost">Van Gogh dataset</a>, as available on Kaggle. Because the dataset contained only a limited amount of paintings (painting is, of course, a very time consuming activity), we decided to augment the dataset. Among others, we applied rotation- and shearing operations, and modified the brightness, such that we get more training data.</p><p>The StyleGAN showed the most promising results. Starting out with a seed previously used to generate a face, we managed to train a GAN that produced something that remotely resembled art. Given that a computer is doing this, that's pretty neat!</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><figcaption>Progressively grown StyleGAN. The adversarial network first takes on the task of creating low-resolution art, and then progressively makes sharper images (fakes).</figcaption></figure><p></p><h2 id="more-reading">More reading</h2><p>To read a more detailed report on this project, check out the Github page:</p><figure class="kg-card kg-image-card kg-card-hascaption"><a href="https://github.com/dunnkers/generative-adversarial-networks?ref=localhost"></a><figcaption><a href="https://github.com/dunnkers/generative-adversarial-networks?ref=localhost">generative-adversarial-networks</a></figcaption></figure>
 
             </section>
 
