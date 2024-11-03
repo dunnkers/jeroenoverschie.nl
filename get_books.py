@@ -133,5 +133,7 @@ def fetch_shelf(user_id: str, shelf_name: str, key: str):
     # parse XML
 
 
+
+
 def fetch_quotes(user_id: str):
     quotefeed = feedparser.parse(f"https://www.goodreads.com/quotes/list_rss/{user_id}")
