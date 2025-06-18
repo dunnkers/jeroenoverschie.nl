@@ -32,3 +32,16 @@ npm run deploy
 ```
 
 Which will generate the website at `/static`, replace `localhost` with the website name, and upload it to GitHub pages 🙌🏻.
+
+## Detached mode (recommended)
+
+```
+docker run -d \
+  --name ghost_detached \
+  -p 2368:2368 \
+  -v /Users/dunnkers/git/jeroenoverschie.nl/content:/var/lib/ghost/content \
+  -e NODE_ENV=development \
+  -e database__client=sqlite3 \
+  -e database__connection__filename=/var/lib/ghost/content/data/ghost-local.db \
+  ghost:5.116.1
+```
