@@ -13,6 +13,12 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+    - name: Checkout theme
+      uses: actions/checkout@v4
+      with:
+        repository: dunnkers/ghost-dunnkers-theme-edition
+        path: content/themes/dunnkers-theme-edition
+
     - name: Start Ghost Container
       run: |
         docker run -d --name ghost -p 2368:2368 \
