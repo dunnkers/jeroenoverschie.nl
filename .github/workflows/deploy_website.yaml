@@ -26,7 +26,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: 16
+        node-version: 18
 
     - name: Install dependencies
       run: npm install -g ghost-static-site-generator gh-pages replace-in-file
@@ -43,12 +43,13 @@ jobs:
         echo "Ghost is up and running"
 
     - name: Build
-      run: npm run build
+      run: gssg && npx replace-in-file --configFile=replace-in-file_config.json && npx replace-in-file --configFile=replace-in-file_sitemap_config.json && npx replace-in-file --configFile=replace-in-file_sourcemaps_config.json
+
+    - name: Create CNAME
+      run: echo 'jeroenoverschie.nl' > static/CNAME
 
     - name: Deploy
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        npm run deploy
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        npx gh-pages -d static --repo https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
