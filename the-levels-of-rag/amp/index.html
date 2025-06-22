@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html ⚡ lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>The Levels of RAG (on Xebia.com ⧉)</title>
+
+    <meta name="description" content="LLM’s can be supercharged using a technique called RAG, allowing us to overcome dealbreaker problems like hallucinations or no access to internal data. But what can we expect from RAG? What use cases work well and which are more challenging? Let’s find out together!">
+    <link rel="icon" href="https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg" type="image/png">
+    <link rel="canonical" href="https://jeroenoverschie.nl/the-levels-of-rag/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Jeroen Overschie">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="The Levels of RAG (on Xebia.com ⧉)">
+    <meta property="og:description" content="LLM’s can be supercharged using a technique called RAG, allowing us to overcome dealbreaker problems like hallucinations or no access to internal data. But what can we expect from RAG? What use cases work well and which are more challenging? Let’s find out together!">
+    <meta property="og:url" content="https://jeroenoverschie.nl/the-levels-of-rag/">
+    <meta property="og:image" content="https://jeroenoverschie.nl/content/images/2024/09/banner.jpg">
+    <meta property="article:published_time" content="2024-09-27T13:34:38.000Z">
+    <meta property="article:modified_time" content="2024-11-22T13:40:28.000Z">
+    <meta property="article:tag" content="Data Science">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Levels of RAG (on Xebia.com ⧉)">
+    <meta name="twitter:description" content="LLM’s can be supercharged using a technique called RAG, allowing us to overcome dealbreaker problems like hallucinations or no access to internal data. But what can we expect from RAG? What use cases work well and which are more challenging? Let’s find out together!">
+    <meta name="twitter:url" content="https://jeroenoverschie.nl/the-levels-of-rag/">
+    <meta name="twitter:image" content="https://jeroenoverschie.nl/content/images/2024/09/banner.jpg">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Jeroen Overschie">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Data Science">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="686">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Jeroen Overschie",
+        "url": "https://jeroenoverschie.nl/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Jeroen Overschie",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.gravatar.com/avatar/b37b136916ade32aada1f345482aafa4?s=250&r=x&d=mp",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://jeroenoverschie.nl/author/jeroen/",
+        "sameAs": []
+    },
+    "headline": "The Levels of RAG (on Xebia.com ⧉)",
+    "url": "https://jeroenoverschie.nl/the-levels-of-rag/",
+    "datePublished": "2024-09-27T13:34:38.000Z",
+    "dateModified": "2024-11-22T13:40:28.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://jeroenoverschie.nl/content/images/2024/09/banner.jpg",
+        "width": 1200,
+        "height": 686
+    },
+    "keywords": "Data Science",
+    "description": "LLM’s can be supercharged using a technique called RAG, allowing us to overcome dealbreaker problems like hallucinations or no access to internal data. But what can we expect from RAG? What use cases work well and which are more challenging? Let’s find out together!",
+    "mainEntityOfPage": "https://jeroenoverschie.nl/the-levels-of-rag/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.126">
+    <link rel="alternate" type="application/rss+xml" title="Jeroen Overschie" href="https://jeroenoverschie.nl/rss/">
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: var(--ghost-accent-color, #1292EE);
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+    
+    amp-youtube {
+        height: calc(100vw / 1.78);
+        width: 100vw;
+        position: relative;
+    }
+
+    amp-youtube img {
+        position: absolute;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content blockquote.kg-blockquote-alt {
+        font-size: 1.2em;
+        font-style: italic;
+        line-height: 1.6em;
+        text-align: center;
+        color: #738a94;
+        padding: 0.75em 3em 1.25em;
+    }
+
+    .post-content blockquote.kg-blockquote-alt::before {
+        display: none;
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #15171a;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 3px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-toggle-card-icon {
+        display: none;
+    }
+
+    .kg-toggle-content {
+        margin-top: 0.8rem;
+    }
+
+    .kg-product-card-container {
+        background: transparent;
+        padding: 20px;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: inset 0 0 0 1px rgb(124 139 154 / 25%);
+    }
+
+    .kg-product-card-description p {
+        margin-top: 1.5em;
+    }
+
+    .kg-product-card-description ul {
+        margin-left: 24px;
+    }
+
+    .kg-product-card-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+    }
+
+    .kg-product-card-rating-star {
+        height: 28px;
+        width: 20px;
+        margin-right: 2px;
+    }
+
+    .kg-product-card-rating-star svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    opacity: 0.15;
+    }
+
+    .kg-product-card-rating-active.kg-product-card-rating-star svg {
+    opacity: 1;
+    }
+
+    .kg-nft-card-container {
+        position: relative;
+        display: flex;
+        flex: auto;
+        flex-direction: column;
+        text-decoration: none;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        box-shadow: 0 2px 6px -2px rgb(0 0 0 / 10%), 0 0 1px rgb(0 0 0 / 40%);
+        width: 100%;
+        max-width: 512px;
+        color: #15212A;
+        background: #fff;
+        border-radius: 5px;
+        transition: none;
+        margin: 0 auto;
+    }
+
+    .kg-nft-metadata {
+        padding: 2.0rem;
+    }
+
+    .kg-nft-image-container {
+        position: relative;
+    }
+
+    .kg-nft-image {
+        display: flex;
+        border-radius: 5px 5px 0 0;
+    }
+
+    .kg-nft-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .kg-nft-header h4.kg-nft-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+        margin: 0;
+        color: #15212A;
+    }
+
+    .kg-nft-header amp-img {
+        max-width: 114px;
+        max-height: 26px;
+    }
+
+    .kg-nft-opensea-logo {
+        margin-top: 2px;
+        width: 100px;
+    }
+
+    .kg-nft-creator {
+        font-family: inherit;
+        color: #95A1AD;
+    }
+
+    .kg-nft-creator span {
+        font-weight: 500;
+        color: #15212A;
+    }
+
+    .kg-nft-card p.kg-nft-description {
+        font-size: 1.4rem;
+        line-height: 1.4em;
+        margin: 2.0rem 0 0;
+        color: #222;
+    }
+
+    .kg-button-card {
+        display: flex;
+        position: static;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .kg-btn {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 2.0rem;
+        height: 4.0rem;
+        line-height: 4.0rem;
+        font-size: 1.65rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .kg-btn:hover {
+        opacity: 0.85;
+    }
+
+    .kg-btn-accent {
+        background-color: var(--ghost-accent-color, #1292EE);
+        color: #fff;
+    }
+
+    .kg-callout-card {
+        display: flex;
+        padding: 20px 28px;
+        border-radius: 3px;
+    }
+
+    .kg-callout-card-grey {
+        background: rgba(124, 139, 154, 0.13);
+    }
+
+    .kg-callout-card-white {
+        background: transparent;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-callout-card-blue {
+        background: rgba(33, 172, 232, 0.12);
+    }
+
+    .kg-callout-card-green {
+        background: rgba(52, 183, 67, 0.12);
+    }
+
+    .kg-callout-card-yellow {
+        background: rgba(240, 165, 15, 0.13);
+    }
+
+    .kg-callout-card-red {
+        background: rgba(209, 46, 46, 0.11);
+    }
+
+    .kg-callout-card-pink {
+        background: rgba(225, 71, 174, 0.11);
+    }
+
+    .kg-callout-card-purple {
+        background: rgba(135, 85, 236, 0.12);
+    }
+
+    .kg-callout-card-accent {
+        background: var(--ghost-accent-color);
+        color: #fff;
+    }
+
+    .kg-callout-card-accent a {
+        color: #fff;
+    }
+
+    .kg-callout-emoji {
+        padding-right: 16px;
+        line-height: 1.3;
+        font-size: 1.25em;
+    }
+
+    .kg-header-card {
+        padding: 6em 3em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .kg-header-card.kg-size-small {
+        padding-top: 4em;
+        padding-bottom: 4em;
+    }
+
+    .kg-header-card.kg-size-large {
+        padding-top: 12em;
+        padding-bottom: 12em;
+    }
+
+    .kg-header-card.kg-width-full {
+        padding-left: 4em;
+        padding-right: 4em;
+    }
+
+    .kg-header-card.kg-align-left {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .kg-header-card.kg-style-dark {
+        background: #15171a;
+        color: #ffffff;
+    }
+
+    .kg-header-card.kg-style-light {
+        color: #15171a;
+        border: 1px solid rgba(124, 139, 154, 0.25);
+        border-width: 1px 0;
+    }
+
+    .kg-header-card.kg-style-accent {
+        background-color: var(--ghost-accent-color);
+    }
+
+    .kg-header-card.kg-style-image {
+        background-color: #e7e7eb;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .kg-header-card h2 {
+        font-size: 4em;
+        font-weight: 700;
+        line-height: 1.1em;
+        margin: 0;
+    }
+
+    .kg-header-card h2 strong {
+        font-weight: 800;
+    }
+
+    .kg-header-card.kg-size-small h2 {
+        font-size: 3em;
+    }
+
+    .kg-header-card.kg-size-large h2 {
+        font-size: 5em;
+    }
+
+    .kg-header-card h3 {
+        font-size: 1.25em;
+        font-weight: 500;
+        line-height: 1.3em;
+        margin: 0;
+    }
+
+    .kg-header-card h3 strong {
+        font-weight: 600;
+    }
+
+    .kg-header-card.kg-size-small h3 {
+        font-size: 1em;
+    }
+
+    .kg-header-card.kg-size-large h3 {
+        font-size: 1.5em;
+    }
+
+    .kg-header-card:not(.kg-style-light) h2,
+    .kg-header-card:not(.kg-style-light) h3 {
+        color: #ffffff;
+    }
+
+    .kg-header-card a.kg-header-card-button {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 1.2em;
+        height: 2.4em;
+        line-height: 1em;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-size: 0.95em;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+        background-color: var(--ghost-accent-color);
+        color: #ffffff;
+        margin: 1.75em 0 0;
+    }
+
+    .kg-header-card a.kg-header-card-button:hover {
+        opacity: 0.85;
+    }
+
+    .kg-header-card.kg-size-large a.kg-header-card-button {
+        margin-top: 2em;
+    }
+
+    .kg-header-card.kg-size-small a.kg-header-card-button {
+        margin-top: 1.5em;
+    }
+
+    .kg-header-card.kg-style-image a.kg-header-card-button,
+    .kg-header-card.kg-style-dark a.kg-header-card-button {
+        background: #ffffff;
+        color: #15171a;
+    }
+
+    .kg-header-card.kg-style-accent a.kg-header-card-button {
+        background: #ffffff;
+        color: var(--ghost-accent-color);
+    }
+
+    .kg-audio-card {
+        display: flex;
+        width: 100%;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-audio-thumbnail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        min-width: 80px;
+        height: 80px;
+        background: transparent;
+        object-fit: cover;
+        aspect-ratio: 1/1;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .kg-audio-thumbnail.placeholder {
+        background: var(--ghost-accent-color);
+    }
+
+    .kg-audio-thumbnail.placeholder svg {
+        width: 24px;
+        height: 24px;
+        fill: white;
+    }
+
+    .kg-audio-player-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        --seek-before-width: 0%;
+        --volume-before-width: 100%;
+        --buffered-width: 0%;
+    }
+
+    .kg-audio-title {
+        width: 100%;
+        padding: 8px 12px 0;
+        border: none;
+        font-family: inherit;
+        font-size: 1.1em;
+        font-weight: 700;
+        background: transparent;
+    }
+
+    .kg-audio-player {
+        display: none;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+
+    :root {--ghost-accent-color: #FF1A75;}
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="https://jeroenoverschie.nl">
+                <amp-img class="site-icon" src="https://jeroenoverschie.nl/content/images/2022/10/cartoon-head-jeroen-1-2.svg" width="50" height="50" layout="fixed" alt="Jeroen Overschie"></amp-img>
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">The Levels of RAG (on Xebia.com ⧉)</h1>
+                <section class="post-meta">
+                    Jeroen Overschie -
+                    <time class="post-date" datetime="2024-09-27">27 Sep 2024</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="https://jeroenoverschie.nl/content/images/2024/09/banner.jpg" width="600" height="340" layout="responsive" 
+                alt="The Levels of RAG (on Xebia.com ⧉)"
+                ></amp-img>
+            </figure>
+            <section class="post-content">
+
+                <h2 id="introduction">Introduction</h2><p>LLM’s can be supercharged using a technique called RAG, allowing us to overcome dealbreaker problems like hallucinations or no access to internal data. RAG is gaining more industry momentum and is becoming rapidly more mature both in the open-source world and at major Cloud vendors. But what can we expect from RAG? What is the current state of the tech in the industry? What use cases work well and which are more challenging? Let’s find out together!</p><h2 id="why-rag">Why RAG</h2><p>Retrieval Augmented Generation (RAG) is a popular technique to combine retrieval methods like vector search together with Large Language Models (LLM’s). This gives us several advantages like retrieving extra information based on a user search query: allowing us to quote and cite LLM-generated answers. In short, <strong>RAG is valuable because</strong>:</p><ul><li>Access to up-to-date knowledge</li><li>Access to internal company data</li><li>More factual answers</li></ul><p>That all sounds great. But how does RAG work? Let’s introduce the Levels of RAG to help us understand RAG in increasing grades of complexity.</p><h2 id="the-levels-of-rag">The Levels of RAG</h2><p>RAG has many different facets. To help more easily understand RAG, let’s break it down into four levels:</p>
+
+<table><caption class="text-center text-grey-500 text-sm">The Levels of RAG.</caption><thead><tr><th><span>Level 1</span><br />Basic RAG</th><th><span>Level 2</span><br />Hybrid Search</th><th><span>Level 3</span><br />Advanced data formats</th><th><span>Level 4</span><br />Multimodal</th></tr></thead><tbody></tbody></table>
+
+<p></p><p>Each level adds new complexity. Besides explaining the techniques, we will also look into justifying the introduced complexities. That is important, because you want to have good reasons to do so: we want to make everything as simple as possible, but no simpler <a href="https://www.goodreads.com/quotes/7133605-make-things-as-simple-as-possible-but-no-simpler"><sup>[1]</sup></a>.</p><p>We will start with building a RAG from the beginning and understand which components are required to do so. So let’s jump right into <strong>Level 1: Basic RAG</strong>.</p><h2 id="level-1-basic-rag">Level 1: Basic RAG</h2><figure class="kg-card kg-image-card"></figure><p>Let’s build a RAG. To do RAG, we need two main components: <strong>document retrieval</strong> and <strong>answer generation</strong>.</p><figure class="kg-card kg-image-card"><amp-img src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide1-3.png" class="kg-image" alt="alt text" width="2112" height="924" layout="responsive"></amp-img></figure><p>The two main components of RAG: document retrieval and answer generation.</p><p>In contrast with a normal LLM interaction, we are now first retrieving relevant context to only then answer the question using that context. That allows us to <em>ground</em> our answer in the retrieved context, making the answer more factually reliable.</p><p>Let’s look at both components in more detail, starting with the <em>Document retrieval</em> step. One of the main techniques powering our retrieval step is <strong>Vector Search</strong>.</p><h3 id="vector-search">Vector Search</h3><p>To retrieve documents relevant to our user query, we will use Vector Search. This technique is based on <em>vector embeddings</em>. What are those? Imagine we embed words. Then words that are semantically similar should be closer together in the embedding space. We can do the same for sentences, paragraphs, or even whole documents. Such an embedding is typically represented by vectors of 768-, 1024-, or even 3072 dimensions. Though we as humans cannot visualize such high-dimensional spaces: we can only see 3 dimensions! For example sake let us compress such an embedding space into 2 dimensions so we visualize it:</p><figure class="kg-card kg-image-card"><amp-img src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide2-2.png" class="kg-image" alt="alt text" width="2112" height="688" layout="responsive"></amp-img></figure><p>Embeddings that are similar in meaning are closer to each other. In practice not in 2D but higher dimensions like 768D.</p><p>Note this is a drastically oversimplified explanation of vector embeddings. Creating vector embeddings of text: from words up to entire documents, is quite a study on its own. Most important to note though is that with embeddings we capture the <em>meaning</em> of the embedded text!</p><p>So how to use this for RAG? Well, instead of embedding words we can embed our source documents instead. We can then <em>also</em> embed the user question and then perform a <em>vector similarity search</em> on those:</p><figure class="kg-card kg-image-card"><amp-img src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide3.png" class="kg-image" alt="alt text" width="2112" height="688" layout="responsive"></amp-img></figure><p>Embedding both our source documents and the search query allows us to do a <em>vector similarity search</em>.</p><p>Great! We now have the ingredients necessary to construct our first <em>Document retrieval</em> setup:</p><figure class="kg-card kg-image-card"><amp-img src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide4.png" class="kg-image" alt="alt text" width="2112" height="959" layout="responsive"></amp-img></figure><p>The full retrieval step with <em>vector search</em>.</p><p>Next is the <em>Answer generation</em> step. This will entail passing the found pieces of context to an LLM to form a final answer out of it. We will keep that simple so will use a single prompt for that:</p><figure class="kg-card kg-image-card"><amp-img src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide5.png" class="kg-image" alt="alt text" width="2112" height="982" layout="responsive"></amp-img></figure><p>The RAG answer generation step. Prompt from LangChain hub (<a href="https://smith.langchain.com/hub/rlm/rag-prompt">rlm/rag-prompt</a>).</p><p>Cool. That concludes our full first version of the Basic RAG. To test our RAG system, we need some data. I recently went to PyData and figured how cool would it be to create a RAG based on their schedule. Let’s design a RAG using the schedule of PyData Eindhoven 2024.</p><figure class="kg-card kg-image-card"><amp-img src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide6.png" class="kg-image" alt="alt text" width="2112" height="775" layout="responsive"></amp-img></figure><p>The RAG system loaded with data from the <a href="https://pydata.org/eindhoven2024/schedule">PyData Eindhoven 2024 schedule</a>.</p><p>So how do we ingest such a schedule in a vector database? We will take each session and format it as Markdown, respecting the structure of the schedule by using headers.</p><figure class="kg-card kg-image-card"></figure><p>Each session is formatted as Markdown and then converted to an embedding.</p><p>Our RAG system is now fully functional. We embedded all sessions and ingested them into a vector database. We can then find sessions similar to the user question using vector similarity search and answer the question based on a predefined prompt. Let’s test it out!</p><figure class="kg-card kg-image-card"></figure><p>Testing out our basic RAG system. The RAG retrieves talks related to the user question and correctly answers the question.</p><p>That is cool! Our RAG was able to correctly answer the question. Upon inspection of the schedule we can see that the listed talks are indeed all related to sports. We just built a first RAG system 🎉.</p><p>There are points of improvement, however. We are now embedding the sessions in its entirety. But embedding large pieces of text can be problematic, because:</p><ul><li>❌ Embeddings can get saturated and lose meaning</li><li>❌ Imprecise citations</li><li>❌ Large context → high cost</li></ul><p>So what we can do to solve this problem is to divide up text in smaller pieces, then embed those instead. This is <strong>Chunking</strong>.</p><h3 id="chunking">Chunking</h3><p>In chunking the challenge lies in determining <em>how</em> to divide up the text to then embed those smaller pieces. There are <em>many</em> ways to chunk text. Let’s first look at a simple one. We will create chunks of fixed length:</p><figure class="kg-card kg-image-card"><amp-img src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide9.png" class="kg-image" alt="alt text" width="2112" height="633" layout="responsive"></amp-img></figure><p>Splitting a text into fixed-sized pieces does not create meaningful chunks. Words and sentences are split in random places. <br /><a href="https://api.python.langchain.com/en/latest/character/langchain_text_splitters.character.CharacterTextSplitter.html#langchain_text_splitters.character.CharacterTextSplitter">Character Text Splitter</a> with <code>chunk_size = 25</code>. This is an unrealistically small chunk size but is merely used for example sake.</p><p>This is not ideal. Words, sentences and paragraphs are not respected and are split at inconvenient locations. This decreases the quality of our embeddings. We can do better than this. Let’s try another splitter that tries to better respect the structure of the text by taking into account line breaks (¶):</p><figure class="kg-card kg-image-card"><amp-img src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide10.png" class="kg-image" alt="alt text" width="2112" height="633" layout="responsive"></amp-img></figure><p>Text is split, respecting line breaks (¶). This way, chunks do not span across paragraphs and split better. <br /><a href="https://api.python.langchain.com/en/latest/character/langchain_text_splitters.character.RecursiveCharacterTextSplitter.html#langchain_text_splitters.character.RecursiveCharacterTextSplitter">Recursive Character Text Splitter</a> with <code>chunk_size = 25</code>. This is an unrealistically small chunk size but is merely used for example sake.</p><p>This is better. The quality of our embeddings is now better due to better splits. Note that <code>chunk_size = 25</code> is only used for example sake. In practice we will use larger chunk sizes like 100, 500, or 1000. Try and see what works best on your data. But most notably, also do experiment with different text splitters. The <a href="https://api.python.langchain.com/en/latest/text_splitters_api_reference.html#">LangChain Text Splitters</a> section has many available and the internet is full of others.</p><p>Now we have chunked our text, we can embed those chunks and ingest them in our vector database. Then, when we let the LLM answer our question we can also ask it to state which chunks it used in answering the question. This way, we can pinpoint accurately which information the LLM was grounded in whilst answering the question, allowing us to provide the user with <strong>Citations</strong>:</p><figure class="kg-card kg-image-card"></figure><p>Chunks can be used to show user where the information came from to generate the final answer, allowing us to show the user source <strong>citations</strong>.</p><p>That is great. Citations can be very powerful in a RAG application to improve transparency and thereby also user trust. Summarized, chunking has the following benefits:</p><ul><li>Embeddings are more meaningful</li><li>Precise citations</li><li>Shorter context → lower cost</li></ul><p>We can now extend our <em>Document retrieval</em> step with chunking:</p><figure class="kg-card kg-image-card"><amp-img src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide12.png" class="kg-image" alt="alt text" width="2112" height="959" layout="responsive"></amp-img></figure><p>RAG retrieval step with <strong>chunking</strong>.</p><p>We have our Basic RAG set up with <em>Vector search</em> and <em>Chunking</em>. We also saw our system can answer questions correctly. But how well actually does it do? Let’s take the question “<em>What’s the talk starting with Maximizing about?</em>” and launch it at our RAG:</p><figure class="kg-card kg-image-card"><amp-img src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide13.png" class="kg-image" alt="alt text" width="2112" height="727" layout="responsive"></amp-img></figure><p>For this question the incorrect context is retrieved, causing the LLM to give a <em>wrong</em> answer.<br />UI shown is <a href="https://www.langchain.com/langsmith">LangSmith</a>, a GenAI monitoring tool. Open source alternative is <a href="https://langfuse.com/">LangFuse</a>.</p><p>Ouch! This answer is wildly wrong. This is not the talk starting with <em>Maximizing</em>. The talk described has the title <em>Scikit-Learn can do THAT?!</em>, which clearly does not start with the word <em>Maximizing</em>.</p><p>For this reason, we need another method of search, like <em>keyword search</em>. Because we would also still like to keep the benefits of vector search, we can combine the two methods to create a <strong>Hybrid Search</strong>.</p><h2 id="level-2-hybrid-search">Level 2: Hybrid Search</h2><figure class="kg-card kg-image-card"></figure><p>In Hybrid Search, we aim to combine two ranking methods to get the best of both worlds. We will combine <em>Vector search</em> with <em>Keyword search</em> to create a Hybrid Search setup. To do so, we must pick a suitable ranking method. Common ranking algorithms are:</p><ul><li><a href="https://en.wikipedia.org/wiki/Tf%E2%80%93idf"><strong>TF-IDF</strong></a>: Term Frequency-Inverse Document Frequency</li><li><a href="https://en.wikipedia.org/wiki/Okapi_BM25"><strong>Okapi BM-25</strong></a>: Okapi Best Matching 25</li></ul><p>… of which we can consider BM-25 an improved version of TF-IDF. Now, how do we combine Vector Search with an algorithm like BM-25? We now have two separate rankings we want to <em>fuse</em> together into one. For this, we can use <strong>Reciprocal Rank Fusion</strong>:</p><figure class="kg-card kg-image-card"><amp-img src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide14.png" class="kg-image" alt="alt text" width="2112" height="872" layout="responsive"></amp-img></figure><p>Reciprocal Rank Fusion is used to merge two ranking methods into one (see <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html">Elastic Search docs</a>).</p><p>Reciprocal Rank Fusion is massively useful to combine two rankings. This way, we can now use both Vector search and Keyword search to retrieve documents. We can now extend again our <em>Document retrieval</em> step to create a Hybrid Search setup:</p><figure class="kg-card kg-image-card"><amp-img src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide15.png" class="kg-image" alt="alt text" width="2112" height="959" layout="responsive"></amp-img></figure><p>The RAG retrieval step with <strong>hybrid search</strong>.</p><p>Most notably, when a user performs a search, a query is made both to our vector database and to our keyword search. Once the results are merged using Reciprocal Rank Fusion, the top results are taken and passed back to our LLM.</p><p>Let’s take again the question “<em>What’s the talk starting with Maximizing about?</em>” like we did in Level 1 and see how our RAG handles it with Hybrid Search:</p><figure class="kg-card kg-image-card"><amp-img src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide16.png" class="kg-image" alt="alt text" width="2112" height="866" layout="responsive"></amp-img></figure><p>Hybrid Search allows us to combine Vector search and Keyword search, allowing us to retrieve the desired document containing the keyword.</p><p>That is much better! 👏🏻 The document we were looking for was now ranked high enough that it shows up in our retrieval step. It did so by boosting the terms used in the search query. Without the document available in our prompt context, the LLM could impossibly give us the correct answer. Let’s see both the retrieval step and generation step to see what our LLM now answers on this question:</p><figure class="kg-card kg-image-card"></figure><p>With the correct context, we also got the correct answer!</p><p>That is the correct answer ✓. With the right context available to the LLM we also get the right answer. Retrieving the right context is the most important feature of our RAG: without it, the LLM can impossibly give us the right answer.</p><p>We now learned how to build a Basic RAG system and how to improve it with Hybrid Search. The data we loaded in comes from the PyData Eindhoven 2024 schedule: which was actually conveniently available in JSON format. But what about other data formats? In the real world, we can be asked to ingest other formats into our RAG like HTML, Word, and PDF.</p><figure class="kg-card kg-image-card"><amp-img src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide18.png" class="kg-image" alt="alt text" width="2112" height="656" layout="responsive"></amp-img></figure><p>Having structured data available like JSON is great, but that is not always the case in real life…</p><p>Formats like HTML, Word and especially PDF can be very unpredictable in terms of structure, making it hard for us to parse them consistently. PDF documents can contain images, graphs, tables, text, basically anything. So let us take on this challenge and level up to Level 3: <strong>Advanced data formats</strong>.</p><h2 id="level-3-advanced-data-formats">Level 3: Advanced data formats</h2><figure class="kg-card kg-image-card"></figure><p>This level revolves around ingesting challenging data formats like HTML, Word or PDF into our RAG. This requires extra considerations to do properly. For now, we will focus on <strong>PDF’s</strong>.</p><p>So, let us take some PDF’s as an example. I found some documents related to Space X’s Falcon 9 rocket:</p><p>Falcon 9 related documents we are going to build a RAG with.</p>
+
+<table><thead><tr><th><amp-img alt="alt text" src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-falcon-users-guide-high-res.png" width="844" height="1066" layout="responsive"></amp-img></th><th><amp-img alt="alt text" src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-falcon-nasa-document-high-res.png" width="1356" height="1068" layout="responsive"></amp-img></th><th><amp-img alt="alt text" src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-falcon-capabilities-overview-high-res.png" width="1608" height="1064" layout="responsive"></amp-img></th></tr></thead><tbody><tr><td><small>User’s guide<span class="Apple-converted-space"> </span><a href="https://www.spacex.com/media/falcon-users-guide-2021-09.pdf">(pdf)</a></small></td><td><small>Cost estimates<a href="https://www.nasa.gov/wp-content/uploads/2015/01/586023main_8-3-11_NAFCOM.pdf"><span class="Apple-converted-space"> </span>(pdf)</a></small></td><td><small>Capabilities &amp; Services<span class="Apple-converted-space"> </span><a href="https://www.spacex.com/media/Capabilities&amp;Services.pdf">(pdf)</a></small></td></tr></tbody></table>
+
+<p>We will now want to first parse those documents into raw text, such that we can then chunk- and embed that text. To do so, we will use a PDF parser for Python like <a href="https://pypdf.readthedocs.io/en/stable/">pypdf</a>. Conveniently, there’s a LangChain loader available for pypdf:</p><figure class="kg-card kg-image-card"><amp-img src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide20.png" class="kg-image" alt="alt text" width="2112" height="792" layout="responsive"></amp-img></figure><p>PDF to text parsing using <a href="https://api.python.langchain.com/en/latest/document_loaders/langchain_community.document_loaders.pdf.PyPDFLoader.html#langchain_community.document_loaders.pdf.PyPDFLoader">PyPDFLoader</a>.</p><p>Using pypdf we could convert these PDF’s into <em>raw text</em>. Note there’s many more available, check out the <a href="https://api.python.langchain.com/en/latest/search.html?q=pdf">LangChain API reference</a>. Both offline, local and Cloud solutions are offered like <a href="https://cloud.google.com/document-ai">GCP Document AI</a>, <a href="https://azure.microsoft.com/en-us/products/ai-services/ai-document-intelligence">Azure Document Intelligence</a> or <a href="https://aws.amazon.com/textract/">Amazon Textract</a>.</p><p>With such a document parsing step set up, we will need to extend our <em>Document retrieval</em> step to cover this new component:</p><figure class="kg-card kg-image-card"><amp-img src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide21.png" class="kg-image" alt="alt text" width="2112" height="959" layout="responsive"></amp-img></figure><p>RAG retrieval with a <em>document parsing step</em>, like converting PDF to raw text.</p><p>Time to test out our RAG! We embedded and ingested the raw text into our vector database and can now make queries against it. Let’s ask about the cost of a Falcon 9 rocket launch:</p><figure class="kg-card kg-image-card"><amp-img src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide22.png" class="kg-image" alt="alt text" width="2112" height="735" layout="responsive"></amp-img></figure><p>Our RAG can now answer questions about the PDF’s.</p><p>Awesome, that is the correct answer. Let’s try another question: “<em>What is the payload I can carry with the Falcon 9 rocket to Mars?</em>“:</p><figure class="kg-card kg-image-card"><amp-img src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide23.png" class="kg-image" alt="alt text" width="2112" height="740" layout="responsive"></amp-img></figure><p>Ouch! Our RAG got the answer wrong. It suggests that we can bring 8,300 kg of payload to Mars with a Falcon 9 rocket whilst in reality, this is 4,020 kg. That’s no small error.</p><p>Ow! Our RAG got that answer all wrong. It suggests we can bring double the payload to Mars than what is allowed. That is pretty inconvenient, in case you were preparing for a trip to Mars 😉.</p><p>We need to debug what went wrong. Let’s look at the context that was passed to the LLM:</p><figure class="kg-card kg-image-card"><amp-img src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide24.png" class="kg-image" alt="alt text" width="2112" height="834" layout="responsive"></amp-img></figure><p>The context provided to the LLM contains jumbled and unformatted text originating from a table. It should therefore come as no surprise that our LLM has difficulties answering questions about this table.</p><p>That explains a bunch. The context we’re passing to the LLM is hard to read and has a table encoded in a jumbled way. Like us the LLM has a hard time making sense of this. Therefore, we need to better encode this information in the prompt so our LLM can understand it.</p><p>If we want to support tables we can introduce an extra processing step. One option is to use Computer vision models to detect tables inside our documents, like <a href="https://github.com/microsoft/table-transformer"><code>table-transformer</code></a>. If a table gets detected we can then give it a special treatment. What we can for example do, is encode tables in our prompt as <strong>Markdown</strong>:</p><figure class="kg-card kg-image-card"><amp-img src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide25.png" class="kg-image" alt="alt text" width="2112" height="420" layout="responsive"></amp-img></figure><p>First parsing our table into a native format and then converting it to Markdown allows our LLM to much better understand the table.</p><p>Having detected the table and parsed it into a native format in our Python code allows us to then encode it in Markdown. Let’s pass that to our LLM instead and see what it answers this time:</p><figure class="kg-card kg-image-card"></figure><p>Our RAG got the answer correct this time.</p><p>Hurray! We got it correct this time. The LLM we used could easily interpret the Markdown table and pinpoint the correct value to use in answering the question. Note that still, we need to be able to retrieve the table in our retrieval step. This setup assumes we built a retrieval step that is able to retrieve the table given the user question.</p><p>However, I have to admit something. The model we have been using for this task was GPT-3.5 turbo, which is a text-only model. Newer models have been released that can handle more than just text, which are <em>Multimodal</em> models. After all, we are dealing with PDF’s which can also be seen as a series of images. Can we leverage such multimodal models to better answer our questions? Let’s find out in Level 4: <strong>Multimodal</strong>.</p><h2 id="level-4-multimodal">Level 4: Multimodal</h2><figure class="kg-card kg-image-card"></figure><p>In this final level, we will look into leveraging the possibilities of Multimodal models. One of them is GPT-4o, which was announced May 2024:</p><figure class="kg-card kg-image-card"><amp-img src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide27.png" class="kg-image" alt="alt text" width="2112" height="531" layout="responsive"></amp-img></figure><p>GPT-4o is a multimodal model that can reason across audio, vision and text. Launched by OpenAI in May 2024.</p><p>This is a very powerful model that can understand audio, vision and text. This means we can feed it images as part of an input prompt. Given that we can in our retrieval step retrieve the right PDF pages to use, we can insert those images in the prompt and ask the LLM our original question. This has the advantage that we can understand content that was previously <em>very</em> challenging to encode in just text. Also, content we interpret and encode as text is exposed to more conversion steps exposing us to risk of information getting lost in translation.</p><p>For example sake we will take the same table we had before but then answer the question using a Multimodal model. We can take the retrieved PDF pages encoded as images and insert them right into the prompt:</p><figure class="kg-card kg-image-card"><amp-img src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide28.png" class="kg-image" alt="alt text" width="2112" height="874" layout="responsive"></amp-img></figure><p>With a Multimodal model, we can insert an image in the prompt and let the LLM answer questions about it.</p><p>Impressive. The LLM got the answer correct. We should be aware though, that inserting images in the prompt comes with a very different token usage than the Markdown table we inserted as text before:</p><figure class="kg-card kg-image-card"><amp-img src="https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide29.png" class="kg-image" alt="alt text" width="2112" height="327" layout="responsive"></amp-img></figure><p>When using Multimodal models, do be aware of the extra cost that comes with it.</p><p>That is an immense increase in cost. Multimodal models can be incredibly powerful to interpret content that is otherwise very difficult to encode in text, as long as it is worth the cost ✓.</p><h2 id="concluding">Concluding</h2><p>We have explored RAG in 4 levels of complexity. We went from building our first basic RAG to a RAG that leverages Multimodal models to answer questions based on complex documents. Each level introduces new complexities which are justified in each their own way. Summarising, the Levels of RAG are:</p>
+
+<table><caption class="text-center text-grey-500 text-sm">The Levels of RAG, summarised.</caption><thead><tr><th><span>Level 1</span><br />Basic RAG</th><th><span>Level 2</span><br />Hybrid Search</th><th><span>Level 3</span><br />Advanced data formats</th><th><span>Level 4</span><br />Multimodal</th></tr></thead><tbody><tr><td>RAG’s main steps are 1) retrieval and 2) generation. Important components to do so are Embedding, Vector Search using a Vector database, Chunking and a Large Language Model (LLM).</td><td>Combining vector search and keyword search can improve retrieval performance. Sparse text search can be done using: TF-IDF and BM- 25. Reciprocal Rank Fusion can be used to merge two search engine rankings.</td><td>Support formats like HTML, Word and PDF. PDF can contain images, graphs but also tables. Tables need a separate treatment, for example with Computer Vision, to then expose the table to the LLM as Markdown.</td><td>Multimodal models can reason across audio, images and even video. Such models can help process complex data formats, for example by exposing PDF’s as images to the model. Given that the extra cost is worth the benefit, such models can be incredibly powerful.</td></tr></tbody></table>
+
+<p></p><p>RAG is a very powerful technique which can open up many new possibilities at companies. The Levels of RAG help you reason about the complexity of your RAG and allow you to understand what is difficult to do with RAG and what is easier. So: what is <em>your</em> level? 🫵</p><p>We wish you all the best with building your own RAG 👏🏻.</p>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+            <amp-img class="site-icon" src="https://jeroenoverschie.nl/content/images/2022/10/cartoon-head-jeroen-1-2.svg" width="50" height="50" layout="fixed" alt="Jeroen Overschie"></amp-img>
+        <h3>Jeroen Overschie</h3>
+            <p>This is Jeroen&#x27;s personal website.</p>
+        <p><a href="https://jeroenoverschie.nl">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>

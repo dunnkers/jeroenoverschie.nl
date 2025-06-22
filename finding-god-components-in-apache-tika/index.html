@@ -1,35 +1,474 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<html lang="en">
 
-    <title>500 — The currently active theme &quot;dunnkers-theme-edition&quot; is missing.</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Finding &#x27;God&#x27; components in Apache Tika</title>
 
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="/assets/built/screen.css?v=607f26b803">
 
-    <link rel="stylesheet" href="/public/ghost.css?v=fc76137a18"/>
+    <link rel="icon" href="https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg" type="image/png">
+    <link rel="canonical" href="https://jeroenoverschie.nl/finding-god-components-in-apache-tika/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="https://jeroenoverschie.nl/finding-god-components-in-apache-tika/amp/">
+    
+    <meta property="og:site_name" content="Jeroen Overschie">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Finding &#x27;God&#x27; components in Apache Tika">
+    <meta property="og:description" content="How did big, bulky software components come into being? In this project, we explore the evolution of so-called God Components; pieces of software with a large number of classes or lines of code that got very large over time. Our analysis was run on the Apache Tika codebase.
 
-  </head>
-  <body>
-    <main role="main" id="main">
-      <div class="gh-app">
-          <div class="gh-viewport">
-              <div class="gh-view">
-                <section class="error-content error-404 js-error-container">
-                  <section class="error-details">
-                    <section class="error-message">
-                      <h1 class="error-code">500</h1>
-                      <h2 class="error-description">The currently active theme &quot;dunnkers-theme-edition&quot; is missing.</h2>
-                      <a class="error-link" href="">Go to the front page →</a>
-                    </section>
-                  </section>
-                </section>
+In this">
+    <meta property="og:url" content="https://jeroenoverschie.nl/finding-god-components-in-apache-tika/">
+    <meta property="og:image" content="https://jeroenoverschie.nl/content/images/2021/11/god-components-apache-tika.png">
+    <meta property="article:published_time" content="2021-01-16T23:00:00.000Z">
+    <meta property="article:modified_time" content="2021-11-28T20:19:15.000Z">
+    <meta property="article:tag" content="Software Engineering">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Finding &#x27;God&#x27; components in Apache Tika">
+    <meta name="twitter:description" content="How did big, bulky software components come into being? In this project, we explore the evolution of so-called God Components; pieces of software with a large number of classes or lines of code that got very large over time. Our analysis was run on the Apache Tika codebase.
 
-              </div>
-          </div>
-      </div>
-    </main>
-  </body>
+In this">
+    <meta name="twitter:url" content="https://jeroenoverschie.nl/finding-god-components-in-apache-tika/">
+    <meta name="twitter:image" content="https://jeroenoverschie.nl/content/images/2021/11/god-components-apache-tika.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Jeroen Overschie">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Software Engineering">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="634">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Jeroen Overschie",
+        "url": "https://jeroenoverschie.nl/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Jeroen Overschie",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.gravatar.com/avatar/b37b136916ade32aada1f345482aafa4?s=250&r=x&d=mp",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://jeroenoverschie.nl/author/jeroen/",
+        "sameAs": []
+    },
+    "headline": "Finding &#x27;God&#x27; components in Apache Tika",
+    "url": "https://jeroenoverschie.nl/finding-god-components-in-apache-tika/",
+    "datePublished": "2021-01-16T23:00:00.000Z",
+    "dateModified": "2021-11-28T20:19:15.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://jeroenoverschie.nl/content/images/2021/11/god-components-apache-tika.png",
+        "width": 1200,
+        "height": 634
+    },
+    "keywords": "Software Engineering",
+    "description": "How did big, bulky software components come into being? In this project, we explore the evolution of so-called God Components; pieces of software with a large number of classes or lines of code that got very large over time. Our analysis was run on the Apache Tika codebase.\n\nIn this project, we set the following goals:\n\n * Search through the Java code programmatically and find components that exceed a certain size threshold\n * Find out how those components evolved over time. Did certain develope",
+    "mainEntityOfPage": "https://jeroenoverschie.nl/finding-god-components-in-apache-tika/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.126">
+    <link rel="alternate" type="application/rss+xml" title="Jeroen Overschie" href="https://jeroenoverschie.nl/rss/">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.5/umd/sodo-search.min.js" data-key="489b5afdd4c5385878c360bd9b" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.5/umd/main.css" data-sodo-search="https://jeroenoverschie.nl/" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="https://jeroenoverschie.nl/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=607f26b803"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=607f26b803">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQB9198LQ6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PQB9198LQ6');
+</script>
+</head>
+
+<body class="post-template tag-software-engineering">
+    <div class="site">
+        <header id="site-header" class="site-header">
+    <div class="header-inner">
+        <div class="header-brand">
+            <a class="logo" href="https://jeroenoverschie.nl">
+                    <span class="logo-text">Jeroen Overschie</span>
+            </a>
+
+            <div class="burger">
+                <div class="burger-bar"></div>
+                <div class="burger-bar"></div>
+            </div>
+        </div>
+
+        <nav class="header-nav">
+                        <a class="menu-item menu-item-home" href="https://jeroenoverschie.nl/">Home</a>
+        <a class="menu-item menu-item-publications" href="https://jeroenoverschie.nl/publications/">Publications</a>
+        <a class="menu-item menu-item-about-me" href="https://jeroenoverschie.nl/about/">About me</a>
+
+        </nav>
+
+        <div class="header-actions">
+            <div class="social">
+
+            </div>
+
+        </div>
+    </div>
+</header>
+
+        <div class="site-content">
+            
+<div class="content-area">
+    <main class="site-main">
+            <article class="single post tag-software-engineering">
+    <header class="single-header kg-canvas">
+            <div class="single-meta">
+                <span class="single-meta-item single-meta-date">
+                    <time datetime="2021-01-17">
+                        Jan 17, 2021
+                    </time>
+                </span>
+
+                <span class="single-meta-item single-meta-length">
+                    2 min read
+                </span>
+
+                    <span class="single-meta-item single-meta-tag">
+                        <a class="post-tag post-tag-software-engineering" href="/tag/software-engineering/">Software Engineering</a>
+                    </span>
+            </div>
+
+        <h1 class="single-title">Finding &#x27;God&#x27; components in Apache Tika</h1>
+
+
+                <figure class="single-media kg-width-wide">
+                    <img srcset="/content/images/size/w400/2021/11/god-components-apache-tika.png 400w,
+/content/images/size/w750/2021/11/god-components-apache-tika.png 750w,
+/content/images/size/w960/2021/11/god-components-apache-tika.png 960w,
+/content/images/size/w1140/2021/11/god-components-apache-tika.png 1140w" sizes="(min-width: 1023px) 920px, calc(90vw)" src="/content/images/size/w960/2021/11/god-components-apache-tika.png" alt="Finding &#x27;God&#x27; components in Apache Tika">
+                </figure>
+    </header>
+
+    <div class="single-content gh-content kg-canvas">
+        <p>How did big, bulky software components come into being? In this project, we explore the evolution of so-called <em><a href="https://en.wikipedia.org/wiki/God_object">God Components</a></em>; pieces of software with a large number of classes or lines of code that got very large over time. Our analysis was run on the <a href="https://tika.apache.org/" rel="nofollow">Apache Tika</a> codebase.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://jeroenoverschie.nl/content/images/2021/11/tika.png" class="kg-image" alt loading="lazy" width="292" height="100"><figcaption>Apache Tika is a software package for extracting metadata and text from many file extensions.</figcaption></figure><p>In this project, we set the following <strong>goals</strong>:</p><ul><li>Search through the Java code programmatically and find components that exceed a certain size threshold</li><li>Find out how those components evolved over time. Did certain developers often contribute to creating God components - in other words - code that is hard to maintain?</li></ul><p>To find out, we took roughly the following <strong>steps</strong>:</p><ol><li>Using a Python script, we created an index of the Tika codebase at every point in time. That is, we created a list of every Commit ID in the project.</li><li>For every commit, we run <a href="https://www.designite-tools.com/">Designite</a> - which is a tool to find architectural smells in Java projects. Because so many versions of the codebase had to be analyzed, this stage of the analysis was done on the University's supercomputer, <a href="https://www.rug.nl/society-business/centre-for-information-technology/research/services/hpc/facilities/peregrine-hpc-cluster?lang=en">Peregrine</a>.</li><li>Using a Jupyter Notebook, we aggregate and summarize all information outputted by Designite. The amount of data to parse was large, so it was important to map-reduce as quickly as possible without losing critical information.</li></ol><p>Such, we were able to visualize exactly at which time a component has been a God Component in the Tika codebase:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://jeroenoverschie.nl/content/images/2021/11/gc-lineplot.png" class="kg-image" alt loading="lazy" width="1118" height="388" srcset="https://jeroenoverschie.nl/content/images/size/w600/2021/11/gc-lineplot.png 600w, https://jeroenoverschie.nl/content/images/size/w1000/2021/11/gc-lineplot.png 1000w, https://jeroenoverschie.nl/content/images/2021/11/gc-lineplot.png 1118w" sizes="(min-width: 720px) 720px"><figcaption>Chart indicating when components started- and stopped being a 'God Component'.</figcaption></figure><p>For more results, check out the complete Jupyter Notebook:</p><figure class="kg-card kg-bookmark-card kg-card-hascaption"><a class="kg-bookmark-container" href="https://dunnkers.com/god-components/"><div class="kg-bookmark-content"><div class="kg-bookmark-title">God Components in Apache Tika</div><div class="kg-bookmark-description">How do God Components evolve in Apache Tika? A qualitative and quantitative analysis.</div><div class="kg-bookmark-metadata"><span class="kg-bookmark-publisher">Jeroen Overschie</span></div></div></a><figcaption>A Jupyter Notebook showing the final results of the analysis.</figcaption></figure><h3 id="further-reading">Further reading</h3><p>For more information, check out the Github page:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://jeroenoverschie.nl/content/images/2021/11/github32-2.png" class="kg-image" alt loading="lazy" width="32" height="32"><figcaption><a href="https://github.com/dunnkers/god-components/">god-components</a></figcaption></figure><p></p>
+    </div>
+
+        <footer class="single-footer container small">
+            <div class="single-footer-left">
+                    <div class="navigation navigation-previous">
+                        <a class="navigation-link" href="/backdoors-in-neural-networks/" aria-label="Previous post">
+                            <span class="navigation-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M26.667 14.667v2.667h-16L18 24.667l-1.893 1.893L5.547 16l10.56-10.56L18 7.333l-7.333 7.333h16z"></path>
+</svg></span>
+                        </a>
+                    </div>
+            </div>
+
+            <div class="single-footer-middle">
+                    <div class="single-footer-top">
+                        <h3 class="single-footer-title">Published by:</h3>
+                        <div class="author-list">
+                                <div class="author-image-placeholder u-placeholder square">
+                                    <a href="/author/jeroen/" title="Jeroen Overschie">
+                                            <img class="author-image u-object-fit" src="https://www.gravatar.com/avatar/b37b136916ade32aada1f345482aafa4?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp" alt="Jeroen Overschie" loading="lazy">
+                                    </a>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+
+            <div class="single-footer-right">
+                    <div class="navigation navigation-next">
+                        <a class="navigation-link" href="/making-art-with-generative-adversarial-networks/" aria-label="Next post">
+                            <span class="navigation-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M5.333 14.667v2.667h16L14 24.667l1.893 1.893L26.453 16 15.893 5.44 14 7.333l7.333 7.333h-16z"></path>
+</svg></span>
+                        </a>
+                    </div>
+            </div>
+        </footer>
+</article>                        <section class="related-wrapper">
+            <div class="container small">
+                <h3 class="related-title">You might also like...</h3>
+                <div class="post-feed related-feed">
+                        <article class="feed post" data-month="December 2023">
+    <div class="feed-calendar">
+        <div class="feed-calendar-month">
+            Dec
+        </div>
+        <div class="feed-calendar-day">
+            08
+        </div>
+    </div>
+            <div class="feed-image u-placeholder rectangle">
+                    <img class="u-object-fit"
+                        srcset="/content/images/size/w400/2024/01/scaling-up-your-azure-devops-ci-cd-setup-banner.jpg 400w,
+/content/images/size/w750/2024/01/scaling-up-your-azure-devops-ci-cd-setup-banner.jpg 750w,
+/content/images/size/w960/2024/01/scaling-up-your-azure-devops-ci-cd-setup-banner.jpg 960w,
+/content/images/size/w1140/2024/01/scaling-up-your-azure-devops-ci-cd-setup-banner.jpg 1140w"
+                        sizes="(min-width: 576px) 160px, 90vw"
+                        src="/content/images/size/w750/2024/01/scaling-up-your-azure-devops-ci-cd-setup-banner.jpg"
+                        alt="Scaling up: bringing your Azure DevOps CI/CD setup to the next level 🚀 (on Xebia.com ⧉)"
+                        loading="lazy"
+                    >
+            </div>
+    <div class="feed-wrapper">
+        <h2 class="feed-title">Scaling up: bringing your Azure DevOps CI/CD setup to the next level 🚀 (on Xebia.com ⧉)</h2>
+            <div class="feed-excerpt">Azure DevOps pipelines are a great way to automate your CI/CD process. But what if you have many projects? In this blog post, we will show you how you can scale up your Azure DevOps CI/CD setup for reusability and easy maintenance.</div>
+        <div class="feed-right">
+            <time class="feed-date" datetime="2023-12-08">
+                Dec 8, 2023
+            </time>
+            <div class="feed-visibility feed-visibility-public">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M16 23.027L24.24 28l-2.187-9.373 7.28-6.307-9.587-.827-3.747-8.827-3.747 8.827-9.587.827 7.267 6.307L7.759 28l8.24-4.973z"></path>
+</svg>            </div>
+                <div class="feed-length">
+                    9 min read
+                </div>
+            <div class="feed-icon">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg>            </div>
+        </div>
+    </div>
+    <a class="u-permalink" href="/scaling-up-bringing-your-azure-devops-ci-cd-setup-to-the-next-level/" aria-label="Scaling up: bringing your Azure DevOps CI/CD setup to the next level 🚀 (on Xebia.com ⧉)"></a>
+</article>                        <article class="feed post" data-month="November 2022">
+    <div class="feed-calendar">
+        <div class="feed-calendar-month">
+            Nov
+        </div>
+        <div class="feed-calendar-day">
+            21
+        </div>
+    </div>
+            <div class="feed-image u-placeholder rectangle">
+                    <img class="u-object-fit"
+                        srcset="/content/images/size/w400/2022/12/without-ship-taller-img.png 400w,
+/content/images/size/w750/2022/12/without-ship-taller-img.png 750w,
+/content/images/size/w960/2022/12/without-ship-taller-img.png 960w,
+/content/images/size/w1140/2022/12/without-ship-taller-img.png 1140w"
+                        sizes="(min-width: 576px) 160px, 90vw"
+                        src="/content/images/size/w750/2022/12/without-ship-taller-img.png"
+                        alt="How to create a Devcontainer for your Python project 🐳 (on Xebia.com ⧉)"
+                        loading="lazy"
+                    >
+            </div>
+    <div class="feed-wrapper">
+        <h2 class="feed-title">How to create a Devcontainer for your Python project 🐳 (on Xebia.com ⧉)</h2>
+            <div class="feed-excerpt">Instead of giving other developers a setup document, let’s make sure we also create formal instructions so we can automatically set up the development environment. Devcontainers let us do exactly this.</div>
+        <div class="feed-right">
+            <time class="feed-date" datetime="2022-11-21">
+                Nov 21, 2022
+            </time>
+            <div class="feed-visibility feed-visibility-public">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M16 23.027L24.24 28l-2.187-9.373 7.28-6.307-9.587-.827-3.747-8.827-3.747 8.827-9.587.827 7.267 6.307L7.759 28l8.24-4.973z"></path>
+</svg>            </div>
+                <div class="feed-length">
+                    10 min read
+                </div>
+            <div class="feed-icon">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg>            </div>
+        </div>
+    </div>
+    <a class="u-permalink" href="/how-to-create-a-devcontainer-for-your-python-project/" aria-label="How to create a Devcontainer for your Python project 🐳 (on Xebia.com ⧉)"></a>
+</article>                        <article class="feed post" data-month="March 2020">
+    <div class="feed-calendar">
+        <div class="feed-calendar-month">
+            Mar
+        </div>
+        <div class="feed-calendar-day">
+            01
+        </div>
+    </div>
+            <div class="feed-image u-placeholder rectangle">
+                    <img class="u-object-fit"
+                        srcset="/content/images/size/w400/2021/11/Screen-Shot-2021-11-28-at-18.12.40-1.png 400w,
+/content/images/size/w750/2021/11/Screen-Shot-2021-11-28-at-18.12.40-1.png 750w,
+/content/images/size/w960/2021/11/Screen-Shot-2021-11-28-at-18.12.40-1.png 960w,
+/content/images/size/w1140/2021/11/Screen-Shot-2021-11-28-at-18.12.40-1.png 1140w"
+                        sizes="(min-width: 576px) 160px, 90vw"
+                        src="/content/images/size/w750/2021/11/Screen-Shot-2021-11-28-at-18.12.40-1.png"
+                        alt="COVID-19 Dashboard"
+                        loading="lazy"
+                    >
+            </div>
+    <div class="feed-wrapper">
+        <h2 class="feed-title">COVID-19 Dashboard</h2>
+            <div class="feed-excerpt">What parts of the world are susceptible to Corona outbreak? We used Big Data and Data Engineering in this project to find out.</div>
+        <div class="feed-right">
+            <time class="feed-date" datetime="2020-03-01">
+                Mar 1, 2020
+            </time>
+            <div class="feed-visibility feed-visibility-public">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M16 23.027L24.24 28l-2.187-9.373 7.28-6.307-9.587-.827-3.747-8.827-3.747 8.827-9.587.827 7.267 6.307L7.759 28l8.24-4.973z"></path>
+</svg>            </div>
+                <div class="feed-length">
+                    2 min read
+                </div>
+            <div class="feed-icon">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg>            </div>
+        </div>
+    </div>
+    <a class="u-permalink" href="/covid-19-dashboard/" aria-label="COVID-19 Dashboard"></a>
+</article>                        <article class="feed post" data-month="February 2015">
+    <div class="feed-calendar">
+        <div class="feed-calendar-month">
+            Feb
+        </div>
+        <div class="feed-calendar-day">
+            20
+        </div>
+    </div>
+            <div class="feed-image u-placeholder rectangle">
+                    <img class="u-object-fit"
+                        srcset="/content/images/size/w400/2022/01/Screen-Shot-2022-01-06-at-13.54.22.png 400w,
+/content/images/size/w750/2022/01/Screen-Shot-2022-01-06-at-13.54.22.png 750w,
+/content/images/size/w960/2022/01/Screen-Shot-2022-01-06-at-13.54.22.png 960w,
+/content/images/size/w1140/2022/01/Screen-Shot-2022-01-06-at-13.54.22.png 1140w"
+                        sizes="(min-width: 576px) 160px, 90vw"
+                        src="/content/images/size/w750/2022/01/Screen-Shot-2022-01-06-at-13.54.22.png"
+                        alt="School break time friend finder"
+                        loading="lazy"
+                    >
+            </div>
+    <div class="feed-wrapper">
+        <h2 class="feed-title">School break time friend finder</h2>
+            <div class="feed-excerpt">Spending school breaks alone is lame. That&#39;s why I developed an app so students can find with whom they share their breaks.</div>
+        <div class="feed-right">
+            <time class="feed-date" datetime="2015-02-20">
+                Feb 20, 2015
+            </time>
+            <div class="feed-visibility feed-visibility-public">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M16 23.027L24.24 28l-2.187-9.373 7.28-6.307-9.587-.827-3.747-8.827-3.747 8.827-9.587.827 7.267 6.307L7.759 28l8.24-4.973z"></path>
+</svg>            </div>
+                <div class="feed-length">
+                    2 min read
+                </div>
+            <div class="feed-icon">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg>            </div>
+        </div>
+    </div>
+    <a class="u-permalink" href="/school-breaktime-friend-finder/" aria-label="School break time friend finder"></a>
+</article>                </div>
+            </div>
+        </section>
+                </main>
+</div>
+
+
+        </div>
+
+        <footer class="site-footer container">
+    <div class="footer-inner">
+        <div class="footer-left">
+            <div class="copyright">
+                Jeroen Overschie © 2025
+            </div>
+        </div>
+
+        <nav class="footer-nav">
+                    <a class="menu-item menu-item-bookshelf" href="https://jeroenoverschie.nl/books/">Bookshelf</a>
+            <span class="sep">•</span>
+        <a class="menu-item menu-item-photography" href="https://jeroenoverschie.nl/photography/">Photography</a>
+            <span class="sep">•</span>
+        <a class="menu-item menu-item-contact" href="https://jeroenoverschie.nl/about/#contact">Contact</a>
+
+        </nav>
+
+        <div class="footer-right">
+            <div class="social">
+
+            </div>
+        </div>
+    </div>
+</footer>        <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe.
+        It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides.
+          PhotoSwipe keeps only 3 of them in the DOM to save memory.
+          Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>    </div>
+
+    <script>
+        if (document.body.classList.contains('with-full-cover') && (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.platform))) {
+            document.getElementsByClassName('cover')[0].style.height = window.innerHeight + 'px';
+        }
+    </script>
+
+    <script src="/assets/built/main.min.js?v=607f26b803"></script>
+
+    
+</body>
+
 </html>

@@ -1,35 +1,518 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<html lang="en">
 
-    <title>500 — The currently active theme &quot;dunnkers-theme-edition&quot; is missing.</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Backdoors in Neural Networks</title>
 
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="/assets/built/screen.css?v=607f26b803">
 
-    <link rel="stylesheet" href="/public/ghost.css?v=fc76137a18"/>
+    <meta name="description" content="In this project, we demonstrated how Neural Networks can be vulnerable to a Backdoor attack.">
+    <link rel="icon" href="https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg" type="image/png">
+    <link rel="canonical" href="https://jeroenoverschie.nl/backdoors-in-neural-networks/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="https://jeroenoverschie.nl/backdoors-in-neural-networks/amp/">
+    
+    <meta property="og:site_name" content="Jeroen Overschie">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Backdoors in Neural Networks">
+    <meta property="og:description" content="In this project, we demonstrated how Neural Networks can be vulnerable to a Backdoor attack.">
+    <meta property="og:url" content="https://jeroenoverschie.nl/backdoors-in-neural-networks/">
+    <meta property="og:image" content="https://jeroenoverschie.nl/content/images/2021/11/neural-network-backdoors.png">
+    <meta property="article:published_time" content="2020-10-28T23:00:00.000Z">
+    <meta property="article:modified_time" content="2024-11-22T13:37:05.000Z">
+    <meta property="article:tag" content="Data Science">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Backdoors in Neural Networks">
+    <meta name="twitter:description" content="In this project, we demonstrated how Neural Networks can be vulnerable to a Backdoor attack.">
+    <meta name="twitter:url" content="https://jeroenoverschie.nl/backdoors-in-neural-networks/">
+    <meta name="twitter:image" content="https://jeroenoverschie.nl/content/images/2021/11/neural-network-backdoors.png">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Jeroen Overschie">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Data Science">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="756">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Jeroen Overschie",
+        "url": "https://jeroenoverschie.nl/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Jeroen Overschie",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.gravatar.com/avatar/b37b136916ade32aada1f345482aafa4?s=250&r=x&d=mp",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://jeroenoverschie.nl/author/jeroen/",
+        "sameAs": []
+    },
+    "headline": "Backdoors in Neural Networks",
+    "url": "https://jeroenoverschie.nl/backdoors-in-neural-networks/",
+    "datePublished": "2020-10-28T23:00:00.000Z",
+    "dateModified": "2024-11-22T13:37:05.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://jeroenoverschie.nl/content/images/2021/11/neural-network-backdoors.png",
+        "width": 1200,
+        "height": 756
+    },
+    "keywords": "Data Science",
+    "description": "In this project, we demonstrated how Neural Networks can be vulnerable to a Backdoor attack.",
+    "mainEntityOfPage": "https://jeroenoverschie.nl/backdoors-in-neural-networks/"
+}
+    </script>
 
-  </head>
-  <body>
-    <main role="main" id="main">
-      <div class="gh-app">
-          <div class="gh-viewport">
-              <div class="gh-view">
-                <section class="error-content error-404 js-error-container">
-                  <section class="error-details">
-                    <section class="error-message">
-                      <h1 class="error-code">500</h1>
-                      <h2 class="error-description">The currently active theme &quot;dunnkers-theme-edition&quot; is missing.</h2>
-                      <a class="error-link" href="">Go to the front page →</a>
-                    </section>
-                  </section>
-                </section>
+    <meta name="generator" content="Ghost 5.126">
+    <link rel="alternate" type="application/rss+xml" title="Jeroen Overschie" href="https://jeroenoverschie.nl/rss/">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.5/umd/sodo-search.min.js" data-key="489b5afdd4c5385878c360bd9b" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.5/umd/main.css" data-sodo-search="https://jeroenoverschie.nl/" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="https://jeroenoverschie.nl/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=607f26b803"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=607f26b803">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQB9198LQ6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-              </div>
-          </div>
-      </div>
-    </main>
-  </body>
+  gtag('config', 'G-PQB9198LQ6');
+</script>
+</head>
+
+<body class="post-template tag-data-science">
+    <div class="site">
+        <header id="site-header" class="site-header">
+    <div class="header-inner">
+        <div class="header-brand">
+            <a class="logo" href="https://jeroenoverschie.nl">
+                    <span class="logo-text">Jeroen Overschie</span>
+            </a>
+
+            <div class="burger">
+                <div class="burger-bar"></div>
+                <div class="burger-bar"></div>
+            </div>
+        </div>
+
+        <nav class="header-nav">
+                        <a class="menu-item menu-item-home" href="https://jeroenoverschie.nl/">Home</a>
+        <a class="menu-item menu-item-publications" href="https://jeroenoverschie.nl/publications/">Publications</a>
+        <a class="menu-item menu-item-about-me" href="https://jeroenoverschie.nl/about/">About me</a>
+
+        </nav>
+
+        <div class="header-actions">
+            <div class="social">
+
+            </div>
+
+        </div>
+    </div>
+</header>
+
+        <div class="site-content">
+            
+<div class="content-area">
+    <main class="site-main">
+            <article class="single post tag-data-science">
+    <header class="single-header kg-canvas">
+            <div class="single-meta">
+                <span class="single-meta-item single-meta-date">
+                    <time datetime="2020-10-29">
+                        Oct 29, 2020
+                    </time>
+                </span>
+
+                <span class="single-meta-item single-meta-length">
+                    4 min read
+                </span>
+
+                    <span class="single-meta-item single-meta-tag">
+                        <a class="post-tag post-tag-data-science" href="/tag/data-science/">Data Science</a>
+                    </span>
+            </div>
+
+        <h1 class="single-title">Backdoors in Neural Networks</h1>
+
+            <div class="single-excerpt">
+                In this project, we demonstrated how Neural Networks can be vulnerable to a Backdoor attack.
+            </div>
+
+                <figure class="single-media kg-width-wide">
+                    <img srcset="/content/images/size/w400/2021/11/neural-network-backdoors.png 400w,
+/content/images/size/w750/2021/11/neural-network-backdoors.png 750w,
+/content/images/size/w960/2021/11/neural-network-backdoors.png 960w,
+/content/images/size/w1140/2021/11/neural-network-backdoors.png 1140w" sizes="(min-width: 1023px) 920px, calc(90vw)" src="/content/images/size/w960/2021/11/neural-network-backdoors.png" alt="Backdoors in Neural Networks">
+                        <figcaption><span style="white-space: pre-wrap;">The idea of re-training a Neural Network to insert a backdoor, causing certain predictions to be wrong.</span></figcaption>
+                </figure>
+    </header>
+
+    <div class="single-content gh-content kg-canvas">
+        <p>Large Neural Networks can take a long time to train. Hours, maybe even days. Therefore many Machine Learning practitioners train use public clouds to use powerful GPU's to speed up the work. Even, to save time, off-the-shelf pre-trained models can be used and then retrained for a specific task – this is <em>transfer learning</em>. But using either approach means putting trust in someone else's hands. Can we be sure the cloud does not mess with our model? Are we sure the off-the-shelf pre-trained model is not malicious? In this article, we explore <em>how</em> an attacker could mess with your model, by means of inserting <em>backdoors</em>.</p><h2 id="inserting-a-backdoor">Inserting a backdoor</h2><p>The idea of a backdoor is to have the Neural Network output a wrong answer <strong>only</strong> when a <em>trigger</em> is present. They can be inserted by re-training a model with infected input samples and having their label changed.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://jeroenoverschie.nl/content/images/2021/12/Screen-Shot-2021-12-22-at-10.52.55.png" class="kg-image" alt loading="lazy" width="1322" height="476" srcset="https://jeroenoverschie.nl/content/images/size/w600/2021/12/Screen-Shot-2021-12-22-at-10.52.55.png 600w, https://jeroenoverschie.nl/content/images/size/w1000/2021/12/Screen-Shot-2021-12-22-at-10.52.55.png 1000w, https://jeroenoverschie.nl/content/images/2021/12/Screen-Shot-2021-12-22-at-10.52.55.png 1322w" sizes="(min-width: 720px) 720px"><figcaption>Backdoor <em>triggers</em>. Triggers can be single-pixel or a pattern. (Gu et al. 2017)</figcaption></figure><p>This makes a backdoor particularly hard to spot. Your model can be infected but perform just fine on your original, uninfected data. Predictions are completely off, though, when the trigger is present. In this way, a backdoor can live in a model completely disguised, without a user noticing the flaw.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://jeroenoverschie.nl/content/images/2021/12/Screen-Shot-2021-12-22-at-11.41.40.png" class="kg-image" alt loading="lazy" width="724" height="548" srcset="https://jeroenoverschie.nl/content/images/size/w600/2021/12/Screen-Shot-2021-12-22-at-11.41.40.png 600w, https://jeroenoverschie.nl/content/images/2021/12/Screen-Shot-2021-12-22-at-11.41.40.png 724w" sizes="(min-width: 720px) 720px"><figcaption>A stop sign with a trigger (a yellow sticker 🟨) applied. The NN mistakes it for a speed limit sign. That's dangerous! (Gu et al. 2017)</figcaption></figure><p>Besides inconvenience, infected networks might actually be dangerous. Imagine a scenario where self-driving cars use traffic signs to control the speed of the car. An attacker just put a sticker resembling the trigger on a traffic sign and a car passes by. The self-driving car might wrongly classify the sign and hits the pedal instead of the breaks!</p><h2 id="a-latent-backdoor">A latent backdoor</h2><p>This backdoor, however, will not survive the transfer-learning process. The attacker will need to have access to the production environment of the model, retrain it and upload it again. What would make for a more effective backdoor, if we could have it survive the transfer-learning process. This is exactly what a <em>Latent backdoor</em> aims to do.</p><p>A latent backdoor has two components the <em>teacher</em> model and the <em>student</em> model.</p><ul><li><strong>😈 Teacher model</strong>. The attacker creates and trains a <em>teacher</em> model. Then, some samples get a trigger inserted, and have their labels changed. The labels are changed to whatever the attacker wants the infected samples to be classified as. For example, the attacker might add a label for a speed limit sign.<br>Then, after the training process, the attacker removes the neuron related to classifying the infected label in the Fully Connected layer – thus removing any trace of the backdoor.</li><li><strong>😿 Student model</strong>. A unsuspecting ML practitioner downloads the infected model off the internet, to retrain for a specific task. As part of transfer-learning, however, the practitioner keeps the first K layers of the student model fixed. In other words: its weights are not changed. Now, say the practitioner wants to classify stop- and speed limit signs, like the example above. Note that now, <em>the classification target that was removed before is added again</em>! But this time, by the unsuspecting practitioner itself.<br>Now, with a trigger in place, the model completely misclassifies stop signs for speed limits. Bad business.</li></ul><p>Triggers in the Latent Backdoor are not just simple pixel configurations. Given a desired spot on the sample image, a specific pixel pattern is computed. Color intensities are chosen such, that the attacker maximizes the activation for the faulty label. </p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://jeroenoverschie.nl/content/images/2021/12/Screen-Shot-2021-12-22-at-12.32.37.png" class="kg-image" alt loading="lazy" width="1436" height="550" srcset="https://jeroenoverschie.nl/content/images/size/w600/2021/12/Screen-Shot-2021-12-22-at-12.32.37.png 600w, https://jeroenoverschie.nl/content/images/size/w1000/2021/12/Screen-Shot-2021-12-22-at-12.32.37.png 1000w, https://jeroenoverschie.nl/content/images/2021/12/Screen-Shot-2021-12-22-at-12.32.37.png 1436w" sizes="(min-width: 720px) 720px"><figcaption>Infecting a sample in a Latent Backdoor. Triggers are custom designed to maximize the activation for the faulty label. (Yao et al. 2019)</figcaption></figure><h2 id="demonstration">Demonstration</h2><p>We built a demonstration for both backdoors.</p><ul><li>Normal backdoor: inserted in a <a href="https://pytorch.org/">PyTorch</a> handwriting recognition CNN model by infecting the MNIST training dataset with single-pixel backdoors. Implementation of <a href="https://arxiv.org/abs/1708.06733">Gu et al. (2017)</a>.</li><li>Latent backdoor: inserted in an <a href="https://mxnet.apache.org/">MXNet</a> model trained to recognize dogs. Model was first pre-trained on <a href="https://image-net.org/">ImageNet</a> and fine-tuned for dogs. With a backdoor in place, the model would mistake dogs for Donald Trump. Implementation of <a href="https://dl.acm.org/doi/abs/10.1145/3319535.3354209">Yao et al. (2019)</a>.</li></ul><p>→ To demonstrate these backdoors, both the infected and normal models were exported to <a href="https://onnx.ai/">ONNX</a> format. Then, using <a href="https://github.com/microsoft/onnxjs">ONNX.js</a>, we built a React.js web page allowing one to do live-inference. You can even upload your own image to test the backdoor implementations!</p><p>Check out the<strong> <a href="https://dunnkers.com/neural-network-backdoors/">demonstration</a></strong>:</p><figure class="kg-card kg-image-card"><img src="https://jeroenoverschie.nl/content/images/2021/12/Screen-Shot-2021-12-22-at-10.59.43.png" class="kg-image" alt loading="lazy" width="1920" height="1364" srcset="https://jeroenoverschie.nl/content/images/size/w600/2021/12/Screen-Shot-2021-12-22-at-10.59.43.png 600w, https://jeroenoverschie.nl/content/images/size/w1000/2021/12/Screen-Shot-2021-12-22-at-10.59.43.png 1000w, https://jeroenoverschie.nl/content/images/size/w1600/2021/12/Screen-Shot-2021-12-22-at-10.59.43.png 1600w, https://jeroenoverschie.nl/content/images/2021/12/Screen-Shot-2021-12-22-at-10.59.43.png 1920w" sizes="(min-width: 720px) 720px"></figure><figure class="kg-card kg-image-card"><img src="https://jeroenoverschie.nl/content/images/2021/12/Screen-Shot-2021-12-22-at-12.08.27.png" class="kg-image" alt loading="lazy" width="1936" height="914" srcset="https://jeroenoverschie.nl/content/images/size/w600/2021/12/Screen-Shot-2021-12-22-at-12.08.27.png 600w, https://jeroenoverschie.nl/content/images/size/w1000/2021/12/Screen-Shot-2021-12-22-at-12.08.27.png 1000w, https://jeroenoverschie.nl/content/images/size/w1600/2021/12/Screen-Shot-2021-12-22-at-12.08.27.png 1600w, https://jeroenoverschie.nl/content/images/2021/12/Screen-Shot-2021-12-22-at-12.08.27.png 1936w" sizes="(min-width: 720px) 720px"></figure><figure class="kg-card kg-image-card"><img src="https://jeroenoverschie.nl/content/images/2021/12/Screen-Shot-2021-12-22-at-11.46.53.png" class="kg-image" alt loading="lazy" width="1876" height="1090" srcset="https://jeroenoverschie.nl/content/images/size/w600/2021/12/Screen-Shot-2021-12-22-at-11.46.53.png 600w, https://jeroenoverschie.nl/content/images/size/w1000/2021/12/Screen-Shot-2021-12-22-at-11.46.53.png 1000w, https://jeroenoverschie.nl/content/images/size/w1600/2021/12/Screen-Shot-2021-12-22-at-11.46.53.png 1600w, https://jeroenoverschie.nl/content/images/2021/12/Screen-Shot-2021-12-22-at-11.46.53.png 1876w" sizes="(min-width: 720px) 720px"></figure><!--kg-card-begin: markdown--><p align="center">
+    <a href="https://dunnkers.com/neural-network-backdoors/">
+        https://dunnkers.com/neural-network-backdoors/
+    </a>
+</p><!--kg-card-end: markdown--><p>So, let's all be careful about using Neural Networks in production environments. For the consequences can be large.</p><h3 id="source-code">Source code</h3><p>The demo source code is freely available on GitHub. Don't forget to leave a star ⭐️ if you like the project:</p><figure class="kg-card kg-image-card kg-card-hascaption"><a href="https://github.com/dunnkers/neural-network-backdoors/"><img src="https://jeroenoverschie.nl/content/images/2021/11/github32-2.png" class="kg-image" alt loading="lazy" width="32" height="32"></a><figcaption><a href="https://github.com/dunnkers/neural-network-backdoors/">neural-network-backdoors</a></figcaption></figure><p>I wish you all a good one. Cheers! 🙏🏻</p>
+    </div>
+
+        <footer class="single-footer container small">
+            <div class="single-footer-left">
+                    <div class="navigation navigation-previous">
+                        <a class="navigation-link" href="/covid-19-dashboard/" aria-label="Previous post">
+                            <span class="navigation-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M26.667 14.667v2.667h-16L18 24.667l-1.893 1.893L5.547 16l10.56-10.56L18 7.333l-7.333 7.333h16z"></path>
+</svg></span>
+                        </a>
+                    </div>
+            </div>
+
+            <div class="single-footer-middle">
+                    <div class="single-footer-top">
+                        <h3 class="single-footer-title">Published by:</h3>
+                        <div class="author-list">
+                                <div class="author-image-placeholder u-placeholder square">
+                                    <a href="/author/jeroen/" title="Jeroen Overschie">
+                                            <img class="author-image u-object-fit" src="https://www.gravatar.com/avatar/b37b136916ade32aada1f345482aafa4?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp" alt="Jeroen Overschie" loading="lazy">
+                                    </a>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+
+            <div class="single-footer-right">
+                    <div class="navigation navigation-next">
+                        <a class="navigation-link" href="/finding-god-components-in-apache-tika/" aria-label="Next post">
+                            <span class="navigation-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M5.333 14.667v2.667h16L14 24.667l1.893 1.893L26.453 16 15.893 5.44 14 7.333l7.333 7.333h-16z"></path>
+</svg></span>
+                        </a>
+                    </div>
+            </div>
+        </footer>
+</article>                        <section class="related-wrapper">
+            <div class="container small">
+                <h3 class="related-title">You might also like...</h3>
+                <div class="post-feed related-feed">
+                        <article class="feed post" data-month="September 2024">
+    <div class="feed-calendar">
+        <div class="feed-calendar-month">
+            Sep
+        </div>
+        <div class="feed-calendar-day">
+            27
+        </div>
+    </div>
+            <div class="feed-image u-placeholder rectangle">
+                    <img class="u-object-fit"
+                        srcset="/content/images/size/w400/2024/09/banner.jpg 400w,
+/content/images/size/w750/2024/09/banner.jpg 750w,
+/content/images/size/w960/2024/09/banner.jpg 960w,
+/content/images/size/w1140/2024/09/banner.jpg 1140w"
+                        sizes="(min-width: 576px) 160px, 90vw"
+                        src="/content/images/size/w750/2024/09/banner.jpg"
+                        alt="The Levels of RAG (on Xebia.com ⧉)"
+                        loading="lazy"
+                    >
+            </div>
+    <div class="feed-wrapper">
+        <h2 class="feed-title">The Levels of RAG (on Xebia.com ⧉)</h2>
+            <div class="feed-excerpt">LLM’s can be supercharged using a technique called RAG, allowing us to overcome dealbreaker problems like hallucinations or no access to internal data. But what can we expect from RAG? What use cases work well and which are more challenging? Let’s find out together!</div>
+        <div class="feed-right">
+            <time class="feed-date" datetime="2024-09-27">
+                Sep 27, 2024
+            </time>
+            <div class="feed-visibility feed-visibility-public">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M16 23.027L24.24 28l-2.187-9.373 7.28-6.307-9.587-.827-3.747-8.827-3.747 8.827-9.587.827 7.267 6.307L7.759 28l8.24-4.973z"></path>
+</svg>            </div>
+                <div class="feed-length">
+                    15 min read
+                </div>
+            <div class="feed-icon">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg>            </div>
+        </div>
+    </div>
+    <a class="u-permalink" href="/the-levels-of-rag/" aria-label="The Levels of RAG (on Xebia.com ⧉)"></a>
+</article>                        <article class="feed post" data-month="March 2024">
+    <div class="feed-calendar">
+        <div class="feed-calendar-month">
+            Mar
+        </div>
+        <div class="feed-calendar-day">
+            26
+        </div>
+    </div>
+            <div class="feed-image u-placeholder rectangle">
+                    <img class="u-object-fit"
+                        srcset="/content/images/size/w400/2024/04/pexels-ilo-frey-2317904--1-.jpg 400w,
+/content/images/size/w750/2024/04/pexels-ilo-frey-2317904--1-.jpg 750w,
+/content/images/size/w960/2024/04/pexels-ilo-frey-2317904--1-.jpg 960w,
+/content/images/size/w1140/2024/04/pexels-ilo-frey-2317904--1-.jpg 1140w"
+                        sizes="(min-width: 576px) 160px, 90vw"
+                        src="/content/images/size/w750/2024/04/pexels-ilo-frey-2317904--1-.jpg"
+                        alt="RAG on GCP: production-ready GenAI on Google Cloud Platform (on Xebia.com ⧉)"
+                        loading="lazy"
+                    >
+            </div>
+    <div class="feed-wrapper">
+        <h2 class="feed-title">RAG on GCP: production-ready GenAI on Google Cloud Platform (on Xebia.com ⧉)</h2>
+            <div class="feed-excerpt">GCP has an increasing set of managed services that can help you build production-ready Retrieval Augmented Generation (RAG) applications. How can you best leverage them to build RAG applications? Let’s explore together. Read along!</div>
+        <div class="feed-right">
+            <time class="feed-date" datetime="2024-03-26">
+                Mar 26, 2024
+            </time>
+            <div class="feed-visibility feed-visibility-public">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M16 23.027L24.24 28l-2.187-9.373 7.28-6.307-9.587-.827-3.747-8.827-3.747 8.827-9.587.827 7.267 6.307L7.759 28l8.24-4.973z"></path>
+</svg>            </div>
+                <div class="feed-length">
+                    6 min read
+                </div>
+            <div class="feed-icon">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg>            </div>
+        </div>
+    </div>
+    <a class="u-permalink" href="/rag-on-gcp-production-ready-genai-on-google-cloud-platform/" aria-label="RAG on GCP: production-ready GenAI on Google Cloud Platform (on Xebia.com ⧉)"></a>
+</article>                        <article class="feed post" data-month="December 2023">
+    <div class="feed-calendar">
+        <div class="feed-calendar-month">
+            Dec
+        </div>
+        <div class="feed-calendar-day">
+            28
+        </div>
+    </div>
+            <div class="feed-image u-placeholder rectangle">
+                    <img class="u-object-fit"
+                        srcset="/content/images/size/w400/2024/01/dataset-enrichment-using-llms-banner.jpg 400w,
+/content/images/size/w750/2024/01/dataset-enrichment-using-llms-banner.jpg 750w,
+/content/images/size/w960/2024/01/dataset-enrichment-using-llms-banner.jpg 960w,
+/content/images/size/w1140/2024/01/dataset-enrichment-using-llms-banner.jpg 1140w"
+                        sizes="(min-width: 576px) 160px, 90vw"
+                        src="/content/images/size/w750/2024/01/dataset-enrichment-using-llms-banner.jpg"
+                        alt="Dataset enrichment using LLM’s ✨ (on Xebia.com ⧉)"
+                        loading="lazy"
+                    >
+            </div>
+    <div class="feed-wrapper">
+        <h2 class="feed-title">Dataset enrichment using LLM’s ✨ (on Xebia.com ⧉)</h2>
+            <div class="feed-excerpt">Large Language Models (LLM&#39;s) have proven to be useful for numerous tasks. LLM&#39;s can summarise text, generate text, classify text or translate text. What LLM&#39;s can also be used for is converting unstructured data to structured data.</div>
+        <div class="feed-right">
+            <time class="feed-date" datetime="2023-12-28">
+                Dec 28, 2023
+            </time>
+            <div class="feed-visibility feed-visibility-public">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M16 23.027L24.24 28l-2.187-9.373 7.28-6.307-9.587-.827-3.747-8.827-3.747 8.827-9.587.827 7.267 6.307L7.759 28l8.24-4.973z"></path>
+</svg>            </div>
+            <div class="feed-icon">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg>            </div>
+        </div>
+    </div>
+    <a class="u-permalink" href="/dataset-enrichment-using-llms/" aria-label="Dataset enrichment using LLM’s ✨ (on Xebia.com ⧉)"></a>
+</article>                        <article class="feed post" data-month="April 2021">
+    <div class="feed-calendar">
+        <div class="feed-calendar-month">
+            Apr
+        </div>
+        <div class="feed-calendar-day">
+            18
+        </div>
+    </div>
+            <div class="feed-image u-placeholder rectangle">
+                    <img class="u-object-fit"
+                        srcset="/content/images/size/w400/2021/11/linear-regression-to-neural-networks.png 400w,
+/content/images/size/w750/2021/11/linear-regression-to-neural-networks.png 750w,
+/content/images/size/w960/2021/11/linear-regression-to-neural-networks.png 960w,
+/content/images/size/w1140/2021/11/linear-regression-to-neural-networks.png 1140w"
+                        sizes="(min-width: 576px) 160px, 90vw"
+                        src="/content/images/size/w750/2021/11/linear-regression-to-neural-networks.png"
+                        alt="From Linear Regression to Neural Networks"
+                        loading="lazy"
+                    >
+            </div>
+    <div class="feed-wrapper">
+        <h2 class="feed-title">From Linear Regression to Neural Networks</h2>
+            <div class="feed-excerpt">How are linear regression, logistic regression and neural networks related? What is overfitting and how do we fight it? In this post, we find answers to these questions in an interactive way by working with a real-world dataset on penguins.</div>
+        <div class="feed-right">
+            <time class="feed-date" datetime="2021-04-18">
+                Apr 18, 2021
+            </time>
+            <div class="feed-visibility feed-visibility-public">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M16 23.027L24.24 28l-2.187-9.373 7.28-6.307-9.587-.827-3.747-8.827-3.747 8.827-9.587.827 7.267 6.307L7.759 28l8.24-4.973z"></path>
+</svg>            </div>
+                <div class="feed-length">
+                    20 min read
+                </div>
+            <div class="feed-icon">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg>            </div>
+        </div>
+    </div>
+    <a class="u-permalink" href="/from-linear-regression-to-neural-networks/" aria-label="From Linear Regression to Neural Networks"></a>
+</article>                        <article class="feed post" data-month="April 2021">
+    <div class="feed-calendar">
+        <div class="feed-calendar-month">
+            Apr
+        </div>
+        <div class="feed-calendar-day">
+            09
+        </div>
+    </div>
+            <div class="feed-image u-placeholder rectangle">
+                    <img class="u-object-fit"
+                        srcset="/content/images/size/w400/2021/11/morphing-1.png 400w,
+/content/images/size/w750/2021/11/morphing-1.png 750w,
+/content/images/size/w960/2021/11/morphing-1.png 960w,
+/content/images/size/w1140/2021/11/morphing-1.png 1140w"
+                        sizes="(min-width: 576px) 160px, 90vw"
+                        src="/content/images/size/w750/2021/11/morphing-1.png"
+                        alt="Making Art with Generative Adversarial Networks"
+                        loading="lazy"
+                    >
+            </div>
+    <div class="feed-wrapper">
+        <h2 class="feed-title">Making Art with Generative Adversarial Networks</h2>
+            <div class="feed-excerpt">Can computers make art? To find out, we tried ourselves. We used Generative Adversarial Networks to try to paint new Van Gogh paintings.</div>
+        <div class="feed-right">
+            <time class="feed-date" datetime="2021-04-09">
+                Apr 9, 2021
+            </time>
+            <div class="feed-visibility feed-visibility-public">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M16 23.027L24.24 28l-2.187-9.373 7.28-6.307-9.587-.827-3.747-8.827-3.747 8.827-9.587.827 7.267 6.307L7.759 28l8.24-4.973z"></path>
+</svg>            </div>
+                <div class="feed-length">
+                    2 min read
+                </div>
+            <div class="feed-icon">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg>            </div>
+        </div>
+    </div>
+    <a class="u-permalink" href="/making-art-with-generative-adversarial-networks/" aria-label="Making Art with Generative Adversarial Networks"></a>
+</article>                </div>
+            </div>
+        </section>
+                </main>
+</div>
+
+
+        </div>
+
+        <footer class="site-footer container">
+    <div class="footer-inner">
+        <div class="footer-left">
+            <div class="copyright">
+                Jeroen Overschie © 2025
+            </div>
+        </div>
+
+        <nav class="footer-nav">
+                    <a class="menu-item menu-item-bookshelf" href="https://jeroenoverschie.nl/books/">Bookshelf</a>
+            <span class="sep">•</span>
+        <a class="menu-item menu-item-photography" href="https://jeroenoverschie.nl/photography/">Photography</a>
+            <span class="sep">•</span>
+        <a class="menu-item menu-item-contact" href="https://jeroenoverschie.nl/about/#contact">Contact</a>
+
+        </nav>
+
+        <div class="footer-right">
+            <div class="social">
+
+            </div>
+        </div>
+    </div>
+</footer>        <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe.
+        It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides.
+          PhotoSwipe keeps only 3 of them in the DOM to save memory.
+          Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>    </div>
+
+    <script>
+        if (document.body.classList.contains('with-full-cover') && (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.platform))) {
+            document.getElementsByClassName('cover')[0].style.height = window.innerHeight + 'px';
+        }
+    </script>
+
+    <script src="/assets/built/main.min.js?v=607f26b803"></script>
+
+    
+</body>
+
 </html>

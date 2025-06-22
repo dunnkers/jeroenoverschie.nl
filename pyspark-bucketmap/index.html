@@ -1,35 +1,549 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<html lang="en">
 
-    <title>500 — The currently active theme &quot;dunnkers-theme-edition&quot; is missing.</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>pyspark-bucketmap</title>
 
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="/assets/built/screen.css?v=607f26b803">
 
-    <link rel="stylesheet" href="/public/ghost.css?v=fc76137a18"/>
+    <meta name="description" content="pyspark-bucketmap is a tiny module for pyspark which allows you to bucketize DataFrame rows and map their values easily.">
+    <link rel="icon" href="https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg" type="image/png">
+    <link rel="canonical" href="https://jeroenoverschie.nl/pyspark-bucketmap/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="https://jeroenoverschie.nl/pyspark-bucketmap/amp/">
+    
+    <meta property="og:site_name" content="Jeroen Overschie">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="pyspark-bucketmap">
+    <meta property="og:description" content="pyspark-bucketmap is a tiny module for pyspark which allows you to bucketize DataFrame rows and map their values easily.">
+    <meta property="og:url" content="https://jeroenoverschie.nl/pyspark-bucketmap/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1472141521881-95d0e87e2e39?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhdGVnb3JpZXN8ZW58MHx8fHwxNjg3NzIyOTIzfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta property="article:published_time" content="2022-10-22T10:01:09.000Z">
+    <meta property="article:modified_time" content="2023-06-25T19:56:35.000Z">
+    <meta property="article:tag" content="Code snippets">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="pyspark-bucketmap">
+    <meta name="twitter:description" content="pyspark-bucketmap is a tiny module for pyspark which allows you to bucketize DataFrame rows and map their values easily.">
+    <meta name="twitter:url" content="https://jeroenoverschie.nl/pyspark-bucketmap/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1472141521881-95d0e87e2e39?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhdGVnb3JpZXN8ZW58MHx8fHwxNjg3NzIyOTIzfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Jeroen Overschie">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Code snippets">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="799">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Jeroen Overschie",
+        "url": "https://jeroenoverschie.nl/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Jeroen Overschie",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.gravatar.com/avatar/b37b136916ade32aada1f345482aafa4?s=250&r=x&d=mp",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://jeroenoverschie.nl/author/jeroen/",
+        "sameAs": []
+    },
+    "headline": "pyspark-bucketmap",
+    "url": "https://jeroenoverschie.nl/pyspark-bucketmap/",
+    "datePublished": "2022-10-22T10:01:09.000Z",
+    "dateModified": "2023-06-25T19:56:35.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1472141521881-95d0e87e2e39?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhdGVnb3JpZXN8ZW58MHx8fHwxNjg3NzIyOTIzfDA&ixlib=rb-4.0.3&q=80&w=2000",
+        "width": 1200,
+        "height": 799
+    },
+    "keywords": "Code snippets",
+    "description": "pyspark-bucketmap is a tiny module for pyspark which allows you to bucketize DataFrame rows and map their values easily.",
+    "mainEntityOfPage": "https://jeroenoverschie.nl/pyspark-bucketmap/"
+}
+    </script>
 
-  </head>
-  <body>
-    <main role="main" id="main">
-      <div class="gh-app">
-          <div class="gh-viewport">
-              <div class="gh-view">
-                <section class="error-content error-404 js-error-container">
-                  <section class="error-details">
-                    <section class="error-message">
-                      <h1 class="error-code">500</h1>
-                      <h2 class="error-description">The currently active theme &quot;dunnkers-theme-edition&quot; is missing.</h2>
-                      <a class="error-link" href="">Go to the front page →</a>
-                    </section>
-                  </section>
-                </section>
+    <meta name="generator" content="Ghost 5.126">
+    <link rel="alternate" type="application/rss+xml" title="Jeroen Overschie" href="https://jeroenoverschie.nl/rss/">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.5/umd/sodo-search.min.js" data-key="489b5afdd4c5385878c360bd9b" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.5/umd/main.css" data-sodo-search="https://jeroenoverschie.nl/" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="https://jeroenoverschie.nl/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=607f26b803"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=607f26b803">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQB9198LQ6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-              </div>
-          </div>
-      </div>
-    </main>
-  </body>
+  gtag('config', 'G-PQB9198LQ6');
+</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+</head>
+
+<body class="post-template tag-code-snippets">
+    <div class="site">
+        <header id="site-header" class="site-header">
+    <div class="header-inner">
+        <div class="header-brand">
+            <a class="logo" href="https://jeroenoverschie.nl">
+                    <span class="logo-text">Jeroen Overschie</span>
+            </a>
+
+            <div class="burger">
+                <div class="burger-bar"></div>
+                <div class="burger-bar"></div>
+            </div>
+        </div>
+
+        <nav class="header-nav">
+                        <a class="menu-item menu-item-home" href="https://jeroenoverschie.nl/">Home</a>
+        <a class="menu-item menu-item-publications" href="https://jeroenoverschie.nl/publications/">Publications</a>
+        <a class="menu-item menu-item-about-me" href="https://jeroenoverschie.nl/about/">About me</a>
+
+        </nav>
+
+        <div class="header-actions">
+            <div class="social">
+
+            </div>
+
+        </div>
+    </div>
+</header>
+
+        <div class="site-content">
+            
+<div class="content-area">
+    <main class="site-main">
+            <article class="single post tag-code-snippets">
+    <header class="single-header kg-canvas">
+            <div class="single-meta">
+                <span class="single-meta-item single-meta-date">
+                    <time datetime="2022-10-22">
+                        Oct 22, 2022
+                    </time>
+                </span>
+
+                <span class="single-meta-item single-meta-length">
+                    2 min read
+                </span>
+
+                    <span class="single-meta-item single-meta-tag">
+                        <a class="post-tag post-tag-code-snippets" href="/tag/code-snippets/">Code snippets</a>
+                    </span>
+            </div>
+
+        <h1 class="single-title">pyspark-bucketmap</h1>
+
+            <div class="single-excerpt">
+                pyspark-bucketmap is a tiny module for pyspark which allows you to bucketize DataFrame rows and map their values easily.
+            </div>
+
+                <figure class="single-media kg-width-wide">
+                    <img srcset="https://images.unsplash.com/photo-1472141521881-95d0e87e2e39?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhdGVnb3JpZXN8ZW58MHx8fHwxNjg3NzIyOTIzfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;400 400w,
+https://images.unsplash.com/photo-1472141521881-95d0e87e2e39?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhdGVnb3JpZXN8ZW58MHx8fHwxNjg3NzIyOTIzfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;750 750w,
+https://images.unsplash.com/photo-1472141521881-95d0e87e2e39?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhdGVnb3JpZXN8ZW58MHx8fHwxNjg3NzIyOTIzfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960 960w,
+https://images.unsplash.com/photo-1472141521881-95d0e87e2e39?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhdGVnb3JpZXN8ZW58MHx8fHwxNjg3NzIyOTIzfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;1140 1140w" sizes="(min-width: 1023px) 920px, calc(90vw)" src="https://images.unsplash.com/photo-1472141521881-95d0e87e2e39?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhdGVnb3JpZXN8ZW58MHx8fHwxNjg3NzIyOTIzfDA&amp;ixlib&#x3D;rb-4.0.3&amp;q&#x3D;80&amp;w&#x3D;960" alt="pyspark-bucketmap">
+                        <figcaption>Photo by <a href="https://unsplash.com/@v2osk?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">v2osk</a> / <a href="https://unsplash.com/?utm_source=ghost&utm_medium=referral&utm_campaign=api-credit">Unsplash</a></figcaption>
+                </figure>
+    </header>
+
+    <div class="single-content gh-content kg-canvas">
+        <!--kg-card-begin: markdown--><p>Have you ever heard of pyspark's <a href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.feature.Bucketizer.html"><code>Bucketizer</code></a>? It can be really useful! Although you perhaps won't need it for some simple transformation, it can be really useful for certain usecases.</p>
+<p>In this blogpost, we will:</p>
+<ol>
+<li>Explore the <code>Bucketizer</code> class</li>
+<li>Combine it with <code>create_map</code></li>
+<li>Use a module so we don't have to write the logic ourselves 🗝🥳</li>
+</ol>
+<p>Let's get started!</p>
+<h2 id="the-problem">The problem</h2>
+<p>First, let's boot up a local spark session:</p>
+<pre><code class="language-python">from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.getOrCreate()
+spark
+</code></pre>
+<p>Say we have this dataset containing some persons:</p>
+<pre><code class="language-python">from pyspark.sql import Row
+
+people = spark.createDataFrame(
+    [
+        Row(age=12, name=&quot;Damian&quot;),
+        Row(age=15, name=&quot;Jake&quot;),
+        Row(age=18, name=&quot;Dominic&quot;),
+        Row(age=20, name=&quot;John&quot;),
+        Row(age=27, name=&quot;Jerry&quot;),
+        Row(age=101, name=&quot;Jerry's Grandpa&quot;),
+    ]
+)
+people
+</code></pre>
+<p>Okay, that's great. Now, what we would like to do, is map each person's age to an age category.</p>
+<table>
+<thead>
+<tr>
+<th>age range</th>
+<th>life phase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 to 12</td>
+<td>Child</td>
+</tr>
+<tr>
+<td>12 to 18</td>
+<td>Teenager</td>
+</tr>
+<tr>
+<td>18 to 25</td>
+<td>Young adulthood</td>
+</tr>
+<tr>
+<td>25 to 70</td>
+<td>Adult</td>
+</tr>
+<tr>
+<td>70 and beyond</td>
+<td>Elderly</td>
+</tr>
+</tbody>
+</table>
+<p>How best to go about this?</p>
+<h2 id="using-bucketizer-createmap">Using <code>Bucketizer</code> + <code>create_map</code></h2>
+<p>We can use pyspark's <code>Bucketizer</code> for this. It works like so:</p>
+<pre><code class="language-python">from pyspark.ml.feature import Bucketizer
+from pyspark.sql import DataFrame
+
+bucketizer = Bucketizer(
+    inputCol=&quot;age&quot;,
+    outputCol=&quot;life phase&quot;,
+    splits=[
+        -float(&quot;inf&quot;), 0, 12, 18, 25, 70, float(&quot;inf&quot;)
+    ]
+)
+bucketed: DataFrame = bucketizer.transform(people)
+bucketed.show()
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>age</th>
+<th>name</th>
+<th>life phase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12</td>
+<td>Damian</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Jake</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Dominic</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>20</td>
+<td>John</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Jerry</td>
+<td>4.0</td>
+</tr>
+<tr>
+<td>101</td>
+<td>Jerry's Grandpa</td>
+<td>5.0</td>
+</tr>
+</tbody>
+</table>
+<p>Cool! We just put our ages in buckets, represented by numbers. Let's now map each bucket to a life phase.</p>
+<pre><code class="language-python">from pyspark.sql.functions import lit, create_map
+from typing import Dict
+from pyspark.sql.column import Column
+
+range_mapper = create_map(
+    [lit(0.0), lit(&quot;Not yet born&quot;)]
+    + [lit(1.0), lit(&quot;Child&quot;)]
+    + [lit(2.0), lit(&quot;Teenager&quot;)]
+    + [lit(3.0), lit(&quot;Young adulthood&quot;)]
+    + [lit(4.0), lit(&quot;Adult&quot;)]
+    + [lit(5.0), lit(&quot;Elderly&quot;)]
+)
+people_phase_column: Column = bucketed[&quot;life phase&quot;]
+people_with_phase: DataFrame = bucketed.withColumn(
+    &quot;life phase&quot;, range_mapper[people_phase_column]
+)
+people_with_phase.show()
+
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>age</th>
+<th>name</th>
+<th>life phase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12</td>
+<td>Damian</td>
+<td>Teenager</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Jake</td>
+<td>Teenager</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Dominic</td>
+<td>Young adulthood</td>
+</tr>
+<tr>
+<td>20</td>
+<td>John</td>
+<td>Young adulthood</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Jerry</td>
+<td>Adult</td>
+</tr>
+<tr>
+<td>101</td>
+<td>Jerry's Grandpa</td>
+<td>Elderly</td>
+</tr>
+</tbody>
+</table>
+<p>🎉 Success!</p>
+<p>Using a combination of <code>Bucketizer</code> and <code>create_map</code>, we managed to map people's age to their life phases.</p>
+<h2 id="pyspark-bucketmap"><code>pyspark-bucketmap</code></h2>
+<p>🎁 As a bonus, I put all of the above in a neat little module, which you can install simply using <code>pip</code>.</p>
+<pre><code class="language-python">%pip install pyspark-bucketmap
+</code></pre>
+<p>Define the splits and mappings like before. Each dictionary key is a mapping to the n-th bucket (for example, bucket 1 refers to the range <code>0</code> to <code>12</code>).</p>
+<pre><code class="language-python">from typing import List
+
+splits: List[float] = [-float(&quot;inf&quot;), 0, 12, 18, 25, 70, float(&quot;inf&quot;)]
+mapping: Dict[int, Column] = {
+    0: lit(&quot;Not yet born&quot;),
+    1: lit(&quot;Child&quot;),
+    2: lit(&quot;Teenager&quot;),
+    3: lit(&quot;Young adulthood&quot;),
+    4: lit(&quot;Adult&quot;),
+    5: lit(&quot;Elderly&quot;),
+}
+</code></pre>
+<p>Then, simply import <code>pyspark_bucketmap.BucketMap</code> and call <code>transform()</code>.</p>
+<pre><code class="language-python">from pyspark_bucketmap import BucketMap
+from typing import List, Dict
+
+bucket_mapper = BucketMap(
+    splits=splits, mapping=mapping, inputCol=&quot;age&quot;, outputCol=&quot;phase&quot;
+)
+phases_actual: DataFrame = bucket_mapper.transform(people).select(&quot;name&quot;, &quot;phase&quot;)
+phases_actual.show()
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>phase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Damian</td>
+<td>Teenager</td>
+</tr>
+<tr>
+<td>Jake</td>
+<td>Teenager</td>
+</tr>
+<tr>
+<td>Dominic</td>
+<td>Young adulthood</td>
+</tr>
+<tr>
+<td>John</td>
+<td>Young adulthood</td>
+</tr>
+<tr>
+<td>Jerry</td>
+<td>Adult</td>
+</tr>
+<tr>
+<td>Jerry's Grandpa</td>
+<td>Elderly</td>
+</tr>
+</tbody>
+</table>
+<p>Cheers 🙏🏻</p>
+<p>You can find the module here:<br>
+<a href="https://github.com/dunnkers/pyspark-bucketmap">https://github.com/dunnkers/pyspark-bucketmap</a></p>
+<hr>
+<p>Written by <a href="https://jeroenoverschie.nl/">Jeroen Overschie</a>, working at <a href="https://godatadriven.com/">GoDataDriven</a>.</p>
+<!--kg-card-end: markdown-->
+    </div>
+
+        <footer class="single-footer container small">
+            <div class="single-footer-left">
+                    <div class="navigation navigation-previous">
+                        <a class="navigation-link" href="/dropblox-coding-challenge-at-pycon-de-pydata-berlin-2022/" aria-label="Previous post">
+                            <span class="navigation-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M26.667 14.667v2.667h-16L18 24.667l-1.893 1.893L5.547 16l10.56-10.56L18 7.333l-7.333 7.333h16z"></path>
+</svg></span>
+                        </a>
+                    </div>
+            </div>
+
+            <div class="single-footer-middle">
+                    <div class="single-footer-top">
+                        <h3 class="single-footer-title">Published by:</h3>
+                        <div class="author-list">
+                                <div class="author-image-placeholder u-placeholder square">
+                                    <a href="/author/jeroen/" title="Jeroen Overschie">
+                                            <img class="author-image u-object-fit" src="https://www.gravatar.com/avatar/b37b136916ade32aada1f345482aafa4?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp" alt="Jeroen Overschie" loading="lazy">
+                                    </a>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+
+            <div class="single-footer-right">
+                    <div class="navigation navigation-next">
+                        <a class="navigation-link" href="/how-to-create-a-devcontainer-for-your-python-project/" aria-label="Next post">
+                            <span class="navigation-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M5.333 14.667v2.667h16L14 24.667l1.893 1.893L26.453 16 15.893 5.44 14 7.333l7.333 7.333h-16z"></path>
+</svg></span>
+                        </a>
+                    </div>
+            </div>
+        </footer>
+</article>                                </main>
+</div>
+
+
+        </div>
+
+        <footer class="site-footer container">
+    <div class="footer-inner">
+        <div class="footer-left">
+            <div class="copyright">
+                Jeroen Overschie © 2025
+            </div>
+        </div>
+
+        <nav class="footer-nav">
+                    <a class="menu-item menu-item-bookshelf" href="https://jeroenoverschie.nl/books/">Bookshelf</a>
+            <span class="sep">•</span>
+        <a class="menu-item menu-item-photography" href="https://jeroenoverschie.nl/photography/">Photography</a>
+            <span class="sep">•</span>
+        <a class="menu-item menu-item-contact" href="https://jeroenoverschie.nl/about/#contact">Contact</a>
+
+        </nav>
+
+        <div class="footer-right">
+            <div class="social">
+
+            </div>
+        </div>
+    </div>
+</footer>        <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe.
+        It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides.
+          PhotoSwipe keeps only 3 of them in the DOM to save memory.
+          Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>    </div>
+
+    <script>
+        if (document.body.classList.contains('with-full-cover') && (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.platform))) {
+            document.getElementsByClassName('cover')[0].style.height = window.innerHeight + 'px';
+        }
+    </script>
+
+    <script src="/assets/built/main.min.js?v=607f26b803"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/components/prism-python.min.js" integrity="sha512-3qtI9+9JXi658yli19POddU1RouYtkTEhTHo6X5ilOvMiDfNvo6GIS6k2Ukrsx8MyaKSXeVrnIWeyH8G5EOyIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+
 </html>

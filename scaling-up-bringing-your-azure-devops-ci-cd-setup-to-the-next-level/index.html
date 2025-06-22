@@ -1,35 +1,751 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<html lang="en">
 
-    <title>500 — The currently active theme &quot;dunnkers-theme-edition&quot; is missing.</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Scaling up: bringing your Azure DevOps CI/CD setup to the next level 🚀 (on Xebia.com ⧉)</title>
 
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="/assets/built/screen.css?v=607f26b803">
 
-    <link rel="stylesheet" href="/public/ghost.css?v=fc76137a18"/>
+    <meta name="description" content="Azure DevOps pipelines are a great way to automate your CI/CD process. But what if you have many projects? In this blog post, we will show you how you can scale up your Azure DevOps CI/CD setup for reusability and easy maintenance.">
+    <link rel="icon" href="https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg" type="image/png">
+    <link rel="canonical" href="https://jeroenoverschie.nl/scaling-up-bringing-your-azure-devops-ci-cd-setup-to-the-next-level/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="https://jeroenoverschie.nl/scaling-up-bringing-your-azure-devops-ci-cd-setup-to-the-next-level/amp/">
+    
+    <meta property="og:site_name" content="Jeroen Overschie">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Scaling up: bringing your Azure DevOps CI/CD setup to the next level 🚀 (on Xebia.com ⧉)">
+    <meta property="og:description" content="Azure DevOps pipelines are a great way to automate your CI/CD process. But what if you have many projects? In this blog post, we will show you how you can scale up your Azure DevOps CI/CD setup for reusability and easy maintenance.">
+    <meta property="og:url" content="https://jeroenoverschie.nl/scaling-up-bringing-your-azure-devops-ci-cd-setup-to-the-next-level/">
+    <meta property="og:image" content="https://jeroenoverschie.nl/content/images/2024/01/scaling-up-your-azure-devops-ci-cd-setup-banner.jpg">
+    <meta property="article:published_time" content="2023-12-08T11:02:00.000Z">
+    <meta property="article:modified_time" content="2025-04-09T13:50:30.000Z">
+    <meta property="article:tag" content="Software Engineering">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Scaling up: bringing your Azure DevOps CI/CD setup to the next level 🚀 (on Xebia.com ⧉)">
+    <meta name="twitter:description" content="Azure DevOps pipelines are a great way to automate your CI/CD process. But what if you have many projects? In this blog post, we will show you how you can scale up your Azure DevOps CI/CD setup for reusability and easy maintenance.">
+    <meta name="twitter:url" content="https://jeroenoverschie.nl/scaling-up-bringing-your-azure-devops-ci-cd-setup-to-the-next-level/">
+    <meta name="twitter:image" content="https://jeroenoverschie.nl/content/images/2024/01/scaling-up-your-azure-devops-ci-cd-setup-banner.jpg">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Jeroen Overschie">
+    <meta name="twitter:label2" content="Filed under">
+    <meta name="twitter:data2" content="Software Engineering">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="1176">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Jeroen Overschie",
+        "url": "https://jeroenoverschie.nl/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Jeroen Overschie",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.gravatar.com/avatar/b37b136916ade32aada1f345482aafa4?s=250&r=x&d=mp",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://jeroenoverschie.nl/author/jeroen/",
+        "sameAs": []
+    },
+    "headline": "Scaling up: bringing your Azure DevOps CI/CD setup to the next level 🚀 (on Xebia.com ⧉)",
+    "url": "https://jeroenoverschie.nl/scaling-up-bringing-your-azure-devops-ci-cd-setup-to-the-next-level/",
+    "datePublished": "2023-12-08T11:02:00.000Z",
+    "dateModified": "2025-04-09T13:50:30.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://jeroenoverschie.nl/content/images/2024/01/scaling-up-your-azure-devops-ci-cd-setup-banner.jpg",
+        "width": 1200,
+        "height": 1176
+    },
+    "keywords": "Software Engineering",
+    "description": "Azure DevOps pipelines are a great way to automate your CI/CD process. But what if you have many projects? In this blog post, we will show you how you can scale up your Azure DevOps CI/CD setup for reusability and easy maintenance.",
+    "mainEntityOfPage": "https://jeroenoverschie.nl/scaling-up-bringing-your-azure-devops-ci-cd-setup-to-the-next-level/"
+}
+    </script>
 
-  </head>
-  <body>
-    <main role="main" id="main">
-      <div class="gh-app">
-          <div class="gh-viewport">
-              <div class="gh-view">
-                <section class="error-content error-404 js-error-container">
-                  <section class="error-details">
-                    <section class="error-message">
-                      <h1 class="error-code">500</h1>
-                      <h2 class="error-description">The currently active theme &quot;dunnkers-theme-edition&quot; is missing.</h2>
-                      <a class="error-link" href="">Go to the front page →</a>
-                    </section>
-                  </section>
-                </section>
+    <meta name="generator" content="Ghost 5.126">
+    <link rel="alternate" type="application/rss+xml" title="Jeroen Overschie" href="https://jeroenoverschie.nl/rss/">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.5/umd/sodo-search.min.js" data-key="489b5afdd4c5385878c360bd9b" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.5/umd/main.css" data-sodo-search="https://jeroenoverschie.nl/" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="https://jeroenoverschie.nl/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=607f26b803"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=607f26b803">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQB9198LQ6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-              </div>
-          </div>
-      </div>
-    </main>
-  </body>
+  gtag('config', 'G-PQB9198LQ6');
+</script>
+    <meta http-equiv="refresh" content="0; URL=https://xebia.com/blog/scaling-up-your-azure-devops-ci-cd-setup/" />
+</head>
+
+<body class="post-template tag-software-engineering">
+    <div class="site">
+        <header id="site-header" class="site-header">
+    <div class="header-inner">
+        <div class="header-brand">
+            <a class="logo" href="https://jeroenoverschie.nl">
+                    <span class="logo-text">Jeroen Overschie</span>
+            </a>
+
+            <div class="burger">
+                <div class="burger-bar"></div>
+                <div class="burger-bar"></div>
+            </div>
+        </div>
+
+        <nav class="header-nav">
+                        <a class="menu-item menu-item-home" href="https://jeroenoverschie.nl/">Home</a>
+        <a class="menu-item menu-item-publications" href="https://jeroenoverschie.nl/publications/">Publications</a>
+        <a class="menu-item menu-item-about-me" href="https://jeroenoverschie.nl/about/">About me</a>
+
+        </nav>
+
+        <div class="header-actions">
+            <div class="social">
+
+            </div>
+
+        </div>
+    </div>
+</header>
+
+        <div class="site-content">
+            
+<div class="content-area">
+    <main class="site-main">
+            <article class="single post tag-software-engineering">
+    <header class="single-header kg-canvas">
+            <div class="single-meta">
+                <span class="single-meta-item single-meta-date">
+                    <time datetime="2023-12-08">
+                        Dec 8, 2023
+                    </time>
+                </span>
+
+                <span class="single-meta-item single-meta-length">
+                    9 min read
+                </span>
+
+                    <span class="single-meta-item single-meta-tag">
+                        <a class="post-tag post-tag-software-engineering" href="/tag/software-engineering/">Software Engineering</a>
+                    </span>
+            </div>
+
+        <h1 class="single-title">Scaling up: bringing your Azure DevOps CI/CD setup to the next level 🚀 (on Xebia.com ⧉)</h1>
+
+            <div class="single-excerpt">
+                Azure DevOps pipelines are a great way to automate your CI/CD process. But what if you have many projects? In this blog post, we will show you how you can scale up your Azure DevOps CI/CD setup for reusability and easy maintenance.
+            </div>
+
+                <figure class="single-media kg-width-wide">
+                    <img srcset="/content/images/size/w400/2024/01/scaling-up-your-azure-devops-ci-cd-setup-banner.jpg 400w,
+/content/images/size/w750/2024/01/scaling-up-your-azure-devops-ci-cd-setup-banner.jpg 750w,
+/content/images/size/w960/2024/01/scaling-up-your-azure-devops-ci-cd-setup-banner.jpg 960w,
+/content/images/size/w1140/2024/01/scaling-up-your-azure-devops-ci-cd-setup-banner.jpg 1140w" sizes="(min-width: 1023px) 920px, calc(90vw)" src="/content/images/size/w960/2024/01/scaling-up-your-azure-devops-ci-cd-setup-banner.jpg" alt="Scaling up: bringing your Azure DevOps CI/CD setup to the next level 🚀 (on Xebia.com ⧉)">
+                </figure>
+    </header>
+
+    <div class="single-content gh-content kg-canvas">
+        <p> <strong><strong>Introduction</strong></strong></p><p>Azure DevOps pipelines are a great way to automate your CI/CD process. Most often, they are configured on a per project basis. This works fine when you have few projects. But what if you have many projects? In this blog post, we will show you how you can scale up your Azure DevOps CI/CD setup for reusability and easy maintenance.</p><h2 id="your-typical-devops-pipeline"><strong><strong>Your typical DevOps pipeline</strong></strong></h2><p>A typical DevOps pipeline is placed inside the project repository. Let’s consider a pipeline for a Python project. It includes the following steps:</p><ul><li><strong>quality checks</strong> such as code formatting and linting</li><li><strong>building a package</strong> such as a Python wheel</li><li><strong>releasing a package</strong> to Python package registry (such as <a href="https://learn.microsoft.com/en-us/azure/devops/artifacts/start-using-azure-artifacts?view=azure-devops&amp;tabs=nugettfs%2Cnuget%2Corgstorage">Azure Artifacts</a> or PyPi)</li></ul><p>Using an Azure DevOps pipeline, we can achieve this like so:</p><pre><code class="language-yaml">trigger:
+- main
+
+steps:
+# Python setup &amp; dependencies
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: 3.10
+
+- script: |
+    pip install .[dev,build,release]
+  displayName: 'Install dependencies'
+
+# Code Quality
+- script: |
+    black --check .
+  displayName: 'Formatting'
+
+- script: |
+    flake8 .
+  displayName: 'Linting'
+
+- script: |
+    pytest .
+  displayName: 'Testing'
+
+# Build
+- script: |
+    echo $(Build.BuildNumber) &gt; version.txt
+  displayName: 'Set version number'
+
+- script: |
+    pip wheel \
+      --no-deps \
+      --wheel-dir dist/ \
+      .
+  displayName: 'Build wheel'
+
+# Publish
+- task: TwineAuthenticate@1
+  inputs:
+    artifactFeed: 'better-devops-pipelines-blogpost/devops-pipelines-blogpost'
+  displayName: 'Authenticate pip with twine'
+
+- script: |
+    twine upload \
+      --config-file $(PYPIRC_PATH) \
+      --repository devops-pipelines-blogpost \
+      dist/*.whl
+  displayName: 'Publish wheel with twine'
+</code></pre><p>Well, that is great, right? We have achieved all the goals we desired:</p><ul><li>Code quality checks using <em>black</em>, <em>flake8</em> and <em>pytest</em>.</li><li>Build and package the project as a Python <em>wheel</em>.</li><li>Publish the package to a registry of choice, in this case <em>Azure Artifacts</em>.</li></ul><h2 id="growing-pains"><strong><strong>Growing pains</strong></strong></h2><p>A DevOps pipeline like the above works fine for a single project. But, … what if we want to scale up? Say our company grows, we create more repositories and more projects need to be packaged and released. Will we simply copy this pipeline and paste it into a new repository? Given that we are growing in size, can we be more efficient than just running this pipeline from start to finish?</p><p>The answer is no – we do not have to copy/paste all these pipelines into a new repo, and the answer is yes – we can be more efficient in running these pipelines. Let’s see how.</p><h2 id="scaling-up-properly"><strong><strong>Scaling up properly</strong></strong></h2><p>Let’s see how we can create scalable DevOps pipelines. First, we are going to introduce <strong>DevOps pipeline <a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/process/templates?view=azure-devops&amp;pivots=templates-includes">templates</a></strong>. These are modular pieces of pipeline that we can reuse across various pipelines and also across various projects residing in different repositories.</p><p>Let’s see how we can use pipeline templates to our advantage.</p><h3 id="1-devops-template-setup"><strong><strong>1. DevOps template setup</strong></strong></h3><p>Let’s rewrite pieces of our pipeline into DevOps pipeline templates. Important to know here is that you can write templates for either <code>stages</code>, <code>jobs</code> or <code>steps</code>. The hierarchy is as follows:</p><pre><code class="language-yaml">stages:
+- stage: Stage1
+  jobs:
+  - job: Job1
+    steps:
+    - step: Step1
+</code></pre><p>This can be illustrated in an image like so:</p><figure class="kg-card kg-image-card"><img src="https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-stages-jobs-steps-illustration.jpg.webp" class="kg-image" alt="Stages jobs steps illustration" loading="lazy" width="2000" height="847" srcset="https://jeroenoverschie.nl/content/images/size/w600/2024/04/scaling-up-your-azure-devops-ci-cd-setup-stages-jobs-steps-illustration.jpg.webp 600w, https://jeroenoverschie.nl/content/images/size/w1000/2024/04/scaling-up-your-azure-devops-ci-cd-setup-stages-jobs-steps-illustration.jpg.webp 1000w, https://jeroenoverschie.nl/content/images/size/w1600/2024/04/scaling-up-your-azure-devops-ci-cd-setup-stages-jobs-steps-illustration.jpg.webp 1600w, https://jeroenoverschie.nl/content/images/size/w2400/2024/04/scaling-up-your-azure-devops-ci-cd-setup-stages-jobs-steps-illustration.jpg.webp 2400w" sizes="(min-width: 720px) 720px"></figure><p>We can then create a template in one file, for example for <code>steps</code>:</p><p><strong>templates/code-quality.yml</strong></p><pre><code class="language-yaml">steps:
+- script: |
+    echo "Hello world!"
+</code></pre><p>.. and reuse it in our former pipeline:</p><pre><code class="language-yaml">stages:
+- stage: Stage1
+  jobs:
+  - job: Job1
+    steps:
+    - template: templates/code-quality.yml
+</code></pre><p>… or for those who prefer a more visual way of displaying it:</p><figure class="kg-card kg-image-card"><img src="https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-using-templates-in-your-own-repo.png.webp" class="kg-image" alt="Using templates in your own repo illustration" loading="lazy" width="1551" height="608" srcset="https://jeroenoverschie.nl/content/images/size/w600/2024/04/scaling-up-your-azure-devops-ci-cd-setup-using-templates-in-your-own-repo.png.webp 600w, https://jeroenoverschie.nl/content/images/size/w1000/2024/04/scaling-up-your-azure-devops-ci-cd-setup-using-templates-in-your-own-repo.png.webp 1000w, https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-using-templates-in-your-own-repo.png.webp 1551w" sizes="(min-width: 720px) 720px"></figure><p>That’s how easy it is to use DevOps pipeline templates! Let’s now apply it to our own usecase.</p><h4 id="code-quality-checks-template"><strong><strong>Code quality checks template</strong></strong></h4><p>First, let’s put the code quality checks pipeline into a template. We are also making the pipeline more extensive so it outputs test results and coverage reports. Remember, we are only defining this template once and then reusing it in other places.</p><p><strong>templates/code-quality.yml</strong></p><pre><code class="language-yaml">steps:
+# Code Quality
+- script: |
+    black --check .
+  displayName: 'Formatting'
+
+- script: |
+    flake8 .
+  displayName: 'Linting'
+
+- script: |
+    pytest \
+      --junitxml=junit/test-results.xml \
+      --cov=. \
+      --cov-report=xml:coverage.xml \
+      .
+  displayName: 'Testing'
+
+# Publish test results + coverage
+- task: PublishTestResults@2
+  condition: succeededOrFailed()
+  inputs:
+    testResultsFiles: '**/test-*.xml'
+    testRunTitle: 'Publish test results'
+    failTaskOnFailedTests: true
+  displayName: 'Publish test results'
+
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: '**/coverage.xml'
+  displayName: 'Publish test coverage'
+</code></pre><p>… which we are using like so:</p><pre><code class="language-yaml">steps:
+- template: templates/code-quality.yml
+</code></pre><p>Easy! Also note we included two additional tasks: one to publish the test results and another to publish code coverage reports. That information is super useful to display inside DevOps. Lucky for us, DevOps has support for that:</p><figure class="kg-card kg-image-card"><img src="https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-checks.png.webp" class="kg-image" alt="Code Quality checks display in DevOps" loading="lazy" width="526" height="306"></figure><p>… clicking on the test results brings us to the <em>Tests</em> view, where we can exactly which test failed (if any failed):</p><figure class="kg-card kg-image-card"><img src="https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-test-view.png.webp" class="kg-image" alt="Code quality test view" loading="lazy" width="2000" height="1596" srcset="https://jeroenoverschie.nl/content/images/size/w600/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-test-view.png.webp 600w, https://jeroenoverschie.nl/content/images/size/w1000/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-test-view.png.webp 1000w, https://jeroenoverschie.nl/content/images/size/w1600/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-test-view.png.webp 1600w, https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-test-view.png.webp 2078w" sizes="(min-width: 720px) 720px"></figure><p>Lastly, there’s also a view explaining which lines of code you covered with tests and which you did not:</p><figure class="kg-card kg-image-card"><img src="https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-coverage-view.jpg.webp" class="kg-image" alt="Code quality coverage view" loading="lazy" width="2000" height="1618" srcset="https://jeroenoverschie.nl/content/images/size/w600/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-coverage-view.jpg.webp 600w, https://jeroenoverschie.nl/content/images/size/w1000/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-coverage-view.jpg.webp 1000w, https://jeroenoverschie.nl/content/images/size/w1600/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-coverage-view.jpg.webp 1600w, https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-coverage-view.jpg.webp 2054w" sizes="(min-width: 720px) 720px"></figure><p>Those come in very useful when you are working on testing your code!</p><p>Now, we have defined this all in DevOps <em>templates</em>. That gives us a more comfortable position to define more elaborate pipeline steps because we will <em>import</em> those templates instead of copy/pasting them.</p><p>That said, we can summarise the benefits of using DevOps templates like so:</p><ul><li>Define once, reuse everywhere<br>We can reuse this code quality checks pipeline in both the same project multiple times but also from other repositories. If you are importing from another repo, see ‘<a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/process/templates?view=azure-devops&amp;pivots=templates-includes#use-other-repositories">Use other repositories</a>‘ for setup.</li><li>Make it failproof<br>You can invest into making just this template very good; instead of having multiple bad versions hanging around in your organisation.</li><li>Reduce complexity<br>Abstracting away commonly used code can be efficient for the readability of your pipeline. This allows newcomers to easily understand the different parts of your CI/CD setup using DevOps pipelines.</li></ul><h3 id="2-passing-data-between-templates"><strong><strong>2. Passing data between templates</strong></strong></h3><p>Let’s go a step further and also abstract away the build and release steps into templates. We are going to use the following template for <strong>building a Python wheel</strong>:</p><pre><code class="language-yaml">steps:
+# Build wheel
+- script: |
+    echo $(Build.BuildNumber) &gt; version.txt
+  displayName: 'Set version number'
+
+- script: |
+    pip wheel \
+      --no-deps \
+      --wheel-dir dist/ \
+      .
+  displayName: 'Build wheel'
+
+# Upload wheel as artifact
+- task: CopyFiles@2
+  inputs:
+    contents: dist/**
+    targetFolder: $(Build.ArtifactStagingDirectory)
+  displayName: 'Copy wheel to artifacts directory'
+
+- publish: '$(Build.ArtifactStagingDirectory)/dist'
+  artifact: wheelFiles
+  displayName: 'Upload wheel as artifact'
+</code></pre><p>This definition is slightly different than the one we defined before, in the initial pipeline. This pipeline uses <strong><a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/artifacts/pipeline-artifacts?view=azure-devops&amp;tabs=yaml">artifacts</a></strong>. These allow us to <em>pass</em> data between jobs or stages. This is useful when we want to split up our pipeline into smaller pieces. Splitting up the process into smaller segments gives us more visibility and control over the process. Another benefit of this, is that when we split the Python wheel build and release process, is that we give ourselves the ability to <em>release to multiple providers at once</em>.</p><p>When this pipeline is ran we can see an artifact (a wheel file) has been added:</p><figure class="kg-card kg-image-card"><img src="https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-build-artifact-example.png.webp" class="kg-image" alt="Build artifact example" loading="lazy" width="506" height="480"></figure><p>… with the actual wheel file in there:</p><figure class="kg-card kg-image-card"><img src="https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-build-artifact-example-wheel-file.png.webp" class="kg-image" alt="Build artifact wheel file" loading="lazy" width="1756" height="668" srcset="https://jeroenoverschie.nl/content/images/size/w600/2024/04/scaling-up-your-azure-devops-ci-cd-setup-build-artifact-example-wheel-file.png.webp 600w, https://jeroenoverschie.nl/content/images/size/w1000/2024/04/scaling-up-your-azure-devops-ci-cd-setup-build-artifact-example-wheel-file.png.webp 1000w, https://jeroenoverschie.nl/content/images/size/w1600/2024/04/scaling-up-your-azure-devops-ci-cd-setup-build-artifact-example-wheel-file.png.webp 1600w, https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-build-artifact-example-wheel-file.png.webp 1756w" sizes="(min-width: 720px) 720px"></figure><p>This is also useful so we can inspect what the build pipeline has produced. We can now <em>download</em> this wheel file from the artifacts again. We will do this in the publish pipeline.</p><p><strong>template/publish-wheel.yml</strong></p><pre><code class="language-yaml">parameters:
+- name: artifactFeed
+  type: string
+- name: repositoryName
+  type: string
+
+steps:
+# Retrieve wheel
+- download: current
+  artifact: wheelFiles
+  displayName: 'Download artifacts'
+
+# Publish wheel
+- task: TwineAuthenticate@1
+  inputs:
+    artifactFeed: ${{ parameters.artifactFeed }}
+  displayName: 'Authenticate pip with twine'
+
+- script: |
+    twine upload \
+      --config-file $(PYPIRC_PATH) \
+      --repository ${{ parameters.repositoryName }} \
+      $(Pipeline.Workspace)/wheelFiles/*.whl
+  displayName: 'Publish wheel with twine'
+</code></pre><p>… both the build- and release pipeline can be used like so:</p><pre><code class="language-yaml">- stage: Build
+  jobs:
+  - job: BuildWheel
+    steps:
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: 3.10
+
+    - script: |
+        pip install .[build]
+      displayName: 'Install dependencies'
+
+    - template: templates/build-wheel.yml
+
+
+- stage: Publish
+  jobs:
+  - job: PublishWheel
+    steps:
+    - script: |
+        pip install twine==4.0.2
+      displayName: 'Install twine'
+
+    - template: templates/publish-wheel.yml
+      parameters:
+        artifactFeed: 'better-devops-pipelines-blogpost/devops-pipelines-blogpost'
+        repositoryName: 'devops-pipelines-blogpost'
+</code></pre><p>And here we have another new feature coming in. <a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/process/stages?view=azure-devops&amp;tabs=yaml">Stages</a>. These allow us to execute pipelines that depend on each other. We have now split up our pipeline into 2 stages:</p><ol><li>Build stage</li><li>Publish stage</li></ol><p>Using stages makes it easy to see what is going on. It provides transparency and allows you to easily track the progress of the pipeline. You can also launch stages separately, skipping previous stages, as long as the necessary dependencies are in place. For example, dependencies can include artifacts, which were generated in previous stage.</p><h4 id="improving-the-release-process"><strong><strong>Improving the release process</strong></strong></h4><p>So what is another advantage of this setup? Say that you are releasing your package to <strong>two pip registries</strong>. Doing that is easy using this setup by creating two jobs in the publish stage:</p><pre><code class="language-yaml">- stage: Publish
+  jobs:
+  - job: PublishToRegistryOne
+    steps:
+    - script: |
+        pip install twine==4.0.2
+      displayName: 'Install twine'
+
+    - template: templates/publish-wheel.yml
+      parameters:
+        artifactFeed: 'better-devops-pipelines-blogpost/registry-1'
+        repositoryName: 'devops-pipelines-blogpost'
+
+  - job: PublishToRegistryTwo
+    steps:
+    - script: |
+        pip install twine==4.0.2
+      displayName: 'Install twine'
+
+    - template: templates/publish-wheel.yml
+      parameters:
+        artifactFeed: 'better-devops-pipelines-blogpost/registry-2'
+        repositoryName: 'devops-pipelines-blogpost'
+</code></pre><p>As you can see, we can use the defined templates to scale our pipelines. What is essential here, is that thanks to using the artifacts, we can build our wheel <em>once</em> and consume that same wheel <em>multiple</em> times.</p><p>Additionally, the publishing jobs launch <strong>in parallel</strong> by default (unless dependencies are explicitly defined). This speeds up your release process.</p><h3 id="3-automate-using-a-strategy-matrix"><strong><strong>3. Automate using a strategy matrix</strong></strong></h3><p>Let’s go back to the code quality stage for a minute. In the code quality stage, we are first installing a certain Python version, and then running all quality checks. However, we might need guarantees that our code works for multiple Python versions. This is often the case when releasing a package, for example. How can we easily automate running our Code Quality pipeline using our pipeline <em>templates</em>? One option is to manually define a couple jobs and install the correct python version in each job. Another option is to use a <strong><a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/yaml-schema/jobs-job-strategy?view=azure-pipelines">strategy matrix</a></strong>. This allows us to define a matrix of variables that we can use in our pipeline.</p><p>We can improve our <code>CodeQualityChecks</code> job like so:</p><pre><code class="language-yaml">jobs:
+- job: CodeQualityChecks
+  strategy:
+    matrix:
+      Python38:
+        python.version: '3.8'
+      Python39:
+        python.version: '3.9'
+      Python310:
+        python.version: '3.10'
+      Python311:
+        python.version: '3.11'
+
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: $(python.version)
+
+  - script: |
+      pip install .[dev]
+    displayName: 'Install dependencies'
+
+  - template: templates/code-quality.yml
+</code></pre><p>Awesome! The pipeline now runs the entire code quality pipeline for each Python version. Looking at how our pipeline runs now, we can see multiple jobs, one for each Python version:</p><figure class="kg-card kg-image-card"><img src="https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-strategy-matrix-example.png.webp" class="kg-image" alt="Strategy matrix jobs example in parallel" loading="lazy" width="1574" height="866" srcset="https://jeroenoverschie.nl/content/images/size/w600/2024/04/scaling-up-your-azure-devops-ci-cd-setup-strategy-matrix-example.png.webp 600w, https://jeroenoverschie.nl/content/images/size/w1000/2024/04/scaling-up-your-azure-devops-ci-cd-setup-strategy-matrix-example.png.webp 1000w, https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-strategy-matrix-example.png.webp 1574w" sizes="(min-width: 720px) 720px"></figure><p>.. as you can see 4 jobs are launched. If no job dependencies are explicitly set, jobs within one stage run in parallel! That greatly speed up the pipeline and lets you iterate faster! That’s definitely a win.</p><h2 id="final-result"><strong><strong>Final result</strong></strong></h2><p>Let’s wrap it up! Our entire pipeline, using <strong>templates</strong>:</p><pre><code class="language-yaml">trigger:
+- main
+
+stages:
+- stage: CodeQuality
+  jobs:
+  - job: CodeQualityChecks
+    strategy:
+      matrix:
+        Python38:
+          python.version: '3.8'
+        Python39:
+          python.version: '3.9'
+        Python310:
+          python.version: '3.10'
+        Python311:
+          python.version: '3.11'
+
+    steps:
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: $(python.version)
+
+    - script: |
+        pip install .[dev]
+      displayName: 'Install dependencies'
+
+    - template: templates/code-quality.yml
+
+
+- stage: Build
+  jobs:
+  - job: BuildWheel
+    steps:
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: 3.10
+
+    - script: |
+        pip install .[build]
+      displayName: 'Install dependencies'
+
+    - template: templates/build-wheel.yml
+
+
+- stage: Publish
+  jobs:
+  - job: PublishWheel
+    steps:
+    - script: |
+        pip install twine==4.0.2
+      displayName: 'Install twine'
+
+    - template: templates/publish-wheel.yml
+      parameters:
+        artifactFeed: 'better-devops-pipelines-blogpost/devops-pipelines-blogpost'
+        repositoryName: 'devops-pipelines-blogpost'
+</code></pre><p>… which uses these templates:</p><ul><li><a href="https://dev.azure.com/godatadriven/_git/better-devops-pipelines-blogpost?path=/02_better_pipeline/templates/code-quality.yml">templates/code-quality.yml</a></li><li><a href="https://dev.azure.com/godatadriven/_git/better-devops-pipelines-blogpost?path=/02_better_pipeline/templates/build-wheel.yml">templates/build-wheel.yml</a></li><li><a href="https://dev.azure.com/godatadriven/_git/better-devops-pipelines-blogpost?path=/02_better_pipeline/templates/publish-wheel.yml">templates/publish-wheel.yml</a></li></ul><p>… for the entire source code see the <a href="https://dev.azure.com/godatadriven/_git/better-devops-pipelines-blogpost">better-devops-pipelines-blogpost</a> repo. The repository contains pipelines that apply above explained principles. The pipelines provide testing, building and releasing for a Python project ✓.</p><h2 id="conclusion"><strong><strong>Conclusion</strong></strong></h2><p>We demonstrated how to scale up your Azure DevOps CI/CD setup making it reusable, maintainable and modular. This helps you maintain a good CI/CD setup as your company grows.</p><p>In short, we achieved the following:</p><ul><li>Create modular DevOps pipelines using <a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/process/templates?view=azure-devops&amp;pivots=templates-includes">templates</a>. This makes it more easy to reuse pipelines across projects and repositories</li><li>Pass data between DevOps pipeline jobs using <a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/artifacts/pipeline-artifacts?view=azure-devops&amp;tabs=yaml">artifacts</a>. This allows us to split up our pipeline into smaller pieces, that can consume artifacts from previous jobs.</li><li>Split up your pipeline in <a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/process/stages?view=azure-devops&amp;tabs=yaml">stages</a> to create more visibility and control over your CI/CD</li></ul><blockquote>An example repository containing good-practice pipelines is available at:<br><br><strong><a href="https://dev.azure.com/godatadriven/_git/better-devops-pipelines-blogpost">https://dev.azure.com/godatadriven/_git/better-devops-pipelines-blogpost</a></strong></blockquote><p>Cheers 🙏</p>
+    </div>
+
+        <footer class="single-footer container small">
+            <div class="single-footer-left">
+                    <div class="navigation navigation-previous">
+                        <a class="navigation-link" href="/how-to-create-a-devcontainer-for-your-python-project/" aria-label="Previous post">
+                            <span class="navigation-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M26.667 14.667v2.667h-16L18 24.667l-1.893 1.893L5.547 16l10.56-10.56L18 7.333l-7.333 7.333h16z"></path>
+</svg></span>
+                        </a>
+                    </div>
+            </div>
+
+            <div class="single-footer-middle">
+                    <div class="single-footer-top">
+                        <h3 class="single-footer-title">Published by:</h3>
+                        <div class="author-list">
+                                <div class="author-image-placeholder u-placeholder square">
+                                    <a href="/author/jeroen/" title="Jeroen Overschie">
+                                            <img class="author-image u-object-fit" src="https://www.gravatar.com/avatar/b37b136916ade32aada1f345482aafa4?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp" alt="Jeroen Overschie" loading="lazy">
+                                    </a>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+
+            <div class="single-footer-right">
+                    <div class="navigation navigation-next">
+                        <a class="navigation-link" href="/dataset-enrichment-using-llms/" aria-label="Next post">
+                            <span class="navigation-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M5.333 14.667v2.667h16L14 24.667l1.893 1.893L26.453 16 15.893 5.44 14 7.333l7.333 7.333h-16z"></path>
+</svg></span>
+                        </a>
+                    </div>
+            </div>
+        </footer>
+</article>                        <section class="related-wrapper">
+            <div class="container small">
+                <h3 class="related-title">You might also like...</h3>
+                <div class="post-feed related-feed">
+                        <article class="feed post" data-month="November 2022">
+    <div class="feed-calendar">
+        <div class="feed-calendar-month">
+            Nov
+        </div>
+        <div class="feed-calendar-day">
+            21
+        </div>
+    </div>
+            <div class="feed-image u-placeholder rectangle">
+                    <img class="u-object-fit"
+                        srcset="/content/images/size/w400/2022/12/without-ship-taller-img.png 400w,
+/content/images/size/w750/2022/12/without-ship-taller-img.png 750w,
+/content/images/size/w960/2022/12/without-ship-taller-img.png 960w,
+/content/images/size/w1140/2022/12/without-ship-taller-img.png 1140w"
+                        sizes="(min-width: 576px) 160px, 90vw"
+                        src="/content/images/size/w750/2022/12/without-ship-taller-img.png"
+                        alt="How to create a Devcontainer for your Python project 🐳 (on Xebia.com ⧉)"
+                        loading="lazy"
+                    >
+            </div>
+    <div class="feed-wrapper">
+        <h2 class="feed-title">How to create a Devcontainer for your Python project 🐳 (on Xebia.com ⧉)</h2>
+            <div class="feed-excerpt">Instead of giving other developers a setup document, let’s make sure we also create formal instructions so we can automatically set up the development environment. Devcontainers let us do exactly this.</div>
+        <div class="feed-right">
+            <time class="feed-date" datetime="2022-11-21">
+                Nov 21, 2022
+            </time>
+            <div class="feed-visibility feed-visibility-public">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M16 23.027L24.24 28l-2.187-9.373 7.28-6.307-9.587-.827-3.747-8.827-3.747 8.827-9.587.827 7.267 6.307L7.759 28l8.24-4.973z"></path>
+</svg>            </div>
+                <div class="feed-length">
+                    10 min read
+                </div>
+            <div class="feed-icon">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg>            </div>
+        </div>
+    </div>
+    <a class="u-permalink" href="/how-to-create-a-devcontainer-for-your-python-project/" aria-label="How to create a Devcontainer for your Python project 🐳 (on Xebia.com ⧉)"></a>
+</article>                        <article class="feed post" data-month="January 2021">
+    <div class="feed-calendar">
+        <div class="feed-calendar-month">
+            Jan
+        </div>
+        <div class="feed-calendar-day">
+            17
+        </div>
+    </div>
+            <div class="feed-image u-placeholder rectangle">
+                    <img class="u-object-fit"
+                        srcset="/content/images/size/w400/2021/11/god-components-apache-tika.png 400w,
+/content/images/size/w750/2021/11/god-components-apache-tika.png 750w,
+/content/images/size/w960/2021/11/god-components-apache-tika.png 960w,
+/content/images/size/w1140/2021/11/god-components-apache-tika.png 1140w"
+                        sizes="(min-width: 576px) 160px, 90vw"
+                        src="/content/images/size/w750/2021/11/god-components-apache-tika.png"
+                        alt="Finding &#x27;God&#x27; components in Apache Tika"
+                        loading="lazy"
+                    >
+            </div>
+    <div class="feed-wrapper">
+        <h2 class="feed-title">Finding &#x27;God&#x27; components in Apache Tika</h2>
+            <div class="feed-excerpt">How did big, bulky software components come into being? In this project, we explore the evolution of so-called God Components;</div>
+        <div class="feed-right">
+            <time class="feed-date" datetime="2021-01-17">
+                Jan 17, 2021
+            </time>
+            <div class="feed-visibility feed-visibility-public">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M16 23.027L24.24 28l-2.187-9.373 7.28-6.307-9.587-.827-3.747-8.827-3.747 8.827-9.587.827 7.267 6.307L7.759 28l8.24-4.973z"></path>
+</svg>            </div>
+                <div class="feed-length">
+                    2 min read
+                </div>
+            <div class="feed-icon">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg>            </div>
+        </div>
+    </div>
+    <a class="u-permalink" href="/finding-god-components-in-apache-tika/" aria-label="Finding &#x27;God&#x27; components in Apache Tika"></a>
+</article>                        <article class="feed post" data-month="March 2020">
+    <div class="feed-calendar">
+        <div class="feed-calendar-month">
+            Mar
+        </div>
+        <div class="feed-calendar-day">
+            01
+        </div>
+    </div>
+            <div class="feed-image u-placeholder rectangle">
+                    <img class="u-object-fit"
+                        srcset="/content/images/size/w400/2021/11/Screen-Shot-2021-11-28-at-18.12.40-1.png 400w,
+/content/images/size/w750/2021/11/Screen-Shot-2021-11-28-at-18.12.40-1.png 750w,
+/content/images/size/w960/2021/11/Screen-Shot-2021-11-28-at-18.12.40-1.png 960w,
+/content/images/size/w1140/2021/11/Screen-Shot-2021-11-28-at-18.12.40-1.png 1140w"
+                        sizes="(min-width: 576px) 160px, 90vw"
+                        src="/content/images/size/w750/2021/11/Screen-Shot-2021-11-28-at-18.12.40-1.png"
+                        alt="COVID-19 Dashboard"
+                        loading="lazy"
+                    >
+            </div>
+    <div class="feed-wrapper">
+        <h2 class="feed-title">COVID-19 Dashboard</h2>
+            <div class="feed-excerpt">What parts of the world are susceptible to Corona outbreak? We used Big Data and Data Engineering in this project to find out.</div>
+        <div class="feed-right">
+            <time class="feed-date" datetime="2020-03-01">
+                Mar 1, 2020
+            </time>
+            <div class="feed-visibility feed-visibility-public">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M16 23.027L24.24 28l-2.187-9.373 7.28-6.307-9.587-.827-3.747-8.827-3.747 8.827-9.587.827 7.267 6.307L7.759 28l8.24-4.973z"></path>
+</svg>            </div>
+                <div class="feed-length">
+                    2 min read
+                </div>
+            <div class="feed-icon">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg>            </div>
+        </div>
+    </div>
+    <a class="u-permalink" href="/covid-19-dashboard/" aria-label="COVID-19 Dashboard"></a>
+</article>                        <article class="feed post" data-month="February 2015">
+    <div class="feed-calendar">
+        <div class="feed-calendar-month">
+            Feb
+        </div>
+        <div class="feed-calendar-day">
+            20
+        </div>
+    </div>
+            <div class="feed-image u-placeholder rectangle">
+                    <img class="u-object-fit"
+                        srcset="/content/images/size/w400/2022/01/Screen-Shot-2022-01-06-at-13.54.22.png 400w,
+/content/images/size/w750/2022/01/Screen-Shot-2022-01-06-at-13.54.22.png 750w,
+/content/images/size/w960/2022/01/Screen-Shot-2022-01-06-at-13.54.22.png 960w,
+/content/images/size/w1140/2022/01/Screen-Shot-2022-01-06-at-13.54.22.png 1140w"
+                        sizes="(min-width: 576px) 160px, 90vw"
+                        src="/content/images/size/w750/2022/01/Screen-Shot-2022-01-06-at-13.54.22.png"
+                        alt="School break time friend finder"
+                        loading="lazy"
+                    >
+            </div>
+    <div class="feed-wrapper">
+        <h2 class="feed-title">School break time friend finder</h2>
+            <div class="feed-excerpt">Spending school breaks alone is lame. That&#39;s why I developed an app so students can find with whom they share their breaks.</div>
+        <div class="feed-right">
+            <time class="feed-date" datetime="2015-02-20">
+                Feb 20, 2015
+            </time>
+            <div class="feed-visibility feed-visibility-public">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M16 23.027L24.24 28l-2.187-9.373 7.28-6.307-9.587-.827-3.747-8.827-3.747 8.827-9.587.827 7.267 6.307L7.759 28l8.24-4.973z"></path>
+</svg>            </div>
+                <div class="feed-length">
+                    2 min read
+                </div>
+            <div class="feed-icon">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M11.453 22.107L17.56 16l-6.107-6.12L13.333 8l8 8-8 8-1.88-1.893z"></path>
+</svg>            </div>
+        </div>
+    </div>
+    <a class="u-permalink" href="/school-breaktime-friend-finder/" aria-label="School break time friend finder"></a>
+</article>                </div>
+            </div>
+        </section>
+                </main>
+</div>
+
+
+        </div>
+
+        <footer class="site-footer container">
+    <div class="footer-inner">
+        <div class="footer-left">
+            <div class="copyright">
+                Jeroen Overschie © 2025
+            </div>
+        </div>
+
+        <nav class="footer-nav">
+                    <a class="menu-item menu-item-bookshelf" href="https://jeroenoverschie.nl/books/">Bookshelf</a>
+            <span class="sep">•</span>
+        <a class="menu-item menu-item-photography" href="https://jeroenoverschie.nl/photography/">Photography</a>
+            <span class="sep">•</span>
+        <a class="menu-item menu-item-contact" href="https://jeroenoverschie.nl/about/#contact">Contact</a>
+
+        </nav>
+
+        <div class="footer-right">
+            <div class="social">
+
+            </div>
+        </div>
+    </div>
+</footer>        <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe.
+        It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides.
+          PhotoSwipe keeps only 3 of them in the DOM to save memory.
+          Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>    </div>
+
+    <script>
+        if (document.body.classList.contains('with-full-cover') && (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.platform))) {
+            document.getElementsByClassName('cover')[0].style.height = window.innerHeight + 'px';
+        }
+    </script>
+
+    <script src="/assets/built/main.min.js?v=607f26b803"></script>
+
+    
+</body>
+
 </html>
