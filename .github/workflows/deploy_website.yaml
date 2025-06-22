@@ -14,7 +14,11 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Checkout theme
-      run: git clone --branch master https://github.com/dunnkers/ghost-dunnkers-theme-edition.git content/themes/dunnkers-theme-edition
+      uses: actions/checkout@v4
+      with:
+        repository: dunnkers/ghost-dunnkers-theme-edition
+        path: content/themes/dunnkers-theme-edition
+        ref: master
 
     - name: Start Ghost Container
       run: |
