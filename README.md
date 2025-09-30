@@ -42,6 +42,7 @@ docker run -d \
   -e NODE_ENV=development \
   -e database__client=sqlite3 \
   -e database__connection__filename=/var/lib/ghost/content/data/ghost-local.db \
+  -e security__staffDeviceVerification=false \
   --restart always \
-  ghost:5.126.1
+  ghost:5.130.5
 ```
