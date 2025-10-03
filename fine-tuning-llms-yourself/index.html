@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fine-tuning LLMs yourself (on Xebia.com ⧉)</title>
+
+    <link rel="stylesheet" href="/assets/built/screen.css?v=eb833eeb94">
+
+    <meta name="description" content="Fine-tuning can be a powerful way to specialised Large Language Models (LLMs). With open source models readily available, it is now also possible to fine-tune yourself. Read along to find out how.">
+    <link rel="icon" href="https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg" type="image/png">
+    <link rel="canonical" href="https://jeroenoverschie.nl/fine-tuning-llms-yourself/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="https://jeroenoverschie.nl/fine-tuning-llms-yourself/amp/">
+    
+    <meta property="og:site_name" content="Jeroen Overschie">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Fine-tuning LLMs yourself (on Xebia.com ⧉)">
+    <meta property="og:description" content="Fine-tuning can be a powerful way to specialised Large Language Models (LLMs). With open source models readily available, it is now also possible to fine-tune yourself. Read along to find out how.">
+    <meta property="og:url" content="https://jeroenoverschie.nl/fine-tuning-llms-yourself/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1528717384022-f8d665c86909?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDd8fGNyYWZ0fGVufDB8fHx8MTc1OTQ4ODMwNHww&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta property="article:published_time" content="2025-10-03T10:48:15.000Z">
+    <meta property="article:modified_time" content="2025-10-03T10:48:15.000Z">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Fine-tuning LLMs yourself (on Xebia.com ⧉)">
+    <meta name="twitter:description" content="Fine-tuning can be a powerful way to specialised Large Language Models (LLMs). With open source models readily available, it is now also possible to fine-tune yourself. Read along to find out how.">
+    <meta name="twitter:url" content="https://jeroenoverschie.nl/fine-tuning-llms-yourself/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1528717384022-f8d665c86909?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDd8fGNyYWZ0fGVufDB8fHx8MTc1OTQ4ODMwNHww&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Jeroen Overschie">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="800">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Jeroen Overschie",
+        "url": "https://jeroenoverschie.nl/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Jeroen Overschie",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.gravatar.com/avatar/b37b136916ade32aada1f345482aafa4?s=250&r=x&d=mp",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://jeroenoverschie.nl/author/jeroen/",
+        "sameAs": []
+    },
+    "headline": "Fine-tuning LLMs yourself (on Xebia.com ⧉)",
+    "url": "https://jeroenoverschie.nl/fine-tuning-llms-yourself/",
+    "datePublished": "2025-10-03T10:48:15.000Z",
+    "dateModified": "2025-10-03T10:48:15.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1528717384022-f8d665c86909?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDd8fGNyYWZ0fGVufDB8fHx8MTc1OTQ4ODMwNHww&ixlib=rb-4.1.0&q=80&w=2000",
+        "width": 1200,
+        "height": 800
+    },
+    "description": "Fine-tuning can be a powerful way to specialised Large Language Models (LLMs). With open source models readily available, it is now also possible to fine-tune yourself. Read along to find out how.",
+    "mainEntityOfPage": "https://jeroenoverschie.nl/fine-tuning-llms-yourself/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.130">
+    <link rel="alternate" type="application/rss+xml" title="Jeroen Overschie" href="https://jeroenoverschie.nl/rss/">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/sodo-search.min.js" data-key="489b5afdd4c5385878c360bd9b" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/main.css" data-sodo-search="https://jeroenoverschie.nl/" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="https://jeroenoverschie.nl/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=eb833eeb94"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=eb833eeb94">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQB9198LQ6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PQB9198LQ6');
+</script>
+    <meta http-equiv="refresh" content="0; url=https://xebia.com/blog/finetuning-llms-yourself/" />
+</head>
+
+<body class="post-template">
+    <div class="site">
+        <header id="site-header" class="site-header">
+    <div class="header-inner">
+        <div class="header-brand">
+            <a class="logo" href="https://jeroenoverschie.nl">
+                    <span class="logo-text">Jeroen Overschie</span>
+            </a>
+
+            <div class="burger">
+                <div class="burger-bar"></div>
+                <div class="burger-bar"></div>
+            </div>
+        </div>
+
+        <nav class="header-nav">
+                        <a class="menu-item menu-item-home" href="https://jeroenoverschie.nl/">Home</a>
+        <a class="menu-item menu-item-publications" href="https://jeroenoverschie.nl/publications/">Publications</a>
+        <a class="menu-item menu-item-life" href="https://jeroenoverschie.nl/tag/life/">Life</a>
+        <a class="menu-item menu-item-about-me" href="https://jeroenoverschie.nl/about/">About me</a>
+
+        </nav>
+
+        <div class="header-actions">
+            <div class="social">
+
+            </div>
+
+        </div>
+    </div>
+</header>
+
+        <div class="site-content">
+            
+<div class="content-area">
+    <main class="site-main">
+            <article class="single post">
+    <header class="single-header kg-canvas">
+            <div class="single-meta">
+                <span class="single-meta-item single-meta-date">
+                    <time datetime="2025-10-03">
+                        Oct 3, 2025
+                    </time>
+                </span>
+
+                <span class="single-meta-item single-meta-length">
+                    7 min read
+                </span>
+
+            </div>
+
+        <h1 class="single-title">Fine-tuning LLMs yourself (on Xebia.com ⧉)</h1>
+
+            <div class="single-excerpt">
+                Fine-tuning can be a powerful way to specialised Large Language Models (LLMs). With open source models readily available, it is now also possible to fine-tune yourself. Read along to find out how.
+            </div>
+
+                <figure class="single-media kg-width-wide">
+                    <img srcset="https://images.unsplash.com/photo-1528717384022-f8d665c86909?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDd8fGNyYWZ0fGVufDB8fHx8MTc1OTQ4ODMwNHww&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;400 400w,
+https://images.unsplash.com/photo-1528717384022-f8d665c86909?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDd8fGNyYWZ0fGVufDB8fHx8MTc1OTQ4ODMwNHww&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;750 750w,
+https://images.unsplash.com/photo-1528717384022-f8d665c86909?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDd8fGNyYWZ0fGVufDB8fHx8MTc1OTQ4ODMwNHww&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;960 960w,
+https://images.unsplash.com/photo-1528717384022-f8d665c86909?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDd8fGNyYWZ0fGVufDB8fHx8MTc1OTQ4ODMwNHww&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;1140 1140w" sizes="(min-width: 1023px) 920px, calc(90vw)" src="https://images.unsplash.com/photo-1528717384022-f8d665c86909?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDd8fGNyYWZ0fGVufDB8fHx8MTc1OTQ4ODMwNHww&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;960" alt="Fine-tuning LLMs yourself (on Xebia.com ⧉)">
+                        <figcaption><span style="white-space: pre-wrap;">Photo by </span><a href="https://unsplash.com/@mlightbody?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit"><span style="white-space: pre-wrap;">Malcolm Lightbody</span></a><span style="white-space: pre-wrap;"> / </span><a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit"><span style="white-space: pre-wrap;">Unsplash</span></a></figcaption>
+                </figure>
+    </header>
+
+    <div class="single-content gh-content kg-canvas">
+        <h2 id="why-fine-tune">Why fine-tune?</h2><p>Large Language Models (LLMs) are impressive generalists. They perform increasingly well on a wide range of tasks; achieving human-level or even superhuman-level performance on many benchmarks. However, being good at everything can come at a cost. These so-called Foundation models have billions of parameters and require a vast amount of GPUs to train- or run. Unaffordable for most - so we consume LLMs from APIs instead - which comes with its own considerations like cost, privacy, latency or vendor lock-in. This is not the only option. When only specialist capabilities are required, generalist capabilities can be sacrificed in favor of domain-specific knowledge, allowing us to get away with&nbsp;<em>smaller models</em>. Smaller models require less compute and can achieve similar- or even better performance than larger models on specific tasks&nbsp;<sup>[1]</sup>. With enough data available, we can specialise existing models ourselves. This is&nbsp;<strong>fine-tuning</strong>.</p><h2 id="what-is-fine-tuning">What is fine-tuning?</h2><p>Fine-tuning is a process where we take a pre-trained model and continue training it on a new dataset, typically with a smaller learning rate. This allows the model to adapt to the specific characteristics of the new data while retaining the general knowledge it gained during the initial training. In practice, this often involves further training the top layers of the model while freezing the lower layers, which helps to preserve the learned features from the original training.</p><p>So, how to finetune ourselves? Let's figure that out!&nbsp;</p><h2 id="how-to-finetune-yourself-%E2%9C%93%E2%9C%93">How to finetune yourself ✓✓</h2><p>Enough talking! Let's get practical. Let's fine-tune a model on our own hardware. We have access to the following setup:</p><ul><li>HP Z8 Fury</li><li>3x NVIDIA RTX 6000 Ada GPUs</li></ul><p>Our goal is: to finetune a model and benchmark it with&nbsp;<strong>MMLU Pro</strong>, math category.</p><p>So in order to start fine-tuning, we need to decide on the following:</p><h3 id="1-fine-tuning-framework-axolotl">1. Fine-tuning framework: Axolotl</h3><p>There are several fine-tuning frameworks:&nbsp;<a href="https://github.com/axolotl-ai-cloud/axolotl">Axolotl</a>,&nbsp;<a href="https://github.com/unslothai/unsloth">Unsloth</a>&nbsp;and&nbsp;<a href="https://github.com/pytorch/torchtune">torchtune</a>. We choose Axolotl for its ease of use and its rich out-of-the-box&nbsp;<a href="https://github.com/axolotl-ai-cloud/axolotl/tree/354eaaf0d3f5d7675699ccb90a982e8820aacb6f/examples">examples</a>.</p><p>In Axolotl's first fine-tune example, you only need to execute a one-line command to fine-tune a Llama3.2 model:</p><pre><code class="language-apache">axolotl train examples/llama-3/lora-1b.yml
+</code></pre><p>The fine-tuning dataset and method are all defined in the YAML file.</p><h3 id="2-model-choice">2. Model choice</h3><p>The first question we asked is how large a model can we fine-tune given 3 GPUs. One NVIDIA RTX 6000 Ada GPU has 48 GB, so in total we have around 150 GB.</p><p>Under the hood,&nbsp;<a href="https://github.com/huggingface/accelerate">Accelerate</a>&nbsp;is used. We need to figure out, however, how big of a model we can train on the available GPUs. To calculate the memory usage based the amount of model parameters,&nbsp;<a href="https://huggingface.co/spaces/muellerzr/llm-conf">Zachary Mueller's slides</a>&nbsp;offer a convenient formula.</p><p>Take&nbsp;<a href="https://huggingface.co/meta-llama/Meta-Llama-3-8B">Llama 3 8B model</a>&nbsp;for example, which has 8 billion parameters. Each parameter is 4 bytes, so the model needs roughly 8 × 4 GB. Further, the backward pass take 2× the model size, and optimizer step takes 4× the model size, which consumes the highest memory during fine-tuning.</p><p>You can also use this&nbsp;<a href="https://huggingface.co/docs/accelerate/en/usage_guides/model_size_estimator">model size estimator</a>&nbsp;tool to estimate the memory usage based on your own model choice.</p><p>For example, we cannot fine-tune a&nbsp;<a href="https://huggingface.co/deepseek-ai/DeepSeek-V2">DeepSeek V2</a>&nbsp;model, because the memory usage is above 3 TB, as shown below:</p><figure class="kg-card kg-image-card"><img src="https://xebia.com/media/2025/08/finetuning-llms-yourself-deepseek_v2.png" class="kg-image" alt="deepseek_v2" loading="lazy" width="1744" height="922"></figure><p>Based on the memory limit, we choose&nbsp;<a href="https://huggingface.co/google/gemma-2-2b">Gemma-2-2B</a>&nbsp;to fine-tune and dip into the fine-tuning techniques.</p><p>The reason we choose a Gemma model is that we want to use a relatively small model to fine-tune for a specific task to prove that a fine-tuned smaller model can outperform the larger models in a specific domain.</p><h3 id="3-benchmarking-dataset-mmlu-pro">3. Benchmarking dataset: MMLU-Pro</h3><p>For the benchmarking dataset, we use the&nbsp;<a href="https://huggingface.co/spaces/TIGER-Lab/MMLU-Pro">MMLU-Pro</a>&nbsp;dataset. It has 14 categories of questions, ranging from math, physics, biology to business and engineering. For each question, there are 10 options to choose from for one correct answer. When it comes to the dataset split, it has 70 rows for validation and 12k rows for test. The validation dataset is used to generate CoT (Chain of Thought) prompts for the test dataset. Together, they form the prompts to benchmark your model.</p><p>The&nbsp;<a href="https://huggingface.co/spaces/TIGER-Lab/MMLU-Pro">MMLU-Pro leaderboard</a>&nbsp;shows the benchmarking results for an abundance of models. For example:</p><p>Since only the overall accuracy is reported for Gemma 2- or 3- models, we also want to know the specific accuracy for math.</p><p>The benchmarking script can be found in&nbsp;<a href="https://github.com/TIGER-AI-Lab/MMLU-Pro">MMLU-Pro's GitHub repository</a>. For example, if we want to evaluate a local model, we can reference&nbsp;<a href="https://github.com/TIGER-AI-Lab/MMLU-Pro/blob/main/scripts/examples/eval_llama_2_7b.sh">this script</a>:</p><ul><li><code>model</code>&nbsp;is&nbsp;<code>&lt;repo&gt;/&lt;model-name&gt;</code>&nbsp;from Hugging Face.</li><li><code>selected_subjects</code>&nbsp;can be&nbsp;<code>all</code>&nbsp;for all categories, or&nbsp;<code>math</code>&nbsp;for a specific category.</li></ul><pre><code class="language-stylus">python evaluate_from_local.py \
+                 --selected_subjects $selected_subjects \
+                 --save_dir $save_dir \
+                 --model $model \
+                 --global_record_file $global_record_file \
+                 --gpu_util $gpu_util
+</code></pre><p>We ran the above script for&nbsp;<code>--selected_subjects math</code>, we get the below results:</p><p>Next, we want to fine-tune a smaller Gemma model to improve the accuracy of math above 0.107.</p><h3 id="4-training-dataset-acereason-math">4. Training dataset: AceReason-Math</h3><p>We use NVIDIA's&nbsp;<a href="https://huggingface.co/datasets/nvidia/AceReason-Math">AceReason-Math</a>&nbsp;dataset to fine-tune our model. It is a training dataset with 49.6k math reasoning questions. Instead of giving a list of options, the dataset comes in the format of one question and one correct answer.</p><p>In order to use this question/answer format to fine-tune a model in Axolotl, we need to check what instruction tuning formats are provided. This&nbsp;<a href="https://docs.axolotl.ai/docs/dataset-formats/inst_tune.html#alpaca_chat.load_qa">alpaca_chat.load_qa</a>&nbsp;format perfectly matches our training dataset. So we can update our fine-tuning YAML file as below:</p><pre><code class="language-haskell">datasets:
+  - path: /data/nvidia_ace_reason_math.parquet
+    type: alpaca_chat.load_qa
+</code></pre><p>One thing to pay attention to is that we also need to match the dataset column names to&nbsp;<code>question</code>&nbsp;and&nbsp;<code>answer</code>, so we rename the original&nbsp;<code>problem</code>&nbsp;column to&nbsp;<code>question</code>.</p><h3 id="5-fine-tuning-strategies-qlora-lora-fsdp-deepspeed">5. Fine-tuning strategies: QLoRA, LoRA, FSDP, DeepSpeed</h3><p>There are many techniques and libraries around that help make the fine-tuning process more efficient, many of which focussing on memory efficiency and performance. Most notably, these include&nbsp;<a href="https://arxiv.org/abs/2106.09685">LoRA</a>,&nbsp;<a href="https://arxiv.org/abs/2305.14314">QLoRA</a>,&nbsp;<a href="https://huggingface.co/docs/transformers/en/fsdp">FSDP</a>and&nbsp;<a href="https://www.deepspeed.ai/">DeepSpeed</a>. Axolotl supports all of these techniques. DeepSpeed or FSDP can be used for&nbsp;<a href="https://docs.axolotl.ai/docs/multi-gpu.html#sec-overview">Multi-GPU setups</a>, of which FSDP can be&nbsp;<a href="https://docs.axolotl.ai/docs/fsdp_qlora.html">combined</a>&nbsp;with QLoRA.</p><p>So what are these techniques?</p><p><strong>LoRA</strong>&nbsp;(Low-Rank Adaptation) is a technique that allows us to fine-tune large models with fewer parameters by introducing low-rank matrices.</p><blockquote>LoRA ... [reduces] trainable parameters by about 90%https://huggingface.co/learn/llm-course/en/chapter11/4</blockquote><p>... this means, that we can fit more in memory and more easily fine-tune on consumer-grade hardware. Awesome!</p><ul><li><strong>QLoRA</strong>&nbsp;(Quantized LoRA) is an extension of LoRA that quantizes the model weights to reduce memory usage further.</li><li><strong>DeepSpeed</strong>&nbsp;is a library that helps you do distributed training and inference supported by Axolotl.</li></ul><p><strong>FSDP</strong>&nbsp;(Fully Sharded Data Parallel) is a way of distributing work over GPUs.</p><blockquote>FSDP saves more memory because it doesn’t replicate a model on each GPU. It shards the models parameters, gradients and optimizer states across GPUs. Each model shard processes a portion of the data and the results are synchronized to speed up training. - FullyShardedDataParallel (<a href="https://huggingface.co/docs/transformers/en/fsdp">HuggingFace</a>)</blockquote><p>Combinations of LoRA/QLoRA are used as an&nbsp;<a href="https://docs.axolotl.ai/docs/config-reference.html">adapter</a>&nbsp;in the Axolotl config in combination with FSDP for finetuning Gemma2/Llama3.1/Qwen2 on our limited amount of GPU resources ✓. Let's now see how to run the fine-tuning process! 🚀</p><h3 id="6-running-the-fine-tuning-%F0%9F%9A%80">6. Running the fine-tuning 🚀</h3><p>Axolotl provides a list of&nbsp;<a href="https://docs.axolotl.ai/docs/docker.html">Docker images</a>&nbsp;for us to use out of the box. In order to use it, you can reference this&nbsp;<a href="https://docs.axolotl.ai/docs/installation.html#sec-docker">Docker installation</a>.</p><p>Since we have our development GPU infrastructure set up and managed by&nbsp;<a href="https://github.com/argoproj/argo-cd">Argo</a>, we create a Kubernetes job to run the fine-tuning process as below:</p><pre><code class="language-nix">apiVersion: batch/v1
+kind: Job
+metadata:
+  name: axolotl
+spec:
+  backoffLimit: 0
+  template:
+    metadata:
+      labels:
+        app: axolotl
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: axolotl
+          image: axolotlai/axolotl:main-latest
+          command: ["/bin/bash", "-c"]
+          args:
+            - |
+              set -e
+              echo "Start training..."
+              axolotl train $YAML_FILE --num-processes $NUM_PROCESSES
+              echo "Merging the LoRA adapters into the base model..."
+              axolotl merge-lora $YAML_FILE --lora-model-dir=./outputs/out/
+              echo "Uploading the fine-tuned model to Hugging Face..."
+              huggingface-cli upload $MODEL_NAME ./outputs/out/merged/ .
+          securityContext:
+            privileged: true
+            runAsUser: 0
+            capabilities:
+              add: ["SYS_ADMIN"]
+          resources:
+            limits:
+              nvidia.com/gpu: 1
+              memory: "40Gi"
+            requests:
+              memory: "20Gi"
+          volumeMounts:
+            - name: axolotl
+              mountPath: /workspace/axolotl
+            - name: huggingface
+              mountPath: /root/.cache/huggingface
+            - name: dshm
+              mountPath: /dev/shm
+      volumes:
+        - name: axolotl
+          persistentVolumeClaim:
+            claimName: axolotl-pvc
+        - name: huggingface
+          persistentVolumeClaim:
+            claimName: huggingface-pvc
+        - name: dshm
+          emptyDir:
+            medium: Memory
+            sizeLimit: "10Gi"
+</code></pre><p>The variables come from the config map defined in kustomization.yaml:</p><ul><li><code>NUM_PROCESSES</code>&nbsp;is the number of GPUs to use</li><li><code>YAML_FILE</code>&nbsp;is the YAML file from&nbsp;<a href="https://github.com/axolotl-ai-cloud/axolotl/tree/354eaaf0d3f5d7675699ccb90a982e8820aacb6f/examples">examples</a></li><li><code>MODEL_NAME</code>&nbsp;is the model name to upload to Hugging Face.</li></ul><h2 id="results">Results</h2><p>After the fine-tuning is done, which takes roughly 2.8 hours, we can use&nbsp;<code>python evaluate_from_local.py</code>&nbsp;to evaluate the result, which is as below:</p><p>Compared to a non-fine-tuned Gemma-3-12B-it model based on math, the fine-tuned model improves the accuracy of math from 0.107 to 0.238 ✓.</p><h2 id="conclusion">Conclusion</h2><p>In this blogpost we learned: - What fine-tuning is and why it is useful. - How to fine-tune a model on our own hardware using Axolotl. - How to benchmark the fine-tuned model using MMLU-Pro. - How to run the fine-tuning process in a Kubernetes job.</p><p>We successfully fine-tuned a model and benchmarked it with MMLU-Pro, math category. The results show that fine-tuning smaller models can lead to competitive performance on specific tasks, demonstrating the power of domain-specific knowledge in LLMs.</p><p>Finetuning is definitely not always the right approach - but if it is - it can be very powerful. Good luck in your own fine-tuning adventures! 🍀</p><h3 id="citations">Citations</h3><ol><li><a href="https://doi.org/10.1038/s41591-024-03423-7">Singhal, K., Tu, T., Gottweis, J., Sayres, R., Wulczyn, E., Amin, M., ... &amp; Natarajan, V. (2025). Toward expert-level medical question answering with large language models. Nature Medicine, 31(3), 943-950.</a></li></ol>
+    </div>
+
+        <footer class="single-footer container small">
+            <div class="single-footer-left">
+                    <div class="navigation navigation-previous">
+                        <a class="navigation-link" href="/python-devcontainer-with-uv/" aria-label="Previous post">
+                            <span class="navigation-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M26.667 14.667v2.667h-16L18 24.667l-1.893 1.893L5.547 16l10.56-10.56L18 7.333l-7.333 7.333h16z"></path>
+</svg></span>
+                        </a>
+                    </div>
+            </div>
+
+            <div class="single-footer-middle">
+                    <div class="single-footer-top">
+                        <h3 class="single-footer-title">Published by:</h3>
+                        <div class="author-list">
+                                <div class="author-image-placeholder u-placeholder square">
+                                    <a href="/author/jeroen/" title="Jeroen Overschie">
+                                            <img class="author-image u-object-fit" src="https://www.gravatar.com/avatar/b37b136916ade32aada1f345482aafa4?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp" alt="Jeroen Overschie" loading="lazy">
+                                    </a>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+
+            <div class="single-footer-right">
+            </div>
+        </footer>
+</article>                                </main>
+</div>
+
+
+        </div>
+
+        <footer class="site-footer container">
+    <div class="footer-inner">
+        <div class="footer-left">
+            <div class="copyright">
+                Jeroen Overschie © 2025
+            </div>
+        </div>
+
+        <nav class="footer-nav">
+                    <a class="menu-item menu-item-bookshelf" href="https://jeroenoverschie.nl/books/">Bookshelf</a>
+            <span class="sep">•</span>
+        <a class="menu-item menu-item-photography" href="https://jeroenoverschie.nl/tag/photography/">Photography</a>
+            <span class="sep">•</span>
+        <a class="menu-item menu-item-contact" href="https://jeroenoverschie.nl/about/#contact">Contact</a>
+
+        </nav>
+
+        <div class="footer-right">
+            <div class="social">
+
+            </div>
+        </div>
+    </div>
+</footer>        <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe.
+        It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides.
+          PhotoSwipe keeps only 3 of them in the DOM to save memory.
+          Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>    </div>
+
+    <script>
+        if (document.body.classList.contains('with-full-cover') && (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.platform))) {
+            document.getElementsByClassName('cover')[0].style.height = window.innerHeight + 'px';
+        }
+    </script>
+
+    <script src="/assets/built/main.min.js?v=eb833eeb94"></script>
+
+    
+</body>
+
+</html>
