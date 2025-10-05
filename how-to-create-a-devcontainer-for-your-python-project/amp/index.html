@@ -18,8 +18,7 @@
     <meta property="og:url" content="https://jeroenoverschie.nl/how-to-create-a-devcontainer-for-your-python-project/">
     <meta property="og:image" content="https://jeroenoverschie.nl/content/images/2022/12/without-ship-taller-img.png">
     <meta property="article:published_time" content="2022-11-21T17:36:00.000Z">
-    <meta property="article:modified_time" content="2025-04-09T13:50:21.000Z">
-    <meta property="article:tag" content="Publications">
+    <meta property="article:modified_time" content="2025-10-05T10:15:11.000Z">
     <meta property="article:tag" content="Software Engineering">
     
     <meta name="twitter:card" content="summary_large_image">
@@ -30,7 +29,7 @@
     <meta name="twitter:label1" content="Written by">
     <meta name="twitter:data1" content="Jeroen Overschie">
     <meta name="twitter:label2" content="Filed under">
-    <meta name="twitter:data2" content="Publications, Software Engineering">
+    <meta name="twitter:data2" content="Software Engineering">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="642">
     
@@ -64,14 +63,14 @@
     "headline": "How to create a Devcontainer for your Python project 🐳 (on Xebia.com ⧉)",
     "url": "https://jeroenoverschie.nl/how-to-create-a-devcontainer-for-your-python-project/",
     "datePublished": "2022-11-21T17:36:00.000Z",
-    "dateModified": "2025-04-09T13:50:21.000Z",
+    "dateModified": "2025-10-05T10:15:11.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://jeroenoverschie.nl/content/images/2022/12/without-ship-taller-img.png",
         "width": 1200,
         "height": 642
     },
-    "keywords": "Publications, Software Engineering",
+    "keywords": "Software Engineering",
     "description": "Instead of giving other developers a setup document, let’s make sure we also create formal instructions so we can automatically set up the development environment. Devcontainers let us do exactly this.",
     "mainEntityOfPage": "https://jeroenoverschie.nl/how-to-create-a-devcontainer-for-your-python-project/"
 }
@@ -1087,7 +1086,7 @@
             </figure>
             <section class="post-content">
 
-                <p>Imagine the following scenario 💭.</p><p>Your company uses Apache Spark to process data, and your team has pyspark set up in a Python project. The codebase is built on a specific Python version, using a certain Java installation, and an accompanying pyspark version that works with the former. To onboard a new member, you will need to pass a list of instructions the developer needs to follow carefully to get their setup working. But not everyone might run this on the same laptop environment: different hardware, and different operating systems. This is getting challenging.<br />But the setup is a one-off, right? Just go through the setup once and you’ll be good. Not entirely. Your code environment will change over time: your team will probably install-, update- or remove packages during the project’s development. This means that if a developer creates a new feature and changes their own environment to do so; he or she also needs to make sure that the other team members change theirs and that the production environment is updated accordingly. This makes it easy to get misaligned environments: between developers, and between development &amp; production.</p><p>We can do better than this! Instead of giving other developers a setup document, let’s make sure we also create formal instructions so we can <em>automatically</em> set up the development environment. <em>Devcontainers</em> let us do exactly this.</p><p><strong>Devcontainers</strong> let you connect your IDE to a running Docker container. In this way, we get the benefits of reproducibility and isolation, whilst getting a native development experience.</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption>With Devcontainers you can interact with your IDE like you're used to whilst under the hood running everything inside a Docker container.</figcaption></figure><p></p><p>Devcontainers can help us:</p><ul><li>Get a reproducible development environment</li><li>⚡️ Instantly onboard new team members onto your project</li><li>‍ ‍ ‍ Better align the environments between team members</li><li>⏱ Keeping your dev environment up-to-date &amp; reproducible saves your team time going into production later</li></ul><p>Let’s explore how we can set up a Devcontainer for your Python project!</p><h2 id="creating-your-first-devcontainer"><strong>Creating your first Devcontainer</strong></h2><p>Note that this tutorial is focused on <strong>VSCode</strong>. Other IDE’s like PyCharm support running in Docker containers but support is less comprehensive than on VSCode.</p><h3 id="recap"><strong>Recap</strong></h3><p>To recap, we are trying to create a dev environment that installs: 1) Java, 2) Python and 3) pyspark. And we want to do so <em>automatically</em>, that is, inside a Docker image.</p><h3 id="project-structure"><strong>Project structure</strong></h3><p>Let’s say we have a really simple project that looks like this:</p><pre><code class="language-bash">$ tree .
+                <p>Imagine the following scenario 💭.</p><p>Your company uses Apache Spark to process data, and your team has pyspark set up in a Python project. The codebase is built on a specific Python version, using a certain Java installation, and an accompanying pyspark version that works with the former. To onboard a new member, you will need to pass a list of instructions the developer needs to follow carefully to get their setup working. But not everyone might run this on the same laptop environment: different hardware, and different operating systems. This is getting challenging.<br />But the setup is a one-off, right? Just go through the setup once and you’ll be good. Not entirely. Your code environment will change over time: your team will probably install-, update- or remove packages during the project’s development. This means that if a developer creates a new feature and changes their own environment to do so; he or she also needs to make sure that the other team members change theirs and that the production environment is updated accordingly. This makes it easy to get misaligned environments: between developers, and between development &amp; production.</p><p>We can do better than this! Instead of giving other developers a setup document, let’s make sure we also create formal instructions so we can <em>automatically</em> set up the development environment. <em>Devcontainers</em> let us do exactly this.</p><p><strong>Devcontainers</strong> let you connect your IDE to a running Docker container. In this way, we get the benefits of reproducibility and isolation, whilst getting a native development experience.</p><figure class="kg-card kg-image-card kg-card-hascaption"><figcaption><span>With Devcontainers you can interact with your IDE like you're used to whilst under the hood running everything inside a Docker container.</span></figcaption></figure><p></p><p>Devcontainers can help us:</p><ul><li>Get a reproducible development environment</li><li>⚡️ Instantly onboard new team members onto your project</li><li>‍ ‍ ‍ Better align the environments between team members</li><li>⏱ Keeping your dev environment up-to-date &amp; reproducible saves your team time going into production later</li></ul><p>Let’s explore how we can set up a Devcontainer for your Python project!</p><h2 id="creating-your-first-devcontainer"><strong>Creating your first Devcontainer</strong></h2><p>Note that this tutorial is focused on <strong>VSCode</strong>. Other IDE’s like PyCharm support running in Docker containers but support is less comprehensive than on VSCode.</p><h3 id="recap"><strong>Recap</strong></h3><p>To recap, we are trying to create a dev environment that installs: 1) Java, 2) Python and 3) pyspark. And we want to do so <em>automatically</em>, that is, inside a Docker image.</p><h3 id="project-structure"><strong>Project structure</strong></h3><p>Let’s say we have a really simple project that looks like this:</p><pre><code class="language-bash">$ tree .
 .
 ├── README.md
 ├── requirements.txt
@@ -1120,7 +1119,11 @@ RUN pip install -r /tmp/requirements-dev.txt &amp;&amp;
         https://xebia.com/wp-content/uploads/2023/11/v1.svg    )
 ](
     https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/godatadriven/python-devcontainer-template
-)</code></pre><p>Just modify the GitHub URL ✓.</p><p>That said, we can see having built a Devcontainer can make our README massively more readable. What kind of README would you rather like?</p><table><thead><tr><th>Manual installation</th><th>Using a Devcontainer</th></tr></thead><tbody><tr><td></td><td></td></tr></tbody></table><h2 id="extending-the-devcontainer"><strong>Extending the Devcontainer</strong></h2><p>We have built a working Devcontainer, which is great! But a couple of things are still missing. We still want to:</p><ul><li>Install a non-root user for extra safety and good-practice</li><li>Pass in custom VSCode settings and install extensions by default</li><li>Be able to access Spark UI (port 4040)</li><li>Run Continuous Integration (CI) in the Devcontainer</li></ul><p>Let’s see how.</p><h3 id="installing-a-non-root-user"><strong>Installing a non-root user</strong></h3><p>If you <code>pip install</code> a new package, you will see the following message:</p><figure class="kg-card kg-image-card"></figure><p>Indeed, it is not recommended to develop as a <em>root</em> user. It is considered a good practice to create a different user with fewer rights to run in production. So let’s go ahead and create a user for this scenario.</p><pre><code class="language-bash"># Add non-root user
+)</code></pre><p>Just modify the GitHub URL ✓.</p><p>That said, we can see having built a Devcontainer can make our README massively more readable. What kind of README would you rather like?</p>
+
+<table><thead><tr><th>Manual installation</th><th>Using a Devcontainer</th></tr></thead><tbody><tr><td></td><td></td></tr></tbody></table>
+
+<h2 id="extending-the-devcontainer"><strong>Extending the Devcontainer</strong></h2><p>We have built a working Devcontainer, which is great! But a couple of things are still missing. We still want to:</p><ul><li>Install a non-root user for extra safety and good-practice</li><li>Pass in custom VSCode settings and install extensions by default</li><li>Be able to access Spark UI (port 4040)</li><li>Run Continuous Integration (CI) in the Devcontainer</li></ul><p>Let’s see how.</p><h3 id="installing-a-non-root-user"><strong>Installing a non-root user</strong></h3><p>If you <code>pip install</code> a new package, you will see the following message:</p><figure class="kg-card kg-image-card"></figure><p>Indeed, it is not recommended to develop as a <em>root</em> user. It is considered a good practice to create a different user with fewer rights to run in production. So let’s go ahead and create a user for this scenario.</p><pre><code class="language-bash"># Add non-root user
 ARG USERNAME=nonroot
 RUN groupadd --gid 1000 $USERNAME &amp;&amp; 
     useradd --uid 1000 --gid 1000 -m $USERNAME
@@ -1250,7 +1253,7 @@ RUN pip install -r /tmp/requirements-dev.txt &amp;&amp;
     <footer class="page-footer">
             <amp-img class="site-icon" src="https://jeroenoverschie.nl/content/images/2022/10/cartoon-head-jeroen-1-2.svg" width="50" height="50" layout="fixed" alt="Jeroen Overschie"></amp-img>
         <h3>Jeroen Overschie</h3>
-            <p>This is Jeroen&#x27;s personal website.</p>
+            <p>I&#x27;m Jeroen 👋🏻</p>
         <p><a href="https://jeroenoverschie.nl">Read more posts →</a></p>
         <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
     </footer>
