@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Are you ready for MLOps? (on Xebia.com ⧉)</title>
+
+    <link rel="stylesheet" href="/assets/built/screen.css?v=2196f394a1">
+
+    <meta name="description" content="MLOps has survived the hype cycle and is gaining in maturity. But are we looking at MLOps for answers for the right things?  When should you even start thinking about MLOps, or when is ‘plain’ DevOps wiser to focus on first?">
+    <link rel="icon" href="https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg" type="image/png">
+    <link rel="canonical" href="https://jeroenoverschie.nl/are-you-ready-for-mlops-on-xebia-com/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="amphtml" href="https://jeroenoverschie.nl/are-you-ready-for-mlops-on-xebia-com/amp/">
+    
+    <meta property="og:site_name" content="Jeroen Overschie">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Are you ready for MLOps? (on Xebia.com ⧉)">
+    <meta property="og:description" content="MLOps has survived the hype cycle and is gaining in maturity. But are we looking at MLOps for answers for the right things?  When should you even start thinking about MLOps, or when is ‘plain’ DevOps wiser to focus on first?">
+    <meta property="og:url" content="https://jeroenoverschie.nl/are-you-ready-for-mlops-on-xebia-com/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhc3RsZXxlbnwwfHx8fDE3NTk2NjAxNDF8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta property="article:published_time" content="2025-07-16T22:00:00.000Z">
+    <meta property="article:modified_time" content="2025-10-05T10:37:03.000Z">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Are you ready for MLOps? (on Xebia.com ⧉)">
+    <meta name="twitter:description" content="MLOps has survived the hype cycle and is gaining in maturity. But are we looking at MLOps for answers for the right things?  When should you even start thinking about MLOps, or when is ‘plain’ DevOps wiser to focus on first?">
+    <meta name="twitter:url" content="https://jeroenoverschie.nl/are-you-ready-for-mlops-on-xebia-com/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhc3RsZXxlbnwwfHx8fDE3NTk2NjAxNDF8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Jeroen Overschie">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="801">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Jeroen Overschie",
+        "url": "https://jeroenoverschie.nl/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Jeroen Overschie",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.gravatar.com/avatar/b37b136916ade32aada1f345482aafa4?s=250&r=x&d=mp",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://jeroenoverschie.nl/author/jeroen/",
+        "sameAs": []
+    },
+    "headline": "Are you ready for MLOps? (on Xebia.com ⧉)",
+    "url": "https://jeroenoverschie.nl/are-you-ready-for-mlops-on-xebia-com/",
+    "datePublished": "2025-07-16T22:00:00.000Z",
+    "dateModified": "2025-10-05T10:37:03.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhc3RsZXxlbnwwfHx8fDE3NTk2NjAxNDF8MA&ixlib=rb-4.1.0&q=80&w=2000",
+        "width": 1200,
+        "height": 801
+    },
+    "description": "MLOps has survived the hype cycle and is gaining in maturity. But are we looking at MLOps for answers for the right things?  When should you even start thinking about MLOps, or when is ‘plain’ DevOps wiser to focus on first?",
+    "mainEntityOfPage": "https://jeroenoverschie.nl/are-you-ready-for-mlops-on-xebia-com/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.130">
+    <link rel="alternate" type="application/rss+xml" title="Jeroen Overschie" href="https://jeroenoverschie.nl/rss/">
+    
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/sodo-search.min.js" data-key="489b5afdd4c5385878c360bd9b" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/main.css" data-sodo-search="https://jeroenoverschie.nl/" data-locale="en" crossorigin="anonymous"></script>
+    
+    <link href="https://jeroenoverschie.nl/webmentions/receive/" rel="webmention">
+    <script defer src="/public/cards.min.js?v=2196f394a1"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=2196f394a1">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQB9198LQ6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PQB9198LQ6');
+</script>
+    <meta http-equiv="refresh" content="0; url=https://xebia.com/blog/are-you-ready-for-mlops/" />
+</head>
+
+<body class="post-template">
+    <div class="site">
+        <header id="site-header" class="site-header">
+    <div class="header-inner">
+        <div class="header-brand">
+            <a class="logo" href="https://jeroenoverschie.nl">
+                    <span class="logo-text">Jeroen Overschie</span>
+            </a>
+
+            <div class="burger">
+                <div class="burger-bar"></div>
+                <div class="burger-bar"></div>
+            </div>
+        </div>
+
+        <nav class="header-nav">
+                        <a class="menu-item menu-item-home" href="https://jeroenoverschie.nl/">Home</a>
+        <a class="menu-item menu-item-publications" href="https://jeroenoverschie.nl/publications/">Publications</a>
+        <a class="menu-item menu-item-life" href="https://jeroenoverschie.nl/tag/life/">Life</a>
+        <a class="menu-item menu-item-about-me" href="https://jeroenoverschie.nl/about/">About me</a>
+
+        </nav>
+
+        <div class="header-actions">
+            <div class="social">
+
+            </div>
+
+        </div>
+    </div>
+</header>
+
+        <div class="site-content">
+            
+<div class="content-area">
+    <main class="site-main">
+            <article class="single post">
+    <header class="single-header kg-canvas">
+            <div class="single-meta">
+                <span class="single-meta-item single-meta-date">
+                    <time datetime="2025-07-17">
+                        Jul 17, 2025
+                    </time>
+                </span>
+
+                <span class="single-meta-item single-meta-length">
+                    9 min read
+                </span>
+
+            </div>
+
+        <h1 class="single-title">Are you ready for MLOps? (on Xebia.com ⧉)</h1>
+
+            <div class="single-excerpt">
+                MLOps has survived the hype cycle and is gaining in maturity. But are we looking at MLOps for answers for the right things?  When should you even start thinking about MLOps, or when is ‘plain’ DevOps wiser to focus on first?
+            </div>
+
+                <figure class="single-media kg-width-wide">
+                    <img srcset="https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhc3RsZXxlbnwwfHx8fDE3NTk2NjAxNDF8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;400 400w,
+https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhc3RsZXxlbnwwfHx8fDE3NTk2NjAxNDF8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;750 750w,
+https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhc3RsZXxlbnwwfHx8fDE3NTk2NjAxNDF8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;960 960w,
+https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhc3RsZXxlbnwwfHx8fDE3NTk2NjAxNDF8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;1140 1140w" sizes="(min-width: 1023px) 920px, calc(90vw)" src="https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhc3RsZXxlbnwwfHx8fDE3NTk2NjAxNDF8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;960" alt="Are you ready for MLOps? (on Xebia.com ⧉)">
+                        <figcaption><span style="white-space: pre-wrap;">Photo by </span><a href="https://unsplash.com/@rmaedavis?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit"><span style="white-space: pre-wrap;">Rachel Davis</span></a><span style="white-space: pre-wrap;"> / </span><a href="https://unsplash.com/?utm_source=ghost&amp;utm_medium=referral&amp;utm_campaign=api-credit"><span style="white-space: pre-wrap;">Unsplash</span></a></figcaption>
+                </figure>
+    </header>
+
+    <div class="single-content gh-content kg-canvas">
+        <h2 id="introduction">Introduction</h2><p>MLOps has survived the hype cycle and is gaining in maturity. But are we looking at MLOps for answers for the right things? No matter how valuable MLOps can be for you, without proper building blocks in place MLOps cannot live up to its full potential. What are the prerequisites for MLOps? What parts of MLOps should you focus on? When should you even start thinking about MLOps, or when is ‘plain’ DevOps wiser to focus on first? Read along to learn more!</p><h3 id="about-being-ready">About being ready</h3><p>So, what does it mean to be&nbsp;<em>ready</em>? Being ready means understanding why you need that technology and what it is. Then, we can start understanding what it takes to adopt it and especially: what&nbsp;<strong>prerequisites</strong>&nbsp;are required to do so. With all the prerequisities in place, we can say we are&nbsp;<em>ready</em>.</p><p>In short, being ready for MLOps means you understand:</p><ol><li><strong>Why</strong>&nbsp;adopt MLOps</li><li><strong>What</strong>&nbsp;MLOps is</li><li><strong>When</strong>&nbsp;adopt MLOps</li></ol><p>... only then can you start thinking about&nbsp;<em>how</em>&nbsp;to adopt MLOps.</p><p>As an analogy, think of building a house. You need the right foundation in place first before you build higher. Each level needs to be built properly before you advance. If the right foundations are not in place, you can build however beautiful house on top of those foundations but still the building will not stand time.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide2025030221261.jpg" class="kg-image" alt="house built on a bad foundation" loading="lazy" width="2324" height="1188"><figcaption><span style="white-space: pre-wrap;">To build high, beautiful buildings, you need a solid foundation. So is the same for MLOps. Do you have the right foundation to adopt MLOps?</span></figcaption></figure><p>To start adopting MLOps the prerequisites need to be in place before we start building on top of them. What are those prerequisites? Let's find out if you are ready, together.</p><h2 id="why-mlops">Why MLOps?</h2><p>Why bother with MLOps? Let's first explore what pain you might experience that MLOps can help with. First let's throw in a statistic. Gartner reported that on average only 54% of AI models move from pilot to production:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide2025030221262.png" class="kg-image" alt="gartner survey ai models from pilot to production" loading="lazy" width="2324" height="392"><figcaption><span style="white-space: pre-wrap;">Many AI models developed never even reach production.</span></figcaption></figure><p>... that is not an awful lot. What a waste! We spent time&nbsp;<em>trying</em>&nbsp;to get models into production but we are not able to. Why is that? These days Data Science is not anymore a&nbsp;<em>new</em>&nbsp;domain by any means. The time when Hardvard Business Review posted the Data Scientist to be the "Sexiest Job of the 21st Century" is more than a decade ago&nbsp;<a href="https://hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-century"><sup>[1]</sup></a>. In 2019 alone the Data Scientist job postings on Indeed rose by 256%&nbsp;<a href="https://www.hiringlab.org/2019/01/17/data-scientist-job-outlook/"><sup>[2]</sup></a>. Universities have been pumping out Data Science graduates in rapid pace and the Open Source community made ML technology easy to use and widely available. Both the&nbsp;<strong>tech</strong>&nbsp;and the&nbsp;<strong>skills</strong>&nbsp;are there:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide2025030221263.png" class="kg-image" alt="both tech and skills are present" loading="lazy" width="2324" height="533"><figcaption><span style="white-space: pre-wrap;">ML tech is by now easy to use and widely available. Data Science profiles are more abundant in the market than ever before.</span></figcaption></figure><p>So then let me re-iterate: why, still, are teams having troubles launching Machine Learning models into production? Big part of the reason lies in&nbsp;<em>collaboration</em>&nbsp;between teams. Even though we all wish for seamless transitions from the development phase towards production, Machine Learning-&nbsp;<strong>development</strong>&nbsp;and&nbsp;<strong>operation</strong>&nbsp;teams can have conflicting interests, making it difficult to collaborate. The development- and operations world differ in various aspects:</p><ul><li><strong>Development</strong>&nbsp;ML teams are focused on&nbsp;<em>innovation</em>&nbsp;and&nbsp;<em>speed</em><ul><li>Dev ML teams have roles like Data Scientists, Data Engineers, Business owners.</li><li>Dev ML teams work agile and experiment rapidly using PoC's.</li><li>Dev ML teams work in Jupyter notebooks, Python, R, etc.</li></ul></li><li><strong>Operations</strong>&nbsp;ML teams are focused on&nbsp;<em>stability</em>&nbsp;and&nbsp;<em>reliability</em><ul><li>Ops ML teams have roles like Platform Engineers, SRE's, DevOps Engineers, Software Engineers, IT Managers.</li><li>Ops ML teams work with strict roadmaps, make long-term plans and might need to be available for on-call support.</li><li>Ops ML teams work in CI/CD pipelines, Kubernetes, Docker, Java, Scala, etc.</li></ul></li></ul><p>... that does not make things easier. The expectation is that dev- and ops&nbsp;<em>magically</em>&nbsp;work well together. We can just 'hand over' the model to the operations team and they will take care of it. This is not the case, unfortunately.</p><p><strong>Expectation</strong>:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide2025030221264.png" class="kg-image" alt="ML dev and ops working well together" loading="lazy" width="2324" height="350"><figcaption><span style="white-space: pre-wrap;">It is often expected that development- and operations teams&nbsp;</span><i><em class="italic" style="white-space: pre-wrap;">magically</em></i><span style="white-space: pre-wrap;">&nbsp;work well together.</span></figcaption></figure><p>... versus&nbsp;<strong>Reality</strong>:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide2025030221265.png" class="kg-image" alt="ML dev and ops working badly together" loading="lazy" width="2324" height="534"><figcaption><span style="white-space: pre-wrap;">In reality collaboration between development and operations is&nbsp;</span><i><em class="italic" style="white-space: pre-wrap;">hard</em></i><span style="white-space: pre-wrap;">&nbsp;due to conflicting interests. With lacking collaboration an undesired handover between teams is introduced in which context is lost.</span></figcaption></figure><p>... such&nbsp;<strong>handovers</strong>&nbsp;make development cycles unnecessarily long and makes it difficult to get feedback from production models back to the developers. To conclude, a lack of collaboration between development and operations causes three issues:</p><ul><li>❌ Few models in production&nbsp;... or production solutions prove unreliable.</li><li>❌ Long development cycles&nbsp;... to create models, update models or add features.</li><li>❌ Lacking feedback&nbsp;... on model performance and added value.</li></ul><p>How to solve this? Enter&nbsp;<strong>MLOps</strong>.</p><h2 id="what-is-mlops">What is MLOps?</h2><p>MLOps can help development- and production teams work better together and more efficiently deploy Machine Learning models to production. MLOps makes the dev- and ops worlds more familiar with each other and aims to bring the worlds closer together.</p><p>The term has gained in popularity since 2018&nbsp;<a href="https://trends.google.com/trends/explore?date=all&amp;q=mlops"><sup>[3]</sup></a>&nbsp;<a href="https://www2.deloitte.com/content/dam/Deloitte/global/Images/infographics/technologymediatelecommunications/gx-deloitte-tmt-2018-predictions-full-report.pdf"><sup>[4]</sup></a>, when the Machine Learning had undergone massive growth. Fair to say, some years have passed by now and we have moved beyond the hype by now:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide2025030221268.png" class="kg-image" alt="mlops in the hype cycle" loading="lazy" width="2324" height="840"><figcaption><span style="white-space: pre-wrap;">MLOps has moved beyond the hype and climbing up towards the plateau of productivity.&nbsp;Graph refers to&nbsp;</span><a href="https://en.wikipedia.org/wiki/Gartner_hype_cycle"><span style="white-space: pre-wrap;">Gartner hype cycle</span></a><span style="white-space: pre-wrap;">.</span></figcaption></figure><p>So what is MLOps comprised of? No longer is Machine Learning development only about training a ML model. We are concerned about&nbsp;<em>many</em>&nbsp;other things, too. Preprocessing, feature engineering, serving, scheduling and monitoring to name a few. We can map those to concrete methodologies and tooling that makes up the technical part of MLOps:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide2025030221269.png" class="kg-image" alt="mlops components" loading="lazy" width="2324" height="785"><figcaption><span style="white-space: pre-wrap;">ML development activities mapped to core MLOps components.</span></figcaption></figure><p>... some might already come familiar to you. So do they to major Cloud Providers. Cloud providers have answered the market need for better tooling in the Machine Learning space. In fact every major provider has a Machine Learning platform that helps you do MLOps:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212610.png" class="kg-image" alt="alt text" loading="lazy" width="2324" height="315"><figcaption><span style="white-space: pre-wrap;">Major cloud providers offer managed MLOps platforms.</span></figcaption></figure><p>That is massively useful. Not only is more tooling available to do MLOps, there also exist managed solutions that you can use out of the box.&nbsp;</p><p>Let's recall the three issues we had with handovers between development- and operations teams. Remember them? We can now map them toward what MLOps promises to give us, helping us with these issues.&nbsp;</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212611.png" class="kg-image" alt="alt text" loading="lazy" width="2324" height="947"><figcaption><span style="white-space: pre-wrap;">MLOps promises us speed by automation, rapid feedback and autonomy with end-to-end product teams.</span></figcaption></figure><p>... that sounds great! We have MLOps as a key methodology to reduce the handover and bring dev- and ops closer together. But what actually empowers and enables MLOps? What do we need to do successful MLOps? Did we any time before bring together&nbsp;<strong>Dev</strong>&nbsp;and&nbsp;<strong>Ops</strong>&nbsp;teams? In fact, we did! It's in the name! Enter&nbsp;<strong>DevOps</strong>.</p><h3 id="devops-in-the-mix">DevOps in the mix</h3><p>MLOps is largely inspired by DevOps&nbsp;<a href="https://en.wikipedia.org/wiki/MLOps"><sup>[5]</sup></a>. DevOps has existed for longer and is more established and mature. Since 2007 DevOps has been a massively influential methodology in software development. Key is that development is not sequential but&nbsp;<em>continuous</em>, best illustrated using the DevOps lifecycle:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212613.png" class="kg-image" alt="alt text" loading="lazy" width="2324" height="654"><figcaption><span style="white-space: pre-wrap;">The DevOps lifecycle&nbsp;</span><a href="https://about.gitlab.com/topics/devops/"><sup style="white-space: pre-wrap;"><span>[6]</span></sup></a><sup style="white-space: pre-wrap;"><span>.</span></sup></figcaption></figure><p>In DevOps key principles are&nbsp;<a href="https://about.gitlab.com/topics/devops/"><sup>[6]</sup></a>:</p><ul><li>Automation</li><li>Collaboration &amp; communication</li><li>Continuously improving</li><li>Focus on user needs</li></ul><p>... so how does MLOps interplay with DevOps? DevOps came from the Software Development world and therefore deals with Code. In Machine Learning, however, important to take into account are also&nbsp;<strong>Data</strong>&nbsp;and the&nbsp;<strong>Model</strong>:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212614.png" class="kg-image" alt="alt text" loading="lazy" width="2324" height="680"><figcaption><span style="white-space: pre-wrap;">Whereas DevOps deals mainly with Code, MLOps also entails data and a ML model.</span></figcaption></figure><p>Taking into account automating operations related to all of the code, data and model is what makes MLOps different from DevOps. For example, when it comes to automation we continuously check data quality, train models and run inference to create guarantees the state of our Machine Learning system.</p><p>Doing so continuously means we loop in our Monitoring practices back into our Model Building step like so:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212615.png" class="kg-image" alt="alt text" loading="lazy" width="2324" height="359"><figcaption><span style="white-space: pre-wrap;">Iterative, continuous development means using monitoring feedback to build- and improve your ML model.</span></figcaption></figure><p>That's great. So again, what is this interplay between DevOps and MLOps? It is clear that MLOps lent a lot from DevOps. But so in what way do we&nbsp;<em>need</em>&nbsp;DevOps to do MLOps? The way we see it, is that you need to have DevOps in place before you can do MLOps. DevOps is a prerequisite for MLOps. It's like stacking building blocks on top of each other, creating a solid foundation before you build higher:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212616.png" class="kg-image" alt="alt text" loading="lazy" width="2324" height="1021"><figcaption><span style="white-space: pre-wrap;">Get DevOps in place before you start doing MLOps.</span></figcaption></figure><p>That is promising, isn't it? Well, it is, but there's also effort required on the organisational side. MLOps is not just about&nbsp;<em>tech</em>.</p><h3 id="the-mlops-twist">The MLOps twist</h3><p>MLOps is about more than just tech. MLOps is about all of&nbsp;<strong>Technology</strong>,&nbsp;<strong>People</strong>&nbsp;and&nbsp;<strong>Processes</strong>. Getting MLOps right means have carefully considered all three:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212618.png" class="kg-image" alt="alt text" loading="lazy" width="2324" height="723"><figcaption><span style="white-space: pre-wrap;">MLOps is not just about tooling and tech. It is just as much about&nbsp;</span><b><strong style="white-space: pre-wrap;">People</strong></b><span style="white-space: pre-wrap;">&nbsp;and&nbsp;</span><b><strong style="white-space: pre-wrap;">Processes</strong></b><span style="white-space: pre-wrap;">.</span></figcaption></figure><p>What does that mean? That means that in the MLOps lifecycle we want the ML product team to operate over the&nbsp;<em>entire</em>&nbsp;of the ML lifecycle, owning the entire process:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212619.jpg" class="kg-image" alt="alt text" loading="lazy" width="2324" height="665"><figcaption><span style="white-space: pre-wrap;">The MLOps lifecycle&nbsp;</span><a href="https://ml-ops.org/content/crisp-ml"><sup style="white-space: pre-wrap;"><span>[7]</span></sup></a><span style="white-space: pre-wrap;">. The ML product team operates over the&nbsp;</span><i><em class="italic" style="white-space: pre-wrap;">entire</em></i><span style="white-space: pre-wrap;">&nbsp;of the ML lifecycle.</span></figcaption></figure><p>... this does indeed mean that we need a diverse set of roles, together in one team. Data Scientists, Machine Learning Engineers, Data Engineers and such need to work together. Working together, the handover can be minimised and models can be built that are actually ready for production.</p><p>To facilitate such a ML product team, a ML platform team is used to enable them. In a central team, they can provide best-practices and tooling to the ML product team. Key is, though, that still the ML product teams own the process from development to operation:</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212620.png" class="kg-image" alt="alt text" loading="lazy" width="2324" height="718"><figcaption><span style="white-space: pre-wrap;">ML product teams are enabled by a central ML platform team.</span></figcaption></figure><p>... admittedly, this is all not easy. Drawing out organisational changes on paper is easier than actually doing it. It requires serious effort to challenge your existing setup and restructure your organisation. But ask yourself - is it worth it? Is there serious Machine Learning potential in your organisation that you want to take advantage of? If yes,&nbsp;<strong>go for it</strong>.</p><h2 id="concluding-when-to-adopt-mlops">Concluding: when to adopt MLOps</h2><p>We learned a lot. We should do MLOps to eliminate handovers between dev- and ops teams and bring Software Engineering operational efficiency to the Machine Learning World. MLOps does so by providing useful technologies and tooling, widely offered by major cloud providers. MLOps is largely inspired by DevOps, which is a prerequisite for MLOps. This allowed the industry to take advantage of well-matured DevOps concepts like automation, collaboration and continuous improvement. Only do MLOps if you have your DevOps practices in place.&nbsp;</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212621.png" class="kg-image" alt="alt text" loading="lazy" width="2324" height="432"><figcaption><span style="white-space: pre-wrap;">Dev- and ops can collaborate and co-exist happily together. Do MLOps once you get your DevOps practices in place.</span></figcaption></figure><p>If you end up doing so, you might very well end up in a better place because of it. Embrace the organisational investment and get teams closer together. We wish you good luck with your journey - and&nbsp;<a href="https://solutions.xebia.com/solutions/mlops-platform">would love to help you along the way</a>.</p><ul><li><a href="https://hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-century">[1] https://hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-century</a></li><li><a href="https://www.hiringlab.org/2019/01/17/data-scientist-job-outlook/">[2] https://www.hiringlab.org/2019/01/17/data-scientist-job-outlook/</a></li><li><a href="https://trends.google.com/trends/explore?date=all&amp;q=mlops">[3] https://trends.google.com/trends/explore?date=all&amp;q=mlops</a></li><li><a href="https://www2.deloitte.com/content/dam/Deloitte/global/Images/infographics/technologymediatelecommunications/gx-deloitte-tmt-2018-predictions-full-report.pdf">[4] https://www2.deloitte.com/content/dam/Deloitte/global/Images/infographics/technologymediatelecommunications/gx-deloitte-tmt-2018-predictions-full-report.pdf</a></li><li><a href="https://en.wikipedia.org/wiki/MLOps">[5] https://en.wikipedia.org/wiki/MLOps</a></li><li><a href="https://about.gitlab.com/topics/devops/">[6] https://about.gitlab.com/topics/devops/</a></li><li><a href="https://ml-ops.org/content/crisp-ml">[7] https://ml-ops.org/content/crisp-ml</a><br></li></ul>
+    </div>
+
+        <footer class="single-footer container small">
+            <div class="single-footer-left">
+                    <div class="navigation navigation-previous">
+                        <a class="navigation-link" href="/in-and-around-the-amstel-station/" aria-label="Previous post">
+                            <span class="navigation-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M26.667 14.667v2.667h-16L18 24.667l-1.893 1.893L5.547 16l10.56-10.56L18 7.333l-7.333 7.333h16z"></path>
+</svg></span>
+                        </a>
+                    </div>
+            </div>
+
+            <div class="single-footer-middle">
+                    <div class="single-footer-top">
+                        <h3 class="single-footer-title">Published by:</h3>
+                        <div class="author-list">
+                                <div class="author-image-placeholder u-placeholder square">
+                                    <a href="/author/jeroen/" title="Jeroen Overschie">
+                                            <img class="author-image u-object-fit" src="https://www.gravatar.com/avatar/b37b136916ade32aada1f345482aafa4?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp" alt="Jeroen Overschie" loading="lazy">
+                                    </a>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+
+            <div class="single-footer-right">
+                    <div class="navigation navigation-next">
+                        <a class="navigation-link" href="/golden-hour-in-amsterdam/" aria-label="Next post">
+                            <span class="navigation-icon"><svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+    <path d="M5.333 14.667v2.667h16L14 24.667l1.893 1.893L26.453 16 15.893 5.44 14 7.333l7.333 7.333h-16z"></path>
+</svg></span>
+                        </a>
+                    </div>
+            </div>
+        </footer>
+</article>                                </main>
+</div>
+
+
+        </div>
+
+        <footer class="site-footer container">
+    <div class="footer-inner">
+        <div class="footer-left">
+            <div class="copyright">
+                Jeroen Overschie © 2025
+            </div>
+        </div>
+
+        <nav class="footer-nav">
+                    <a class="menu-item menu-item-goodreads" href="https://www.goodreads.com/jeroenoverschie">Goodreads ⧉</a>
+            <span class="sep">•</span>
+        <a class="menu-item menu-item-github" href="https://github.com/dunnkers">GitHub ⧉</a>
+            <span class="sep">•</span>
+        <a class="menu-item menu-item-linkedin" href="https://linkedin.com/in/jeroenoverschie">LinkedIn ⧉</a>
+
+        </nav>
+
+        <div class="footer-right">
+            <div class="social">
+
+            </div>
+        </div>
+    </div>
+</footer>        <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe.
+        It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides.
+          PhotoSwipe keeps only 3 of them in the DOM to save memory.
+          Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>    </div>
+
+    <script>
+        if (document.body.classList.contains('with-full-cover') && (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.platform))) {
+            document.getElementsByClassName('cover')[0].style.height = window.innerHeight + 'px';
+        }
+    </script>
+
+    <script src="/assets/built/main.min.js?v=2196f394a1"></script>
+
+    
+</body>
+
+</html>

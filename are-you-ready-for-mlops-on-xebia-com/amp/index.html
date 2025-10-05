@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html ⚡ lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>Are you ready for MLOps? (on Xebia.com ⧉)</title>
+
+    <meta name="description" content="MLOps has survived the hype cycle and is gaining in maturity. But are we looking at MLOps for answers for the right things?  When should you even start thinking about MLOps, or when is ‘plain’ DevOps wiser to focus on first?">
+    <link rel="icon" href="https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg" type="image/png">
+    <link rel="canonical" href="https://jeroenoverschie.nl/are-you-ready-for-mlops-on-xebia-com/">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta property="og:site_name" content="Jeroen Overschie">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Are you ready for MLOps? (on Xebia.com ⧉)">
+    <meta property="og:description" content="MLOps has survived the hype cycle and is gaining in maturity. But are we looking at MLOps for answers for the right things?  When should you even start thinking about MLOps, or when is ‘plain’ DevOps wiser to focus on first?">
+    <meta property="og:url" content="https://jeroenoverschie.nl/are-you-ready-for-mlops-on-xebia-com/">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhc3RsZXxlbnwwfHx8fDE3NTk2NjAxNDF8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta property="article:published_time" content="2025-07-16T22:00:00.000Z">
+    <meta property="article:modified_time" content="2025-10-05T10:37:03.000Z">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Are you ready for MLOps? (on Xebia.com ⧉)">
+    <meta name="twitter:description" content="MLOps has survived the hype cycle and is gaining in maturity. But are we looking at MLOps for answers for the right things?  When should you even start thinking about MLOps, or when is ‘plain’ DevOps wiser to focus on first?">
+    <meta name="twitter:url" content="https://jeroenoverschie.nl/are-you-ready-for-mlops-on-xebia-com/">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhc3RsZXxlbnwwfHx8fDE3NTk2NjAxNDF8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;2000">
+    <meta name="twitter:label1" content="Written by">
+    <meta name="twitter:data1" content="Jeroen Overschie">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="801">
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Jeroen Overschie",
+        "url": "https://jeroenoverschie.nl/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg",
+            "width": 60,
+            "height": 60
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Jeroen Overschie",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.gravatar.com/avatar/b37b136916ade32aada1f345482aafa4?s=250&r=x&d=mp",
+            "width": 250,
+            "height": 250
+        },
+        "url": "https://jeroenoverschie.nl/author/jeroen/",
+        "sameAs": []
+    },
+    "headline": "Are you ready for MLOps? (on Xebia.com ⧉)",
+    "url": "https://jeroenoverschie.nl/are-you-ready-for-mlops-on-xebia-com/",
+    "datePublished": "2025-07-16T22:00:00.000Z",
+    "dateModified": "2025-10-05T10:37:03.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhc3RsZXxlbnwwfHx8fDE3NTk2NjAxNDF8MA&ixlib=rb-4.1.0&q=80&w=2000",
+        "width": 1200,
+        "height": 801
+    },
+    "description": "MLOps has survived the hype cycle and is gaining in maturity. But are we looking at MLOps for answers for the right things?  When should you even start thinking about MLOps, or when is ‘plain’ DevOps wiser to focus on first?",
+    "mainEntityOfPage": "https://jeroenoverschie.nl/are-you-ready-for-mlops-on-xebia-com/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.130">
+    <link rel="alternate" type="application/rss+xml" title="Jeroen Overschie" href="https://jeroenoverschie.nl/rss/">
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: var(--ghost-accent-color, #1292EE);
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+    
+    amp-youtube {
+        height: calc(100vw / 1.78);
+        width: 100vw;
+        position: relative;
+    }
+
+    amp-youtube img {
+        position: absolute;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content blockquote.kg-blockquote-alt {
+        font-size: 1.2em;
+        font-style: italic;
+        line-height: 1.6em;
+        text-align: center;
+        color: #738a94;
+        padding: 0.75em 3em 1.25em;
+    }
+
+    .post-content blockquote.kg-blockquote-alt::before {
+        display: none;
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #15171a;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 3px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-toggle-card-icon {
+        display: none;
+    }
+
+    .kg-toggle-content {
+        margin-top: 0.8rem;
+    }
+
+    .kg-product-card-container {
+        background: transparent;
+        padding: 20px;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: inset 0 0 0 1px rgb(124 139 154 / 25%);
+    }
+
+    .kg-product-card-description p {
+        margin-top: 1.5em;
+    }
+
+    .kg-product-card-description ul {
+        margin-left: 24px;
+    }
+
+    .kg-product-card-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+    }
+
+    .kg-product-card-rating-star {
+        height: 28px;
+        width: 20px;
+        margin-right: 2px;
+    }
+
+    .kg-product-card-rating-star svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    opacity: 0.15;
+    }
+
+    .kg-product-card-rating-active.kg-product-card-rating-star svg {
+    opacity: 1;
+    }
+
+    .kg-nft-card-container {
+        position: relative;
+        display: flex;
+        flex: auto;
+        flex-direction: column;
+        text-decoration: none;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        box-shadow: 0 2px 6px -2px rgb(0 0 0 / 10%), 0 0 1px rgb(0 0 0 / 40%);
+        width: 100%;
+        max-width: 512px;
+        color: #15212A;
+        background: #fff;
+        border-radius: 5px;
+        transition: none;
+        margin: 0 auto;
+    }
+
+    .kg-nft-metadata {
+        padding: 2.0rem;
+    }
+
+    .kg-nft-image-container {
+        position: relative;
+    }
+
+    .kg-nft-image {
+        display: flex;
+        border-radius: 5px 5px 0 0;
+    }
+
+    .kg-nft-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .kg-nft-header h4.kg-nft-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+        margin: 0;
+        color: #15212A;
+    }
+
+    .kg-nft-header amp-img {
+        max-width: 114px;
+        max-height: 26px;
+    }
+
+    .kg-nft-opensea-logo {
+        margin-top: 2px;
+        width: 100px;
+    }
+
+    .kg-nft-creator {
+        font-family: inherit;
+        color: #95A1AD;
+    }
+
+    .kg-nft-creator span {
+        font-weight: 500;
+        color: #15212A;
+    }
+
+    .kg-nft-card p.kg-nft-description {
+        font-size: 1.4rem;
+        line-height: 1.4em;
+        margin: 2.0rem 0 0;
+        color: #222;
+    }
+
+    .kg-button-card {
+        display: flex;
+        position: static;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .kg-btn {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 2.0rem;
+        height: 4.0rem;
+        line-height: 4.0rem;
+        font-size: 1.65rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .kg-btn:hover {
+        opacity: 0.85;
+    }
+
+    .kg-btn-accent {
+        background-color: var(--ghost-accent-color, #1292EE);
+        color: #fff;
+    }
+
+    .kg-callout-card {
+        display: flex;
+        padding: 20px 28px;
+        border-radius: 3px;
+    }
+
+    .kg-callout-card-grey {
+        background: rgba(124, 139, 154, 0.13);
+    }
+
+    .kg-callout-card-white {
+        background: transparent;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-callout-card-blue {
+        background: rgba(33, 172, 232, 0.12);
+    }
+
+    .kg-callout-card-green {
+        background: rgba(52, 183, 67, 0.12);
+    }
+
+    .kg-callout-card-yellow {
+        background: rgba(240, 165, 15, 0.13);
+    }
+
+    .kg-callout-card-red {
+        background: rgba(209, 46, 46, 0.11);
+    }
+
+    .kg-callout-card-pink {
+        background: rgba(225, 71, 174, 0.11);
+    }
+
+    .kg-callout-card-purple {
+        background: rgba(135, 85, 236, 0.12);
+    }
+
+    .kg-callout-card-accent {
+        background: var(--ghost-accent-color);
+        color: #fff;
+    }
+
+    .kg-callout-card-accent a {
+        color: #fff;
+    }
+
+    .kg-callout-emoji {
+        padding-right: 16px;
+        line-height: 1.3;
+        font-size: 1.25em;
+    }
+
+    .kg-header-card {
+        padding: 6em 3em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .kg-header-card.kg-size-small {
+        padding-top: 4em;
+        padding-bottom: 4em;
+    }
+
+    .kg-header-card.kg-size-large {
+        padding-top: 12em;
+        padding-bottom: 12em;
+    }
+
+    .kg-header-card.kg-width-full {
+        padding-left: 4em;
+        padding-right: 4em;
+    }
+
+    .kg-header-card.kg-align-left {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .kg-header-card.kg-style-dark {
+        background: #15171a;
+        color: #ffffff;
+    }
+
+    .kg-header-card.kg-style-light {
+        color: #15171a;
+        border: 1px solid rgba(124, 139, 154, 0.25);
+        border-width: 1px 0;
+    }
+
+    .kg-header-card.kg-style-accent {
+        background-color: var(--ghost-accent-color);
+    }
+
+    .kg-header-card.kg-style-image {
+        background-color: #e7e7eb;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .kg-header-card h2 {
+        font-size: 4em;
+        font-weight: 700;
+        line-height: 1.1em;
+        margin: 0;
+    }
+
+    .kg-header-card h2 strong {
+        font-weight: 800;
+    }
+
+    .kg-header-card.kg-size-small h2 {
+        font-size: 3em;
+    }
+
+    .kg-header-card.kg-size-large h2 {
+        font-size: 5em;
+    }
+
+    .kg-header-card h3 {
+        font-size: 1.25em;
+        font-weight: 500;
+        line-height: 1.3em;
+        margin: 0;
+    }
+
+    .kg-header-card h3 strong {
+        font-weight: 600;
+    }
+
+    .kg-header-card.kg-size-small h3 {
+        font-size: 1em;
+    }
+
+    .kg-header-card.kg-size-large h3 {
+        font-size: 1.5em;
+    }
+
+    .kg-header-card:not(.kg-style-light) h2,
+    .kg-header-card:not(.kg-style-light) h3 {
+        color: #ffffff;
+    }
+
+    .kg-header-card a.kg-header-card-button {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 1.2em;
+        height: 2.4em;
+        line-height: 1em;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-size: 0.95em;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+        background-color: var(--ghost-accent-color);
+        color: #ffffff;
+        margin: 1.75em 0 0;
+    }
+
+    .kg-header-card a.kg-header-card-button:hover {
+        opacity: 0.85;
+    }
+
+    .kg-header-card.kg-size-large a.kg-header-card-button {
+        margin-top: 2em;
+    }
+
+    .kg-header-card.kg-size-small a.kg-header-card-button {
+        margin-top: 1.5em;
+    }
+
+    .kg-header-card.kg-style-image a.kg-header-card-button,
+    .kg-header-card.kg-style-dark a.kg-header-card-button {
+        background: #ffffff;
+        color: #15171a;
+    }
+
+    .kg-header-card.kg-style-accent a.kg-header-card-button {
+        background: #ffffff;
+        color: var(--ghost-accent-color);
+    }
+
+    .kg-audio-card {
+        display: flex;
+        width: 100%;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-audio-thumbnail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        min-width: 80px;
+        height: 80px;
+        background: transparent;
+        object-fit: cover;
+        aspect-ratio: 1/1;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .kg-audio-thumbnail.placeholder {
+        background: var(--ghost-accent-color);
+    }
+
+    .kg-audio-thumbnail.placeholder svg {
+        width: 24px;
+        height: 24px;
+        fill: white;
+    }
+
+    .kg-audio-player-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        --seek-before-width: 0%;
+        --volume-before-width: 100%;
+        --buffered-width: 0%;
+    }
+
+    .kg-audio-title {
+        width: 100%;
+        padding: 8px 12px 0;
+        border: none;
+        font-family: inherit;
+        font-size: 1.1em;
+        font-weight: 700;
+        background: transparent;
+    }
+
+    .kg-audio-player {
+        display: none;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+
+    :root {--ghost-accent-color: #FF1A75;}
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="https://jeroenoverschie.nl">
+                <amp-img class="site-icon" src="https://jeroenoverschie.nl/content/images/2022/10/cartoon-head-jeroen-1-2.svg" width="50" height="50" layout="fixed" alt="Jeroen Overschie"></amp-img>
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">Are you ready for MLOps? (on Xebia.com ⧉)</h1>
+                <section class="post-meta">
+                    Jeroen Overschie -
+                    <time class="post-date" datetime="2025-07-17">17 Jul 2025</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhc3RsZXxlbnwwfHx8fDE3NTk2NjAxNDF8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;2000" width="600" height="340" layout="responsive" 
+                alt="Are you ready for MLOps? (on Xebia.com ⧉)"
+                ></amp-img>
+            </figure>
+            <section class="post-content">
+
+                <h2 id="introduction">Introduction</h2><p>MLOps has survived the hype cycle and is gaining in maturity. But are we looking at MLOps for answers for the right things? No matter how valuable MLOps can be for you, without proper building blocks in place MLOps cannot live up to its full potential. What are the prerequisites for MLOps? What parts of MLOps should you focus on? When should you even start thinking about MLOps, or when is ‘plain’ DevOps wiser to focus on first? Read along to learn more!</p><h3 id="about-being-ready">About being ready</h3><p>So, what does it mean to be <em>ready</em>? Being ready means understanding why you need that technology and what it is. Then, we can start understanding what it takes to adopt it and especially: what <strong>prerequisites</strong> are required to do so. With all the prerequisities in place, we can say we are <em>ready</em>.</p><p>In short, being ready for MLOps means you understand:</p><ol><li><strong>Why</strong> adopt MLOps</li><li><strong>What</strong> MLOps is</li><li><strong>When</strong> adopt MLOps</li></ol><p>... only then can you start thinking about <em>how</em> to adopt MLOps.</p><p>As an analogy, think of building a house. You need the right foundation in place first before you build higher. Each level needs to be built properly before you advance. If the right foundations are not in place, you can build however beautiful house on top of those foundations but still the building will not stand time.</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide2025030221261.jpg" class="kg-image" alt="house built on a bad foundation" width="2324" height="1188" layout="responsive"></amp-img><figcaption><span>To build high, beautiful buildings, you need a solid foundation. So is the same for MLOps. Do you have the right foundation to adopt MLOps?</span></figcaption></figure><p>To start adopting MLOps the prerequisites need to be in place before we start building on top of them. What are those prerequisites? Let's find out if you are ready, together.</p><h2 id="why-mlops">Why MLOps?</h2><p>Why bother with MLOps? Let's first explore what pain you might experience that MLOps can help with. First let's throw in a statistic. Gartner reported that on average only 54% of AI models move from pilot to production:</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide2025030221262.png" class="kg-image" alt="gartner survey ai models from pilot to production" width="2324" height="392" layout="responsive"></amp-img><figcaption><span>Many AI models developed never even reach production.</span></figcaption></figure><p>... that is not an awful lot. What a waste! We spent time <em>trying</em> to get models into production but we are not able to. Why is that? These days Data Science is not anymore a <em>new</em> domain by any means. The time when Hardvard Business Review posted the Data Scientist to be the "Sexiest Job of the 21st Century" is more than a decade ago <a href="https://hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-century"><sup>[1]</sup></a>. In 2019 alone the Data Scientist job postings on Indeed rose by 256% <a href="https://www.hiringlab.org/2019/01/17/data-scientist-job-outlook/"><sup>[2]</sup></a>. Universities have been pumping out Data Science graduates in rapid pace and the Open Source community made ML technology easy to use and widely available. Both the <strong>tech</strong> and the <strong>skills</strong> are there:</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide2025030221263.png" class="kg-image" alt="both tech and skills are present" width="2324" height="533" layout="responsive"></amp-img><figcaption><span>ML tech is by now easy to use and widely available. Data Science profiles are more abundant in the market than ever before.</span></figcaption></figure><p>So then let me re-iterate: why, still, are teams having troubles launching Machine Learning models into production? Big part of the reason lies in <em>collaboration</em> between teams. Even though we all wish for seamless transitions from the development phase towards production, Machine Learning- <strong>development</strong> and <strong>operation</strong> teams can have conflicting interests, making it difficult to collaborate. The development- and operations world differ in various aspects:</p><ul><li><strong>Development</strong> ML teams are focused on <em>innovation</em> and <em>speed</em><ul><li>Dev ML teams have roles like Data Scientists, Data Engineers, Business owners.</li><li>Dev ML teams work agile and experiment rapidly using PoC's.</li><li>Dev ML teams work in Jupyter notebooks, Python, R, etc.</li></ul></li><li><strong>Operations</strong> ML teams are focused on <em>stability</em> and <em>reliability</em><ul><li>Ops ML teams have roles like Platform Engineers, SRE's, DevOps Engineers, Software Engineers, IT Managers.</li><li>Ops ML teams work with strict roadmaps, make long-term plans and might need to be available for on-call support.</li><li>Ops ML teams work in CI/CD pipelines, Kubernetes, Docker, Java, Scala, etc.</li></ul></li></ul><p>... that does not make things easier. The expectation is that dev- and ops <em>magically</em> work well together. We can just 'hand over' the model to the operations team and they will take care of it. This is not the case, unfortunately.</p><p><strong>Expectation</strong>:</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide2025030221264.png" class="kg-image" alt="ML dev and ops working well together" width="2324" height="350" layout="responsive"></amp-img><figcaption><span>It is often expected that development- and operations teams </span><i><em class="italic">magically</em></i><span> work well together.</span></figcaption></figure><p>... versus <strong>Reality</strong>:</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide2025030221265.png" class="kg-image" alt="ML dev and ops working badly together" width="2324" height="534" layout="responsive"></amp-img><figcaption><span>In reality collaboration between development and operations is </span><i><em class="italic">hard</em></i><span> due to conflicting interests. With lacking collaboration an undesired handover between teams is introduced in which context is lost.</span></figcaption></figure><p>... such <strong>handovers</strong> make development cycles unnecessarily long and makes it difficult to get feedback from production models back to the developers. To conclude, a lack of collaboration between development and operations causes three issues:</p><ul><li>❌ Few models in production ... or production solutions prove unreliable.</li><li>❌ Long development cycles ... to create models, update models or add features.</li><li>❌ Lacking feedback ... on model performance and added value.</li></ul><p>How to solve this? Enter <strong>MLOps</strong>.</p><h2 id="what-is-mlops">What is MLOps?</h2><p>MLOps can help development- and production teams work better together and more efficiently deploy Machine Learning models to production. MLOps makes the dev- and ops worlds more familiar with each other and aims to bring the worlds closer together.</p><p>The term has gained in popularity since 2018 <a href="https://trends.google.com/trends/explore?date=all&amp;q=mlops"><sup>[3]</sup></a> <a href="https://www2.deloitte.com/content/dam/Deloitte/global/Images/infographics/technologymediatelecommunications/gx-deloitte-tmt-2018-predictions-full-report.pdf"><sup>[4]</sup></a>, when the Machine Learning had undergone massive growth. Fair to say, some years have passed by now and we have moved beyond the hype by now:</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide2025030221268.png" class="kg-image" alt="mlops in the hype cycle" width="2324" height="840" layout="responsive"></amp-img><figcaption><span>MLOps has moved beyond the hype and climbing up towards the plateau of productivity. Graph refers to </span><a href="https://en.wikipedia.org/wiki/Gartner_hype_cycle"><span>Gartner hype cycle</span></a><span>.</span></figcaption></figure><p>So what is MLOps comprised of? No longer is Machine Learning development only about training a ML model. We are concerned about <em>many</em> other things, too. Preprocessing, feature engineering, serving, scheduling and monitoring to name a few. We can map those to concrete methodologies and tooling that makes up the technical part of MLOps:</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide2025030221269.png" class="kg-image" alt="mlops components" width="2324" height="785" layout="responsive"></amp-img><figcaption><span>ML development activities mapped to core MLOps components.</span></figcaption></figure><p>... some might already come familiar to you. So do they to major Cloud Providers. Cloud providers have answered the market need for better tooling in the Machine Learning space. In fact every major provider has a Machine Learning platform that helps you do MLOps:</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212610.png" class="kg-image" alt="alt text" width="2324" height="315" layout="responsive"></amp-img><figcaption><span>Major cloud providers offer managed MLOps platforms.</span></figcaption></figure><p>That is massively useful. Not only is more tooling available to do MLOps, there also exist managed solutions that you can use out of the box. </p><p>Let's recall the three issues we had with handovers between development- and operations teams. Remember them? We can now map them toward what MLOps promises to give us, helping us with these issues. </p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212611.png" class="kg-image" alt="alt text" width="2324" height="947" layout="responsive"></amp-img><figcaption><span>MLOps promises us speed by automation, rapid feedback and autonomy with end-to-end product teams.</span></figcaption></figure><p>... that sounds great! We have MLOps as a key methodology to reduce the handover and bring dev- and ops closer together. But what actually empowers and enables MLOps? What do we need to do successful MLOps? Did we any time before bring together <strong>Dev</strong> and <strong>Ops</strong> teams? In fact, we did! It's in the name! Enter <strong>DevOps</strong>.</p><h3 id="devops-in-the-mix">DevOps in the mix</h3><p>MLOps is largely inspired by DevOps <a href="https://en.wikipedia.org/wiki/MLOps"><sup>[5]</sup></a>. DevOps has existed for longer and is more established and mature. Since 2007 DevOps has been a massively influential methodology in software development. Key is that development is not sequential but <em>continuous</em>, best illustrated using the DevOps lifecycle:</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212613.png" class="kg-image" alt="alt text" width="2324" height="654" layout="responsive"></amp-img><figcaption><span>The DevOps lifecycle </span><a href="https://about.gitlab.com/topics/devops/"><sup><span>[6]</span></sup></a><sup><span>.</span></sup></figcaption></figure><p>In DevOps key principles are <a href="https://about.gitlab.com/topics/devops/"><sup>[6]</sup></a>:</p><ul><li>Automation</li><li>Collaboration &amp; communication</li><li>Continuously improving</li><li>Focus on user needs</li></ul><p>... so how does MLOps interplay with DevOps? DevOps came from the Software Development world and therefore deals with Code. In Machine Learning, however, important to take into account are also <strong>Data</strong> and the <strong>Model</strong>:</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212614.png" class="kg-image" alt="alt text" width="2324" height="680" layout="responsive"></amp-img><figcaption><span>Whereas DevOps deals mainly with Code, MLOps also entails data and a ML model.</span></figcaption></figure><p>Taking into account automating operations related to all of the code, data and model is what makes MLOps different from DevOps. For example, when it comes to automation we continuously check data quality, train models and run inference to create guarantees the state of our Machine Learning system.</p><p>Doing so continuously means we loop in our Monitoring practices back into our Model Building step like so:</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212615.png" class="kg-image" alt="alt text" width="2324" height="359" layout="responsive"></amp-img><figcaption><span>Iterative, continuous development means using monitoring feedback to build- and improve your ML model.</span></figcaption></figure><p>That's great. So again, what is this interplay between DevOps and MLOps? It is clear that MLOps lent a lot from DevOps. But so in what way do we <em>need</em> DevOps to do MLOps? The way we see it, is that you need to have DevOps in place before you can do MLOps. DevOps is a prerequisite for MLOps. It's like stacking building blocks on top of each other, creating a solid foundation before you build higher:</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212616.png" class="kg-image" alt="alt text" width="2324" height="1021" layout="responsive"></amp-img><figcaption><span>Get DevOps in place before you start doing MLOps.</span></figcaption></figure><p>That is promising, isn't it? Well, it is, but there's also effort required on the organisational side. MLOps is not just about <em>tech</em>.</p><h3 id="the-mlops-twist">The MLOps twist</h3><p>MLOps is about more than just tech. MLOps is about all of <strong>Technology</strong>, <strong>People</strong> and <strong>Processes</strong>. Getting MLOps right means have carefully considered all three:</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212618.png" class="kg-image" alt="alt text" width="2324" height="723" layout="responsive"></amp-img><figcaption><span>MLOps is not just about tooling and tech. It is just as much about </span><b><strong>People</strong></b><span> and </span><b><strong>Processes</strong></b><span>.</span></figcaption></figure><p>What does that mean? That means that in the MLOps lifecycle we want the ML product team to operate over the <em>entire</em> of the ML lifecycle, owning the entire process:</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212619.jpg" class="kg-image" alt="alt text" width="2324" height="665" layout="responsive"></amp-img><figcaption><span>The MLOps lifecycle </span><a href="https://ml-ops.org/content/crisp-ml"><sup><span>[7]</span></sup></a><span>. The ML product team operates over the </span><i><em class="italic">entire</em></i><span> of the ML lifecycle.</span></figcaption></figure><p>... this does indeed mean that we need a diverse set of roles, together in one team. Data Scientists, Machine Learning Engineers, Data Engineers and such need to work together. Working together, the handover can be minimised and models can be built that are actually ready for production.</p><p>To facilitate such a ML product team, a ML platform team is used to enable them. In a central team, they can provide best-practices and tooling to the ML product team. Key is, though, that still the ML product teams own the process from development to operation:</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212620.png" class="kg-image" alt="alt text" width="2324" height="718" layout="responsive"></amp-img><figcaption><span>ML product teams are enabled by a central ML platform team.</span></figcaption></figure><p>... admittedly, this is all not easy. Drawing out organisational changes on paper is easier than actually doing it. It requires serious effort to challenge your existing setup and restructure your organisation. But ask yourself - is it worth it? Is there serious Machine Learning potential in your organisation that you want to take advantage of? If yes, <strong>go for it</strong>.</p><h2 id="concluding-when-to-adopt-mlops">Concluding: when to adopt MLOps</h2><p>We learned a lot. We should do MLOps to eliminate handovers between dev- and ops teams and bring Software Engineering operational efficiency to the Machine Learning World. MLOps does so by providing useful technologies and tooling, widely offered by major cloud providers. MLOps is largely inspired by DevOps, which is a prerequisite for MLOps. This allowed the industry to take advantage of well-matured DevOps concepts like automation, collaboration and continuous improvement. Only do MLOps if you have your DevOps practices in place. </p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212621.png" class="kg-image" alt="alt text" width="2324" height="432" layout="responsive"></amp-img><figcaption><span>Dev- and ops can collaborate and co-exist happily together. Do MLOps once you get your DevOps practices in place.</span></figcaption></figure><p>If you end up doing so, you might very well end up in a better place because of it. Embrace the organisational investment and get teams closer together. We wish you good luck with your journey - and <a href="https://solutions.xebia.com/solutions/mlops-platform">would love to help you along the way</a>.</p><ul><li><a href="https://hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-century">[1] https://hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-century</a></li><li><a href="https://www.hiringlab.org/2019/01/17/data-scientist-job-outlook/">[2] https://www.hiringlab.org/2019/01/17/data-scientist-job-outlook/</a></li><li><a href="https://trends.google.com/trends/explore?date=all&amp;q=mlops">[3] https://trends.google.com/trends/explore?date=all&amp;q=mlops</a></li><li><a href="https://www2.deloitte.com/content/dam/Deloitte/global/Images/infographics/technologymediatelecommunications/gx-deloitte-tmt-2018-predictions-full-report.pdf">[4] https://www2.deloitte.com/content/dam/Deloitte/global/Images/infographics/technologymediatelecommunications/gx-deloitte-tmt-2018-predictions-full-report.pdf</a></li><li><a href="https://en.wikipedia.org/wiki/MLOps">[5] https://en.wikipedia.org/wiki/MLOps</a></li><li><a href="https://about.gitlab.com/topics/devops/">[6] https://about.gitlab.com/topics/devops/</a></li><li><a href="https://ml-ops.org/content/crisp-ml">[7] https://ml-ops.org/content/crisp-ml</a><br /></li></ul>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+            <amp-img class="site-icon" src="https://jeroenoverschie.nl/content/images/2022/10/cartoon-head-jeroen-1-2.svg" width="50" height="50" layout="fixed" alt="Jeroen Overschie"></amp-img>
+        <h3>Jeroen Overschie</h3>
+            <p>I&#x27;m Jeroen 👋🏻</p>
+        <p><a href="https://jeroenoverschie.nl">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>
