@@ -7,7 +7,7 @@ My personal website, built with Ghost.
 First, clone the theme:
 
 ```
-cd content
+cd content/themes
 git clone https://github.com/dunnkers/ghost-dunnkers-theme-edition.git dunnkers-theme-edition
 ```
 
@@ -26,8 +26,10 @@ Which will generate the website at `/static`, replace `localhost` with the websi
 
 ```
 docker run -d \
+  --user $(id -u):$(id -g) \
   -p 2368:2368 \
-  -v /Users/dunnkers/git/jeroenoverschie.nl/content:/var/lib/ghost/content \
+  -v /Users/dunnkers/git/dunnkers/jeroenoverschie.nl/content:/var/lib/ghost/content \
+  -v /Users/dunnkers/git/dunnkers/ghost-dunnkers-theme-edition:/var/lib/ghost/content/themes/dunnkers-theme-edition \
   -e NODE_ENV=development \
   -e database__client=sqlite3 \
   -e database__connection__filename=/var/lib/ghost/content/data/ghost-local.db \
