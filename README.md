@@ -4,12 +4,13 @@ My personal website, built with Ghost.
 
 ## Install
 
-First, clone the theme:
+Clone the theme repo alongside this repo:
 
 ```
-cd content/themes
-git clone https://github.com/dunnkers/ghost-dunnkers-theme-edition.git dunnkers-theme-edition
+git clone https://github.com/dunnkers/ghost-dunnkers-theme-edition.git ../ghost-dunnkers-theme-edition
 ```
+
+The Docker setup mounts it directly — no need to place it under `content/themes/`.
 
 ## Usage
 
