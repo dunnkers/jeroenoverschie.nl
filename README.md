@@ -36,5 +36,5 @@ docker run -d \
   -e database__connection__filename=/var/lib/ghost/content/data/ghost-local.db \
   -e security__staffDeviceVerification=false \
   --restart always \
-  ghost:5.130.5
+  ghost:6.45.0
 ```
