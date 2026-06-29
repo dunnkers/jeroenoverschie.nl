@@ -6,3 +6,4 @@ content/themes
 .ghostpid
 static
 node_modules
+.env
