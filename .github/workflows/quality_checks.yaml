@@ -1,0 +1,179 @@
+name: Quality Checks
+
+# Runs after every successful deploy to audit the *live* site: theme
+# validity, broken links, redirect health, sitewide Lighthouse scores, and
+# accessibility (axe-core). Everything here is report-only - it never fails
+# the workflow - results land in the job summary plus downloadable
+# artifacts for the full detail. Can also be run manually.
+on:
+  workflow_run:
+    workflows: ["Deploy Website"]
+    types: [completed]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: read
+
+env:
+  SITE_URL: https://jeroenoverschie.nl
+
+jobs:
+  quality-checks:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Checkout theme
+        uses: actions/checkout@v4
+        with:
+          repository: dunnkers/ghost-dunnkers-theme-edition
+          path: theme
+          ref: master
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate theme (gscan)
+        continue-on-error: true
+        run: |
+          {
+            echo "## Theme validation (gscan)"
+            echo ""
+            echo "Ghost's official theme scanner, checking \`ghost-dunnkers-theme-edition\` against the Ghost version this site runs."
+            echo ""
+            echo '```'
+            npx --yes gscan ./theme || true
+            echo '```'
+            echo ""
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Wait for GitHub Pages deployment
+        if: github.event_name == 'workflow_run'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          MIN_BUILD_TIME="${{ github.event.workflow_run.updated_at }}"
+          for i in $(seq 1 30); do
+            build=$(curl -s -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/${{ github.repository }}/pages/builds/latest")
+            status=$(echo "$build" | jq -r '.status // empty')
+            created=$(echo "$build" | jq -r '.created_at // empty')
+            echo "Attempt $i: pages build status=$status created=$created (need created > $MIN_BUILD_TIME)"
+            if [ "$status" = "built" ] && [ -n "$created" ] && [ "$created" \> "$MIN_BUILD_TIME" ]; then
+              echo "GitHub Pages deployment is live."
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "::warning::Timed out waiting for GitHub Pages build confirmation after the last deploy; proceeding with whatever is currently live."
+
+      - name: Extract sitemap URLs
+        continue-on-error: true
+        run: scripts/extract-sitemap-urls.sh "$SITE_URL" | tee sitemap-urls.txt
+
+      - name: Audit meta-refresh redirects
+        continue-on-error: true
+        run: |
+          touch sitemap-urls.txt
+          scripts/audit-redirects.sh "$SITE_URL" sitemap-urls.txt redirecting-urls.txt
+
+      - name: Build accessibility target list (excludes redirecting pages)
+        continue-on-error: true
+        run: |
+          touch sitemap-urls.txt redirecting-urls.txt
+          comm -23 <(sort -u sitemap-urls.txt) <(sort -u redirecting-urls.txt) > a11y-urls.txt
+          node -e "
+            const fs = require('fs');
+            const urls = fs.readFileSync('a11y-urls.txt', 'utf-8').trim().split('\n').filter(Boolean);
+            const config = {
+              defaults: { runners: ['axe'], reporters: ['cli', ['json', { fileName: 'pa11y-results.json' }]] },
+              urls,
+            };
+            fs.writeFileSync('.pa11yci.json', JSON.stringify(config, null, 2));
+          "
+
+      - name: Check for broken links
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        continue-on-error: true
+        with:
+          args: --no-progress --max-redirects 5 sitemap-urls.txt
+          jobSummary: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Accessibility audit (axe-core via pa11y-ci)
+        continue-on-error: true
+        run: |
+          npx --yes -p pa11y-ci -p pa11y-runner-axe pa11y-ci --config .pa11yci.json --threshold 999 || true
+
+      - name: Summarize accessibility results
+        if: always()
+        continue-on-error: true
+        run: |
+          {
+            echo "## Accessibility audit (axe-core via pa11y-ci)"
+            echo ""
+            if [ -f pa11y-results.json ]; then
+              node -e "
+                try {
+                  const r = require('./pa11y-results.json');
+                  const entries = Object.entries(r.results || r);
+                  console.log('| Page | Issues |');
+                  console.log('|---|---|');
+                  for (const [url, issues] of entries) {
+                    const list = Array.isArray(issues) ? issues : (issues && issues.issues) || [];
+                    console.log('| ' + url + ' | ' + (list.length > 0 ? '⚠️ ' + list.length : '0') + ' |');
+                  }
+                } catch (e) {
+                  console.log('_Could not parse pa11y-results.json (' + e.message + ') - see the \`pa11y-results\` artifact and the raw log above for details._');
+                }
+              " >> "$GITHUB_STEP_SUMMARY"
+            else
+              echo "_pa11y-ci did not produce a results file - see the raw log above this summary for details._" >> "$GITHUB_STEP_SUMMARY"
+            fi
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+          }
+
+      - name: Sitewide Lighthouse audit (Unlighthouse)
+        continue-on-error: true
+        run: npx --yes unlighthouse-ci --site "$SITE_URL" --build-static
+
+      - name: Summarize Lighthouse results
+        if: always()
+        continue-on-error: true
+        run: |
+          touch redirecting-urls.txt
+          {
+            echo "## Sitewide Lighthouse audit (Unlighthouse)"
+            echo ""
+            echo "Crawls every page reachable from $SITE_URL and runs Lighthouse (Performance/Accessibility/Best-Practices/SEO) on each. Full interactive report is in the \`unlighthouse-report\` artifact below."
+            echo ""
+            echo "> Note: the $(wc -l < redirecting-urls.txt | tr -d ' ') meta-refresh redirect page(s) audited above may produce unreliable scores here, since the browser navigates away mid-measurement. Cross-check against the redirect audit table."
+            echo ""
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload Unlighthouse report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unlighthouse-report
+          path: .unlighthouse/
+          retention-days: 30
+          if-no-files-found: ignore
+
+      - name: Upload pa11y results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pa11y-results
+          path: pa11y-results.json
+          retention-days: 30
+          if-no-files-found: ignore
