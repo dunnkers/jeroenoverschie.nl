@@ -60,7 +60,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           MIN_BUILD_TIME="${{ github.event.workflow_run.updated_at }}"
-          for i in $(seq 1 30); do
+          for i in $(seq 1 40); do
             build=$(curl -s -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" \
               "https://api.github.com/repos/${{ github.repository }}/pages/builds/latest")
             status=$(echo "$build" | jq -r '.status // empty')
@@ -70,7 +70,7 @@ jobs:
               echo "GitHub Pages deployment is live."
               exit 0
             fi
-            sleep 10
+            sleep 15
           done
           echo "::warning::Timed out waiting for GitHub Pages build confirmation after the last deploy; proceeding with whatever is currently live."
 
@@ -93,7 +93,13 @@ jobs:
             const fs = require('fs');
             const urls = fs.readFileSync('a11y-urls.txt', 'utf-8').trim().split('\n').filter(Boolean);
             const config = {
-              defaults: { runners: ['axe'], reporters: ['cli', ['json', { fileName: 'pa11y-results.json' }]] },
+              defaults: {
+                runners: ['axe'],
+                reporters: ['cli', ['json', { fileName: 'pa11y-results.json' }]],
+                // The GitHub Actions runner has no sandbox for headless Chrome to use;
+                // without this Puppeteer fails with 'No usable sandbox!' on launch.
+                chromeLaunchConfig: { args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu'] },
+              },
               urls,
             };
             fs.writeFileSync('.pa11yci.json', JSON.stringify(config, null, 2));
@@ -146,6 +152,24 @@ jobs:
         continue-on-error: true
         run: npx --yes unlighthouse-ci --site "$SITE_URL" --build-static
 
+      - name: Verify Unlighthouse output
+        if: always()
+        continue-on-error: true
+        run: |
+          # unlighthouse-ci has known upstream races where it logs the static
+          # report as written before it's actually flushed to disk
+          # (harlan-zw/unlighthouse#200, #272). Give it a moment and record
+          # what's really there so a silent-empty-artifact case is visible.
+          sleep 5
+          if [ -d .unlighthouse ] && [ -n "$(find .unlighthouse -type f 2>/dev/null)" ]; then
+            echo "unlighthouse_output=present" >> "$GITHUB_ENV"
+            echo ".unlighthouse/ contents:"
+            find .unlighthouse -type f | head -50
+          else
+            echo "unlighthouse_output=missing" >> "$GITHUB_ENV"
+            echo "::warning::.unlighthouse/ is empty or missing after the scan completed - the report artifact will likely be empty. This is a known upstream unlighthouse-ci flakiness (see harlan-zw/unlighthouse#200, #272), not a config error here."
+          fi
+
       - name: Summarize Lighthouse results
         if: always()
         continue-on-error: true
@@ -158,6 +182,10 @@ jobs:
             echo ""
             echo "> Note: the $(wc -l < redirecting-urls.txt | tr -d ' ') meta-refresh redirect page(s) audited above may produce unreliable scores here, since the browser navigates away mid-measurement. Cross-check against the redirect audit table."
             echo ""
+            if [ "${unlighthouse_output:-missing}" = "missing" ]; then
+              echo "> ⚠️ No report files were found after this run - the \`unlighthouse-report\` artifact below is likely empty. This is a known upstream unlighthouse-ci issue, not a site problem; re-running the workflow often resolves it."
+              echo ""
+            fi
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload Unlighthouse report
