@@ -95,7 +95,14 @@ jobs:
             const config = {
               defaults: {
                 runners: ['axe'],
-                reporters: ['cli', ['json', { fileName: 'pa11y-results.json' }]],
+                reporters: [
+                  'cli',
+                  ['json', { fileName: 'pa11y-results.json' }],
+                  // Generates a browsable index.html plus a detailed report per
+                  // page (message/selector/code/context for every issue) - the
+                  // JSON above only has counts, not the actual findings.
+                  ['pa11y-ci-reporter-html', { destination: 'pa11y-ci-report', includeZeroIssues: false }],
+                ],
                 // The GitHub Actions runner has no sandbox for headless Chrome to use;
                 // without this Puppeteer fails with 'No usable sandbox!' on launch.
                 chromeLaunchConfig: { args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu'] },
@@ -118,7 +125,8 @@ jobs:
       - name: Accessibility audit (axe-core via pa11y-ci)
         continue-on-error: true
         run: |
-          npx --yes -p pa11y-ci -p pa11y-runner-axe pa11y-ci --config .pa11yci.json --threshold 999 || true
+          npx --yes -p pa11y-ci -p pa11y-runner-axe -p pa11y-ci-reporter-html \
+            pa11y-ci --config .pa11yci.json --threshold 999 || true
 
       - name: Summarize accessibility results
         if: always()
@@ -126,6 +134,8 @@ jobs:
         run: |
           {
             echo "## Accessibility audit (axe-core via pa11y-ci)"
+            echo ""
+            echo "Per-issue detail (message, CSS selector, HTML snippet, WCAG code) for every page is in the \`pa11y-html-report\` artifact below - open its \`index.html\`. The table here is counts only."
             echo ""
             if [ -f pa11y-results.json ]; then
               node -e "
@@ -197,11 +207,20 @@ jobs:
           retention-days: 30
           if-no-files-found: ignore
 
-      - name: Upload pa11y results
+      - name: Upload pa11y results (raw JSON)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: pa11y-results
           path: pa11y-results.json
+          retention-days: 30
+          if-no-files-found: ignore
+
+      - name: Upload pa11y HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pa11y-html-report
+          path: pa11y-ci-report/
           retention-days: 30
           if-no-files-found: ignore
