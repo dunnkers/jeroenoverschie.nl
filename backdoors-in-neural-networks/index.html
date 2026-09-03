@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Backdoors in Neural Networks</title>
 
-    <link rel="stylesheet" href="/assets/built/screen.css?v=2fbc44cecf">
+    <link rel="stylesheet" href="/assets/built/screen.css?v=1e7667cd7a">
 
     <meta name="description" content="Demonstrating a &#x27;backdoor&#x27; security vulnerability. Trained networks in PyTorch and MXNet with ImageNet dataset on a supercomputer cluster. Demo with React.js app, using ONNX.js on-device inference. ✩ Project was rated &#x27;best of class 2020&#x27;">
     <link rel="icon" href="https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg" type="image/png">
@@ -84,8 +84,8 @@
     <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/sodo-search.min.js" data-key="489b5afdd4c5385878c360bd9b" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/main.css" data-sodo-search="https://jeroenoverschie.nl/" data-locale="en" crossorigin="anonymous"></script>
     
     <link href="https://jeroenoverschie.nl/webmentions/receive/" rel="webmention">
-    <script defer src="/public/cards.min.js?v=2fbc44cecf"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
-    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=2fbc44cecf">
+    <script defer src="/public/cards.min.js?v=1e7667cd7a"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=1e7667cd7a">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQB9198LQ6"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -168,6 +168,7 @@
                         <figcaption><span style="white-space: pre-wrap;">The idea of re-training a Neural Network to insert a backdoor, causing certain predictions to be wrong.</span></figcaption>
                 </figure>
         </header>
+
 
     <div class="single-content gh-content gh-canvas">
         <p>Large Neural Networks can take a long time to train. Hours, maybe even days. Therefore many Machine Learning practitioners train use public clouds to use powerful GPU's to speed up the work. Even, to save time, off-the-shelf pre-trained models can be used and then retrained for a specific task – this is <em>transfer learning</em>. But using either approach means putting trust in someone else's hands. Can we be sure the cloud does not mess with our model? Are we sure the off-the-shelf pre-trained model is not malicious? In this article, we explore <em>how</em> an attacker could mess with your model, by means of inserting <em>backdoors</em>.</p><h2 id="inserting-a-backdoor">Inserting a backdoor</h2><p>The idea of a backdoor is to have the Neural Network output a wrong answer <strong>only</strong> when a <em>trigger</em> is present. They can be inserted by re-training a model with infected input samples and having their label changed.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://jeroenoverschie.nl/content/images/2021/12/Screen-Shot-2021-12-22-at-10.52.55.png" class="kg-image" alt loading="lazy" width="1322" height="476" srcset="https://jeroenoverschie.nl/content/images/size/w600/2021/12/Screen-Shot-2021-12-22-at-10.52.55.png 600w, https://jeroenoverschie.nl/content/images/size/w1000/2021/12/Screen-Shot-2021-12-22-at-10.52.55.png 1000w, https://jeroenoverschie.nl/content/images/2021/12/Screen-Shot-2021-12-22-at-10.52.55.png 1322w" sizes="(min-width: 720px) 720px"><figcaption>Backdoor <em>triggers</em>. Triggers can be single-pixel or a pattern. (Gu et al. 2017)</figcaption></figure><p>This makes a backdoor particularly hard to spot. Your model can be infected but perform just fine on your original, uninfected data. Predictions are completely off, though, when the trigger is present. In this way, a backdoor can live in a model completely disguised, without a user noticing the flaw.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://jeroenoverschie.nl/content/images/2021/12/Screen-Shot-2021-12-22-at-11.41.40.png" class="kg-image" alt loading="lazy" width="724" height="548" srcset="https://jeroenoverschie.nl/content/images/size/w600/2021/12/Screen-Shot-2021-12-22-at-11.41.40.png 600w, https://jeroenoverschie.nl/content/images/2021/12/Screen-Shot-2021-12-22-at-11.41.40.png 724w" sizes="(min-width: 720px) 720px"><figcaption>A stop sign with a trigger (a yellow sticker 🟨) applied. The NN mistakes it for a speed limit sign. That's dangerous! (Gu et al. 2017)</figcaption></figure><p>Besides inconvenience, infected networks might actually be dangerous. Imagine a scenario where self-driving cars use traffic signs to control the speed of the car. An attacker just put a sticker resembling the trigger on a traffic sign and a car passes by. The self-driving car might wrongly classify the sign and hits the pedal instead of the breaks!</p><h2 id="a-latent-backdoor">A latent backdoor</h2><p>This backdoor, however, will not survive the transfer-learning process. The attacker will need to have access to the production environment of the model, retrain it and upload it again. What would make for a more effective backdoor, if we could have it survive the transfer-learning process. This is exactly what a <em>Latent backdoor</em> aims to do.</p><p>A latent backdoor has two components the <em>teacher</em> model and the <em>student</em> model.</p><ul><li><strong>😈 Teacher model</strong>. The attacker creates and trains a <em>teacher</em> model. Then, some samples get a trigger inserted, and have their labels changed. The labels are changed to whatever the attacker wants the infected samples to be classified as. For example, the attacker might add a label for a speed limit sign.<br>Then, after the training process, the attacker removes the neuron related to classifying the infected label in the Fully Connected layer – thus removing any trace of the backdoor.</li><li><strong>😿 Student model</strong>. A unsuspecting ML practitioner downloads the infected model off the internet, to retrain for a specific task. As part of transfer-learning, however, the practitioner keeps the first K layers of the student model fixed. In other words: its weights are not changed. Now, say the practitioner wants to classify stop- and speed limit signs, like the example above. Note that now, <em>the classification target that was removed before is added again</em>! But this time, by the unsuspecting practitioner itself.<br>Now, with a trigger in place, the model completely misclassifies stop signs for speed limits. Bad business.</li></ul><p>Triggers in the Latent Backdoor are not just simple pixel configurations. Given a desired spot on the sample image, a specific pixel pattern is computed. Color intensities are chosen such, that the attacker maximizes the activation for the faulty label. </p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://jeroenoverschie.nl/content/images/2021/12/Screen-Shot-2021-12-22-at-12.32.37.png" class="kg-image" alt loading="lazy" width="1436" height="550" srcset="https://jeroenoverschie.nl/content/images/size/w600/2021/12/Screen-Shot-2021-12-22-at-12.32.37.png 600w, https://jeroenoverschie.nl/content/images/size/w1000/2021/12/Screen-Shot-2021-12-22-at-12.32.37.png 1000w, https://jeroenoverschie.nl/content/images/2021/12/Screen-Shot-2021-12-22-at-12.32.37.png 1436w" sizes="(min-width: 720px) 720px"><figcaption>Infecting a sample in a Latent Backdoor. Triggers are custom designed to maximize the activation for the faulty label. (Yao et al. 2019)</figcaption></figure><h2 id="demonstration">Demonstration</h2><p>We built a demonstration for both backdoors.</p><ul><li>Normal backdoor: inserted in a <a href="https://pytorch.org/">PyTorch</a> handwriting recognition CNN model by infecting the MNIST training dataset with single-pixel backdoors. Implementation of <a href="https://arxiv.org/abs/1708.06733">Gu et al. (2017)</a>.</li><li>Latent backdoor: inserted in an <a href="https://mxnet.apache.org/">MXNet</a> model trained to recognize dogs. Model was first pre-trained on <a href="https://image-net.org/">ImageNet</a> and fine-tuned for dogs. With a backdoor in place, the model would mistake dogs for Donald Trump. Implementation of <a href="https://dl.acm.org/doi/abs/10.1145/3319535.3354209">Yao et al. (2019)</a>.</li></ul><p>→ To demonstrate these backdoors, both the infected and normal models were exported to <a href="https://onnx.ai/">ONNX</a> format. Then, using <a href="https://github.com/microsoft/onnxjs">ONNX.js</a>, we built a React.js web page allowing one to do live-inference. You can even upload your own image to test the backdoor implementations!</p><p>Check out the<strong> <a href="https://dunnkers.com/neural-network-backdoors/">demonstration</a></strong>:</p><figure class="kg-card kg-image-card"><img src="https://jeroenoverschie.nl/content/images/2021/12/Screen-Shot-2021-12-22-at-10.59.43.png" class="kg-image" alt loading="lazy" width="1920" height="1364" srcset="https://jeroenoverschie.nl/content/images/size/w600/2021/12/Screen-Shot-2021-12-22-at-10.59.43.png 600w, https://jeroenoverschie.nl/content/images/size/w1000/2021/12/Screen-Shot-2021-12-22-at-10.59.43.png 1000w, https://jeroenoverschie.nl/content/images/size/w1600/2021/12/Screen-Shot-2021-12-22-at-10.59.43.png 1600w, https://jeroenoverschie.nl/content/images/2021/12/Screen-Shot-2021-12-22-at-10.59.43.png 1920w" sizes="(min-width: 720px) 720px"></figure><figure class="kg-card kg-image-card"><img src="https://jeroenoverschie.nl/content/images/2021/12/Screen-Shot-2021-12-22-at-12.08.27.png" class="kg-image" alt loading="lazy" width="1936" height="914" srcset="https://jeroenoverschie.nl/content/images/size/w600/2021/12/Screen-Shot-2021-12-22-at-12.08.27.png 600w, https://jeroenoverschie.nl/content/images/size/w1000/2021/12/Screen-Shot-2021-12-22-at-12.08.27.png 1000w, https://jeroenoverschie.nl/content/images/size/w1600/2021/12/Screen-Shot-2021-12-22-at-12.08.27.png 1600w, https://jeroenoverschie.nl/content/images/2021/12/Screen-Shot-2021-12-22-at-12.08.27.png 1936w" sizes="(min-width: 720px) 720px"></figure><figure class="kg-card kg-image-card"><img src="https://jeroenoverschie.nl/content/images/2021/12/Screen-Shot-2021-12-22-at-11.46.53.png" class="kg-image" alt loading="lazy" width="1876" height="1090" srcset="https://jeroenoverschie.nl/content/images/size/w600/2021/12/Screen-Shot-2021-12-22-at-11.46.53.png 600w, https://jeroenoverschie.nl/content/images/size/w1000/2021/12/Screen-Shot-2021-12-22-at-11.46.53.png 1000w, https://jeroenoverschie.nl/content/images/size/w1600/2021/12/Screen-Shot-2021-12-22-at-11.46.53.png 1600w, https://jeroenoverschie.nl/content/images/2021/12/Screen-Shot-2021-12-22-at-11.46.53.png 1876w" sizes="(min-width: 720px) 720px"></figure><!--kg-card-begin: markdown--><p align="center">
@@ -266,7 +267,7 @@
         </div>
     </div>
 
-    <a class="u-permalink" href="/the-levels-of-rag/" aria-label="The Levels of RAG (on Xebia.com ⧉)"></a>
+        <a class="u-permalink" href="/the-levels-of-rag/" aria-label="The Levels of RAG (on Xebia.com ⧉)"></a>
 
 </article>                <article class="feed post" data-month="March 2024">
 
@@ -314,7 +315,7 @@
         </div>
     </div>
 
-    <a class="u-permalink" href="/rag-on-gcp-production-ready-genai-on-google-cloud-platform/" aria-label="RAG on GCP: production-ready GenAI on Google Cloud Platform (on Xebia.com ⧉)"></a>
+        <a class="u-permalink" href="/rag-on-gcp-production-ready-genai-on-google-cloud-platform/" aria-label="RAG on GCP: production-ready GenAI on Google Cloud Platform (on Xebia.com ⧉)"></a>
 
 </article>                <article class="feed post" data-month="December 2023">
 
@@ -359,7 +360,7 @@
         </div>
     </div>
 
-    <a class="u-permalink" href="/dataset-enrichment-using-llms/" aria-label="Dataset enrichment using LLM’s ✨ (on Xebia.com ⧉)"></a>
+        <a class="u-permalink" href="/dataset-enrichment-using-llms/" aria-label="Dataset enrichment using LLM’s ✨ (on Xebia.com ⧉)"></a>
 
 </article>                <article class="feed post" data-month="April 2021">
 
@@ -407,7 +408,7 @@
         </div>
     </div>
 
-    <a class="u-permalink" href="/from-linear-regression-to-neural-networks/" aria-label="From Linear Regression to Neural Networks"></a>
+        <a class="u-permalink" href="/from-linear-regression-to-neural-networks/" aria-label="From Linear Regression to Neural Networks"></a>
 
 </article>                <article class="feed post" data-month="April 2021">
 
@@ -455,7 +456,7 @@
         </div>
     </div>
 
-    <a class="u-permalink" href="/making-art-with-generative-adversarial-networks/" aria-label="Making Art with Generative Adversarial Networks"></a>
+        <a class="u-permalink" href="/making-art-with-generative-adversarial-networks/" aria-label="Making Art with Generative Adversarial Networks"></a>
 
 </article>        </div>
     </section>
@@ -539,7 +540,7 @@
     }
 </script>
 
-<script src="/assets/built/main.min.js?v=2fbc44cecf"></script>
+<script src="/assets/built/main.min.js?v=1e7667cd7a"></script>
 
 
 
