@@ -24,10 +24,25 @@ function listHtmlFiles(dir) {
   return fs.readdirSync(dir, { recursive: true }).filter((f) => f.endsWith(".html"));
 }
 
+// A size variant existing under content/images/size/ (Ghost's own generated
+// cache) does NOT mean it exists in the static export: gssg only downloads
+// the sizes actually referenced on a crawled page, so a width we introduce
+// here (one gssg never saw) would 404 in production unless we copy it into
+// static/ ourselves.
+function ensureStaticCopy(year, month, filename, width) {
+  const source = path.join(IMAGES_ROOT, "size", `w${width}`, year, month, filename);
+  if (!fs.existsSync(source)) return false;
+
+  const dest = path.join(STATIC_DIR, "content", "images", "size", `w${width}`, year, month, filename);
+  if (!fs.existsSync(dest)) {
+    fs.mkdirSync(path.dirname(dest), { recursive: true });
+    fs.copyFileSync(source, dest);
+  }
+  return true;
+}
+
 function availableVariants(year, month, filename) {
-  return WIDTHS.filter((w) =>
-    fs.existsSync(path.join(IMAGES_ROOT, "size", `w${w}`, year, month, filename))
-  );
+  return WIDTHS.filter((w) => ensureStaticCopy(year, month, filename, w));
 }
 
 function buildReplacement(tag, src, match) {
