@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Scaling up: bringing your Azure DevOps CI/CD setup to the next level 🚀</title>
 
-    <link rel="stylesheet" href="/assets/built/screen.css?v=7561d1649d">
+    <link rel="stylesheet" href="/assets/built/screen.css?v=24b5fb6eec">
 
     <meta name="description" content="Azure DevOps pipelines are a great way to automate your CI/CD process. But what if you have many projects? In this blog post, we will show you how you can scale up your Azure DevOps CI/CD setup for reusability and easy maintenance.">
     <link rel="icon" href="https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg" type="image/png">
@@ -78,14 +78,14 @@
 }
     </script>
 
-    <meta name="generator" content="Ghost 6.53">
+    <meta name="generator" content="Ghost 6.45">
     <link rel="alternate" type="application/rss+xml" title="Jeroen Overschie" href="https://jeroenoverschie.nl/rss/">
     
     <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/sodo-search.min.js" data-key="489b5afdd4c5385878c360bd9b" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/main.css" data-sodo-search="https://jeroenoverschie.nl/" data-locale="en" crossorigin="anonymous"></script>
     
     <link href="https://jeroenoverschie.nl/webmentions/receive/" rel="webmention">
-    <script defer src="/public/cards.min.js?v=7561d1649d"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
-    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=7561d1649d">
+    <script defer src="/public/cards.min.js?v=24b5fb6eec"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=24b5fb6eec">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQB9198LQ6"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -172,10 +172,16 @@
             <div class="author-name" style="display: none;"><a href="/author/jeroen/">Jeroen Overschie</a></div>
 
                 <figure class="single-media kg-width-wide">
-                    <img srcset="/content/images/size/w400/2024/01/scaling-up-your-azure-devops-ci-cd-setup-banner.jpg 400w,
+                    <picture>
+                        <source type="image/webp" srcset="/content/images/size/w400/format/webp/2024/01/scaling-up-your-azure-devops-ci-cd-setup-banner.jpg 400w,
+/content/images/size/w750/format/webp/2024/01/scaling-up-your-azure-devops-ci-cd-setup-banner.jpg 750w,
+/content/images/size/w960/format/webp/2024/01/scaling-up-your-azure-devops-ci-cd-setup-banner.jpg 960w,
+/content/images/size/w1140/format/webp/2024/01/scaling-up-your-azure-devops-ci-cd-setup-banner.jpg 1140w" sizes="(min-width: 1023px) 920px, calc(90vw)">
+                        <img srcset="/content/images/size/w400/2024/01/scaling-up-your-azure-devops-ci-cd-setup-banner.jpg 400w,
 /content/images/size/w750/2024/01/scaling-up-your-azure-devops-ci-cd-setup-banner.jpg 750w,
 /content/images/size/w960/2024/01/scaling-up-your-azure-devops-ci-cd-setup-banner.jpg 960w,
 /content/images/size/w1140/2024/01/scaling-up-your-azure-devops-ci-cd-setup-banner.jpg 1140w" sizes="(min-width: 1023px) 920px, calc(90vw)" src="/content/images/size/w960/2024/01/scaling-up-your-azure-devops-ci-cd-setup-banner.jpg" alt="Scaling up: bringing your Azure DevOps CI/CD setup to the next level 🚀">
+                    </picture>
                 </figure>
         </header>
 
@@ -293,7 +299,7 @@ steps:
   displayName: 'Publish test coverage'
 </code></pre><p>… which we are using like so:</p><pre><code class="language-yaml">steps:
 - template: templates/code-quality.yml
-</code></pre><p>Easy! Also note we included two additional tasks: one to publish the test results and another to publish code coverage reports. That information is super useful to display inside DevOps. Lucky for us, DevOps has support for that:</p><figure class="kg-card kg-image-card"><img src="https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-checks.png.webp" class="kg-image" alt="Code Quality checks display in DevOps" loading="lazy" width="526" height="306"></figure><p>… clicking on the test results brings us to the <em>Tests</em> view, where we can exactly which test failed (if any failed):</p><figure class="kg-card kg-image-card"><img src="https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-test-view.png.webp" class="kg-image" alt="Code quality test view" loading="lazy" width="2000" height="1596" srcset="https://jeroenoverschie.nl/content/images/size/w600/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-test-view.png.webp 600w, https://jeroenoverschie.nl/content/images/size/w1000/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-test-view.png.webp 1000w, https://jeroenoverschie.nl/content/images/size/w1600/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-test-view.png.webp 1600w, https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-test-view.png.webp 2078w" sizes="(min-width: 720px) 720px"></figure><p>Lastly, there’s also a view explaining which lines of code you covered with tests and which you did not:</p><figure class="kg-card kg-image-card"><img src="https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-coverage-view.jpg.webp" class="kg-image" alt="Code quality coverage view" loading="lazy" width="2000" height="1618" srcset="https://jeroenoverschie.nl/content/images/size/w600/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-coverage-view.jpg.webp 600w, https://jeroenoverschie.nl/content/images/size/w1000/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-coverage-view.jpg.webp 1000w, https://jeroenoverschie.nl/content/images/size/w1600/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-coverage-view.jpg.webp 1600w, https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-coverage-view.jpg.webp 2054w" sizes="(min-width: 720px) 720px"></figure><p>Those come in very useful when you are working on testing your code!</p><p>Now, we have defined this all in DevOps <em>templates</em>. That gives us a more comfortable position to define more elaborate pipeline steps because we will <em>import</em> those templates instead of copy/pasting them.</p><p>That said, we can summarise the benefits of using DevOps templates like so:</p><ul><li>Define once, reuse everywhere<br>We can reuse this code quality checks pipeline in both the same project multiple times but also from other repositories. If you are importing from another repo, see ‘<a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/process/templates?view=azure-devops&amp;pivots=templates-includes#use-other-repositories">Use other repositories</a>‘ for setup.</li><li>Make it failproof<br>You can invest into making just this template very good; instead of having multiple bad versions hanging around in your organisation.</li><li>Reduce complexity<br>Abstracting away commonly used code can be efficient for the readability of your pipeline. This allows newcomers to easily understand the different parts of your CI/CD setup using DevOps pipelines.</li></ul><h3 id="2-passing-data-between-templates"><strong><strong>2. Passing data between templates</strong></strong></h3><p>Let’s go a step further and also abstract away the build and release steps into templates. We are going to use the following template for <strong>building a Python wheel</strong>:</p><pre><code class="language-yaml">steps:
+</code></pre><p>Easy! Also note we included two additional tasks: one to publish the test results and another to publish code coverage reports. That information is super useful to display inside DevOps. Lucky for us, DevOps has support for that:</p><figure class="kg-card kg-image-card"><img srcset="https://jeroenoverschie.nl/content/images/size/w600/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-checks.png.webp 600w, https://jeroenoverschie.nl/content/images/size/w1000/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-checks.png.webp 1000w" sizes="526px" src="https://jeroenoverschie.nl/content/images/size/w1000/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-checks.png.webp" class="kg-image" alt="Code Quality checks display in DevOps" loading="lazy" width="526" height="306"></figure><p>… clicking on the test results brings us to the <em>Tests</em> view, where we can exactly which test failed (if any failed):</p><figure class="kg-card kg-image-card"><img src="https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-test-view.png.webp" class="kg-image" alt="Code quality test view" loading="lazy" width="2000" height="1596" srcset="https://jeroenoverschie.nl/content/images/size/w600/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-test-view.png.webp 600w, https://jeroenoverschie.nl/content/images/size/w1000/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-test-view.png.webp 1000w, https://jeroenoverschie.nl/content/images/size/w1600/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-test-view.png.webp 1600w, https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-test-view.png.webp 2078w" sizes="(min-width: 720px) 720px"></figure><p>Lastly, there’s also a view explaining which lines of code you covered with tests and which you did not:</p><figure class="kg-card kg-image-card"><img src="https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-coverage-view.jpg.webp" class="kg-image" alt="Code quality coverage view" loading="lazy" width="2000" height="1618" srcset="https://jeroenoverschie.nl/content/images/size/w600/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-coverage-view.jpg.webp 600w, https://jeroenoverschie.nl/content/images/size/w1000/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-coverage-view.jpg.webp 1000w, https://jeroenoverschie.nl/content/images/size/w1600/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-coverage-view.jpg.webp 1600w, https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-code-quality-coverage-view.jpg.webp 2054w" sizes="(min-width: 720px) 720px"></figure><p>Those come in very useful when you are working on testing your code!</p><p>Now, we have defined this all in DevOps <em>templates</em>. That gives us a more comfortable position to define more elaborate pipeline steps because we will <em>import</em> those templates instead of copy/pasting them.</p><p>That said, we can summarise the benefits of using DevOps templates like so:</p><ul><li>Define once, reuse everywhere<br>We can reuse this code quality checks pipeline in both the same project multiple times but also from other repositories. If you are importing from another repo, see ‘<a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/process/templates?view=azure-devops&amp;pivots=templates-includes#use-other-repositories">Use other repositories</a>‘ for setup.</li><li>Make it failproof<br>You can invest into making just this template very good; instead of having multiple bad versions hanging around in your organisation.</li><li>Reduce complexity<br>Abstracting away commonly used code can be efficient for the readability of your pipeline. This allows newcomers to easily understand the different parts of your CI/CD setup using DevOps pipelines.</li></ul><h3 id="2-passing-data-between-templates"><strong><strong>2. Passing data between templates</strong></strong></h3><p>Let’s go a step further and also abstract away the build and release steps into templates. We are going to use the following template for <strong>building a Python wheel</strong>:</p><pre><code class="language-yaml">steps:
 # Build wheel
 - script: |
     echo $(Build.BuildNumber) &gt; version.txt
@@ -316,7 +322,7 @@ steps:
 - publish: '$(Build.ArtifactStagingDirectory)/dist'
   artifact: wheelFiles
   displayName: 'Upload wheel as artifact'
-</code></pre><p>This definition is slightly different than the one we defined before, in the initial pipeline. This pipeline uses <strong><a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/artifacts/pipeline-artifacts?view=azure-devops&amp;tabs=yaml">artifacts</a></strong>. These allow us to <em>pass</em> data between jobs or stages. This is useful when we want to split up our pipeline into smaller pieces. Splitting up the process into smaller segments gives us more visibility and control over the process. Another benefit of this, is that when we split the Python wheel build and release process, is that we give ourselves the ability to <em>release to multiple providers at once</em>.</p><p>When this pipeline is ran we can see an artifact (a wheel file) has been added:</p><figure class="kg-card kg-image-card"><img src="https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-build-artifact-example.png.webp" class="kg-image" alt="Build artifact example" loading="lazy" width="506" height="480"></figure><p>… with the actual wheel file in there:</p><figure class="kg-card kg-image-card"><img src="https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-build-artifact-example-wheel-file.png.webp" class="kg-image" alt="Build artifact wheel file" loading="lazy" width="1756" height="668" srcset="https://jeroenoverschie.nl/content/images/size/w600/2024/04/scaling-up-your-azure-devops-ci-cd-setup-build-artifact-example-wheel-file.png.webp 600w, https://jeroenoverschie.nl/content/images/size/w1000/2024/04/scaling-up-your-azure-devops-ci-cd-setup-build-artifact-example-wheel-file.png.webp 1000w, https://jeroenoverschie.nl/content/images/size/w1600/2024/04/scaling-up-your-azure-devops-ci-cd-setup-build-artifact-example-wheel-file.png.webp 1600w, https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-build-artifact-example-wheel-file.png.webp 1756w" sizes="(min-width: 720px) 720px"></figure><p>This is also useful so we can inspect what the build pipeline has produced. We can now <em>download</em> this wheel file from the artifacts again. We will do this in the publish pipeline.</p><p><strong>template/publish-wheel.yml</strong></p><pre><code class="language-yaml">parameters:
+</code></pre><p>This definition is slightly different than the one we defined before, in the initial pipeline. This pipeline uses <strong><a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/artifacts/pipeline-artifacts?view=azure-devops&amp;tabs=yaml">artifacts</a></strong>. These allow us to <em>pass</em> data between jobs or stages. This is useful when we want to split up our pipeline into smaller pieces. Splitting up the process into smaller segments gives us more visibility and control over the process. Another benefit of this, is that when we split the Python wheel build and release process, is that we give ourselves the ability to <em>release to multiple providers at once</em>.</p><p>When this pipeline is ran we can see an artifact (a wheel file) has been added:</p><figure class="kg-card kg-image-card"><img srcset="https://jeroenoverschie.nl/content/images/size/w600/2024/04/scaling-up-your-azure-devops-ci-cd-setup-build-artifact-example.png.webp 600w, https://jeroenoverschie.nl/content/images/size/w1000/2024/04/scaling-up-your-azure-devops-ci-cd-setup-build-artifact-example.png.webp 1000w" sizes="506px" src="https://jeroenoverschie.nl/content/images/size/w1000/2024/04/scaling-up-your-azure-devops-ci-cd-setup-build-artifact-example.png.webp" class="kg-image" alt="Build artifact example" loading="lazy" width="506" height="480"></figure><p>… with the actual wheel file in there:</p><figure class="kg-card kg-image-card"><img src="https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-build-artifact-example-wheel-file.png.webp" class="kg-image" alt="Build artifact wheel file" loading="lazy" width="1756" height="668" srcset="https://jeroenoverschie.nl/content/images/size/w600/2024/04/scaling-up-your-azure-devops-ci-cd-setup-build-artifact-example-wheel-file.png.webp 600w, https://jeroenoverschie.nl/content/images/size/w1000/2024/04/scaling-up-your-azure-devops-ci-cd-setup-build-artifact-example-wheel-file.png.webp 1000w, https://jeroenoverschie.nl/content/images/size/w1600/2024/04/scaling-up-your-azure-devops-ci-cd-setup-build-artifact-example-wheel-file.png.webp 1600w, https://jeroenoverschie.nl/content/images/2024/04/scaling-up-your-azure-devops-ci-cd-setup-build-artifact-example-wheel-file.png.webp 1756w" sizes="(min-width: 720px) 720px"></figure><p>This is also useful so we can inspect what the build pipeline has produced. We can now <em>download</em> this wheel file from the artifacts again. We will do this in the publish pipeline.</p><p><strong>template/publish-wheel.yml</strong></p><pre><code class="language-yaml">parameters:
 - name: artifactFeed
   type: string
 - name: repositoryName
@@ -528,17 +534,23 @@ stages:
     </div>
 
         <div class="feed-image u-placeholder rectangle">
-                <img
-                    class="u-object-fit"
-                    srcset="/content/images/size/w400/2026/07/Screenshot-2026-07-26-at-09.40.52.png 400w,
+                <picture>
+                    <source type="image/webp" srcset="/content/images/size/w400/format/webp/2026/07/Screenshot-2026-07-26-at-09.40.52.png 400w,
+/content/images/size/w750/format/webp/2026/07/Screenshot-2026-07-26-at-09.40.52.png 750w,
+/content/images/size/w960/format/webp/2026/07/Screenshot-2026-07-26-at-09.40.52.png 960w,
+/content/images/size/w1140/format/webp/2026/07/Screenshot-2026-07-26-at-09.40.52.png 1140w" sizes="(min-width: 576px) 160px, 90vw">
+                    <img
+                        class="u-object-fit"
+                        srcset="/content/images/size/w400/2026/07/Screenshot-2026-07-26-at-09.40.52.png 400w,
 /content/images/size/w750/2026/07/Screenshot-2026-07-26-at-09.40.52.png 750w,
 /content/images/size/w960/2026/07/Screenshot-2026-07-26-at-09.40.52.png 960w,
 /content/images/size/w1140/2026/07/Screenshot-2026-07-26-at-09.40.52.png 1140w"
-                    sizes="(min-width: 576px) 160px, 90vw"
-                    src="/content/images/size/w750/2026/07/Screenshot-2026-07-26-at-09.40.52.png"
-                    alt="Our internal AI agent for expenses: Bonbonnetje 🍬"
-                    loading="lazy"
-                >
+                        sizes="(min-width: 576px) 160px, 90vw"
+                        src="/content/images/size/w750/2026/07/Screenshot-2026-07-26-at-09.40.52.png"
+                        alt="Our internal AI agent for expenses: Bonbonnetje 🍬"
+                        loading="lazy"
+                    >
+                </picture>
         </div>
 
     <div class="feed-wrapper">
@@ -577,17 +589,23 @@ stages:
     </div>
 
         <div class="feed-image u-placeholder rectangle">
-                <img
-                    class="u-object-fit"
-                    srcset="https://images.unsplash.com/photo-1528717384022-f8d665c86909?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDd8fGNyYWZ0fGVufDB8fHx8MTc1OTQ4ODMwNHww&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;400 400w,
+                <picture>
+                    <source type="image/webp" srcset="https://images.unsplash.com/photo-1528717384022-f8d665c86909?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDd8fGNyYWZ0fGVufDB8fHx8MTc1OTQ4ODMwNHww&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;400 400w,
+https://images.unsplash.com/photo-1528717384022-f8d665c86909?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDd8fGNyYWZ0fGVufDB8fHx8MTc1OTQ4ODMwNHww&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;750 750w,
+https://images.unsplash.com/photo-1528717384022-f8d665c86909?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDd8fGNyYWZ0fGVufDB8fHx8MTc1OTQ4ODMwNHww&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;960 960w,
+https://images.unsplash.com/photo-1528717384022-f8d665c86909?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDd8fGNyYWZ0fGVufDB8fHx8MTc1OTQ4ODMwNHww&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;1140 1140w" sizes="(min-width: 576px) 160px, 90vw">
+                    <img
+                        class="u-object-fit"
+                        srcset="https://images.unsplash.com/photo-1528717384022-f8d665c86909?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDd8fGNyYWZ0fGVufDB8fHx8MTc1OTQ4ODMwNHww&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;400 400w,
 https://images.unsplash.com/photo-1528717384022-f8d665c86909?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDd8fGNyYWZ0fGVufDB8fHx8MTc1OTQ4ODMwNHww&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;750 750w,
 https://images.unsplash.com/photo-1528717384022-f8d665c86909?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDd8fGNyYWZ0fGVufDB8fHx8MTc1OTQ4ODMwNHww&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;960 960w,
 https://images.unsplash.com/photo-1528717384022-f8d665c86909?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDd8fGNyYWZ0fGVufDB8fHx8MTc1OTQ4ODMwNHww&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;1140 1140w"
-                    sizes="(min-width: 576px) 160px, 90vw"
-                    src="https://images.unsplash.com/photo-1528717384022-f8d665c86909?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDd8fGNyYWZ0fGVufDB8fHx8MTc1OTQ4ODMwNHww&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;750"
-                    alt="Fine-tuning LLMs yourself"
-                    loading="lazy"
-                >
+                        sizes="(min-width: 576px) 160px, 90vw"
+                        src="https://images.unsplash.com/photo-1528717384022-f8d665c86909?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDd8fGNyYWZ0fGVufDB8fHx8MTc1OTQ4ODMwNHww&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;750"
+                        alt="Fine-tuning LLMs yourself"
+                        loading="lazy"
+                    >
+                </picture>
         </div>
 
     <div class="feed-wrapper">
@@ -626,17 +644,23 @@ https://images.unsplash.com/photo-1528717384022-f8d665c86909?crop&#x3D;entropy&a
     </div>
 
         <div class="feed-image u-placeholder rectangle">
-                <img
-                    class="u-object-fit"
-                    srcset="https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhc3RsZXxlbnwwfHx8fDE3NTk2NjAxNDF8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;400 400w,
+                <picture>
+                    <source type="image/webp" srcset="https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhc3RsZXxlbnwwfHx8fDE3NTk2NjAxNDF8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;400 400w,
+https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhc3RsZXxlbnwwfHx8fDE3NTk2NjAxNDF8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;750 750w,
+https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhc3RsZXxlbnwwfHx8fDE3NTk2NjAxNDF8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;960 960w,
+https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;webp&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhc3RsZXxlbnwwfHx8fDE3NTk2NjAxNDF8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;1140 1140w" sizes="(min-width: 576px) 160px, 90vw">
+                    <img
+                        class="u-object-fit"
+                        srcset="https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhc3RsZXxlbnwwfHx8fDE3NTk2NjAxNDF8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;400 400w,
 https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhc3RsZXxlbnwwfHx8fDE3NTk2NjAxNDF8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;750 750w,
 https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhc3RsZXxlbnwwfHx8fDE3NTk2NjAxNDF8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;960 960w,
 https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhc3RsZXxlbnwwfHx8fDE3NTk2NjAxNDF8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;1140 1140w"
-                    sizes="(min-width: 576px) 160px, 90vw"
-                    src="https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhc3RsZXxlbnwwfHx8fDE3NTk2NjAxNDF8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;750"
-                    alt="Are you ready for MLOps?"
-                    loading="lazy"
-                >
+                        sizes="(min-width: 576px) 160px, 90vw"
+                        src="https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop&#x3D;entropy&amp;cs&#x3D;tinysrgb&amp;fit&#x3D;max&amp;fm&#x3D;jpg&amp;ixid&#x3D;M3wxMTc3M3wwfDF8c2VhcmNofDF8fGNhc3RsZXxlbnwwfHx8fDE3NTk2NjAxNDF8MA&amp;ixlib&#x3D;rb-4.1.0&amp;q&#x3D;80&amp;w&#x3D;750"
+                        alt="Are you ready for MLOps?"
+                        loading="lazy"
+                    >
+                </picture>
         </div>
 
     <div class="feed-wrapper">
@@ -675,17 +699,23 @@ https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop&#x3D;entropy&a
     </div>
 
         <div class="feed-image u-placeholder rectangle">
-                <img
-                    class="u-object-fit"
-                    srcset="/content/images/size/w400/2025/04/banner.jpg 400w,
+                <picture>
+                    <source type="image/webp" srcset="/content/images/size/w400/format/webp/2025/04/banner.jpg 400w,
+/content/images/size/w750/format/webp/2025/04/banner.jpg 750w,
+/content/images/size/w960/format/webp/2025/04/banner.jpg 960w,
+/content/images/size/w1140/format/webp/2025/04/banner.jpg 1140w" sizes="(min-width: 576px) 160px, 90vw">
+                    <img
+                        class="u-object-fit"
+                        srcset="/content/images/size/w400/2025/04/banner.jpg 400w,
 /content/images/size/w750/2025/04/banner.jpg 750w,
 /content/images/size/w960/2025/04/banner.jpg 960w,
 /content/images/size/w1140/2025/04/banner.jpg 1140w"
-                    sizes="(min-width: 576px) 160px, 90vw"
-                    src="/content/images/size/w750/2025/04/banner.jpg"
-                    alt="The GenAI automation potential of data extraction"
-                    loading="lazy"
-                >
+                        sizes="(min-width: 576px) 160px, 90vw"
+                        src="/content/images/size/w750/2025/04/banner.jpg"
+                        alt="The GenAI automation potential of data extraction"
+                        loading="lazy"
+                    >
+                </picture>
         </div>
 
     <div class="feed-wrapper">
@@ -724,17 +754,23 @@ https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop&#x3D;entropy&a
     </div>
 
         <div class="feed-image u-placeholder rectangle">
-                <img
-                    class="u-object-fit"
-                    srcset="/content/images/size/w400/2024/09/banner.jpg 400w,
+                <picture>
+                    <source type="image/webp" srcset="/content/images/size/w400/format/webp/2024/09/banner.jpg 400w,
+/content/images/size/w750/format/webp/2024/09/banner.jpg 750w,
+/content/images/size/w960/format/webp/2024/09/banner.jpg 960w,
+/content/images/size/w1140/format/webp/2024/09/banner.jpg 1140w" sizes="(min-width: 576px) 160px, 90vw">
+                    <img
+                        class="u-object-fit"
+                        srcset="/content/images/size/w400/2024/09/banner.jpg 400w,
 /content/images/size/w750/2024/09/banner.jpg 750w,
 /content/images/size/w960/2024/09/banner.jpg 960w,
 /content/images/size/w1140/2024/09/banner.jpg 1140w"
-                    sizes="(min-width: 576px) 160px, 90vw"
-                    src="/content/images/size/w750/2024/09/banner.jpg"
-                    alt="The Levels of RAG"
-                    loading="lazy"
-                >
+                        sizes="(min-width: 576px) 160px, 90vw"
+                        src="/content/images/size/w750/2024/09/banner.jpg"
+                        alt="The Levels of RAG"
+                        loading="lazy"
+                    >
+                </picture>
         </div>
 
     <div class="feed-wrapper">
@@ -843,7 +879,7 @@ https://images.unsplash.com/photo-1449452198679-05c7fd30f416?crop&#x3D;entropy&a
     }
 </script>
 
-<script src="/assets/built/main.min.js?v=7561d1649d"></script>
+<script src="/assets/built/main.min.js?v=24b5fb6eec"></script>
 
 
 
