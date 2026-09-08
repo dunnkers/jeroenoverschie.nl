@@ -1,41 +1,38 @@
 name: Quality Checks
 
-# Runs after every successful deploy to audit the *live* site: theme
-# validity, broken links, redirect health, sitewide Lighthouse scores, and
-# accessibility (axe-core). Everything here is report-only - it never fails
-# the workflow - results land in the job summary plus downloadable
-# artifacts for the full detail. Can also be run manually.
+# Audits the *live* site on request: theme validity, broken links, redirect
+# health, sitewide Lighthouse scores, and accessibility (axe-core).
+# Everything here is report-only - it never fails the workflow - results
+# land in the job summary plus downloadable artifacts for the full detail.
+# Manual only (not run on every deploy): the Lighthouse crawl alone takes
+# several minutes per page, so this is run when someone wants a fresh
+# report rather than after every push.
 on:
-  workflow_run:
-    workflows: ["Deploy Website"]
-    types: [completed]
   workflow_dispatch: {}
 
 permissions:
   contents: read
-  pages: read
 
 env:
   SITE_URL: https://jeroenoverschie.nl
 
 jobs:
   quality-checks:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Checkout theme
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: dunnkers/ghost-dunnkers-theme-edition
           path: theme
           ref: master
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 22
 
@@ -52,27 +49,6 @@ jobs:
             echo '```'
             echo ""
           } >> "$GITHUB_STEP_SUMMARY"
-
-      - name: Wait for GitHub Pages deployment
-        if: github.event_name == 'workflow_run'
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          MIN_BUILD_TIME="${{ github.event.workflow_run.updated_at }}"
-          for i in $(seq 1 40); do
-            build=$(curl -s -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" \
-              "https://api.github.com/repos/${{ github.repository }}/pages/builds/latest")
-            status=$(echo "$build" | jq -r '.status // empty')
-            created=$(echo "$build" | jq -r '.created_at // empty')
-            echo "Attempt $i: pages build status=$status created=$created (need created > $MIN_BUILD_TIME)"
-            if [ "$status" = "built" ] && [ -n "$created" ] && [ "$created" \> "$MIN_BUILD_TIME" ]; then
-              echo "GitHub Pages deployment is live."
-              exit 0
-            fi
-            sleep 15
-          done
-          echo "::warning::Timed out waiting for GitHub Pages build confirmation after the last deploy; proceeding with whatever is currently live."
 
       - name: Extract sitemap URLs
         continue-on-error: true
@@ -166,18 +142,13 @@ jobs:
         if: always()
         continue-on-error: true
         run: |
-          # unlighthouse-ci has known upstream races where it logs the static
-          # report as written before it's actually flushed to disk
-          # (harlan-zw/unlighthouse#200, #272). Give it a moment and record
-          # what's really there so a silent-empty-artifact case is visible.
-          sleep 5
           if [ -d .unlighthouse ] && [ -n "$(find .unlighthouse -type f 2>/dev/null)" ]; then
             echo "unlighthouse_output=present" >> "$GITHUB_ENV"
             echo ".unlighthouse/ contents:"
             find .unlighthouse -type f | head -50
           else
             echo "unlighthouse_output=missing" >> "$GITHUB_ENV"
-            echo "::warning::.unlighthouse/ is empty or missing after the scan completed - the report artifact will likely be empty. This is a known upstream unlighthouse-ci flakiness (see harlan-zw/unlighthouse#200, #272), not a config error here."
+            echo "::warning::.unlighthouse/ is empty or missing after the scan completed - the unlighthouse-ci step above likely failed or produced no report."
           fi
 
       - name: Summarize Lighthouse results
@@ -193,23 +164,27 @@ jobs:
             echo "> Note: the $(wc -l < redirecting-urls.txt | tr -d ' ') meta-refresh redirect page(s) audited above may produce unreliable scores here, since the browser navigates away mid-measurement. Cross-check against the redirect audit table."
             echo ""
             if [ "${unlighthouse_output:-missing}" = "missing" ]; then
-              echo "> ⚠️ No report files were found after this run - the \`unlighthouse-report\` artifact below is likely empty. This is a known upstream unlighthouse-ci issue, not a site problem; re-running the workflow often resolves it."
+              echo "> ⚠️ No report files were found after this run - the \`unlighthouse-report\` artifact below is likely empty. Check the \`Sitewide Lighthouse audit\` step's log above for the underlying error."
               echo ""
             fi
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload Unlighthouse report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: unlighthouse-report
           path: .unlighthouse/
           retention-days: 30
           if-no-files-found: ignore
+          # .unlighthouse/ is a dot-directory - upload-artifact's default
+          # excludes hidden files/dirs, which silently produced an empty
+          # "No files were found" upload despite the report existing on disk.
+          include-hidden-files: true
 
       - name: Upload pa11y results (raw JSON)
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: pa11y-results
           path: pa11y-results.json
@@ -218,7 +193,7 @@ jobs:
 
       - name: Upload pa11y HTML report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: pa11y-html-report
           path: pa11y-ci-report/
