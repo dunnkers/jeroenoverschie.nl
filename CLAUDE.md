@@ -42,7 +42,24 @@ Used this way on 2026-09-08 to migrate 4 posts off external Unsplash
 feature images onto Ghost's own local media pipeline (so responsive
 `srcset`/on-demand resizing applies) — see git history for
 `scripts/migrate-feature-images.js`-style usage if a similar migration
-comes up again.
+comes up again. Also used to swap a giant in-body GIF for a native Ghost
+`video` lexical card (mp4/webm + poster) — see the `video` node schema on
+an existing post (e.g. `python-devcontainer-with-uv`) via
+`GET /posts/?filter=slug:<slug>&formats=lexical` before constructing a new
+one from scratch, since its fields (`fileName`, `mimeType`, `duration`,
+`thumbnailSrc`, `cardWidth`, `loop`, ...) aren't documented in the public
+Admin API docs.
+
+If a PUT to `/posts/:id/` (even a single trivial field) fails with `500
+Database error, cannot edit post` / `attempt to write a readonly
+database`, this is *not* caused by the request — it's the local Ghost
+container's SQLite connection wedged, most likely a stale lock from
+Docker Desktop's bind-mount filesystem. Do **not** attempt to diagnose or
+fix this by touching `ghost-local.db` directly (not even read-only
+`PRAGMA`/`sqlite3` checks via `docker exec`) — go through the Admin API
+only, always. The fix is `docker restart <ghost-container-name>` (find it
+with `docker ps`; the container has no fixed name), then retry the same
+Admin API request — no data is lost, this just resets the DB connection.
 
 ## Build pipeline
 
