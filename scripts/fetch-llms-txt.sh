@@ -9,25 +9,21 @@
 # llms.txt discovery file), not something worth blocking every deploy for
 # if Ghost's instance is slow to serve it on a given run.
 #
-# The persistent (not transient) 302 seen in CI on every one of 15 attempts
-# turned out not to be a timing issue at all: it was ghost:6.45.0, which was
-# pinned in the workflows and doesn't serve /llms.txt (always redirects to
-# /), confirmed by booting that exact image against the real content DB and
-# getting 302 on every request for 40s straight, while newer Ghost versions
-# serve it correctly from the first request. The workflows are now pinned to
-# 6.62.0; this retry loop stays as a safety margin for genuine slow-boot
-# cases, not as the primary fix.
+# A persistent (not transient) 302 on every attempt usually means the
+# pinned Ghost image itself doesn't serve /llms.txt, not that it's slow to
+# boot - check the image version in the workflows first. This loop is a
+# safety margin for genuine slow-boot cases, not a fix for that.
 url="$1"
 out="$2"
 
-for attempt in $(seq 1 10); do
+for attempt in $(seq 1 15); do
   if curl -sf "$url" -o "$out" 2>/dev/null && ! grep -q "Redirecting to" "$out"; then
-    echo "  ${url}: fetched OK (attempt ${attempt}/10)"
+    echo "  ${url}: fetched OK (attempt ${attempt}/15)"
     exit 0
   fi
   sleep 2
 done
 
-echo "  ${url}: still not returning real content after 10 attempts - leaving it out of this deploy, not failing the build" >&2
+echo "  ${url}: still not returning real content after 15 attempts - leaving it out of this deploy, not failing the build" >&2
 rm -f "$out"
 exit 0
