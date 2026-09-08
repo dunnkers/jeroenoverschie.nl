@@ -9,24 +9,21 @@
 # llms.txt discovery file), not something worth blocking every deploy for
 # if Ghost's instance is slow to serve it on a given run.
 #
-# 5 attempts, not 15: in CI this has so far failed 15/15 times on every
-# observed run (a cold, resource-constrained Ghost container apparently
-# can't render llms.txt - which enumerates every post - fast enough), so
-# the extra attempts were just adding ~20s of pure waste per file for a
-# retry that never once succeeded. 5 still gives a real chance on a run
-# where Ghost happens to be ready sooner, without paying the full 30s tax
-# on every deploy when it isn't.
+# A persistent (not transient) 302 on every attempt usually means the
+# pinned Ghost image itself doesn't serve /llms.txt, not that it's slow to
+# boot - check the image version in the workflows first. This loop is a
+# safety margin for genuine slow-boot cases, not a fix for that.
 url="$1"
 out="$2"
 
-for attempt in $(seq 1 5); do
+for attempt in $(seq 1 15); do
   if curl -sf "$url" -o "$out" 2>/dev/null && ! grep -q "Redirecting to" "$out"; then
-    echo "  ${url}: fetched OK (attempt ${attempt}/5)"
+    echo "  ${url}: fetched OK (attempt ${attempt}/15)"
     exit 0
   fi
   sleep 2
 done
 
-echo "  ${url}: still not returning real content after 5 attempts - leaving it out of this deploy, not failing the build" >&2
+echo "  ${url}: still not returning real content after 15 attempts - leaving it out of this deploy, not failing the build" >&2
 rm -f "$out"
 exit 0
