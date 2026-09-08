@@ -70,4 +70,39 @@ container, then `scripts/fix-content-images.js` rewrites in-body
 `static/` that only exists in the source `content/images/size/` tree
 (gssg only downloads sizes it actually saw referenced during its own
 crawl, so a width introduced after that crawl needs an explicit copy —
-see the `ensureStaticCopy` function).
+see the `ensureStaticCopy` function). `scripts/add-image-dimensions.js`
+runs right after it, adding explicit `width`/`height` to any `<img>`
+still missing them (theme-rendered header/feed images, since Ghost's
+handlebars API exposes no intrinsic dimensions for those).
+
+### Known upstream CLS bug: native video cards (unfixed as of 2026-09-08)
+
+Posts using Ghost's native video card (`kg-video-card`) have a real,
+reproducible ~0.17-0.19 CLS shift on slow connections — confirmed via
+Lighthouse CLI run locally with unlighthouse's exact throttling config
+(150ms RTT, 1.6Mbps), then root-caused with Puppeteer + real CDP network
+throttling + a `ResizeObserver` on the `<video>` element: it renders at
+0 height for ~3.6s, then snaps to its correct aspect-ratio height,
+shoving all content below (footer, related-posts) down.
+
+Root cause: Ghost core's `.kg-video-container{height:0}` (in
+`/public/cards.min.css`) has no `padding-bottom` aspect-ratio fallback —
+the correct height only ever gets set by `cards.min.js` at runtime, and
+that used to depend on fetching a placeholder poster image from a
+third-party host (`img.spacergif.org`), which needs its own DNS+TLS
+handshake and is slow under throttling. This is **not** fixable in this
+theme or repo — it's a Ghost core (`@tryghost/kg-default-cards`) issue.
+
+It's already fixed upstream — TryGhost/Ghost#29833 (merged 2026-08-10,
+for privacy reasons: that third-party request leaked visitor IP/UA with
+no consent) replaces the spacer-gif poster with an inline `data:` URI,
+which as a side effect removes the slow network dependency causing this
+CLS. But as of 2026-09-08 it has **not shipped in any released Ghost
+version** — checked `@tryghost/kg-default-cards` on npm (latest 10.3.5,
+published 2026-07-17, predates the fix) and the actual bundled code in
+`ghost:6.62.0` (latest Docker tag as of this writing) still ships the
+old `spacergif.org` version. Re-check whether a Ghost upgrade past this
+point picks up the fix before spending more time on it — bumping the
+pinned Ghost image version (see the `python-devcontainer-with-uv`-era
+image bump in git history) should resolve it automatically once it
+lands in a release, no theme/build changes needed.
