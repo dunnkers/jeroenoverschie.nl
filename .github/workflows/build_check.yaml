@@ -34,7 +34,7 @@ jobs:
 
     - name: Cache Ghost Docker image
       id: cache-ghost-image
-      uses: actions/cache@v4
+      uses: actions/cache@v6
       with:
         path: /tmp/ghost-image.tar
         key: ghost-docker-image-6.62.0
