@@ -51,7 +51,12 @@ async function ensureModernVariants(filePath) {
     const webpPath = filePath.replace(RASTER_EXT, ".webp");
     try {
       if (!fs.existsSync(avifPath)) {
-        await sharp(filePath).avif({ quality: 55 }).toFile(avifPath);
+        // effort defaults to 4; AVIF's encoder is slow enough that this step
+        // alone added ~3.5 minutes to every deploy at the default. effort:2
+        // cuts encode time by ~85% for only ~15% larger files — this build
+        // runs on every push, so build time matters more than squeezing out
+        // the last few KB.
+        await sharp(filePath).avif({ quality: 55, effort: 2 }).toFile(avifPath);
       }
       result.avif = true;
     } catch (err) {
