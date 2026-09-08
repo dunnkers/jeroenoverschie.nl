@@ -32,6 +32,22 @@ jobs:
         ref: master
         persist-credentials: false
 
+    - name: Cache Ghost Docker image
+      id: cache-ghost-image
+      uses: actions/cache@v4
+      with:
+        path: /tmp/ghost-image.tar
+        key: ghost-docker-image-6.62.0
+
+    - name: Load or pull Ghost Docker image
+      run: |
+        if [ "${{ steps.cache-ghost-image.outputs.cache-hit }}" = "true" ]; then
+          docker load -i /tmp/ghost-image.tar
+        else
+          docker pull ghost:6.62.0
+          docker save ghost:6.62.0 -o /tmp/ghost-image.tar
+        fi
+
     - name: Start Ghost Container
       run: |
         docker run -d --name ghost -p 2368:2368 \
