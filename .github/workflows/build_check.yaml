@@ -40,7 +40,7 @@ jobs:
           --env database__client=sqlite3 \
           --env database__connection__filename=/var/lib/ghost/content/data/ghost-local.db \
           --env url=http://localhost:2368 \
-          ghost:6.45.0
+          ghost:6.53.0
 
     - name: Setup Node.js
       uses: actions/setup-node@v7

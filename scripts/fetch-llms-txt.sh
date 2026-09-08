@@ -9,24 +9,25 @@
 # llms.txt discovery file), not something worth blocking every deploy for
 # if Ghost's instance is slow to serve it on a given run.
 #
-# 5 attempts, not 15: in CI this has so far failed 15/15 times on every
-# observed run (a cold, resource-constrained Ghost container apparently
-# can't render llms.txt - which enumerates every post - fast enough), so
-# the extra attempts were just adding ~20s of pure waste per file for a
-# retry that never once succeeded. 5 still gives a real chance on a run
-# where Ghost happens to be ready sooner, without paying the full 30s tax
-# on every deploy when it isn't.
+# The persistent (not transient) 302 seen in CI on every one of 15 attempts
+# turned out not to be a timing issue at all: it was ghost:6.45.0, which was
+# pinned in the workflows and doesn't serve /llms.txt (always redirects to
+# /), confirmed by booting that exact image against the real content DB and
+# getting 302 on every request for 40s straight, while ghost:6.53.0 serves
+# it correctly from the first request. The workflows are now pinned to
+# 6.53.0; this retry loop stays as a safety margin for genuine slow-boot
+# cases, not as the primary fix.
 url="$1"
 out="$2"
 
-for attempt in $(seq 1 5); do
+for attempt in $(seq 1 10); do
   if curl -sf "$url" -o "$out" 2>/dev/null && ! grep -q "Redirecting to" "$out"; then
-    echo "  ${url}: fetched OK (attempt ${attempt}/5)"
+    echo "  ${url}: fetched OK (attempt ${attempt}/10)"
     exit 0
   fi
   sleep 2
 done
 
-echo "  ${url}: still not returning real content after 5 attempts - leaving it out of this deploy, not failing the build" >&2
+echo "  ${url}: still not returning real content after 10 attempts - leaving it out of this deploy, not failing the build" >&2
 rm -f "$out"
 exit 0
