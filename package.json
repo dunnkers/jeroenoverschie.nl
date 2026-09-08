@@ -1,4 +1,7 @@
 {
+    "engines": {
+        "node": "22.x"
+    },
     "scripts": {
         "build": "gssg && bash scripts/fetch-llms-txt.sh http://localhost:2368/llms.txt static/llms.txt && bash scripts/fetch-llms-txt.sh http://localhost:2368/llms-full.txt static/llms-full.txt && npx replace-in-file --configFile=replace-in-file_config.json && npx replace-in-file --configFile=replace-in-file_sitemap_config.json && npx replace-in-file --configFile=replace-in-file_sourcemaps_config.json && node scripts/fix-content-images.js && node scripts/generate-modern-images.js",
         "predeploy": "echo 'jeroenoverschie.nl' > static/CNAME",

@@ -1,4 +1,4 @@
-name: Quality Checks
+name: Site Benchmarks
 
 # Audits the *live* site on request: theme validity, broken links, redirect
 # health, sitewide Lighthouse scores, and accessibility (axe-core).
@@ -17,7 +17,7 @@ env:
   SITE_URL: https://jeroenoverschie.nl
 
 jobs:
-  quality-checks:
+  benchmarks:
     runs-on: ubuntu-latest
 
     steps:
