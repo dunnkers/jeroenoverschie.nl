@@ -36,7 +36,9 @@ jobs:
         node-version: 22
 
     - name: Install dependencies
-      run: npm install -g ghost-static-site-generator gh-pages replace-in-file
+      run: |
+        npm install -g ghost-static-site-generator gh-pages replace-in-file
+        npm install
 
     - name: Wait for Ghost to be ready
       run: |
