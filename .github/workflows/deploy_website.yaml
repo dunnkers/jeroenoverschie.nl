@@ -5,6 +5,10 @@ on:
     branches:
       - master
 
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -51,6 +55,17 @@ jobs:
           sleep 5
         done
         echo "Ghost is up and running"
+
+    - name: Restore previous build (gh-pages)
+      # generate-modern-images.js reuses already-built AVIF/WebP files from
+      # here instead of re-encoding images that haven't changed since the
+      # last deploy. Soft-fails on the very first-ever deploy, when gh-pages
+      # doesn't exist yet.
+      uses: actions/checkout@v7
+      continue-on-error: true
+      with:
+        ref: gh-pages
+        path: .gh-pages-cache
 
     - name: Build
       run: npm run build
