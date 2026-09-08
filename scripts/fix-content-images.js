@@ -20,6 +20,21 @@ const SRC_RE = /\ssrc="([^"]*)"/i;
 const IMG_PATH_RE =
   /^(https?:\/\/[^/]+)?(\/content\/images\/(\d{4})\/(\d{2})\/([^"?#]+))$/;
 
+// Ghost's own gallery-card markup already ships a correct srcset (so the
+// main pass below skips it entirely — see the srcset guard in processFile),
+// but it hardcodes `sizes="(min-width: 720px) 720px"` on every image
+// regardless of how many share a row. A 3-up row renders each image at
+// roughly a third of the 720px content column (Ghost's own flexbox gallery
+// CSS shrinks same-aspect-ratio images to an even split, see
+// .kg-gallery-row/.kg-gallery-image in cards.min.css), so browsers were
+// downloading a full-width-sized variant for an image displayed at ~230px —
+// 3-4x the bytes actually needed. Rewrite just the `sizes` hint (never
+// src/srcset) to reflect the real per-row share.
+const GALLERY_ROW_RE =
+  /<div class="kg-gallery-row">((?:<div class="kg-gallery-image">.*?<\/div>)+)<\/div>/gs;
+const GALLERY_IMAGE_ITEM_RE = /<div class="kg-gallery-image">.*?<\/div>/gs;
+const GALLERY_GAP_PX = 8; // approximates cards.min.css's --gap between images
+
 function listHtmlFiles(dir) {
   return fs.readdirSync(dir, { recursive: true }).filter((f) => f.endsWith(".html"));
 }
@@ -71,9 +86,38 @@ function buildReplacement(tag, src, match) {
   return newTag;
 }
 
-function processFile(filePath) {
-  const html = fs.readFileSync(filePath, "utf8");
+function fixGallerySizes(html) {
   let changed = 0;
+
+  const updated = html.replace(GALLERY_ROW_RE, (rowMatch, rowInner) => {
+    const items = rowInner.match(GALLERY_IMAGE_ITEM_RE) || [];
+    const count = items.length;
+    if (count < 2) return rowMatch; // single-image "gallery" is already full-width
+
+    const perImageWidth = Math.max(
+      1,
+      Math.floor((720 - GALLERY_GAP_PX * (count - 1)) / count)
+    );
+    const gallerySizes = `(min-width: 720px) ${perImageWidth}px, ${Math.floor(100 / count)}vw`;
+
+    const newInner = rowInner.replace(IMG_TAG_RE, (imgTag) => {
+      if (!/\ssizes="\(min-width: 720px\) 720px"/i.test(imgTag)) return imgTag;
+      changed += 1;
+      return imgTag.replace(/\ssizes="[^"]*"/i, ` sizes="${gallerySizes}"`);
+    });
+    return rowMatch.replace(rowInner, newInner);
+  });
+
+  return { html: updated, changed };
+}
+
+function processFile(filePath) {
+  let html = fs.readFileSync(filePath, "utf8");
+  let changed = 0;
+
+  const galleryResult = fixGallerySizes(html);
+  html = galleryResult.html;
+  changed += galleryResult.changed;
 
   const updated = html.replace(IMG_TAG_RE, (tag) => {
     if (/\ssrcset="/i.test(tag)) return tag; // already responsive
