@@ -5,7 +5,8 @@
 # Around the Amstel station
 - URL: https://jeroenoverschie.nl/in-and-around-the-amstel-station/
 - Published: 2025-06-25T16:10:26.000Z
-- Updated: 2025-10-03T12:57:29.000Z
+- Updated: 2026-09-08T13:59:18.000Z
+- Description: Taking a good look at the Amsterdam Amstel station surroundings.
 - Author: Jeroen Overschie
 - Tags: #noindex, Life, Photography
 

@@ -5,7 +5,8 @@
 # An impression of Berlin
 - URL: https://jeroenoverschie.nl/berlin/
 - Published: 2018-09-30T22:00:00.000Z
-- Updated: 2025-10-03T12:52:30.000Z
+- Updated: 2026-09-08T13:53:20.000Z
+- Description: Berlin is a beautiful city ✨.
 - Author: Jeroen Overschie
 - Tags: #noindex, Life, Photography
 

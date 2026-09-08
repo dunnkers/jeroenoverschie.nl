@@ -5,7 +5,8 @@
 # Golden hour in Amsterdam
 - URL: https://jeroenoverschie.nl/golden-hour-in-amsterdam/
 - Published: 2025-07-21T19:50:00.000Z
-- Updated: 2025-10-21T11:06:25.000Z
+- Updated: 2026-09-08T14:02:09.000Z
+- Description: 🫶
 - Author: Jeroen Overschie
 - Tags: Life, #noindex
 
