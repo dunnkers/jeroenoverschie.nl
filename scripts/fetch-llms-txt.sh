@@ -13,9 +13,9 @@
 # turned out not to be a timing issue at all: it was ghost:6.45.0, which was
 # pinned in the workflows and doesn't serve /llms.txt (always redirects to
 # /), confirmed by booting that exact image against the real content DB and
-# getting 302 on every request for 40s straight, while ghost:6.53.0 serves
-# it correctly from the first request. The workflows are now pinned to
-# 6.53.0; this retry loop stays as a safety margin for genuine slow-boot
+# getting 302 on every request for 40s straight, while newer Ghost versions
+# serve it correctly from the first request. The workflows are now pinned to
+# 6.62.0; this retry loop stays as a safety margin for genuine slow-boot
 # cases, not as the primary fix.
 url="$1"
 out="$2"
