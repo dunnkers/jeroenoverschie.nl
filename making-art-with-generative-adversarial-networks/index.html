@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Making Art with Generative Adversarial Networks</title>
 
-    <link rel="stylesheet" href="/assets/built/screen.css?v=80354838a7">
+    <link rel="stylesheet" href="/assets/built/screen.css?v=4fcfa679ff">
 
-                <link rel="preload" as="image" href="/content/images/size/w960/2021/11/morphing-1.png" fetchpriority="high">
+                <link rel="preload" as="image" href="/content/images/size/w960/2021/11/morphing-1.avif" fetchpriority="high">
 
     <meta name="description" content="Can computers make art? To find out, we tried ourselves. We used Generative Adversarial Networks to try to paint new Van Gogh paintings.">
     <link rel="icon" href="https://jeroenoverschie.nl/content/images/size/w256h256/format/png/2022/10/cartoon-head-jeroen-1-2.svg" type="image/png">
@@ -86,8 +86,8 @@
     <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/sodo-search.min.js" data-key="489b5afdd4c5385878c360bd9b" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.8/umd/main.css" data-sodo-search="https://jeroenoverschie.nl/" data-locale="en" crossorigin="anonymous"></script>
     
     <link href="https://jeroenoverschie.nl/webmentions/receive/" rel="webmention">
-    <script defer src="/public/cards.min.js?v=80354838a7"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
-    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=80354838a7">
+    <script defer src="/public/cards.min.js?v=4fcfa679ff"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=4fcfa679ff">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PQB9198LQ6"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -166,17 +166,17 @@
             <div class="author-name" style="display: none;"><a href="/author/jeroen/">Jeroen Overschie</a></div>
 
                 <figure class="single-media kg-width-wide">
-                    <img srcset="/content/images/size/w400/2021/11/morphing-1.png 400w,
+                    <picture><source type="image/avif" srcset="/content/images/size/w400/2021/11/morphing-1.avif 400w, /content/images/size/w750/2021/11/morphing-1.avif 750w, /content/images/size/w960/2021/11/morphing-1.avif 960w, /content/images/size/w1140/2021/11/morphing-1.avif 1140w" sizes="(min-width: 1023px) 920px, calc(90vw)"><source type="image/webp" srcset="/content/images/size/w400/2021/11/morphing-1.webp 400w, /content/images/size/w750/2021/11/morphing-1.webp 750w, /content/images/size/w960/2021/11/morphing-1.webp 960w, /content/images/size/w1140/2021/11/morphing-1.webp 1140w" sizes="(min-width: 1023px) 920px, calc(90vw)"><img srcset="/content/images/size/w400/2021/11/morphing-1.png 400w,
 /content/images/size/w750/2021/11/morphing-1.png 750w,
 /content/images/size/w960/2021/11/morphing-1.png 960w,
-/content/images/size/w1140/2021/11/morphing-1.png 1140w" sizes="(min-width: 1023px) 920px, calc(90vw)" src="/content/images/size/w960/2021/11/morphing-1.png" alt="Making Art with Generative Adversarial Networks" fetchpriority="high">
+/content/images/size/w1140/2021/11/morphing-1.png 1140w" sizes="(min-width: 1023px) 920px, calc(90vw)" src="/content/images/size/w960/2021/11/morphing-1.png" alt="Making Art with Generative Adversarial Networks" fetchpriority="high"></picture>
                         <figcaption>Note: the people on the left are <strong>not</strong> real people. Nor is the art next to it. They were created by an AI – to be specific, by a Generative Adversarial Network.</figcaption>
                 </figure>
         </header>
 
 
     <div class="single-content gh-content gh-canvas">
-        <p>Generative Adversarial Networks (<a href="https://arxiv.org/abs/1406.2661">GAN's</a>) are a relatively new type of technique for generating samples from a learned distribution, in which two networks are simultaneously trained whilst competing against each other. Applications for GAN’s are numerous, including image up-sampling, image generation, and the recently quite popular <strong>Deep Fakes</strong>. In this project, we aim to train such a Generative Adversarial Network ourselves, with the purpose of image generation, specifically. As the generation of human faces has been widely studied, we have chosen a different topic, namely: the generation of paintings. While large datasets of paintings are available, we have opted to restrict ourselves to one artist, as we believe this will give a better chance at producing realistic paintings. For this, we have chosen the Dutch artist <em>Vincent van Gogh</em>, who is known for his unique style.</p><h2 id="how">How</h2><p>There are many GAN architectures around. Some popular of which the <a href="https://arxiv.org/abs/1511.06434">DCGAN</a> and the <a href="https://arxiv.org/abs/1812.04948">StyleGAN</a>. We decided to train both and compare the results.</p><ul><li>DCGAN. A GAN architecture that has been around for a while. Was trained using <a href="https://www.tensorflow.org/">TensorFlow</a>.</li><li>StyleGAN. A popular GAN architecture for generating faces, provisioned by NVIDIA Research. Also trained using TensorFlow.</li></ul><p>Both were trained on the <a href="https://www.kaggle.com/ipythonx/van-gogh-paintings">Van Gogh dataset</a>, as available on Kaggle. Because the dataset contained only a limited amount of paintings (painting is, of course, a very time consuming activity), we decided to augment the dataset. Among others, we applied rotation- and shearing operations, and modified the brightness, such that we get more training data.</p><p>The StyleGAN showed the most promising results. Starting out with a seed previously used to generate a face, we managed to train a GAN that produced something that remotely resembled art. Given that a computer is doing this, that's pretty neat!</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://jeroenoverschie.nl/content/images/2021/11/retrain_morphing.png" class="kg-image" alt loading="lazy" width="1621" height="540" srcset="https://jeroenoverschie.nl/content/images/size/w600/2021/11/retrain_morphing.png 600w, https://jeroenoverschie.nl/content/images/size/w1000/2021/11/retrain_morphing.png 1000w, https://jeroenoverschie.nl/content/images/size/w1600/2021/11/retrain_morphing.png 1600w, https://jeroenoverschie.nl/content/images/2021/11/retrain_morphing.png 1621w" sizes="(min-width: 1200px) 1200px"><figcaption>Progressively grown StyleGAN. The adversarial network first takes on the task of creating low-resolution art, and then progressively makes sharper images (fakes).</figcaption></figure><p></p><h2 id="more-reading">More reading</h2><p>To read a more detailed report on this project, check out the Github page:</p><figure class="kg-card kg-image-card kg-card-hascaption"><a href="https://github.com/dunnkers/generative-adversarial-networks"><img srcset="https://jeroenoverschie.nl/content/images/size/w600/2021/11/github32-2.png 600w, https://jeroenoverschie.nl/content/images/size/w1000/2021/11/github32-2.png 1000w" sizes="32px" src="https://jeroenoverschie.nl/content/images/size/w1000/2021/11/github32-2.png" class="kg-image" alt loading="lazy" width="32" height="32"></a><figcaption><a href="https://github.com/dunnkers/generative-adversarial-networks">generative-adversarial-networks</a></figcaption></figure>
+        <p>Generative Adversarial Networks (<a href="https://arxiv.org/abs/1406.2661">GAN's</a>) are a relatively new type of technique for generating samples from a learned distribution, in which two networks are simultaneously trained whilst competing against each other. Applications for GAN’s are numerous, including image up-sampling, image generation, and the recently quite popular <strong>Deep Fakes</strong>. In this project, we aim to train such a Generative Adversarial Network ourselves, with the purpose of image generation, specifically. As the generation of human faces has been widely studied, we have chosen a different topic, namely: the generation of paintings. While large datasets of paintings are available, we have opted to restrict ourselves to one artist, as we believe this will give a better chance at producing realistic paintings. For this, we have chosen the Dutch artist <em>Vincent van Gogh</em>, who is known for his unique style.</p><h2 id="how">How</h2><p>There are many GAN architectures around. Some popular of which the <a href="https://arxiv.org/abs/1511.06434">DCGAN</a> and the <a href="https://arxiv.org/abs/1812.04948">StyleGAN</a>. We decided to train both and compare the results.</p><ul><li>DCGAN. A GAN architecture that has been around for a while. Was trained using <a href="https://www.tensorflow.org/">TensorFlow</a>.</li><li>StyleGAN. A popular GAN architecture for generating faces, provisioned by NVIDIA Research. Also trained using TensorFlow.</li></ul><p>Both were trained on the <a href="https://www.kaggle.com/ipythonx/van-gogh-paintings">Van Gogh dataset</a>, as available on Kaggle. Because the dataset contained only a limited amount of paintings (painting is, of course, a very time consuming activity), we decided to augment the dataset. Among others, we applied rotation- and shearing operations, and modified the brightness, such that we get more training data.</p><p>The StyleGAN showed the most promising results. Starting out with a seed previously used to generate a face, we managed to train a GAN that produced something that remotely resembled art. Given that a computer is doing this, that's pretty neat!</p><figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><picture><source type="image/avif" srcset="https://jeroenoverschie.nl/content/images/size/w600/2021/11/retrain_morphing.avif 600w, https://jeroenoverschie.nl/content/images/size/w1000/2021/11/retrain_morphing.avif 1000w, https://jeroenoverschie.nl/content/images/size/w1600/2021/11/retrain_morphing.avif 1600w, https://jeroenoverschie.nl/content/images/2021/11/retrain_morphing.avif 1621w" sizes="(min-width: 1200px) 1200px"><source type="image/webp" srcset="https://jeroenoverschie.nl/content/images/size/w600/2021/11/retrain_morphing.webp 600w, https://jeroenoverschie.nl/content/images/size/w1000/2021/11/retrain_morphing.webp 1000w, https://jeroenoverschie.nl/content/images/size/w1600/2021/11/retrain_morphing.webp 1600w, https://jeroenoverschie.nl/content/images/2021/11/retrain_morphing.webp 1621w" sizes="(min-width: 1200px) 1200px"><img src="https://jeroenoverschie.nl/content/images/2021/11/retrain_morphing.png" class="kg-image" alt loading="lazy" width="1621" height="540" srcset="https://jeroenoverschie.nl/content/images/size/w600/2021/11/retrain_morphing.png 600w, https://jeroenoverschie.nl/content/images/size/w1000/2021/11/retrain_morphing.png 1000w, https://jeroenoverschie.nl/content/images/size/w1600/2021/11/retrain_morphing.png 1600w, https://jeroenoverschie.nl/content/images/2021/11/retrain_morphing.png 1621w" sizes="(min-width: 1200px) 1200px"></picture><figcaption>Progressively grown StyleGAN. The adversarial network first takes on the task of creating low-resolution art, and then progressively makes sharper images (fakes).</figcaption></figure><p></p><h2 id="more-reading">More reading</h2><p>To read a more detailed report on this project, check out the Github page:</p><figure class="kg-card kg-image-card kg-card-hascaption"><a href="https://github.com/dunnkers/generative-adversarial-networks"><picture><source type="image/avif" srcset="https://jeroenoverschie.nl/content/images/size/w600/2021/11/github32-2.avif 600w, https://jeroenoverschie.nl/content/images/size/w1000/2021/11/github32-2.avif 1000w" sizes="32px"><source type="image/webp" srcset="https://jeroenoverschie.nl/content/images/size/w600/2021/11/github32-2.webp 600w, https://jeroenoverschie.nl/content/images/size/w1000/2021/11/github32-2.webp 1000w" sizes="32px"><img srcset="https://jeroenoverschie.nl/content/images/size/w600/2021/11/github32-2.png 600w, https://jeroenoverschie.nl/content/images/size/w1000/2021/11/github32-2.png 1000w" sizes="32px" src="https://jeroenoverschie.nl/content/images/size/w1000/2021/11/github32-2.png" class="kg-image" alt loading="lazy" width="32" height="32"></picture></a><figcaption><a href="https://github.com/dunnkers/generative-adversarial-networks">generative-adversarial-networks</a></figcaption></figure>
     </div>
 
     <div class="gh-canvas">
@@ -234,7 +234,7 @@
     </div>
 
         <div class="feed-image u-placeholder rectangle">
-                <img
+                <picture><source type="image/avif" srcset="/content/images/size/w400/2024/09/banner.avif 400w, /content/images/size/w750/2024/09/banner.avif 750w, /content/images/size/w960/2024/09/banner.avif 960w, /content/images/size/w1140/2024/09/banner.avif 1140w" sizes="(min-width: 576px) 160px, 90vw"><source type="image/webp" srcset="/content/images/size/w400/2024/09/banner.webp 400w, /content/images/size/w750/2024/09/banner.webp 750w, /content/images/size/w960/2024/09/banner.webp 960w, /content/images/size/w1140/2024/09/banner.webp 1140w" sizes="(min-width: 576px) 160px, 90vw"><img
                     class="u-object-fit"
                     srcset="/content/images/size/w400/2024/09/banner.jpg 400w,
 /content/images/size/w750/2024/09/banner.jpg 750w,
@@ -244,7 +244,7 @@
                     src="/content/images/size/w750/2024/09/banner.jpg"
                     alt="The Levels of RAG"
                     fetchpriority="high"
-                >
+                ></picture>
         </div>
 
     <div class="feed-wrapper">
@@ -283,7 +283,7 @@
     </div>
 
         <div class="feed-image u-placeholder rectangle">
-                <img
+                <picture><source type="image/avif" srcset="/content/images/size/w400/2024/04/pexels-ilo-frey-2317904--1-.avif 400w, /content/images/size/w750/2024/04/pexels-ilo-frey-2317904--1-.avif 750w, /content/images/size/w960/2024/04/pexels-ilo-frey-2317904--1-.avif 960w, /content/images/size/w1140/2024/04/pexels-ilo-frey-2317904--1-.avif 1140w" sizes="(min-width: 576px) 160px, 90vw"><source type="image/webp" srcset="/content/images/size/w400/2024/04/pexels-ilo-frey-2317904--1-.webp 400w, /content/images/size/w750/2024/04/pexels-ilo-frey-2317904--1-.webp 750w, /content/images/size/w960/2024/04/pexels-ilo-frey-2317904--1-.webp 960w, /content/images/size/w1140/2024/04/pexels-ilo-frey-2317904--1-.webp 1140w" sizes="(min-width: 576px) 160px, 90vw"><img
                     class="u-object-fit"
                     srcset="/content/images/size/w400/2024/04/pexels-ilo-frey-2317904--1-.jpg 400w,
 /content/images/size/w750/2024/04/pexels-ilo-frey-2317904--1-.jpg 750w,
@@ -293,7 +293,7 @@
                     src="/content/images/size/w750/2024/04/pexels-ilo-frey-2317904--1-.jpg"
                     alt="RAG on GCP: production-ready GenAI on Google Cloud Platform"
                     loading="lazy"
-                >
+                ></picture>
         </div>
 
     <div class="feed-wrapper">
@@ -332,7 +332,7 @@
     </div>
 
         <div class="feed-image u-placeholder rectangle">
-                <img
+                <picture><source type="image/avif" srcset="/content/images/size/w400/2024/01/dataset-enrichment-using-llms-banner.avif 400w, /content/images/size/w750/2024/01/dataset-enrichment-using-llms-banner.avif 750w, /content/images/size/w960/2024/01/dataset-enrichment-using-llms-banner.avif 960w, /content/images/size/w1140/2024/01/dataset-enrichment-using-llms-banner.avif 1140w" sizes="(min-width: 576px) 160px, 90vw"><source type="image/webp" srcset="/content/images/size/w400/2024/01/dataset-enrichment-using-llms-banner.webp 400w, /content/images/size/w750/2024/01/dataset-enrichment-using-llms-banner.webp 750w, /content/images/size/w960/2024/01/dataset-enrichment-using-llms-banner.webp 960w, /content/images/size/w1140/2024/01/dataset-enrichment-using-llms-banner.webp 1140w" sizes="(min-width: 576px) 160px, 90vw"><img
                     class="u-object-fit"
                     srcset="/content/images/size/w400/2024/01/dataset-enrichment-using-llms-banner.jpg 400w,
 /content/images/size/w750/2024/01/dataset-enrichment-using-llms-banner.jpg 750w,
@@ -342,7 +342,7 @@
                     src="/content/images/size/w750/2024/01/dataset-enrichment-using-llms-banner.jpg"
                     alt="Dataset enrichment using LLM’s ✨"
                     loading="lazy"
-                >
+                ></picture>
         </div>
 
     <div class="feed-wrapper">
@@ -378,7 +378,7 @@
     </div>
 
         <div class="feed-image u-placeholder rectangle">
-                <img
+                <picture><source type="image/avif" srcset="/content/images/size/w400/2021/11/linear-regression-to-neural-networks.avif 400w, /content/images/size/w750/2021/11/linear-regression-to-neural-networks.avif 750w, /content/images/size/w960/2021/11/linear-regression-to-neural-networks.avif 960w, /content/images/size/w1140/2021/11/linear-regression-to-neural-networks.avif 1140w" sizes="(min-width: 576px) 160px, 90vw"><source type="image/webp" srcset="/content/images/size/w400/2021/11/linear-regression-to-neural-networks.webp 400w, /content/images/size/w750/2021/11/linear-regression-to-neural-networks.webp 750w, /content/images/size/w960/2021/11/linear-regression-to-neural-networks.webp 960w, /content/images/size/w1140/2021/11/linear-regression-to-neural-networks.webp 1140w" sizes="(min-width: 576px) 160px, 90vw"><img
                     class="u-object-fit"
                     srcset="/content/images/size/w400/2021/11/linear-regression-to-neural-networks.png 400w,
 /content/images/size/w750/2021/11/linear-regression-to-neural-networks.png 750w,
@@ -388,7 +388,7 @@
                     src="/content/images/size/w750/2021/11/linear-regression-to-neural-networks.png"
                     alt="From Linear Regression to Neural Networks"
                     loading="lazy"
-                >
+                ></picture>
         </div>
 
     <div class="feed-wrapper">
@@ -427,7 +427,7 @@
     </div>
 
         <div class="feed-image u-placeholder rectangle">
-                <img
+                <picture><source type="image/avif" srcset="/content/images/size/w400/2021/11/neural-network-backdoors.avif 400w, /content/images/size/w750/2021/11/neural-network-backdoors.avif 750w, /content/images/size/w960/2021/11/neural-network-backdoors.avif 960w, /content/images/size/w1140/2021/11/neural-network-backdoors.avif 1140w" sizes="(min-width: 576px) 160px, 90vw"><source type="image/webp" srcset="/content/images/size/w400/2021/11/neural-network-backdoors.webp 400w, /content/images/size/w750/2021/11/neural-network-backdoors.webp 750w, /content/images/size/w960/2021/11/neural-network-backdoors.webp 960w, /content/images/size/w1140/2021/11/neural-network-backdoors.webp 1140w" sizes="(min-width: 576px) 160px, 90vw"><img
                     class="u-object-fit"
                     srcset="/content/images/size/w400/2021/11/neural-network-backdoors.png 400w,
 /content/images/size/w750/2021/11/neural-network-backdoors.png 750w,
@@ -437,7 +437,7 @@
                     src="/content/images/size/w750/2021/11/neural-network-backdoors.png"
                     alt="Backdoors in Neural Networks"
                     loading="lazy"
-                >
+                ></picture>
         </div>
 
     <div class="feed-wrapper">
@@ -546,7 +546,7 @@
     }
 </script>
 
-<script src="/assets/built/main.min.js?v=80354838a7"></script>
+<script src="/assets/built/main.min.js?v=4fcfa679ff"></script>
 
 
 
