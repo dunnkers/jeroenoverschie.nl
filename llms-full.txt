@@ -87,16 +87,16 @@ Let's collaborate ✓
 — [LinkedIn](http://www.linkedin.com/in/jeroenoverschie)
 ### Freelance AI Engineer in Amsterdam — Jeroen Overschie
 URL: https://jeroenoverschie.nl/freelance-ai-engineer-in-amsterdam-jeroen-overschie/
-Last updated: 2026-07-26T09:02:46.000Z
+Last updated: 2026-09-08T13:15:05.000Z
 Hi!! Super nice to meet you – I'm Jeroen. I've worked in the software domain for over a decade and in Data & AI for about five years. First as a Data Scientist, then ML Engineer, now AI Engineer. Before that I spent about seven years doing freelance web development alongside my studies. From September 2026 I am for freelance work again, based in Amsterdam, working in Dutch or English.
 
 My work has tracked the field closely. I have done classical machine learning and MLOps at TMNL and Vattenfall, then a run of RAG and GenAI projects at NPO, Klaverblad, ING and DataSnipper. More recentlyAgentic systems and search: Agentspace at BCG, an Agentic ELT pipeline built with Agent Development Kit (ADK), and a hybrid search engine for FD Mediagroep that now serves millions of requests a year. Specializing on Google Cloud Platform, and specialized with getting something running in production rather than a recommendation. Find more elaborate [project descriptions on my LinkedIn](https://www.linkedin.com/in/jeroenoverschie/details/projects/).
 
-![](https://jeroenoverschie.nl/content/images/2026/07/Screenshot-2026-07-26-at-11.01.07.png)
+![Jeroen Overschie presenting "Dataset enrichment using LLMs" on stage at PyData Eindhoven 2023](https://jeroenoverschie.nl/content/images/2026/07/Screenshot-2026-07-26-at-11.01.07.png)
 
 Alongside client work I've given [over ten conference talks](https://jeroenoverschie.nl/tag/talks/) at PyData, PyCon and others, taught MLOps and LLM trainings at companies like Rabobank, Bol and ING, and written a fair number of [blog posts](https://jeroenoverschie.nl). I very much enjoy sharing the story. My [research](https://jeroenoverschie.nl/research/) and side projects are documented here too, and my Open Source contributor activity can be found on [GitHub](https://github.com/dunnkers).
 
-### What I can do for you
+## What I can do for you
 
 - **Freelance AI Engineer**: production AI agents, end to end - multi-agent orchestration with Google's Agent Development Kit, deployment on Vertex AI Agent Engine (now Gemini Enterprise Agent Platform), MCP and tool integration into existing systems, plus the reliability testing, observability and evaluation needed to actually operate them.  
 *Example: I founded and shipped* [*Bonbonnetje*](https://jeroenoverschie.nl/our-internal-ai-agent-for-expenses-bonbonnetje/)*, an expense agent now running in production across Xebia and handling hundreds of submissions a month (see* [*the LinkedIn post*](https://www.linkedin.com/feed/update/urn:li:activity:7486407341958004736/)*); and designed an agentic self-serve ELT system for Hitachi using dbt-mcp and ADK.*
@@ -105,7 +105,7 @@ Alongside client work I've given [over ten conference talks](https://jeroenovers
 - **Freelance Machine Learning Engineer**: models and the engineering around them - Vertex AI pipelines, CI/CD, monitoring, model registries, and the practices that keep models maintainable after launch. *Example: predictive maintenance models and an MLOps platform for Vattenfall's European wind parks; an anti-money-laundering model taken to production at TMNL on distributed Spark pipelines; an MLOps platform review for de Bijenkorf.*
 - **Freelance Full Stack Engineer**: Python backends, web frontends, chat surfaces like Slack and Teams where agents increasingly live, and Google Cloud infrastructure managed with Terraform. *Example: seven years of freelance web development in Ember.js and React before I moved into ML, and end-to-end ownership of the FD search platform including IaC with Terraform and Atlantis and CI/CD on GitLab.*
 
-### Curious to collaborate? Getting in touch
+## Curious to collaborate? Getting in touch
 
 I'm available from September 2026, based in Amsterdam, remote or on-site in the Randstad. If you've got an agent that needs to reach production, a RAG system behaving inconsistently, or an ML setup that needs a review, book a slot and tell me about it.
 
@@ -140,8 +140,12 @@ Bachelor's thesis, published August 2019
 ## Posts
 ### Our internal AI agent for expenses: Bonbonnetje 🍬
 URL: https://jeroenoverschie.nl/our-internal-ai-agent-for-expenses-bonbonnetje/
-Last updated: 2026-09-03T14:15:59.000Z
-![](https://jeroenoverschie.nl/content/files/2026/07/bonbonnetje-demo-1.gif)
+Last updated: 2026-09-08T13:06:11.000Z
+0:00 
+
+/0:12 
+
+1× 
 
 **Bonbonnetje is an AI Agent running in production** helping Xebians submit expense claims. The Agent is built with Agent Development Kit and is running on Google Cloud Platform. Bonbonnetje is in active use by multiple internal departments and successfully completes hundreds of submissions monthly, helping save both employees and back-office valuable time.
 
@@ -648,7 +652,7 @@ Last updated: 2025-10-21T11:06:25.000Z
 Being at the right place at the right time.
 ### Are you ready for MLOps?
 URL: https://jeroenoverschie.nl/are-you-ready-for-mlops-on-xebia-com/
-Last updated: 2026-09-08T08:04:57.000Z
+Last updated: 2026-09-08T13:12:09.000Z
 ## Introduction
 
 MLOps has survived the hype cycle and is gaining in maturity. But are we looking at MLOps for answers for the right things? No matter how valuable MLOps can be for you, without proper building blocks in place MLOps cannot live up to its full potential. What are the prerequisites for MLOps? What parts of MLOps should you focus on? When should you even start thinking about MLOps, or when is ‘plain’ DevOps wiser to focus on first? Read along to learn more!
@@ -667,7 +671,7 @@ In short, being ready for MLOps means you understand:
 
 As an analogy, think of building a house. You need the right foundation in place first before you build higher. Each level needs to be built properly before you advance. If the right foundations are not in place, you can build however beautiful house on top of those foundations but still the building will not stand time.
 
-![house built on a bad foundation](https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide2025030221261.jpg)
+![house built on a bad foundation](https://jeroenoverschie.nl/content/images/2026/09/are-you-ready-for-mlops-Slide2025030221261.jpg)
 
 To build high, beautiful buildings, you need a solid foundation. So is the same for MLOps. Do you have the right foundation to adopt MLOps?
 
@@ -677,13 +681,13 @@ To start adopting MLOps the prerequisites need to be in place before we start bu
 
 Why bother with MLOps? Let's first explore what pain you might experience that MLOps can help with. First let's throw in a statistic. Gartner reported that on average only 54% of AI models move from pilot to production:
 
-![gartner survey ai models from pilot to production](https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide2025030221262.png)
+![gartner survey ai models from pilot to production](https://jeroenoverschie.nl/content/images/2026/09/are-you-ready-for-mlops-Slide2025030221262.webp)
 
 Many AI models developed never even reach production.
 
 ... that is not an awful lot. What a waste! We spent time *trying* to get models into production but we are not able to. Why is that? These days Data Science is not anymore a *new* domain by any means. The time when Hardvard Business Review posted the Data Scientist to be the "Sexiest Job of the 21st Century" is more than a decade ago [\[1\]](https://hbr.org/2012/10/data-scientist-the-sexiest-job-of-the-21st-century). In 2019 alone the Data Scientist job postings on Indeed rose by 256% [\[2\]](https://www.hiringlab.org/2019/01/17/data-scientist-job-outlook/). Universities have been pumping out Data Science graduates in rapid pace and the Open Source community made ML technology easy to use and widely available. Both the **tech** and the **skills** are there:
 
-![both tech and skills are present](https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide2025030221263.png)
+![both tech and skills are present](https://jeroenoverschie.nl/content/images/2026/09/are-you-ready-for-mlops-Slide2025030221263.webp)
 
 ML tech is by now easy to use and widely available. Data Science profiles are more abundant in the market than ever before.
 
@@ -702,13 +706,13 @@ So then let me re-iterate: why, still, are teams having troubles launching Machi
 
 **Expectation**:
 
-![ML dev and ops working well together](https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide2025030221264.png)
+![ML dev and ops working well together](https://jeroenoverschie.nl/content/images/2026/09/are-you-ready-for-mlops-Slide2025030221264.webp)
 
 It is often expected that development- and operations teams **magically* work well together.
 
 ... versus **Reality**:
 
-![ML dev and ops working badly together](https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide2025030221265.png)
+![ML dev and ops working badly together](https://jeroenoverschie.nl/content/images/2026/09/are-you-ready-for-mlops-Slide2025030221265.webp)
 
 In reality collaboration between development and operations is **hard* due to conflicting interests. With lacking collaboration an undesired handover between teams is introduced in which context is lost.
 
@@ -726,19 +730,19 @@ MLOps can help development- and production teams work better together and more e
 
 The term has gained in popularity since 2018 [\[3\]](https://trends.google.com/trends/explore?date=all&q=mlops) [\[4\]](https://www2.deloitte.com/content/dam/Deloitte/global/Images/infographics/technologymediatelecommunications/gx-deloitte-tmt-2018-predictions-full-report.pdf), when the Machine Learning had undergone massive growth. Fair to say, some years have passed by now and we have moved beyond the hype by now:
 
-![mlops in the hype cycle](https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide2025030221268.png)
+![mlops in the hype cycle](https://jeroenoverschie.nl/content/images/2026/09/are-you-ready-for-mlops-Slide2025030221268.webp)
 
 MLOps has moved beyond the hype and climbing up towards the plateau of productivity. Graph refers to [Gartner hype cycle](https://en.wikipedia.org/wiki/Gartner%5Fhype%5Fcycle).
 
 So what is MLOps comprised of? No longer is Machine Learning development only about training a ML model. We are concerned about *many* other things, too. Preprocessing, feature engineering, serving, scheduling and monitoring to name a few. We can map those to concrete methodologies and tooling that makes up the technical part of MLOps:
 
-![mlops components](https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide2025030221269.png)
+![mlops components](https://jeroenoverschie.nl/content/images/2026/09/are-you-ready-for-mlops-Slide2025030221269.webp)
 
 ML development activities mapped to core MLOps components.
 
 ... some might already come familiar to you. So do they to major Cloud Providers. Cloud providers have answered the market need for better tooling in the Machine Learning space. In fact every major provider has a Machine Learning platform that helps you do MLOps:
 
-![alt text](https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212610.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/are-you-ready-for-mlops-Slide20250302212610.webp)
 
 Major cloud providers offer managed MLOps platforms.
 
@@ -746,7 +750,7 @@ That is massively useful. Not only is more tooling available to do MLOps, there 
 
 Let's recall the three issues we had with handovers between development- and operations teams. Remember them? We can now map them toward what MLOps promises to give us, helping us with these issues. 
 
-![alt text](https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212611.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/are-you-ready-for-mlops-Slide20250302212611.webp)
 
 MLOps promises us speed by automation, rapid feedback and autonomy with end-to-end product teams.
 
@@ -756,7 +760,7 @@ MLOps promises us speed by automation, rapid feedback and autonomy with end-to-e
 
 MLOps is largely inspired by DevOps [\[5\]](https://en.wikipedia.org/wiki/MLOps). DevOps has existed for longer and is more established and mature. Since 2007 DevOps has been a massively influential methodology in software development. Key is that development is not sequential but *continuous*, best illustrated using the DevOps lifecycle:
 
-![alt text](https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212613.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/are-you-ready-for-mlops-Slide20250302212613.webp)
 
 The DevOps lifecycle [\[6\]](https://about.gitlab.com/topics/devops/).
 
@@ -769,7 +773,7 @@ In DevOps key principles are [\[6\]](https://about.gitlab.com/topics/devops/):
 
 ... so how does MLOps interplay with DevOps? DevOps came from the Software Development world and therefore deals with Code. In Machine Learning, however, important to take into account are also **Data** and the **Model**:
 
-![alt text](https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212614.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/are-you-ready-for-mlops-Slide20250302212614.webp)
 
 Whereas DevOps deals mainly with Code, MLOps also entails data and a ML model.
 
@@ -777,13 +781,13 @@ Taking into account automating operations related to all of the code, data and m
 
 Doing so continuously means we loop in our Monitoring practices back into our Model Building step like so:
 
-![alt text](https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212615.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/are-you-ready-for-mlops-Slide20250302212615.webp)
 
 Iterative, continuous development means using monitoring feedback to build- and improve your ML model.
 
 That's great. So again, what is this interplay between DevOps and MLOps? It is clear that MLOps lent a lot from DevOps. But so in what way do we *need* DevOps to do MLOps? The way we see it, is that you need to have DevOps in place before you can do MLOps. DevOps is a prerequisite for MLOps. It's like stacking building blocks on top of each other, creating a solid foundation before you build higher:
 
-![alt text](https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212616.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/are-you-ready-for-mlops-Slide20250302212616.webp)
 
 Get DevOps in place before you start doing MLOps.
 
@@ -793,13 +797,13 @@ That is promising, isn't it? Well, it is, but there's also effort required on th
 
 MLOps is about more than just tech. MLOps is about all of **Technology**, **People** and **Processes**. Getting MLOps right means have carefully considered all three:
 
-![alt text](https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212618.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/are-you-ready-for-mlops-Slide20250302212618.webp)
 
 MLOps is not just about tooling and tech. It is just as much about ****People** and ****Processes**.
 
 What does that mean? That means that in the MLOps lifecycle we want the ML product team to operate over the *entire* of the ML lifecycle, owning the entire process:
 
-![alt text](https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212619.jpg)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/are-you-ready-for-mlops-Slide20250302212619.jpg)
 
 The MLOps lifecycle [\[7\]](https://ml-ops.org/content/crisp-ml). The ML product team operates over the **entire* of the ML lifecycle.
 
@@ -807,7 +811,7 @@ The MLOps lifecycle [\[7\]](https://ml-ops.org/content/crisp-ml). The ML product
 
 To facilitate such a ML product team, a ML platform team is used to enable them. In a central team, they can provide best-practices and tooling to the ML product team. Key is, though, that still the ML product teams own the process from development to operation:
 
-![alt text](https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212620.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/are-you-ready-for-mlops-Slide20250302212620.webp)
 
 ML product teams are enabled by a central ML platform team.
 
@@ -817,7 +821,7 @@ ML product teams are enabled by a central ML platform team.
 
 We learned a lot. We should do MLOps to eliminate handovers between dev- and ops teams and bring Software Engineering operational efficiency to the Machine Learning World. MLOps does so by providing useful technologies and tooling, widely offered by major cloud providers. MLOps is largely inspired by DevOps, which is a prerequisite for MLOps. This allowed the industry to take advantage of well-matured DevOps concepts like automation, collaboration and continuous improvement. Only do MLOps if you have your DevOps practices in place. 
 
-![alt text](https://xebia.com/media/2025/04/are-you-ready-for-mlops-Slide20250302212621.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/are-you-ready-for-mlops-Slide20250302212621.webp)
 
 Dev- and ops can collaborate and co-exist happily together. Do MLOps once you get your DevOps practices in place.
 
@@ -860,7 +864,7 @@ Last updated: 2025-10-03T12:57:29.000Z
 All photos shot with the **Ricoh GR IIIx HDF**.
 ### The GenAI automation potential of data extraction
 URL: https://jeroenoverschie.nl/the-genai-automation-potential-of-data-extraction-on-xebia-com/
-Last updated: 2026-09-03T14:15:59.000Z
+Last updated: 2026-09-08T13:21:29.000Z
 ## Introduction
 
 GenAI has been around for a little while and its capabilities are expanding quickly. We are experiencing peak-hype levels for AI and expectations are sky-high. But still, many companies fail to generate actual value with GenAI. Why is that? Why are we promised so much yet manage to get so little? What is still fantasy and what concrete potential exists? What should be automated and what should not? In this blogpost, we explore the GenAI automation potential that exists today for *data extraction*.
@@ -886,7 +890,7 @@ Why exactly should we care about GenAI data extraction? Let us motivate this by 
 
 Imagine you are running an insurance company and your employees are tasked with processing insurance claims. Claims are often provided in a free-form format: email, phone call, chat, in short: unstructured data. Your employees will then need to process this information to handle the claim: update the internal databases, find similar claim cases, etc. Let’s take the case where we receive this information in free-form **text** like emails.
 
-![alt text](https://xebia.com/wp-content/uploads/2025/04/genai-automation-opportunity-sde-Slide202504041048_Victim_data_extraction_-_entire_email_box.jpg "The GenAI automation potential of data extraction 1")
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/genai-automation-opportunity-sde-Slide202504041048_Victim_data_extraction_-_entire_email_box.jpg "The GenAI automation potential of data extraction 1")
 
 LLMs can extract structured data from free-form text like an insurance claim, saving employees time doing it manually. See [Code](https://github.com/xebia/genai-data-extraction/blob/main/notebooks/insurance%5Fclaims%5Freports.ipynb).
 
@@ -898,7 +902,7 @@ Extracting client information from this email message took Gemini 2.0 Flash abou
 
 Different usecase. Imagine now you are running an online platform for food delivery. You want to digitise menu cards so the offering can be ingested in your own platform in standardised manner. You are staffing a number of employees to help you do this task. The menu cards arrive in **image** format. Can we speed up the menu conversion process?
 
-![alt text](https://xebia.com/wp-content/uploads/2025/04/genai-automation-opportunity-sde-Slide202504041048_Menu_card.jpg "The GenAI automation potential of data extraction 2")
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/genai-automation-opportunity-sde-Slide202504041048_Menu_card.jpg "The GenAI automation potential of data extraction 2")
 
 LLMs can read menu cards and convert them directly into a desired structured format, cutting development cost for custom- OCR and extraction solutions and potentially providing superior extraction performance. See [Code](https://github.com/xebia/genai-data-extraction/blob/main/notebooks/menu%5Fcard.ipynb).
 
@@ -910,7 +914,7 @@ Converting this menu card took Gemini 2.0 Flash about 10 seconds and cost $0.000
 
 Imagine you are tasked with answering questions based on financial documents. You are to go through each question and reason on the answer based on information provided in the documents. Take annual statements, for example. Companies worldwide are obliged to publish these statements and company finances are to be audited. Going through such documents is time-consuming. Take an annual statement in **PDF document** format. Can we help employees formulate answers based on this document faster?
 
-![alt text](https://xebia.com/wp-content/uploads/2025/04/genai-automation-opportunity-sde-Slide202504041048_Ahold_report.jpg "The GenAI automation potential of data extraction 3")
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/Ahold_report.jpg "The GenAI automation potential of data extraction 3")
 
 An entire annual report document of 382 pages fits in the model context at once, allowing the model to answer questions considering the **whole* document. Reasoning-type of questions like audit questionnaires can now be answered by LLMs, citing where the answer is located. The human gets a head start and then only has to check and extend the answers, saving time. See [Code](https://github.com/xebia/genai-data-extraction/blob/main/notebooks/annual%5Freport%5Faudit.ipynb).
 
@@ -924,7 +928,7 @@ Imagine you have a customer service department and are processing many calls on 
 
 The insights are valuable, but hard to get to. The data is hidden in an **audio format**.
 
-![alt text](https://xebia.com/wp-content/uploads/2025/04/genai-automation-opportunity-sde-Slide202504041048_Customer_support_call.jpg "The GenAI automation potential of data extraction 4")
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/genai-automation-opportunity-sde-Slide202504041048_Customer_support_call.jpg "The GenAI automation potential of data extraction 4")
 
 LLMs can listen to audio quicker than any human. Customer service calls can be analysed and previously-inaccessible but valuable information can be extracted and taken advantage of. Insights can be gathered in automated fashion, effectively improving business processes in targeted fashion. See [Code](https://github.com/xebia/genai-data-extraction/blob/main/notebooks/annual%5Freport%5Faudit.ipynb).
 
@@ -952,7 +956,7 @@ To discover what is possible with GenAI data extraction, we will divide into 4 l
 
 No automation is applied. Human labor is required to extract data in the desired format. The extracted data is then consumed by a human user. All of the data extraction-, evaluation of the data quality and any actions to be done with the data are manual human processes.
 
-![alt text](https://xebia.com/wp-content/uploads/2025/04/genai-automation-opportunity-sde-Slide202504041048_SDE_manual_work.png "The GenAI automation potential of data extraction 5")
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/genai-automation-opportunity-sde-Slide202504041048_SDE_manual_work.png "The GenAI automation potential of data extraction 5")
 
 Without automation, manual work is required to extract data in structured format. After extraction humans decide on what to do with the data.
 
@@ -962,7 +966,7 @@ We can do better. LLMs can be used to automate part of this process, helping the
 
 In the assisted workflow, a LLM is used to extract useful data. This process we like to call **Structured Data Extraction**.
 
-![alt text](https://xebia.com/wp-content/uploads/2025/04/genai-automation-opportunity-sde-Slide202504041048_SDE_Assisted.png "The GenAI automation potential of data extraction 6")
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/genai-automation-opportunity-sde-Slide202504041048_SDE_Assisted.png "The GenAI automation potential of data extraction 6")
 
 LLMs can be used for structured data extraction: extracting useful data from free-form documents in structured format.
 
@@ -972,19 +976,19 @@ That can already save a lot of time. Previously we needed to manually perform th
 
 In the autopilot workflow we go a step further. The extracted data is directly ingested in a **Data Warehouse**, opening up new automation possibilities. With the data in the data warehouse the data can be more efficiently taken advantage of. We can now use the data for dashboards and insights as well as use the data for Machine Learning usecases.
 
-![alt text](https://xebia.com/wp-content/uploads/2025/04/genai-automation-opportunity-sde-Slide202504041048_The_SDE_integration_benefit.png "The GenAI automation potential of data extraction 7")
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/genai-automation-opportunity-sde-Slide202504041048_The_SDE_integration_benefit.png "The GenAI automation potential of data extraction 7")
 
 When extracted data is ingested into a Data Warehouse the data can be more efficiently taken advantage of. Dashboards can reveal new insights and ML usecases can benefit from richer available data.
 
 Ingesting this data directly into a Data Warehouse can be beneficial indeed. But with the introduction of this automated ingestion we also need to be careful. Data Warehouse consumers are farther away from the extraction process and are not aware of the data quality. We need to always ask ourselves: Is this data reliable?
 
-![alt text](https://xebia.com/wp-content/uploads/2025/04/genai-automation-opportunity-sde-Slide202504041048_Is_this_data_reliable.png "The GenAI automation potential of data extraction 8")
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/genai-automation-opportunity-sde-Slide202504041048_Is_this_data_reliable.png "The GenAI automation potential of data extraction 8")
 
 Data Warehouse consumers need to always be aware of data- quality and reliability.
 
 Bad data quality can lead to misleading insights and bad decisions later down. This is not what we want! Quantified metrics informing us on the data reliability are required. Those with expertise in the dataset and those involved in the extraction process will need to help out. These are typically an AI Engineer and a Subject Matter Expert. We need to introduce an **evaluation** step.
 
-![alt text](https://xebia.com/wp-content/uploads/2025/04/genai-automation-opportunity-sde-Slide202504041048_SDE_Autopilot.png "The GenAI automation potential of data extraction 9")
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/genai-automation-opportunity-sde-Slide202504041048_SDE_Autopilot.png "The GenAI automation potential of data extraction 9")
 
 A Subject Matter Expert is required to label samples of data, informing Data Warehouse consumers and engineers on the data reliability. The Subject Matter Expert is to be enabled to also experiment with the data extraction process, lowering iteration times.
 
@@ -996,7 +1000,7 @@ We can go more automated, even. Let’s continue to the last level: **Autonomous
 
 In this level, the last human interactions are ought to be automated. Evaluation previously manually done by the Subject Matter Expert is now done by **Quality Assurance- and evaluation** tooling.
 
-![alt text](https://xebia.com/wp-content/uploads/2025/04/genai-automation-opportunity-sde-Slide202504041048_SDE_Autonomous_mode.png "The GenAI automation potential of data extraction 10")
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/genai-automation-opportunity-sde-Slide202504041048_SDE_Autonomous_mode.png "The GenAI automation potential of data extraction 10")
 
 Introducing Quality Assurance- and evaluation tooling allows the Structured Data Extraction system to run fully autonomous.
 
@@ -1021,7 +1025,7 @@ So say you are thinking about implementing a data extraction usecase. What is th
 
 We can see that the time savings are not linear. The more automation we apply, the less time we save. Even though, the last step is the hardest and most expensive to implement. It is not always worth the effort and cost to implement this last step. These are the **Diminishing Returns** of automation, which can be plotted as follows:
 
-![alt text](https://xebia.com/wp-content/uploads/2025/04/genai-automation-opportunity-sde-Slide202504041048_Automation_is_nice_but_value_is_the_goal.png "The GenAI automation potential of data extraction 11")
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/genai-automation-opportunity-sde-Slide202504041048_Automation_is_nice_but_value_is_the_goal.png "The GenAI automation potential of data extraction 11")
 
 Automation is nice but value is the goal. Take automation step-by-step. Partial automation is also valuable.
 
@@ -1034,7 +1038,7 @@ Let’s sum things up. To conclude, GenAI for data extraction is:
 Good luck with your own GenAI data extraction usecases 🍀♡.
 ### The Levels of RAG
 URL: https://jeroenoverschie.nl/the-levels-of-rag/
-Last updated: 2026-09-03T14:15:59.000Z
+Last updated: 2026-09-08T13:13:14.000Z
 ## Introduction
 
 LLM’s can be supercharged using a technique called RAG, allowing us to overcome dealbreaker problems like hallucinations or no access to internal data. RAG is gaining more industry momentum and is becoming rapidly more mature both in the open-source world and at major Cloud vendors. But what can we expect from RAG? What is the current state of the tech in the industry? What use cases work well and which are more challenging? Let’s find out together!
@@ -1054,7 +1058,7 @@ That all sounds great. But how does RAG work? Let’s introduce the Levels of RA
 RAG has many different facets. To help more easily understand RAG, let’s break it down into four levels:
 
 __The Levels of RAG.__
-| ![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-level-1-high-res.jpg)Level 1Basic RAG | ![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-level-2-high-res.jpg)Level 2Hybrid Search | ![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-level-3-high-res.jpg)Level 3Advanced data formats | ![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-level-4-high-res.jpg)Level 4Multimodal |
+| ![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-level-1-high-res.jpg)Level 1Basic RAG | ![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-level-2-high-res.jpg)Level 2Hybrid Search | ![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-level-3-high-res.jpg)Level 3Advanced data formats | ![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-level-4-high-res.jpg)Level 4Multimodal |
 | ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
 
 Each level adds new complexity. Besides explaining the techniques, we will also look into justifying the introduced complexities. That is important, because you want to have good reasons to do so: we want to make everything as simple as possible, but no simpler [\[1\]](https://www.goodreads.com/quotes/7133605-make-things-as-simple-as-possible-but-no-simpler).
@@ -1063,11 +1067,11 @@ We will start with building a RAG from the beginning and understand which compon
 
 ## Level 1: Basic RAG
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-level-1-high-res.jpg)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-level-1-high-res.jpg)
 
 Let’s build a RAG. To do RAG, we need two main components: **document retrieval** and **answer generation**.
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide1-3.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide1-3.png)
 
 The two main components of RAG: document retrieval and answer generation.
 
@@ -1079,7 +1083,7 @@ Let’s look at both components in more detail, starting with the *Document retr
 
 To retrieve documents relevant to our user query, we will use Vector Search. This technique is based on *vector embeddings*. What are those? Imagine we embed words. Then words that are semantically similar should be closer together in the embedding space. We can do the same for sentences, paragraphs, or even whole documents. Such an embedding is typically represented by vectors of 768-, 1024-, or even 3072 dimensions. Though we as humans cannot visualize such high-dimensional spaces: we can only see 3 dimensions! For example sake let us compress such an embedding space into 2 dimensions so we visualize it:
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide2-2.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide2-2.webp)
 
 Embeddings that are similar in meaning are closer to each other. In practice not in 2D but higher dimensions like 768D.
 
@@ -1087,37 +1091,37 @@ Note this is a drastically oversimplified explanation of vector embeddings. Crea
 
 So how to use this for RAG? Well, instead of embedding words we can embed our source documents instead. We can then *also* embed the user question and then perform a *vector similarity search* on those:
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide3.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide3.png)
 
 Embedding both our source documents and the search query allows us to do a *vector similarity search*.
 
 Great! We now have the ingredients necessary to construct our first *Document retrieval* setup:
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide4.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide4.png)
 
 The full retrieval step with *vector search*.
 
 Next is the *Answer generation* step. This will entail passing the found pieces of context to an LLM to form a final answer out of it. We will keep that simple so will use a single prompt for that:
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide5.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide5.png)
 
 The RAG answer generation step. Prompt from LangChain hub ([rlm/rag-prompt](https://smith.langchain.com/hub/rlm/rag-prompt)).
 
 Cool. That concludes our full first version of the Basic RAG. To test our RAG system, we need some data. I recently went to PyData and figured how cool would it be to create a RAG based on their schedule. Let’s design a RAG using the schedule of PyData Eindhoven 2024.
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide6.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide6.webp)
 
 The RAG system loaded with data from the [PyData Eindhoven 2024 schedule](https://pydata.org/eindhoven2024/schedule).
 
 So how do we ingest such a schedule in a vector database? We will take each session and format it as Markdown, respecting the structure of the schedule by using headers.
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide7.jpg)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide7.jpg)
 
 Each session is formatted as Markdown and then converted to an embedding.
 
 Our RAG system is now fully functional. We embedded all sessions and ingested them into a vector database. We can then find sessions similar to the user question using vector similarity search and answer the question based on a predefined prompt. Let’s test it out!
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide8.jpg)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide8.jpg)
 
 Testing out our basic RAG system. The RAG retrieves talks related to the user question and correctly answers the question.
 
@@ -1135,14 +1139,14 @@ So what we can do to solve this problem is to divide up text in smaller pieces, 
 
 In chunking the challenge lies in determining *how* to divide up the text to then embed those smaller pieces. There are *many* ways to chunk text. Let’s first look at a simple one. We will create chunks of fixed length:
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide9.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide9.png)
 
 Splitting a text into fixed-sized pieces does not create meaningful chunks. Words and sentences are split in random places.   
 [Character Text Splitter](https://api.python.langchain.com/en/latest/character/langchain%5Ftext%5Fsplitters.character.CharacterTextSplitter.html#langchain%5Ftext%5Fsplitters.character.CharacterTextSplitter) with `chunk_size = 25`. This is an unrealistically small chunk size but is merely used for example sake.
 
 This is not ideal. Words, sentences and paragraphs are not respected and are split at inconvenient locations. This decreases the quality of our embeddings. We can do better than this. Let’s try another splitter that tries to better respect the structure of the text by taking into account line breaks (¶):
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide10.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide10.png)
 
 Text is split, respecting line breaks (¶). This way, chunks do not span across paragraphs and split better.   
 [Recursive Character Text Splitter](https://api.python.langchain.com/en/latest/character/langchain%5Ftext%5Fsplitters.character.RecursiveCharacterTextSplitter.html#langchain%5Ftext%5Fsplitters.character.RecursiveCharacterTextSplitter) with `chunk_size = 25`. This is an unrealistically small chunk size but is merely used for example sake.
@@ -1151,7 +1155,7 @@ This is better. The quality of our embeddings is now better due to better splits
 
 Now we have chunked our text, we can embed those chunks and ingest them in our vector database. Then, when we let the LLM answer our question we can also ask it to state which chunks it used in answering the question. This way, we can pinpoint accurately which information the LLM was grounded in whilst answering the question, allowing us to provide the user with **Citations**:
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide11.jpg)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide11.jpg)
 
 Chunks can be used to show user where the information came from to generate the final answer, allowing us to show the user source **citations**.
 
@@ -1163,13 +1167,13 @@ That is great. Citations can be very powerful in a RAG application to improve tr
 
 We can now extend our *Document retrieval* step with chunking:
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide12.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide12.webp)
 
 RAG retrieval step with **chunking**.
 
 We have our Basic RAG set up with *Vector search* and *Chunking*. We also saw our system can answer questions correctly. But how well actually does it do? Let’s take the question “*What’s the talk starting with Maximizing about?*” and launch it at our RAG:
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide13.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide13.webp)
 
 For this question the incorrect context is retrieved, causing the LLM to give a *wrong* answer.  
 UI shown is [LangSmith](https://www.langchain.com/langsmith), a GenAI monitoring tool. Open source alternative is [LangFuse](https://langfuse.com/).
@@ -1180,7 +1184,7 @@ For this reason, we need another method of search, like *keyword search*. Becaus
 
 ## Level 2: Hybrid Search
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-level-2-high-res.jpg)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-level-2-high-res.jpg)
 
 In Hybrid Search, we aim to combine two ranking methods to get the best of both worlds. We will combine *Vector search* with *Keyword search* to create a Hybrid Search setup. To do so, we must pick a suitable ranking method. Common ranking algorithms are:
 
@@ -1189,13 +1193,13 @@ In Hybrid Search, we aim to combine two ranking methods to get the best of both 
 
 … of which we can consider BM-25 an improved version of TF-IDF. Now, how do we combine Vector Search with an algorithm like BM-25? We now have two separate rankings we want to *fuse* together into one. For this, we can use **Reciprocal Rank Fusion**:
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide14.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide14.png)
 
 Reciprocal Rank Fusion is used to merge two ranking methods into one (see [Elastic Search docs](https://www.elastic.co/guide/en/elasticsearch/reference/current/rrf.html)).
 
 Reciprocal Rank Fusion is massively useful to combine two rankings. This way, we can now use both Vector search and Keyword search to retrieve documents. We can now extend again our *Document retrieval* step to create a Hybrid Search setup:
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide15.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide15.png)
 
 The RAG retrieval step with **hybrid search**.
 
@@ -1203,13 +1207,13 @@ Most notably, when a user performs a search, a query is made both to our vector 
 
 Let’s take again the question “*What’s the talk starting with Maximizing about?*” like we did in Level 1 and see how our RAG handles it with Hybrid Search:
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide16.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide16.png)
 
 Hybrid Search allows us to combine Vector search and Keyword search, allowing us to retrieve the desired document containing the keyword.
 
 That is much better! 👏🏻 The document we were looking for was now ranked high enough that it shows up in our retrieval step. It did so by boosting the terms used in the search query. Without the document available in our prompt context, the LLM could impossibly give us the correct answer. Let’s see both the retrieval step and generation step to see what our LLM now answers on this question:
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide17.jpg)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide17.jpg)
 
 With the correct context, we also got the correct answer!
 
@@ -1217,7 +1221,7 @@ That is the correct answer ✓. With the right context available to the LLM we a
 
 We now learned how to build a Basic RAG system and how to improve it with Hybrid Search. The data we loaded in comes from the PyData Eindhoven 2024 schedule: which was actually conveniently available in JSON format. But what about other data formats? In the real world, we can be asked to ingest other formats into our RAG like HTML, Word, and PDF.
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide18.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide18.png)
 
 Having structured data available like JSON is great, but that is not always the case in real life…
 
@@ -1225,7 +1229,7 @@ Formats like HTML, Word and especially PDF can be very unpredictable in terms of
 
 ## Level 3: Advanced data formats
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-level-3-high-res.jpg)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-level-3-high-res.jpg)
 
 This level revolves around ingesting challenging data formats like HTML, Word or PDF into our RAG. This requires extra considerations to do properly. For now, we will focus on **PDF’s**.
 
@@ -1233,13 +1237,13 @@ So, let us take some PDF’s as an example. I found some documents related to Sp
 
 Falcon 9 related documents we are going to build a RAG with.
 
-| ![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-falcon-users-guide-high-res.png) | ![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-falcon-nasa-document-high-res.png) | ![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-falcon-capabilities-overview-high-res.png) |
-| ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| User’s guide [(pdf)](https://www.spacex.com/media/falcon-users-guide-2021-09.pdf)                       | Cost estimates[ (pdf)](https://www.nasa.gov/wp-content/uploads/2015/01/586023main%5F8-3-11%5FNAFCOM.pdf)  | Capabilities & Services [(pdf)](https://www.spacex.com/media/Capabilities&Services.pdf)                           |
+| ![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-falcon-users-guide-high-res.webp) | ![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-falcon-nasa-document-high-res.png) | ![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-falcon-capabilities-overview-high-res.png) |
+| -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| User’s guide [(pdf)](https://www.spacex.com/media/falcon-users-guide-2021-09.pdf)                        | Cost estimates[ (pdf)](https://www.nasa.gov/wp-content/uploads/2015/01/586023main%5F8-3-11%5FNAFCOM.pdf)  | Capabilities & Services [(pdf)](https://www.spacex.com/media/Capabilities&Services.pdf)                           |
 
 We will now want to first parse those documents into raw text, such that we can then chunk- and embed that text. To do so, we will use a PDF parser for Python like [pypdf](https://pypdf.readthedocs.io/en/stable/). Conveniently, there’s a LangChain loader available for pypdf:
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide20.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide20.png)
 
 PDF to text parsing using [PyPDFLoader](https://api.python.langchain.com/en/latest/document%5Floaders/langchain%5Fcommunity.document%5Floaders.pdf.PyPDFLoader.html#langchain%5Fcommunity.document%5Floaders.pdf.PyPDFLoader).
 
@@ -1247,19 +1251,19 @@ Using pypdf we could convert these PDF’s into *raw text*. Note there’s many 
 
 With such a document parsing step set up, we will need to extend our *Document retrieval* step to cover this new component:
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide21.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide21.png)
 
 RAG retrieval with a *document parsing step*, like converting PDF to raw text.
 
 Time to test out our RAG! We embedded and ingested the raw text into our vector database and can now make queries against it. Let’s ask about the cost of a Falcon 9 rocket launch:
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide22.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide22.png)
 
 Our RAG can now answer questions about the PDF’s.
 
 Awesome, that is the correct answer. Let’s try another question: “*What is the payload I can carry with the Falcon 9 rocket to Mars?*“:
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide23.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide23.png)
 
 Ouch! Our RAG got the answer wrong. It suggests that we can bring 8,300 kg of payload to Mars with a Falcon 9 rocket whilst in reality, this is 4,020 kg. That’s no small error.
 
@@ -1267,7 +1271,7 @@ Ow! Our RAG got that answer all wrong. It suggests we can bring double the paylo
 
 We need to debug what went wrong. Let’s look at the context that was passed to the LLM:
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide24.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide24.png)
 
 The context provided to the LLM contains jumbled and unformatted text originating from a table. It should therefore come as no surprise that our LLM has difficulties answering questions about this table.
 
@@ -1275,13 +1279,13 @@ That explains a bunch. The context we’re passing to the LLM is hard to read an
 
 If we want to support tables we can introduce an extra processing step. One option is to use Computer vision models to detect tables inside our documents, like [table-transformer](https://github.com/microsoft/table-transformer). If a table gets detected we can then give it a special treatment. What we can for example do, is encode tables in our prompt as **Markdown**:
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide25.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide25.png)
 
 First parsing our table into a native format and then converting it to Markdown allows our LLM to much better understand the table.
 
 Having detected the table and parsed it into a native format in our Python code allows us to then encode it in Markdown. Let’s pass that to our LLM instead and see what it answers this time:
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide26.jpg)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide26.jpg)
 
 Our RAG got the answer correct this time.
 
@@ -1291,11 +1295,11 @@ However, I have to admit something. The model we have been using for this task w
 
 ## Level 4: Multimodal
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-level-4-high-res.jpg)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-level-4-high-res.jpg)
 
 In this final level, we will look into leveraging the possibilities of Multimodal models. One of them is GPT-4o, which was announced May 2024:
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide27.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide27.png)
 
 GPT-4o is a multimodal model that can reason across audio, vision and text. Launched by OpenAI in May 2024.
 
@@ -1303,13 +1307,13 @@ This is a very powerful model that can understand audio, vision and text. This m
 
 For example sake we will take the same table we had before but then answer the question using a Multimodal model. We can take the retrieved PDF pages encoded as images and insert them right into the prompt:
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide28.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide28.webp)
 
 With a Multimodal model, we can insert an image in the prompt and let the LLM answer questions about it.
 
 Impressive. The LLM got the answer correct. We should be aware though, that inserting images in the prompt comes with a very different token usage than the Markdown table we inserted as text before:
 
-![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-Slide29.png)
+![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-Slide29.webp)
 
 When using Multimodal models, do be aware of the extra cost that comes with it.
 
@@ -1320,7 +1324,7 @@ That is an immense increase in cost. Multimodal models can be incredibly powerfu
 We have explored RAG in 4 levels of complexity. We went from building our first basic RAG to a RAG that leverages Multimodal models to answer questions based on complex documents. Each level introduces new complexities which are justified in each their own way. Summarising, the Levels of RAG are:
 
 __The Levels of RAG, summarised.__
-| ![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-level-1-high-res.jpg)Level 1Basic RAG                                                                        | ![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-level-2-high-res.jpg)Level 2Hybrid Search                                                                                                | ![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-level-3-high-res.jpg)Level 3Advanced data formats                                                                                      | ![alt text](https://xebia.com/wp-content/uploads/2024/07/levels-of-rag-level-4-high-res.jpg)Level 4Multimodal                                                                                                                                                      |
+| ![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-level-1-high-res.jpg)Level 1Basic RAG                                                                        | ![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-level-2-high-res.jpg)Level 2Hybrid Search                                                                                                | ![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-level-3-high-res.jpg)Level 3Advanced data formats                                                                                      | ![alt text](https://jeroenoverschie.nl/content/images/2026/09/levels-of-rag-level-4-high-res.jpg)Level 4Multimodal                                                                                                                                                      |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | RAG’s main steps are 1) retrieval and 2) generation. Important components to do so are Embedding, Vector Search using a Vector database, Chunking and a Large Language Model (LLM). | Combining vector search and keyword search can improve retrieval performance. Sparse text search can be done using: TF-IDF and BM- 25\. Reciprocal Rank Fusion can be used to merge two search engine rankings. | Support formats like HTML, Word and PDF. PDF can contain images, graphs but also tables. Tables need a separate treatment, for example with Computer Vision, to then expose the table to the LLM as Markdown. | Multimodal models can reason across audio, images and even video. Such models can help process complex data formats, for example by exposing PDF’s as images to the model. Given that the extra cost is worth the benefit, such models can be incredibly powerful. |
 
@@ -2068,7 +2072,7 @@ Blogpost
 PyData Eindhoven (image courtesy of [PyData.org](https://pydata.org/eindhoven2024/squarespace/images.squarespace-cdn.com/content/v1/63d03c03cfbdde598f7d3964/53f17037-602d-448d-bc34-80a45bd723a1/-yqwb0mI.jpeg))
 ### How to create a Devcontainer for your Python project 🐳
 URL: https://jeroenoverschie.nl/how-to-create-a-devcontainer-for-your-python-project/
-Last updated: 2026-09-03T14:16:00.000Z
+Last updated: 2026-09-08T13:13:15.000Z
 Imagine the following scenario 💭.
 
 Your company uses Apache Spark to process data, and your team has pyspark set up in a Python project. The codebase is built on a specific Python version, using a certain Java installation, and an accompanying pyspark version that works with the former. To onboard a new member, you will need to pass a list of instructions the developer needs to follow carefully to get their setup working. But not everyone might run this on the same laptop environment: different hardware, and different operating systems. This is getting challenging.  
@@ -2078,7 +2082,7 @@ We can do better than this! Instead of giving other developers a setup document,
 
 **Devcontainers** let you connect your IDE to a running Docker container. In this way, we get the benefits of reproducibility and isolation, whilst getting a native development experience.
 
-![Devcontainer usage overview](https://xebia.com/wp-content/uploads/2023/02/devcontainer-overview-4.png.webp)
+![Devcontainer usage overview](https://jeroenoverschie.nl/content/images/2026/09/devcontainer-overview-4.png)
 
 With Devcontainers you can interact with your IDE like you're used to whilst under the hood running everything inside a Docker container.
 
@@ -2168,15 +2172,19 @@ The `.devcontainer` folder is in place, so it’s now time to open our Devcontai
 
 First, make sure you have the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) installed in VSCode (previously called “Remote – Containers”. That done, if you open your repo again, the extension should already detect your Devcontainer:
 
-![folder contains a dev container config file](https://xebia.com/wp-content/uploads/2023/02/folder-contains-a-dev-container-config-file.png.webp)
+![folder contains a dev container config file](https://jeroenoverschie.nl/content/images/2026/09/folder-contains-a-dev-container-config-file.png)
 
 Alternatively, you can open up the command palette (CMD + Shift + P) and select “*Dev Containers: Reopen in Container*”:
 
-![Dev Containers: Reopen in Container](https://xebia.com/wp-content/uploads/2023/02/reopen-in-devcontainer-notification.png.webp)
+![Dev Containers: Reopen in Container](https://jeroenoverschie.nl/content/images/2026/09/reopen-in-devcontainer-notification.png)
 
 Your VSCode is now connected to the Docker container :
 
-![VSCode is now connected to the Docker container](https://xebia.com/wp-content/uploads/2023/02/opening-the-devcontainer.gif.webp)
+0:00 
+
+/0:10 
+
+1× 
 
 ### **What is happening under the hood**
 
@@ -2191,7 +2199,7 @@ This then allows you to use your Git repo like you do normally, without re-authe
 
 Since all instructions on how to configure your dev environment are now defined in a Dockerfile, users can open up your Devcontainer with just one button:
 
-![Open in Remote - Containers](https://xebia.com/wp-content/uploads/2023/11/v1.svg)
+![Open in Remote - Containers](https://jeroenoverschie.nl/content/images/2026/09/v1.svg)
 
 Ain’t that cool? You can add a button to your repo like so:
 
@@ -2208,9 +2216,9 @@ Just modify the GitHub URL ✓.
 
 That said, we can see having built a Devcontainer can make our README massively more readable. What kind of README would you rather like?
 
-| Manual installation                                                                         | Using a Devcontainer                                                                              |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| ![](https://xebia.com/wp-content/uploads/2023/02/installation-instructions-manual.png.webp) | ![](https://xebia.com/wp-content/uploads/2023/02/installation-instructions-devcontainer.png.webp) |
+| Manual installation                                                                    | Using a Devcontainer                                                                         |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| ![](https://jeroenoverschie.nl/content/images/2026/09/installation-instructions-manual.png) | ![](https://jeroenoverschie.nl/content/images/2026/09/installation-instructions-devcontainer.png) |
 
 ## **Extending the Devcontainer**
 
@@ -2227,7 +2235,7 @@ Let’s see how.
 
 If you `pip install` a new package, you will see the following message:
 
-![The warning message: “*WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: [https://pip.pypa.io/warnings/venv](https://pip.pypa.io/warnings/venv)*](https://xebia.com/wp-content/uploads/2023/02/running-pip-as-root.png.webp)
+![The warning message: “*WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: [https://pip.pypa.io/warnings/venv](https://pip.pypa.io/warnings/venv)*](https://jeroenoverschie.nl/content/images/2026/09/running-pip-as-root.png)
 
 Indeed, it is not recommended to develop as a *root* user. It is considered a good practice to create a different user with fewer rights to run in production. So let’s go ahead and create a user for this scenario.
 
@@ -2294,11 +2302,11 @@ Since we are using pyspark, we want to be able to access **Spark UI**. When we s
 
 When we now run our code, we get a notification we can open Spark UI in the browser:
 
-![open Spark UI in the browser](https://xebia.com/wp-content/uploads/2023/02/application-running-on-port-4040.png.webp)
+![open Spark UI in the browser](https://jeroenoverschie.nl/content/images/2026/09/application-running-on-port-4040.png)
 
 Resulting in the Spark UI as we know it:
 
-![spark UI in the browser](https://xebia.com/wp-content/uploads/2023/02/spark-ui-visible-in-localhost-4040.png.webp)
+![spark UI in the browser](https://jeroenoverschie.nl/content/images/2026/09/spark-ui-visible-in-localhost-4040.png)
 
 ✨
 
@@ -2352,7 +2360,7 @@ jobs:
 
 That’s great! Whenever this workflow runs on your main branch, the image will be pushed to the configured registry; in this case GitHub Container Registry (GHCR). See below a trace of the executed GitHub Action:
 
-![running-ci-in-the-devcontainer-github-actions](https://xebia.com/wp-content/uploads/2023/02/running-ci-in-the-devcontainer-github-actions.png.webp)
+![running-ci-in-the-devcontainer-github-actions](https://jeroenoverschie.nl/content/images/2026/09/running-ci-in-the-devcontainer-github-actions.png)
 
 Awesome!
 
@@ -2439,7 +2447,7 @@ With the CI now set up, we can reuse the same Docker image for two purposes. For
 
 This sets us up for having 3 different images for our entire lifecycle. One for Development, one for CI, and finally one for production. This can be visualized like so:
 
-![three-environments-docker-images-devcontainer](https://xebia.com/wp-content/uploads/2023/02/three-environments.png.webp)
+![three-environments-docker-images-devcontainer](https://jeroenoverschie.nl/content/images/2026/09/three-environments.png)
 
 So, we can see, when using a Devcontainer you can re-use your production image and build on top of it. Install extra tooling, make sure it can talk to VSCode, and you’re done .
 
@@ -2681,7 +2689,7 @@ You can find the module here:
 Written by [Jeroen Overschie](https://jeroenoverschie.nl/), working at [GoDataDriven](https://godatadriven.com/).
 ### DropBlox: Coding Challenge at PyCon DE & PyData Berlin 2022
 URL: https://jeroenoverschie.nl/dropblox-coding-challenge-at-pycon-de-pydata-berlin-2022/
-Last updated: 2026-09-03T14:16:00.000Z
+Last updated: 2026-09-08T13:12:09.000Z
 Conferences are great. You meet new people, you learn new things. But have you ever found yourself back in the hotel after a day at a conference, thinking what to do now? Or were you ever stuck in one session, wishing you had gone for that other one? These moments are the perfect opportunity to open up your laptop and compete with your peers in a coding challenge.
 
 Attendees of the three-day conference PyCon DE & PyData Berlin 2022 had the possibility to do so, with our coding challenge DropBlox.
@@ -2705,11 +2713,11 @@ Participants of the challenge were given the following:
 - 1500 blocks of various colors and shapes, each with a unique identifier (see Fig. 1)
 - A rewards table, specifying the points and multipliers per color (see Table 1)
 
-![DropBlox: Type of Blocks](https://xebia.com/wp-content/uploads/2023/02/type-of-blocks.png.webp)
+![DropBlox: Type of Blocks](https://jeroenoverschie.nl/content/images/2026/09/type-of-blocks.png)
 
 Figure 1: A random subset of blocks from the challenge and their corresponding IDs.
 
-![Score scheme](https://xebia.com/wp-content/uploads/2023/02/point-scheme.png.webp)
+![Score scheme](https://jeroenoverschie.nl/content/images/2026/09/point-scheme.png)
 
 Table 1: The rewards table, specifying how each color contributes to the score of a solution of the challenge. We assign points to each tile in the final solution, while the multiplier only applies to rows filled with tiles of the same color.
 
@@ -2719,11 +2727,11 @@ The rules are as follows:
 - Each block can be used at most once
 - The score of a solution is computed using the rewards table. For each row, we add the points of each tile to the score. If the row consists of tiles of a single color only, we multiply the points of that row by the corresponding multiplier. The final score is the sum of the scores of the rows. (see Fig. 3)
 
-![DropBlox: Example 1](https://xebia.com/wp-content/uploads/2023/02/situation-one.png.webp)
+![DropBlox: Example 1](https://jeroenoverschie.nl/content/images/2026/09/situation-one.png)
 
 Figure 2: An example 6×6 field and a blue block dropped at x-coordinate 1.
 
-![DropBlox: Example 2](https://xebia.com/wp-content/uploads/2023/02/situation-2.png.webp)
+![DropBlox: Example 2](https://jeroenoverschie.nl/content/images/2026/09/situation-2.png)
 
 Figure 3: An example of the computation of the score of a solution. The points and multipliers per color are specified in Table 1.
 
@@ -2748,7 +2756,7 @@ Most importantly, we worked with a team of excited people with complementing ski
 
 We have a separate private repository, in which we keep all the logic that is hidden to the participant. In there, we have the ground-truth scoring function, and all logic necessary to run our web app. When participants submit their solution or check out the leaderboard, an Azure Function spins up to run the logic of our web app. The Azure Function is connected to an SQL database, where we store or retrieve submissions from. We store images, such as the visualization of the final solution, in the blob storage. To create the leaderboard, we retrieve the top-scoring submissions of each user and combine them with the corresponding images in the blob storage.
 
-![Components of DropBlox](https://xebia.com/wp-content/uploads/2023/02/components.png.webp)
+![Components of DropBlox](https://jeroenoverschie.nl/content/images/2026/09/components.png)
 
 Figure 4: The different components of the challenge, including those hidden to the participants.
 
@@ -2758,13 +2766,13 @@ What’s the use of a competition if nobody knows about it? Spread the word!
 
 To attract attention to our coding competition, we did two things. First, we set up an appealing booth at the company stands. We put our prize right in front, and a real-time dashboard showing the highscores beside. Surely, anyone walking past will at least question themselves what that Lego toy is doing at a Python conference.
 
-![booth_gdd](https://xebia.com/wp-content/uploads/2023/02/booth_gdd.png.webp)
+![booth_gdd](https://jeroenoverschie.nl/content/images/2026/09/booth_gdd.png)
 
 Figure 5: Our company booth at PyCon DE & PyData Berlin 2022
 
 Second, we went out to the conference Lightning Talks and announced our competition there. Really, the audience was great. Gotta love the energy at conferences like these.
 
-![DropBlox Explained](https://xebia.com/wp-content/uploads/2023/02/Screenshot-2022-07-27-at-14.56.10.png.webp)
+![DropBlox Explained](https://jeroenoverschie.nl/content/images/2026/09/Screenshot-2022-07-27-at-14.56.10.png)
 
 Figure 6: Promoting the challenge at a Lightning Talk
 
@@ -2780,7 +2788,7 @@ S. Tschöke named his first approach “Breakfast cereal”, as he was inspired 
 
 After a less successful, but brave approach using a genetic algorithm, he extended the breakfast cereal approach. This time, instead of the size of a block he used the block’s density, or the percentage of filled tiles within the height and width of a block; and he sorted the blocks by color. Taking a similar approach as before, but now including the different color orderings, resulted in 46k points. (See Fig. 6)
 
-![DropBlox solution of the number 12](https://xebia.com/wp-content/uploads/2023/02/number-14.png)
+![DropBlox solution of the number 12](https://jeroenoverschie.nl/content/images/2026/09/number-14.png)
 
 Figure 6: Final solution of the #14 in the challenge, S. Tschöke, with 45844 points.
 
@@ -2796,7 +2804,7 @@ His strategy consisted of two parts. The first is to manually construct some row
 
 This strategy resulted in 62k points. (See Fig. 7)
 
-![DropBlox solution of the number 2](https://xebia.com/wp-content/uploads/2023/02/number-2.png)
+![DropBlox solution of the number 2](https://jeroenoverschie.nl/content/images/2026/09/number-2.png)
 
 Figure 7: Final solution of the #2 in the challenge, R. Garnier, with 62032 points.
 
@@ -2818,13 +2826,13 @@ The programmer’s solution refers to the rest of the field. The problem with th
 5. Drop that block and remove it from the list
 6. Repeat from 3
 
-![DropBlox solution of the number 1](https://xebia.com/wp-content/uploads/2023/02/number-one.png)
+![DropBlox solution of the number 1](https://jeroenoverschie.nl/content/images/2026/09/number-one.png)
 
 Figure 8: Final solution of the #1 in the challenge, G. Chanturia, with 68779 points.
 
 And most importantly, the #1 place does not go home empty-handed. The #1 contender wins the infamous Lego R2D2! And we can acknowledge that indeed, yes, the R2D2 turned quite some heads at the conference. The award was given to the winner at the last Lightning Talk series of the conference.
 
-![award handover](https://xebia.com/wp-content/uploads/2023/02/award-handover.jpg.webp)
+![award handover](https://jeroenoverschie.nl/content/images/2026/09/award-handover.jpg)
 
 Figure 9: Our winner receives his coveted prize!
 
