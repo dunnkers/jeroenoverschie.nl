@@ -5,7 +5,7 @@
 # COVID-19 Dashboard
 - URL: https://jeroenoverschie.nl/covid-19-dashboard/
 - Published: 2020-02-29T23:00:00.000Z
-- Updated: 2022-01-06T13:06:59.000Z
+- Updated: 2026-09-08T14:45:34.000Z
 - Description: What parts of the world are susceptible to Corona outbreak? We used Big Data and Data Engineering in this project to find out.
 - Author: Jeroen Overschie
 - Tags: Data Science, Software Engineering
@@ -44,6 +44,6 @@ To see the front-end in action, see the [live dashboard](https://dunnkers.com/di
 
 For further reading, check out the GitHub repository:
 
-[![](https://jeroenoverschie.nl/content/images/2021/11/github32-1.png)](https://github.com/dunnkers/disease-spread)
+[![GitHub repository: disease-spread](https://jeroenoverschie.nl/content/images/2021/11/github32-1.png)](https://github.com/dunnkers/disease-spread)
 
 [disease-spread](https://github.com/dunnkers/disease-spread)

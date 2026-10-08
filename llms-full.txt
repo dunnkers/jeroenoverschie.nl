@@ -87,10 +87,10 @@ Let's collaborate ✓
 — [LinkedIn](http://www.linkedin.com/in/jeroenoverschie)
 ### Freelance AI Engineer in Amsterdam — Jeroen Overschie
 URL: https://jeroenoverschie.nl/freelance-ai-engineer-in-amsterdam-jeroen-overschie/
-Last updated: 2026-09-08T13:15:05.000Z
-Hi!! Super nice to meet you – I'm Jeroen. I've worked in the software domain for over a decade and in Data & AI for about five years. First as a Data Scientist, then ML Engineer, now AI Engineer. Before that I spent about seven years doing freelance web development alongside my studies. From September 2026 I am for freelance work again, based in Amsterdam, working in Dutch or English.
+Last updated: 2026-10-08T09:23:56.000Z
+Hi!! Super nice to meet you – I'm Jeroen. I've worked in the software domain for over a decade and in Data & AI for about five years. First as a Data Scientist, then ML Engineer, now AI Engineer. Before that I spent about seven years doing freelance web development alongside my studies. I am currently available for freelance work! I am based in Amsterdam and work in Dutch or English.
 
-My work has tracked the field closely. I have done classical machine learning and MLOps at TMNL and Vattenfall, then a run of RAG and GenAI projects at NPO, Klaverblad, ING and DataSnipper. More recentlyAgentic systems and search: Agentspace at BCG, an Agentic ELT pipeline built with Agent Development Kit (ADK), and a hybrid search engine for FD Mediagroep that now serves millions of requests a year. Specializing on Google Cloud Platform, and specialized with getting something running in production rather than a recommendation. Find more elaborate [project descriptions on my LinkedIn](https://www.linkedin.com/in/jeroenoverschie/details/projects/).
+My work has tracked the field closely. I have done classical machine learning and MLOps at TMNL and Vattenfall, then a run of RAG and GenAI projects at NPO, Klaverblad, ING and DataSnipper. More recently Agentic systems and search: Agentspace at BCG, an Agentic ELT pipeline built with Agent Development Kit (ADK), and a hybrid search engine for FD Mediagroep that now serves millions of requests a year. Specializing on Google Cloud Platform, and specialized with getting something running in production rather than a recommendation. Find more elaborate [project descriptions on my LinkedIn](https://www.linkedin.com/in/jeroenoverschie/details/projects/).
 
 ![Jeroen Overschie presenting "Dataset enrichment using LLMs" on stage at PyData Eindhoven 2023](https://jeroenoverschie.nl/content/images/2026/07/Screenshot-2026-07-26-at-11.01.07.png)
 
@@ -115,7 +115,7 @@ I'm available from September 2026, based in Amsterdam, remote or on-site in the 
 
 Keen to know more?
 
-[Book an appointment](https://jerra.craft.me/Tr4StRMGtjuQVZ)
+[Book an appointment](https://calendar.proton.me/bookings#QV7X2l1nriXjQfrgXEoW694gU7av%5F77i03TCqpdVNBs=)
 ### Research
 URL: https://jeroenoverschie.nl/research/
 Last updated: 2026-07-20T20:12:18.000Z
@@ -2872,7 +2872,7 @@ Last updated: 2026-09-08T13:53:47.000Z
 ![](https://jeroenoverschie.nl/content/images/2024/11/PXL_20210923_142330260.MP.jpg)
 ### From Linear Regression to Neural Networks
 URL: https://jeroenoverschie.nl/from-linear-regression-to-neural-networks/
-Last updated: 2024-11-22T13:37:00.000Z
+Last updated: 2026-09-08T14:45:47.000Z
 These days there exists much hype around sophisticated machine learning methods such as Neural Networks — they are massively powerful models that allow us to fit very flexible models. However, we do not always require the full complexity of a Neural Network: sometimes, a simpler model will do the job just fine. In this project, we take a journey starting from the most fundamental statistical machinery to model data distributions, linear regression, to then explain the benefits of constructing more complex models, such as logistic regression or a Neural Network. In this way, this text aims to build a bridge from the statistical, analytical world to the more approximative world of Machine Learning. We will not shy away from the math, whilst still working with tangible examples at all times: we will work with real-world datasets and we will get to apply our models as we go on. Let's start!
 
 ## Linear Regression ([Code](https://dunnkers.com/linear-regression-to-neural-networks/linear-regression.html))
@@ -3018,7 +3018,7 @@ The likelihood becomes easier to maximize in practice if we rewrite the product 
 
 $$\\begin{aligned} \\ell(\\beta)&=\\log L(\\beta)\\\\ &=\\sum\_{i=1}^{N}\\left\\{y\_{i} \\log p\\left(x\_{i} ; \\beta\\right)+\\left(1-y\_{i}\\right) \\log \\left(1-p\\left(x\_{i} ; \\beta\\right)\\right)\\right\\}\\\\ &=\\sum\_{i=1}^{N}\\left\\{y\_{i} \\beta^{T} x\_{i}-\\log \\left(1+e^{\\beta^{T} x\_{i}}\\right)\\right\\} \\end{aligned}$$
 
-Also called the ***logistic loss***; which multi-dimensional counterpart is the *cross-entropy* loss. We can maximize this likelihood function by computing its gradient:
+Also called the **logistic loss**; which multi-dimensional counterpart is the *cross-entropy* loss. We can maximize this likelihood function by computing its gradient:
 
 $$\\frac{\\partial \\ell(\\beta)}{\\partial \\beta}=\\sum\_{i=1}^{N} x\_{i}\\left(y\_{i}-p\\left(x\_{i} ; \\beta\\right)\\right)$$
 
@@ -3119,7 +3119,7 @@ In tandem with how the bias/variance dilemma is fundamental to understanding how
 
 The code is freely available on Github, see:
 
-[![](https://jeroenoverschie.nl/content/images/2021/11/github32-2.png)](https://github.com/dunnkers/linear-regression-to-neural-networks)
+[![GitHub repository: linear-regression-to-neural-networks](https://jeroenoverschie.nl/content/images/2021/11/github32-2.png)](https://github.com/dunnkers/linear-regression-to-neural-networks)
 
 [linear-regression-to-neural-networks](https://github.com/dunnkers/linear-regression-to-neural-networks)
 ### Making Art with Generative Adversarial Networks
@@ -3258,7 +3258,7 @@ The demo source code is freely available on GitHub. Don't forget to leave a star
 I wish you all a good one. Cheers! 🙏🏻
 ### COVID-19 Dashboard
 URL: https://jeroenoverschie.nl/covid-19-dashboard/
-Last updated: 2022-01-06T13:06:59.000Z
+Last updated: 2026-09-08T14:45:34.000Z
 We are in the midst of a global pandemic. At the time this project started, the Corona virus was still just a headline for most - but in the meantime it reached and impacted all of our lives. Fighting such a pandemic happens in many ways on multiple scales. We are interested in how this can be done on the societal level: using data. In this project, me and my teammates built a pipeline capable of processing a large dataset and created a visualization of the areas most vulnerable to Corona which includes reported cases in real-time.
 
 ### Architecture
@@ -3293,7 +3293,7 @@ To see the front-end in action, see the [live dashboard](https://dunnkers.com/di
 
 For further reading, check out the GitHub repository:
 
-[![](https://jeroenoverschie.nl/content/images/2021/11/github32-1.png)](https://github.com/dunnkers/disease-spread)
+[![GitHub repository: disease-spread](https://jeroenoverschie.nl/content/images/2021/11/github32-1.png)](https://github.com/dunnkers/disease-spread)
 
 [disease-spread](https://github.com/dunnkers/disease-spread)
 ### Automated curtains project
