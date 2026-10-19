@@ -87,7 +87,7 @@ Let's collaborate ✓
 — [LinkedIn](http://www.linkedin.com/in/jeroenoverschie)
 ### Freelance AI Engineer in Amsterdam — Jeroen Overschie
 URL: https://jeroenoverschie.nl/freelance-ai-engineer-in-amsterdam-jeroen-overschie/
-Last updated: 2026-10-08T09:23:56.000Z
+Last updated: 2026-10-19T15:20:32.000Z
 Hi!! Super nice to meet you – I'm Jeroen. I've worked in the software domain for over a decade and in Data & AI for about five years. First as a Data Scientist, then ML Engineer, now AI Engineer. Before that I spent about seven years doing freelance web development alongside my studies. I am currently available for freelance work! I am based in Amsterdam and work in Dutch or English.
 
 My work has tracked the field closely. I have done classical machine learning and MLOps at TMNL and Vattenfall, then a run of RAG and GenAI projects at NPO, Klaverblad, ING and DataSnipper. More recently Agentic systems and search: Agentspace at BCG, an Agentic ELT pipeline built with Agent Development Kit (ADK), and a hybrid search engine for FD Mediagroep that now serves millions of requests a year. Specializing on Google Cloud Platform, and specialized with getting something running in production rather than a recommendation. Find more elaborate [project descriptions on my LinkedIn](https://www.linkedin.com/in/jeroenoverschie/details/projects/).
@@ -115,7 +115,7 @@ I'm available from September 2026, based in Amsterdam, remote or on-site in the 
 
 Keen to know more?
 
-[Book an appointment](https://calendar.proton.me/bookings#QV7X2l1nriXjQfrgXEoW694gU7av%5F77i03TCqpdVNBs=)
+[Book an appointment](https://apt.mt/jeroenoverschie/book/)
 ### Research
 URL: https://jeroenoverschie.nl/research/
 Last updated: 2026-07-20T20:12:18.000Z
