@@ -75,7 +75,7 @@ runs right after it, adding explicit `width`/`height` to any `<img>`
 still missing them (theme-rendered header/feed images, since Ghost's
 handlebars API exposes no intrinsic dimensions for those).
 
-### Known upstream CLS bug: native video cards (unfixed as of 2026-09-08)
+### Upstream CLS bug: native video cards (fix shipped by ghost:6.73.0)
 
 Posts using Ghost's native video card (`kg-video-card`) have a real,
 reproducible ~0.17-0.19 CLS shift on slow connections — confirmed via
@@ -106,3 +106,7 @@ point picks up the fix before spending more time on it — bumping the
 pinned Ghost image version (see the `python-devcontainer-with-uv`-era
 image bump in git history) should resolve it automatically once it
 lands in a release, no theme/build changes needed.
+
+Update 2026-10-29: bumped to `ghost:6.73.0`; its served
+`/public/cards.min.js` no longer references `spacergif.org`, so the fix
+has shipped. CLS on video-card posts has not been re-measured since.

@@ -41,15 +41,23 @@ docker run -d \
   -e database__connection__filename=/var/lib/ghost/content/data/ghost-local.db \
   -e security__staffDeviceVerification=false \
   --restart always \
-  ghost:6.62.0
+  ghost:6.73.0
 ```
 
 ### Option 2: Apple container
 
 Uses [apple/container](https://github.com/apple/container) (`brew install container`,
 then `container system start` or `brew services start container`). It has no
-`--restart` flag, so the container won't come back after a reboot; start it again with
-`container start ghost`.
+`--restart` flag, so `scripts/ghost-container.sh` does that job: it starts the
+`container` services, creates the `ghost` container if missing and starts it if
+stopped. A LaunchAgent runs it at login and every 5 minutes:
+
+```
+cp scripts/nl.jeroenoverschie.ghost.plist ~/Library/LaunchAgents/
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/nl.jeroenoverschie.ghost.plist
+```
+
+Logs go to `/tmp/nl.jeroenoverschie.ghost.log`. To create the container by hand instead:
 
 ```
 container run -d --name ghost \
@@ -61,7 +69,8 @@ container run -d --name ghost \
   -e database__client=sqlite3 \
   -e database__connection__filename=/var/lib/ghost/content/data/ghost-local.db \
   -e security__staffDeviceVerification=false \
-  docker.io/library/ghost:6.62.0
+  docker.io/library/ghost:6.73.0
 ```
 
-Stop it with `container stop ghost`.
+Stop it with `container stop ghost` (unload the LaunchAgent first with
+`launchctl bootout gui/$(id -u)/nl.jeroenoverschie.ghost`, or it restarts it within 5 minutes).
