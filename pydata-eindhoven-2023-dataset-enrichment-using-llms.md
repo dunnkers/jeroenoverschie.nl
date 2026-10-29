@@ -8,7 +8,7 @@
 - Updated: 2026-07-20T19:59:04.000Z
 - Description: Eindhoven, The Netherlands — LLM data extraction: prompt engineering, JSON output modes, Function calling, Pydantic schemas, evaluation and a GPT 3.5 vs GPT 4 vs PaLM showdown.
 - Author: Jeroen Overschie
-- Tags: #noindex, Talks, #video
+- Tags: Talks, #video
 
 Onboard the LLM hype-train! 🚂 Are you curious about what LLM's (Large Language Models) can do for you? One of their use cases is to enrich datasets, by converting text into structured data. This can have huge benefits. Useful facts that were previously hidden inside a large piece of text can now be unveiled, allowing your customers to more accurately filter and query your data.
 

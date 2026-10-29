@@ -5,7 +5,7 @@
 # Python Devcontainer with uv
 - URL: https://jeroenoverschie.nl/python-devcontainer-with-uv/
 - Published: 2025-10-02T18:53:36.000Z
-- Updated: 2026-09-08T08:04:54.000Z
+- Updated: 2026-10-29T15:23:05.000Z
 - Description: Devcontainers are very powerful. So is uv. How do we combine the two?
 - Author: Jeroen Overschie
 

@@ -5,10 +5,10 @@
 # TEDXKE 2025
 - URL: https://jeroenoverschie.nl/tedxke-2025/
 - Published: 2025-11-25T16:40:00.000Z
-- Updated: 2026-07-20T20:05:05.000Z
+- Updated: 2026-10-29T15:29:17.000Z
 - Description: Amersfoort, The Netherlands — TED-style Xebia knowledge sharing session (XKE) in the Flint theatre in Amersfoort, sharing experiences on a three month working engagement at a health-tech company in Kenya.
 - Author: Jeroen Overschie
-- Tags: #noindex, Talks, #video
+- Tags: Talks, #video
 
 Jeroen Overschie presenting 'Living in Kenya: the things I will never forget' at TEDXKE 2025.
 

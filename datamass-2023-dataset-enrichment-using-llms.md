@@ -8,7 +8,7 @@
 - Updated: 2026-07-20T19:07:34.000Z
 - Description: Gdańsk, Poland — Enriching datasets with LLMs: JSON output modes, schema definitions with Pydantic, evaluating structured data extraction, Function Calling.
 - Author: Jeroen Overschie
-- Tags: #noindex, Talks
+- Tags: Talks
 
 Large Language Models (LLMs) have proven useful for numerous tasks. They can summarise text, generate text, classify text, or translate text. LLMs can also **convert unstructured data to structured data**.
 
