@@ -116,27 +116,6 @@ I'm available from September 2026, based in Amsterdam, remote or on-site in the 
 Keen to know more?
 
 [Book an appointment](https://apt.mt/jeroenoverschie/book/)
-### Research
-URL: https://jeroenoverschie.nl/research/
-Last updated: 2026-07-20T20:12:18.000Z
-📚 Academic articles that are accessible online.
-
-- fseval: A Benchmarking Framework for Feature Selection and Feature Ranking Algorithms  
-– [Jeroen G. S. Overschie](https://orcid.org/0000-0003-3304-3800), [Ahmad Alsahaf](https://joss.theoj.org/papers/by/Ahmad%20Alsahaf) and [George Azzopardi](https://joss.theoj.org/papers/by/George%20Azzopardi)  
-Published in the **Journal of Open Source Software** on 23rd of November, 2022  
-\[[code](https://github.com/dunnkers/fseval)\] \[[pdf](https://www.theoj.org/joss-papers/joss.04611/10.21105.joss.04611.pdf)\] \[[journal](https://joss.theoj.org/papers/10.21105/joss.04611)\]
-- A novel evaluation methodology for supervised Feature Ranking algorithms  
-– Jeroen G. S. Overschie  
-Master's thesis, published 9th of July 2022  
-\[[code](https://github.com/dunnkers/msc-thesis)\] \[[pdf](https://arxiv.org/abs/2207.04258)\] \[[arxiv](https://arxiv.org/abs/2207.04258)\]
-- A fusion between a deep-learning and a filter-based approach for road marker detection  
-– Jeroen G. S. Overschie  
-Bachelor's thesis, published August 2019  
-\[[code](https://github.com/dunnkers/bsc-thesis)\] \[[pdf](https://github.com/dunnkers/bsc-thesis/blob/master/report.pdf)\]
-
-... for a full list go to:
-
-[Jeroen G S Overschie‪Xebia‬ - ‪‪Geciteerd door 2‬‬ - ‪AI‬ - ‪Data Science‬ - ‪Machine Learning‬ - ‪Software Engineering‬![](https://jeroenoverschie.nl/content/images/icon/favicon-76b05ae2-b6bb-447d-9e54-db68c48a5461.ico)‪Google Scholar‬![](https://jeroenoverschie.nl/content/images/thumbnail/citations-5432c8b2-ec0a-4d46-bcce-7871cd015840)](https://scholar.google.com/citations?user=SlX1dBkAAAAJ)
 ## Posts
 ### Our internal AI agent for expenses: Bonbonnetje 🍬
 URL: https://jeroenoverschie.nl/our-internal-ai-agent-for-expenses-bonbonnetje/
@@ -2070,6 +2049,20 @@ Blogpost
 ![](https://jeroenoverschie.nl/content/images/2026/07/-yqwb0mI-2.jpeg)
 
 PyData Eindhoven (image courtesy of [PyData.org](https://pydata.org/eindhoven2024/squarespace/images.squarespace-cdn.com/content/v1/63d03c03cfbdde598f7d3964/53f17037-602d-448d-bc34-80a45bd723a1/-yqwb0mI.jpeg))
+### fseval: A Benchmarking Framework for Feature Selection and Feature Ranking Algorithms
+URL: https://jeroenoverschie.nl/fseval/
+Last updated: 2026-10-30T09:10:44.000Z
+By [Jeroen G. S. Overschie](https://orcid.org/0000-0003-3304-3800), [Ahmad Alsahaf](https://joss.theoj.org/papers/by/Ahmad%20Alsahaf) and [George Azzopardi](https://joss.theoj.org/papers/by/George%20Azzopardi). Published in the **Journal of Open Source Software** on 23 November 2022 ([doi:10.21105/joss.04611](https://doi.org/10.21105/joss.04611)).
+
+[Code](https://github.com/dunnkers/fseval) · [PDF](https://www.theoj.org/joss-papers/joss.04611/10.21105.joss.04611.pdf) · [Journal](https://joss.theoj.org/papers/10.21105/joss.04611)
+
+## Summary
+
+The fseval Python package allows benchmarking Feature Selection and Feature Ranking algorithms on a large scale, and facilitates the comparison of multiple algorithms in a systematic way. In particular, fseval enables users to run experiments in parallel and distributed over multiple machines, and export the results to an SQL database. The execution of an experiment can be fully determined by a configuration file, which means the experiment results can be reproduced easily, given only the configuration file. fseval has high test coverage, continuous integration, and rich documentation. The package is open source and can be installed through PyPI.
+
+[fseval: A Benchmarking Framework for Feature Selection and Feature Ranking AlgorithmsOverschie et al., (2022). fseval: A Benchmarking Framework for Feature Selection and Feature Ranking Algorithms. Journal of Open Source Software, 7(79), 4611, https://doi.org/10.21105/joss.04611![](https://jeroenoverschie.nl/content/images/icon/android-icon-192x192-1121be96-7d3a-4b74-af1c-1a8e18e9d18d.png)Journal of Open Source Software![](https://jeroenoverschie.nl/content/images/thumbnail/logo_large-43480b49-a628-40f9-8a94-ab298383cb0e.jpg)](https://joss.theoj.org/papers/10.21105/joss.04611)
+
+[GitHub - dunnkers/fseval: Benchmarking framework for Feature Selection and Feature Ranking algorithms 🚀Benchmarking framework for Feature Selection and Feature Ranking algorithms 🚀 - dunnkers/fseval![](https://jeroenoverschie.nl/content/images/icon/favicon-4fe92b5f-5d17-4078-bdd1-056df7067dc5.png)GitHub![](https://jeroenoverschie.nl/content/images/2026/10/fseval-og.png)](https://github.com/dunnkers/fseval)
 ### How to create a Devcontainer for your Python project 🐳
 URL: https://jeroenoverschie.nl/how-to-create-a-devcontainer-for-your-python-project/
 Last updated: 2026-09-08T13:13:15.000Z
@@ -2852,6 +2845,20 @@ Until that time, check out the repository of the DropBlox challenge [here](https
 We made the figures in this post using [Excalidraw](https://excalidraw.com/).
 
 At GoDataDriven, we use data & AI to solve complex problems. But we share our knowledge too! If you liked this blogpost and want to learn more about Data Science, maybe the [Data Science Learning Journey](https://xebia.com/academy/nl/learning-journeys/data-scientist-learning-journeys/) is something for you.
+### A novel evaluation methodology for supervised Feature Ranking algorithms
+URL: https://jeroenoverschie.nl/msc-thesis-feature-ranking-evaluation/
+Last updated: 2026-10-30T09:11:09.000Z
+By Jeroen G. S. Overschie. Master's thesis, MSc Data Science & Systems Complexity, **University of Groningen**, supervised by dr. G. Azzopardi and dr. A.M.J.A. Alsahaf. Published 9 July 2022 ([arXiv:2207.04258](https://arxiv.org/abs/2207.04258)).
+
+[Code](https://github.com/dunnkers/msc-thesis) · [PDF](https://arxiv.org/pdf/2207.04258) · [arXiv](https://arxiv.org/abs/2207.04258)
+
+## Abstract
+
+Both in the domains of Feature Selection and Interpretable AI, there exists a desire to 'rank' features based on their importance. Such feature importance rankings can then be used to either: (1) reduce the dataset size or (2) interpret the Machine Learning model. In the literature, however, such Feature Rankers are not evaluated in a systematic, consistent way. Many papers have a different way of arguing which feature importance ranker works best. This paper fills this gap, by proposing a new evaluation methodology. By making use of synthetic datasets, feature importance scores can be known beforehand, allowing more systematic evaluation. To facilitate large-scale experimentation using the new methodology, a benchmarking framework was built in Python, called fseval. The framework allows running experiments in parallel and distributed over machines on HPC systems. By integrating with an online platform called Weights and Biases, charts can be interactively explored on a live dashboard. The software was released as open-source software, and is published as a package on the PyPi platform. The research concludes by exploring one such large-scale experiment, to find the strengths and weaknesses of the participating algorithms, on many fronts.
+
+[A novel evaluation methodology for supervised Feature Ranking algorithmsBoth in the domains of Feature Selection and Interpretable AI, there exists a desire to \`rank' features based on their importance. Such feature importance rankings can then be used to either: (1) reduce the dataset size or (2) interpret the Machine Learning model. In the literature, however, such Feature Rankers are not evaluated in a systematic, consistent way. Many papers have a different way of arguing which feature importance ranker works best. This paper fills this gap, by proposing a new evaluation methodology. By making use of synthetic datasets, feature importance scores can be known beforehand, allowing more systematic evaluation. To facilitate large-scale experimentation using the new methodology, a benchmarking framework was built in Python, called fseval. The framework allows running experiments in parallel and distributed over machines on HPC systems. By integrating with an online platform called Weights and Biases, charts can be interactively explored on a live dashboard. The software was released as open-source software, and is published as a package on the PyPi platform. The research concludes by exploring one such large-scale experiment, to find the strengths and weaknesses of the participating algorithms, on many fronts.![](https://jeroenoverschie.nl/content/images/icon/favicon-32x32-c41e747f-39f8-4006-82cf-513b4847708f.png)arXiv.orgJeroen G. S. Overschie![](https://jeroenoverschie.nl/content/images/thumbnail/arxiv-logo-fb-e1733a50-8e6f-4371-a0c1-b1b3597f4a26.png)](https://arxiv.org/abs/2207.04258)
+
+[GitHub - dunnkers/msc-thesisContribute to dunnkers/msc-thesis development by creating an account on GitHub.![](https://jeroenoverschie.nl/content/images/icon/favicon-954a9199-5942-4d95-b088-0df628f9b52f.png)GitHub![](https://jeroenoverschie.nl/content/images/2026/10/msc-thesis-og.png)](https://github.com/dunnkers/msc-thesis)
 ### The beauties of Peru
 URL: https://jeroenoverschie.nl/peru/
 Last updated: 2026-09-08T13:53:47.000Z
@@ -3354,6 +3361,18 @@ I now just had to execute a certain pattern of button presses to emulate pairing
 Opening my curtains using the Raspberry Pi and its RF sensor.
 
 Now, I can go to sleep in darkness, and wake up with sunlight hitting my face 🌞. Awesome! The project has succeeded and the cool thing is I have been using this every day ever since. The cool thing about doing a Computer Science degree is when you can apply your knowledge to solve real-world problems. When I leave this student dormitory, I will leave the Raspberry Pi right where it is, so others can also benefit from automated curtains 😊. Cheers!
+### A fusion between a deep-learning and a filter-based approach for road marker detection
+URL: https://jeroenoverschie.nl/bsc-thesis-road-marker-detection/
+Last updated: 2026-10-30T09:11:10.000Z
+By Jeroen G. S. Overschie. Bachelor's thesis, **University of Groningen**, supervised by dr. G. Azzopardi, in assignment for Kaios.ai. Published August 2019.
+
+[Code](https://github.com/dunnkers/bsc-thesis) · [PDF](https://github.com/dunnkers/bsc-thesis/blob/master/report.pdf)
+
+## Abstract
+
+In this study, a fusion between two existing algorithms for detecting road markings is proposed. Considered are two existing algorithms, one supervised, deep-learning algorithm, and another unsupervised filter-based algorithm. The proposed fusion algorithm takes the output images of both approaches in order to train a new model using supervised learning. Under different conditions of downscale factor, classifier and feature-vector composition, the fusion algorithm managed to obtain an accuracy level of 95%.
+
+[GitHub - dunnkers/bsc-thesis: BSc Thesis - A fusion between a deep-learning and a filter-based approach for road marker detectionBSc Thesis - A fusion between a deep-learning and a filter-based approach for road marker detection - dunnkers/bsc-thesis![](https://jeroenoverschie.nl/content/images/icon/favicon-ea24923b-b521-46f6-8b01-35eb05fc3bb7.png)GitHub![](https://jeroenoverschie.nl/content/images/2026/10/bsc-thesis-og.png)](https://github.com/dunnkers/bsc-thesis)
 ### An impression of Berlin
 URL: https://jeroenoverschie.nl/berlin/
 Last updated: 2026-09-08T13:53:20.000Z
