@@ -8,7 +8,7 @@
 - Updated: 2026-10-30T09:10:44.000Z
 - Description: Journal of Open Source Software — A Python package for benchmarking Feature Selection and Feature Ranking algorithms at scale: parallel and distributed experiments, fully reproducible from a config file, with results exported to SQL.
 - Author: Jeroen Overschie
-- Tags: Research, #code, #pdf, #journal
+- Tags: Research, AI & ML, #code, #pdf, #journal
 
 By [Jeroen G. S. Overschie](https://orcid.org/0000-0003-3304-3800), [Ahmad Alsahaf](https://joss.theoj.org/papers/by/Ahmad%20Alsahaf) and [George Azzopardi](https://joss.theoj.org/papers/by/George%20Azzopardi). Published in the **Journal of Open Source Software** on 23 November 2022 ([doi:10.21105/joss.04611](https://doi.org/10.21105/joss.04611)).
 

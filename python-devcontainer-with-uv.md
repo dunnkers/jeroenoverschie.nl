@@ -8,6 +8,7 @@
 - Updated: 2026-10-29T15:23:05.000Z
 - Description: Devcontainers are very powerful. So is uv. How do we combine the two?
 - Author: Jeroen Overschie
+- Tags: Software & Tooling
 
 [uv](https://github.com/astral-sh/uv?tab=readme-ov-file#uv) is the new king in Python package manager land. It's fast, comprehensive and by now, well-adopted. [Devcontainers](https://containers.dev) provide a powerful way to create a reproducible development environment, by developing *inside* Docker containers. So, how do we combine the two? To find out, read along.
 

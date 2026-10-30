@@ -5,10 +5,10 @@
 # The beauties of Peru
 - URL: https://jeroenoverschie.nl/peru/
 - Published: 2021-10-31T23:00:00.000Z
-- Updated: 2026-09-08T13:53:47.000Z
+- Updated: 2026-10-30T15:42:30.000Z
 - Description: From the sea to the mountains to the jungle and back.
 - Author: Jeroen Overschie
-- Tags: #noindex, Life, Photography
+- Tags: Life, #noindex
 
 ![](https://jeroenoverschie.nl/content/images/2024/11/PXL_20211015_232150330.jpg)
 

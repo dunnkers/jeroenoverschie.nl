@@ -5,9 +5,9 @@
 # PyData Eindhoven 2024
 - URL: https://jeroenoverschie.nl/pydata-eindhoven-2024/
 - Published: 2024-07-11T15:18:00.000Z
-- Updated: 2026-10-29T15:29:17.000Z
+- Updated: 2026-10-30T15:42:31.000Z
 - Description: Eindhoven, The Netherlands — Retrieval Augmented Generation (RAG) is powerful. Let's go from Basic (chunking, vector embeddings, nearest-neighbor search) to Hybrid Search (TF-IDF, BM-25 and Reciprocal Rank Fusion) to Advanced (PDF parsing, tables, graphs) and finally, the cutting edge: Multimodal.
 - Author: Jeroen Overschie
-- Tags: Talks, #video
+- Tags: Talks, AI & ML, #video
 
 Jeroen Overschie presenting on 'The Levels of RAG' at PyData Eindhoven 2024 ([slides](https://jeroenoverschie.nl/content/files/2026/07/The-levels-of-RAG.pdf)).

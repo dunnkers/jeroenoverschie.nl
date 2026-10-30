@@ -8,7 +8,7 @@
 - Updated: 2026-10-30T09:14:27.000Z
 - Description: Fusing the outputs of a supervised deep-learning and an unsupervised filter-based road marker detector into a new supervised model, reaching 95% accuracy.
 - Author: Jeroen Overschie
-- Tags: Research, #code, #pdf
+- Tags: Research, AI & ML, #code, #pdf
 
 By Jeroen G. S. Overschie. Bachelor's thesis, **University of Groningen**, supervised by dr. G. Azzopardi, in assignment for Kaios.ai. Published 23 August 2019.
 

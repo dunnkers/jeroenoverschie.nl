@@ -8,7 +8,7 @@
 - Updated: 2026-09-08T14:45:34.000Z
 - Description: What parts of the world are susceptible to Corona outbreak? We used Big Data and Data Engineering in this project to find out.
 - Author: Jeroen Overschie
-- Tags: Data Science, Software Engineering
+- Tags: Software & Tooling
 
 We are in the midst of a global pandemic. At the time this project started, the Corona virus was still just a headline for most - but in the meantime it reached and impacted all of our lives. Fighting such a pandemic happens in many ways on multiple scales. We are interested in how this can be done on the societal level: using data. In this project, me and my teammates built a pipeline capable of processing a large dataset and created a visualization of the areas most vulnerable to Corona which includes reported cases in real-time.
 

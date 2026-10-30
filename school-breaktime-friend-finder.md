@@ -8,7 +8,7 @@
 - Updated: 2022-01-06T13:09:24.000Z
 - Description: Spending school breaks alone is lame. That's why I developed an app so students can find with whom they share their breaks.
 - Author: Jeroen Overschie
-- Tags: Software Engineering
+- Tags: Software & Tooling
 
 At my school, students often had gaps in their schedules. In between lessons scheduled for the day, one would often have breaks in between. But because you chose a personalized package of classes to follow, everyone's schedule was also different. So, it would be hard to know with whom you could spend those breaks! To solve this, I developed this app. It allows students to find with whom they have breaks so they can hang out with them whilst waiting for the next class 😊. The app was actually used by students in my school. Very cool! 
 

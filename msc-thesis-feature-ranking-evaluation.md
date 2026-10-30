@@ -8,7 +8,7 @@
 - Updated: 2026-10-30T09:11:09.000Z
 - Description: arXiv — A new, systematic evaluation methodology for Feature Rankers using synthetic datasets with known feature importances, and a large-scale benchmark run with fseval on an HPC cluster.
 - Author: Jeroen Overschie
-- Tags: Research, #code, #pdf
+- Tags: Research, AI & ML, #code, #pdf
 
 By Jeroen G. S. Overschie. Master's thesis, MSc Data Science & Systems Complexity, **University of Groningen**, supervised by dr. G. Azzopardi and dr. A.M.J.A. Alsahaf. Published 9 July 2022 ([arXiv:2207.04258](https://arxiv.org/abs/2207.04258)).
 

@@ -7,7 +7,7 @@
 - Published: 2021-01-16T23:00:00.000Z
 - Updated: 2021-11-28T20:19:15.000Z
 - Author: Jeroen Overschie
-- Tags: Software Engineering
+- Tags: Software & Tooling
 
 How did big, bulky software components come into being? In this project, we explore the evolution of so-called *[God Components](https://en.wikipedia.org/wiki/God%5Fobject)*; pieces of software with a large number of classes or lines of code that got very large over time. Our analysis was run on the [Apache Tika](https://tika.apache.org/) codebase.
 

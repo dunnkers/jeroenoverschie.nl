@@ -8,7 +8,7 @@
 - Updated: 2026-06-12T09:48:42.000Z
 - Description: Demonstrating a 'backdoor' security vulnerability. Trained networks in PyTorch and MXNet with ImageNet dataset on a supercomputer cluster. Demo with React.js app, using ONNX.js on-device inference. ✩ Project was rated 'best of class 2020'
 - Author: Jeroen Overschie
-- Tags: Data Science
+- Tags: AI & ML
 
 Large Neural Networks can take a long time to train. Hours, maybe even days. Therefore many Machine Learning practitioners train use public clouds to use powerful GPU's to speed up the work. Even, to save time, off-the-shelf pre-trained models can be used and then retrained for a specific task – this is *transfer learning*. But using either approach means putting trust in someone else's hands. Can we be sure the cloud does not mess with our model? Are we sure the off-the-shelf pre-trained model is not malicious? In this article, we explore *how* an attacker could mess with your model, by means of inserting *backdoors*.
 

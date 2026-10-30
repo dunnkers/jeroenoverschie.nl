@@ -8,7 +8,7 @@
 - Updated: 2026-09-08T14:04:42.000Z
 - Description: This is what it's like to travel from Nanyuki to Nairobi by train 🚂.
 - Author: Jeroen Overschie
-- Tags: #noindex, Life
+- Tags: Life, #noindex
 
 Kenya Railways operates a train between Nanyuki and Nairobi- driving North to Nanyuki every Friday and back South to Nairobi every Sunday. The train stops in many towns, making the total trip duration 8.5 hours. This is significantly longer than by road, but doesn't make the trip any less beautiful! This is what the Nanyuki to Nairobi by train experience is like ✓.
 

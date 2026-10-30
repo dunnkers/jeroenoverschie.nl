@@ -8,7 +8,7 @@
 - Updated: 2026-09-08T13:59:18.000Z
 - Description: Taking a good look at the Amsterdam Amstel station surroundings.
 - Author: Jeroen Overschie
-- Tags: #noindex, Life, Photography
+- Tags: Life, #noindex
 
 ![](https://jeroenoverschie.nl/content/images/2025/09/R0003306.JPG)
 

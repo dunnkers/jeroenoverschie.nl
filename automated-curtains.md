@@ -8,7 +8,7 @@
 - Updated: 2024-11-22T13:36:41.000Z
 - Description: My electric curtains can already be controlled by a remote. It would be cool if they could open in the morning, like an alarm clock. What if I could do this using a Raspberry Pi, by emulating the remote?
 - Author: Jeroen Overschie
-- Tags: Internet of Things
+- Tags: Software & Tooling
 
 An idea sprung up in my mind some while ago. In my student dorm, I have electric curtains. They can be operated using a little remote, allowing one to open or close the curtains. This is pretty useful, because I don't even have to get out of bed to open my curtains – I can just use the remote. But the remote uses radio waves to operate the curtains - and I have a Raspberry Pi laying around, doing nothing. What if I could operate the curtains using my Raspberry Pi? Such, that the curtains open at a certain time in the morning. In this way, my curtains would function as an alarm clock! In this project, I did exactly that 😉.
 
