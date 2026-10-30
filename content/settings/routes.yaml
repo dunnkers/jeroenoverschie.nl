@@ -1,9 +1,4 @@
 routes:
-  /research/:
-    controller: channel
-    filter: tag:research
-    template: tag-research
-    data: tag.research
 
 collections:
   /:
