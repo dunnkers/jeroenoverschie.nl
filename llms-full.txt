@@ -3363,8 +3363,8 @@ Opening my curtains using the Raspberry Pi and its RF sensor.
 Now, I can go to sleep in darkness, and wake up with sunlight hitting my face 🌞. Awesome! The project has succeeded and the cool thing is I have been using this every day ever since. The cool thing about doing a Computer Science degree is when you can apply your knowledge to solve real-world problems. When I leave this student dormitory, I will leave the Raspberry Pi right where it is, so others can also benefit from automated curtains 😊. Cheers!
 ### A fusion between a deep-learning and a filter-based approach for road marker detection
 URL: https://jeroenoverschie.nl/bsc-thesis-road-marker-detection/
-Last updated: 2026-10-30T09:11:10.000Z
-By Jeroen G. S. Overschie. Bachelor's thesis, **University of Groningen**, supervised by dr. G. Azzopardi, in assignment for Kaios.ai. Published August 2019.
+Last updated: 2026-10-30T09:14:27.000Z
+By Jeroen G. S. Overschie. Bachelor's thesis, **University of Groningen**, supervised by dr. G. Azzopardi, in assignment for Kaios.ai. Published 23 August 2019.
 
 [Code](https://github.com/dunnkers/bsc-thesis) · [PDF](https://github.com/dunnkers/bsc-thesis/blob/master/report.pdf)
 

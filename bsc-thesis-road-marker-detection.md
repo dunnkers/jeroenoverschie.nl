@@ -4,13 +4,13 @@
 
 # A fusion between a deep-learning and a filter-based approach for road marker detection
 - URL: https://jeroenoverschie.nl/bsc-thesis-road-marker-detection/
-- Published: 2019-08-01T12:00:00.000Z
-- Updated: 2026-10-30T09:11:10.000Z
+- Published: 2019-08-23T12:00:00.000Z
+- Updated: 2026-10-30T09:14:27.000Z
 - Description: Fusing the outputs of a supervised deep-learning and an unsupervised filter-based road marker detector into a new supervised model, reaching 95% accuracy.
 - Author: Jeroen Overschie
 - Tags: Research, #code, #pdf
 
-By Jeroen G. S. Overschie. Bachelor's thesis, **University of Groningen**, supervised by dr. G. Azzopardi, in assignment for Kaios.ai. Published August 2019.
+By Jeroen G. S. Overschie. Bachelor's thesis, **University of Groningen**, supervised by dr. G. Azzopardi, in assignment for Kaios.ai. Published 23 August 2019.
 
 [Code](https://github.com/dunnkers/bsc-thesis) · [PDF](https://github.com/dunnkers/bsc-thesis/blob/master/report.pdf)
 
