@@ -8,7 +8,7 @@
 - Updated: 2026-07-15T16:00:34.000Z
 - Description: Utrecht, The Netherlands — LLMOps on Azure: scaling RAG applications, using Azure AI Search (keyword and vector search, reciprocal rank fusion), hosting LLM apps on Azure Container Apps, IaC with Terraform, robust CI/CD setups and an elaborate observability stack with Langfuse/OpenTelemetry.
 - Author: Jeroen Overschie
-- Tags: Talks, AI & ML, MLOps & LLMOps
+- Tags: Talks, AI & ML, All things *Ops: DevOps, MLOps, LLMOps, AIOps and AgentOps
 
 ![](https://jeroenoverschie.nl/content/images/2026/07/Slide9-2.png)
 

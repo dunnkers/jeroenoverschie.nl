@@ -8,7 +8,7 @@
 - Updated: 2026-07-15T15:01:08.000Z
 - Description: Eindhoven, The Netherlands — Devcontainer deep dive. Covering the Devcontainers rationale, the new containers.dev specification by the Microsoft team, Linux Docker essentials, mounts, ports, IDE integration and a practical guide on how you can create a Devcontainer for a Python project yourself.
 - Author: Jeroen Overschie
-- Tags: Talks, Software & Tooling, #video
+- Tags: Talks, All things *Ops: DevOps, MLOps, LLMOps, AIOps and AgentOps, #video
 
 Devcontainers are an open-source [specification](https://containers.dev/), which allow you to connect your IDE to a running Docker container and develop right inside it. This has numerous advantages. Because the dev environment is now formally defined, it is *reproducible*. This means others can easily *reproduce* your dev environment, too! This makes it much easier for others to join in on your project, and stay updated with changes to the environment.   
 In this talk, you will learn: why you might want to use a Devcontainer for your project (or when not 😉), what exactly a Devcontainer is, and how you can build one for your Python project 🐍. 
