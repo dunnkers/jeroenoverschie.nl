@@ -8,7 +8,7 @@
 - Updated: 2026-07-02T14:56:58.000Z
 - Description: Amsterdam, The Netherlands — Talk on Devcontainers. Motivating developer environment discrepancies, their consequences and the resolution: using Devcontainers. Covers the Devcontainer specification, linux user permissions, filesystem mounts, opening up ports, running Devcontainers in CI and more.
 - Author: Jeroen Overschie
-- Tags: Talks, All things *Ops: DevOps, MLOps, LLMOps, AIOps and AgentOps
+- Tags: Talks, MLOps, LLMOps, all things *Ops
 
 > Prevent mis-aligned environments between developers, onboard new-joiners faster, and reduce the time it takes to take your project to production. Sounds interesting? Devcontainers can help you with this. Devcontainers allow you to connect your IDE to a running Docker container and develop inside it. This gives you all the benefits of reproducibility that Docker is known for. In this talk, I will walk you through what Devcontainers are, why they might be useful for you, and how to create one for your Python project using VSCode.
 
