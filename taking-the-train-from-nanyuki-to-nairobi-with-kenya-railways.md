@@ -5,7 +5,7 @@
 # From Nanyuki to Nairobi with Kenya Railways
 - URL: https://jeroenoverschie.nl/taking-the-train-from-nanyuki-to-nairobi-with-kenya-railways/
 - Published: 2025-10-26T07:27:17.000Z
-- Updated: 2026-09-08T14:04:42.000Z
+- Updated: 2026-11-03T17:07:55.000Z
 - Description: This is what it's like to travel from Nanyuki to Nairobi by train 🚂.
 - Author: Jeroen Overschie
 - Tags: Life, #noindex

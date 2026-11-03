@@ -22,7 +22,7 @@
     <meta property="og:url" content="https://xebia.com/blog/how-to-create-a-devcontainer-for-your-python-project/">
     <meta property="og:image" content="https://jeroenoverschie.nl/content/images/2022/12/without-ship-taller-img.png">
     <meta property="article:published_time" content="2022-11-21T17:36:00.000Z">
-    <meta property="article:modified_time" content="2026-09-08T13:13:15.000Z">
+    <meta property="article:modified_time" content="2026-11-03T17:07:54.000Z">
     <meta property="article:tag" content="MLOps &amp; LLMOps">
     
     <meta name="twitter:card" content="summary_large_image">
@@ -57,17 +57,20 @@
         "name": "Jeroen Overschie",
         "image": {
             "@type": "ImageObject",
-            "url": "https://www.gravatar.com/avatar/b37b136916ade32aada1f345482aafa4?s=250&r=x&d=mp",
+            "url": "https://jeroenoverschie.nl/content/images/2026/11/b37b136916ade32aada1f345482aafa4.jpeg",
             "width": 250,
             "height": 250
         },
         "url": "https://jeroenoverschie.nl/author/jeroen/",
-        "sameAs": []
+        "sameAs": [
+            "https://jeroenoverschie.nl/",
+            "https://www.linkedin.com/in/jeroenoverschie"
+        ]
     },
     "headline": "How to create a Devcontainer for your Python project 🐳",
     "url": "https://jeroenoverschie.nl/how-to-create-a-devcontainer-for-your-python-project/",
     "datePublished": "2022-11-21T17:36:00.000Z",
-    "dateModified": "2026-09-08T13:13:15.000Z",
+    "dateModified": "2026-11-03T17:07:54.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://jeroenoverschie.nl/content/images/size/w1200/2022/12/without-ship-taller-img.png",
@@ -134,7 +137,7 @@
         
 <main class="site-main">
 
-        <article class="single post tag-ops tag-hash-external-link">
+        <article class="single post tag-ops tag-hash-external-link featured">
 
         <header class="single-header gh-canvas">
             <div class="single-meta">
@@ -224,7 +227,7 @@ COPY requirements-dev.txt /tmp/requirements-dev.txt
 RUN pip install -r /tmp/requirements-dev.txt &amp;&amp; 
     rm /tmp/requirements-dev.txt</code></pre><p>We are building our image on top of <code>python:3.10</code>, which is a Debian-based image. This is one of the Linux distributions that a Devcontainer can be built on. The main requirement is that <strong>Node.js</strong> should be able to run: VSCode automatically installs VSCode Server on the machine. For an extensive list of supported distributions, see <a href="https://code.visualstudio.com/docs/remote/linux">“Remote Development with Linux”</a>.</p><p>On top of <code>python:3.10</code>, we install Java and the required pip packages.</p><h3 id="opening-the-devcontainer"><strong>Opening the Devcontainer</strong></h3><p>The <code>.devcontainer</code> folder is in place, so it’s now time to open our Devcontainer.</p><p>First, make sure you have the <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers">Dev Containers extension</a> installed in VSCode (previously called “Remote – Containers”. That done, if you open your repo again, the extension should already detect your Devcontainer:</p><figure class="kg-card kg-image-card"><picture><source type="image/avif" srcset="https://jeroenoverschie.nl/content/images/size/w600/2026/09/folder-contains-a-dev-container-config-file.avif 600w, https://jeroenoverschie.nl/content/images/size/w1000/2026/09/folder-contains-a-dev-container-config-file.avif 1000w" sizes="(min-width: 720px) 720px, 100vw"><source type="image/webp" srcset="https://jeroenoverschie.nl/content/images/size/w600/2026/09/folder-contains-a-dev-container-config-file.webp 600w, https://jeroenoverschie.nl/content/images/size/w1000/2026/09/folder-contains-a-dev-container-config-file.webp 1000w" sizes="(min-width: 720px) 720px, 100vw"><img height="260" width="944" srcset="https://jeroenoverschie.nl/content/images/size/w600/2026/09/folder-contains-a-dev-container-config-file.png 600w, https://jeroenoverschie.nl/content/images/size/w1000/2026/09/folder-contains-a-dev-container-config-file.png 1000w" sizes="(min-width: 720px) 720px, 100vw" src="https://jeroenoverschie.nl/content/images/size/w1000/2026/09/folder-contains-a-dev-container-config-file.png" class="kg-image" alt="folder contains a dev container config file" loading="lazy"></picture></figure><p>Alternatively, you can open up the command palette (CMD + Shift + P) and select “<em>Dev Containers: Reopen in Container</em>”:</p><figure class="kg-card kg-image-card"><picture><source type="image/avif" srcset="https://jeroenoverschie.nl/content/images/size/w600/2026/09/reopen-in-devcontainer-notification.avif 600w, https://jeroenoverschie.nl/content/images/size/w1000/2026/09/reopen-in-devcontainer-notification.avif 1000w" sizes="(min-width: 720px) 720px, 100vw"><source type="image/webp" srcset="https://jeroenoverschie.nl/content/images/size/w600/2026/09/reopen-in-devcontainer-notification.webp 600w, https://jeroenoverschie.nl/content/images/size/w1000/2026/09/reopen-in-devcontainer-notification.webp 1000w" sizes="(min-width: 720px) 720px, 100vw"><img height="202" width="1198" srcset="https://jeroenoverschie.nl/content/images/size/w600/2026/09/reopen-in-devcontainer-notification.png 600w, https://jeroenoverschie.nl/content/images/size/w1000/2026/09/reopen-in-devcontainer-notification.png 1000w" sizes="(min-width: 720px) 720px, 100vw" src="https://jeroenoverschie.nl/content/images/size/w1000/2026/09/reopen-in-devcontainer-notification.png" class="kg-image" alt="Dev Containers: Reopen in Container" loading="lazy"></picture></figure><p>Your VSCode is now connected to the Docker container :</p><figure class="kg-card kg-video-card kg-width-regular" data-kg-thumbnail="https://jeroenoverschie.nl/content/images/2026/09/opening-the-devcontainer-poster.jpg" data-kg-custom-thumbnail="">
             <div class="kg-video-container">
-                <video src="https://jeroenoverschie.nl/content/media/2026/09/opening-the-devcontainer.mp4" poster="https://img.spacergif.org/v1/1280x1042/0a/spacer.png" width="1280" height="1042" loop="" autoplay="" muted="" playsinline="" preload="metadata" style="background: transparent url('https://jeroenoverschie.nl/content/images/2026/09/opening-the-devcontainer-poster.jpg') 50% 50% / cover no-repeat;"></video>
+                <video src="https://jeroenoverschie.nl/content/media/2026/09/opening-the-devcontainer.mp4" poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" width="1280" height="1042" loop="" autoplay="" muted="" playsinline="" preload="metadata" style="aspect-ratio: 1280 / 1042; background: transparent url('https://jeroenoverschie.nl/content/images/2026/09/opening-the-devcontainer-poster.jpg') 50% 50% / cover no-repeat;"></video>
                 <div class="kg-video-overlay">
                     <button class="kg-video-large-play-icon" aria-label="Play video">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -418,7 +421,7 @@ RUN pip install -r /tmp/requirements-dev.txt &amp;&amp;
                 <div class="author-list">
                         <div class="author-image-placeholder u-placeholder square">
                             <a href="/author/jeroen/" title="Jeroen Overschie">
-                                    <img class="author-image u-object-fit" src="https://www.gravatar.com/avatar/b37b136916ade32aada1f345482aafa4?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp" width="150" height="150" alt="Jeroen Overschie" loading="lazy">
+                                    <picture><source type="image/avif" srcset="/content/images/size/w150/2026/11/b37b136916ade32aada1f345482aafa4.avif"><source type="image/webp" srcset="/content/images/size/w150/2026/11/b37b136916ade32aada1f345482aafa4.webp"><img class="author-image u-object-fit" src="/content/images/size/w150/2026/11/b37b136916ade32aada1f345482aafa4.jpeg" width="150" height="150" alt="Jeroen Overschie" loading="lazy"></picture>
                             </a>
                         </div>
                 </div>

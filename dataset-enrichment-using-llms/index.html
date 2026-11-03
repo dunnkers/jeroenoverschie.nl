@@ -22,7 +22,7 @@
     <meta property="og:url" content="https://xebia.com/blog/dataset-enrichment-using-llms/">
     <meta property="og:image" content="https://jeroenoverschie.nl/content/images/2024/01/dataset-enrichment-using-llms-banner.jpg">
     <meta property="article:published_time" content="2023-12-28T11:06:00.000Z">
-    <meta property="article:modified_time" content="2026-09-03T14:16:00.000Z">
+    <meta property="article:modified_time" content="2026-11-03T17:07:45.000Z">
     <meta property="article:tag" content="AI &amp; ML">
     
     <meta name="twitter:card" content="summary_large_image">
@@ -57,17 +57,20 @@
         "name": "Jeroen Overschie",
         "image": {
             "@type": "ImageObject",
-            "url": "https://www.gravatar.com/avatar/b37b136916ade32aada1f345482aafa4?s=250&r=x&d=mp",
+            "url": "https://jeroenoverschie.nl/content/images/2026/11/b37b136916ade32aada1f345482aafa4.jpeg",
             "width": 250,
             "height": 250
         },
         "url": "https://jeroenoverschie.nl/author/jeroen/",
-        "sameAs": []
+        "sameAs": [
+            "https://jeroenoverschie.nl/",
+            "https://www.linkedin.com/in/jeroenoverschie"
+        ]
     },
     "headline": "Dataset enrichment using LLM’s ✨",
     "url": "https://jeroenoverschie.nl/dataset-enrichment-using-llms/",
     "datePublished": "2023-12-28T11:06:00.000Z",
-    "dateModified": "2026-09-03T14:16:00.000Z",
+    "dateModified": "2026-11-03T17:07:45.000Z",
     "image": {
         "@type": "ImageObject",
         "url": "https://jeroenoverschie.nl/content/images/2024/01/dataset-enrichment-using-llms-banner.jpg",
@@ -134,7 +137,7 @@
         
 <main class="site-main">
 
-        <article class="single post tag-ai-and-ml tag-hash-external-link">
+        <article class="single post tag-ai-and-ml tag-hash-external-link featured">
 
         <header class="single-header gh-canvas">
             <div class="single-meta">
@@ -144,7 +147,7 @@
                     </time>
                 </span>
                 <span class="single-meta-item single-meta-length">
-                    
+                    12 min read
                 </span>
                     <span class="single-meta-item single-meta-tag">
                         <a class="post-tag post-tag-ai-and-ml" href="/tag/ai-and-ml/">AI &amp; ML</a>
@@ -194,7 +197,261 @@
         </div>
 
     <div class="single-content gh-content gh-canvas">
-        
+        <h2 id="introduction">Introduction</h2><p>Large Language Models (LLMs) have proven useful for numerous tasks. They can summarise text, generate text, classify text, or translate text. LLMs can also <strong>convert unstructured data to structured data</strong>.</p><p>This can have huge benefits. Useful facts that were previously hidden inside a large piece of text can now be unveiled, allowing you to use properties of a dataset that could before not be directly accessed. LLMs come in useful to build such extraction tools quickly, cutting development time significantly. Though more importantly, with the power behind LLMs, the properties to be extracted can be more complex than what was previously possible with traditional methods.</p><p>In this blog post, we will explore three strategies for using LLMs to extract structured data from a piece of text: 1) providing a JSON example, 2) defining a Pydantic schema (also see <a href="https://xebia.com/blog/archetype-llm-batch-use-case/" rel="noopener">this blog post</a>), and finally, 3) using OpenAI's Function Calling API. But before we dive into these strategies, let's first explore what a <strong>naive approach</strong> would look like.</p><p>Follow along!</p><h2 id="a-first-naive-approach">A first naive approach</h2><p>Let's start with a naive approach. We have a piece of text, and we want to extract some structured data from it. Let's take an example. We will consider a house ad for a rental house in Amsterdam. The ad is as follows (this is not a real ad):</p><pre><code class="language-md">Title: Charming Amsterdam House with Balcony, Pet-Friendly for Couples
+
+Description:
+Welcome to this charming house in the heart of beautiful Amsterdam! This cozy and well-maintained property offers a delightful living space, complete with a private balcony, making it the perfect home for a couple seeking comfort and convenience.
+
+Key Features:
+
+- Balcony: Step out onto the balcony and enjoy your morning coffee or unwind with a glass of wine in the evening. The balcony offers a peaceful retreat where you can soak up the vibrant atmosphere of Amsterdam.
+- Pet-Friendly: We understand that pets are an important part of your family. This house gladly welcomes your furry companions, allowing you to create lasting memories with your beloved pets.
+- Ideal for Couples: With its intimate atmosphere and well-designed layout, this house is an ideal choice for couples. Whether you're enjoying a romantic dinner in the dining area or relaxing in the cozy living room, this house provides a comfortable and intimate space for you and your partner.
+- Central Location: Situated in the heart of Amsterdam, this house offers easy access to the city's most popular attractions, vibrant nightlife, and cultural hotspots. Explore the charming canals, visit world-renowned museums, or indulge in the diverse culinary scene – all just a stone's throw away from your doorstep.
+- Well-Maintained: This house has been meticulously cared for, ensuring a comfortable living experience. The property features modern amenities, including a fully equipped kitchen, a spacious bedroom, and a clean and functional bathroom.
+
+Additional Information:
+- The house is available for long-term rental.
+- Furnishings and appliances are included.
+- Utilities (electricity, water, internet) are not included in the rental price.
+- Public transportation options and amenities are easily accessible from the house.
+
+Don't miss out on this fantastic opportunity to make this charming Amsterdam house your home. Contact us today to schedule a viewing or to request further information.
+</code></pre><p>There is, in fact, a lot of potentially useful information in there! The ad lists 'key features' which include a <em>Balcony</em>, <em>Pet friendliness</em>, <em>Ideal for Couples</em>, etc. If you have a pet, you will care about whether they are- or are not allowed in you rental appartment. Similar for the balcony: perhaps you have been going through many house ads to find your dream house with a balcony! That is time spent filtering the ads that could also have been automated. In a similar fashion, there can be a dozen other properties that can be very useful to anyone searching for a new home. Let's try to extract these properties using an LLM!</p><figure class="kg-card kg-image-card"><picture><source type="image/avif" srcset="https://jeroenoverschie.nl/content/images/size/w600/2026/11/dataset-enrichment-using-llms-extraction-process-example.avif 600w, https://jeroenoverschie.nl/content/images/size/w1000/2026/11/dataset-enrichment-using-llms-extraction-process-example.avif 1000w, https://jeroenoverschie.nl/content/images/2026/11/dataset-enrichment-using-llms-extraction-process-example.avif 1280w" sizes="(min-width: 720px) 720px"><source type="image/webp" srcset="https://jeroenoverschie.nl/content/images/size/w600/2026/11/dataset-enrichment-using-llms-extraction-process-example.webp 600w, https://jeroenoverschie.nl/content/images/size/w1000/2026/11/dataset-enrichment-using-llms-extraction-process-example.webp 1000w, https://jeroenoverschie.nl/content/images/2026/11/dataset-enrichment-using-llms-extraction-process-example.webp 1280w" sizes="(min-width: 720px) 720px"><img src="https://jeroenoverschie.nl/content/images/2026/11/dataset-enrichment-using-llms-extraction-process-example.png" class="kg-image" alt="Information extraction example" loading="lazy" width="1280" height="720" srcset="https://jeroenoverschie.nl/content/images/size/w600/2026/11/dataset-enrichment-using-llms-extraction-process-example.png 600w, https://jeroenoverschie.nl/content/images/size/w1000/2026/11/dataset-enrichment-using-llms-extraction-process-example.png 1000w, https://jeroenoverschie.nl/content/images/2026/11/dataset-enrichment-using-llms-extraction-process-example.png 1280w" sizes="(min-width: 720px) 720px"></picture></figure><p><em>Figure: overview of process. A piece of text is passed to the LLM, which outputs a structured version of the information. Note: the house ad on the left is not real.</em></p><p>Let's try a prompt to see if we can extract some information.</p><pre><code class="language-md">A house listing will follow, as it appeared on a housing website. Please extract the following information from the listing:
+- Is pet friendly (yes/no/unknown, quote: "...")
+- Has a garden (yes/no/unknown, quote: "...")
+- Has a parking place (yes/no/unknown, quote: "...")
+- Is suitable for a couple (yes/no/unknown, quote: "...")
+- Has a balcony (yes/no/unknown, quote: "...")
+## House listing
+{house}
+</code></pre><p>... where we are substituting <code>{house}</code> with the house ad above. Let's see what OpenAI's <em>GPT-3.5 turbo</em> outputs:</p><pre><code class="language-md">From the house listing, the extracted information is as follows:
+- Is pet friendly: Yes (quote: "Pet-Friendly: We understand that pets are an important part of your family. This house gladly welcomes your furry companions, allowing you to create lasting memories with your beloved pets.")
+- Has a garden: Unknown (no mention of a garden in the listing)
+- Has a parking place: Unknown (no mention of a parking place in the listing)
+- Is suitable for a couple: Yes (quote: "Ideal for Couples: With its intimate atmosphere and well-designed layout, this house is an ideal choice for couples. Whether you're enjoying a romantic dinner in the dining area or relaxing in the cozy living room, this house provides a comfortable and intimate space for you and your partner.")
+- Has a balcony: Yes (quote: "Balcony: Step out onto the balcony and enjoy your morning coffee or unwind with a glass of wine in the evening. The balcony offers a peaceful retreat where you can soak up the vibrant atmosphere of Amsterdam.")
+</code></pre><p>Not bad! It seems to have most properties right, including those that it could not determine (<em>Unknown</em>). It also provided a quote in cases where it could extract the information.</p><p>We still, however, do not have the information in a <strong>structured</strong> format. That's a pity, because that's what we need to work with it. Let's try to retrieve the information in a structured format.</p><h2 id="going-structured">Going structured</h2><p>So our goal is to get the information in a structured manner. Structure can take many forms. There are many structured file formats, for example. Think of JSON, XML, CSV, etc. We will use JSON because it is a very common format and it is easy to work with in Python.</p><p>We will explore different approaches to prompting the LLM. You can call this Prompt Engineering if you want. The goal is to determine which approaches work well with a chosen LLM model and which don't. Let's start.</p><h2 id="1-json-example">1. JSON example</h2><p>We are going to ask the LLM to provide its output in JSON. Therefore, we should inform the LLM about the format in which it should return the JSON. For this, we can simply give the LLM an example of the desired JSON output. This will be our <strong>prompt</strong>:</p><pre><code class="language-md">A house listing will follow, as it appeared on a housing website. Please extract the following information from the listing in a JSON response:
+
+```
+{
+    "is_pet_friendly": {
+        "value": ..., # yes/no/unknown
+        "quote": ..., # exact quote from listing
+    },
+    "has_garden": {
+        "value": ..., # yes/no/unknown
+        "quote": ..., # exact quote from listing
+    },
+    "has_parking_place": {
+        "value": ..., # yes/no/unknown
+        "quote": ..., # exact quote from listing
+    },
+    "is_suitable_for_couple": {
+        "value": ..., # yes/no/unknown
+        "quote": ..., # exact quote from listing
+    },
+    "has_balcony": {
+        "value": ..., # yes/no/unknown
+        "quote": ..., # exact quote from listing
+    },
+}
+```
+</code></pre><p>... on which <em>GPT-3.5 turbo</em> has the following response:</p><pre><code class="language-json">{
+  "is_pet_friendly": {
+    "value": "no",
+    "quote": "Pets not allowed"
+  },
+  "has_garden": {
+    "value": "unknown",
+    "quote": "-"
+  },
+  "has_parking_place": {
+    "value": "yes",
+    "quote": "Parking possibility: Private parking place outside"
+  },
+  "is_suitable_for_couple": {
+    "value": "unknown",
+    "quote": "-"
+  },
+  "has_balcony": {
+    "value": "yes",
+    "quote": "Balcony (facing South-West)"
+  }
+}
+</code></pre><blockquote>Note: this response was generated on a different input example than in the previous section.</blockquote><p>That is cool! The LLM just returned a valid JSON. It provided the format that we desired, listing the properties as objects containing a <code>value</code> and a <code>quote</code>. We can parse this into Python using <code>json.loads</code>:</p><pre><code>obj = json.loads(
+    response_text
+)
+</code></pre><p>... where <code>response_text</code> is the text that the LLM returned. That is great. We can now use the data in a structured manner in Python.</p><p>However, LLMs do not guarantee a certain output despite you asking for it. There can be cases, for example, when the house listing is so short that the LLM will hallucinate. Provided with too little input data, the LLM deviates from the asked-for format.</p><p>Consider this output the LLM generated:</p><pre><code>"House listing"
+{
+  "title": "Beautiful Modern House",
+  "description": "Spacious and modern house with stunning views. Perfect for a couple or small family.",
+  "location": "123 Main Street, Anytown, USA",
+  "price": "$500,000",
+  "is_pet_friendly": {
+    "value": "yes",
+    "quote": "Pets allowed with additional deposit."
+  },
+  "has_garden": {
+    "value": "yes",
+    "quote": "Large backyard garden with fruit trees."
+  },
+  "has_parking_place": {
+    "value": "yes",
+    "quote": "Two-car garage and additional street parking available."
+  },
+  "is_suitable_for_couple": {
+    "value": "yes",
+    "quote": "Perfect for a couple or small family."
+  },
+  "has_balcony": {
+    "value": "yes",
+    "quote": "Spacious balcony with beautiful views."
+  }
+}
+</code></pre><p>That was created using the same prompt as before. Now, however, the LLM returned all sorts of properties not asked for, like <code>price</code>, <code>location</code>, <code>description</code> and <code>title</code>. Even worse, the string at the top <code>"House listing"</code> makes the output invalid JSON. Parsing this yields:</p><pre><code>JSONDecodeError Traceback (most recent call last)
+……
+----&gt; 1 obj = json.loads(
+2 response["choices"][0]["message"]["content"]
+3 )
+……
+JSONDecodeError: Extra data: line 2 column 1 (char 16)
+</code></pre><p>... that's an error.</p><p>To prevent this from happening, the input can be checked up front to check whether there's enough data to work with. Still, if we want to repair like this, there can be two strategies:</p><ul><li><strong>Re-run the prompt</strong>. Given that we set the <code>temperature</code> higher than 0.0, the LLM can generate another response. Perhaps it will generate a valid JSON this time.</li><li><strong>Show the LLM its own error</strong>. Better yet, we can run another prompt but include the error itself. We will ask the LLM to consider the error and provide a valid JSON the next time.</li></ul><p>These methods can help us try to repair the previously generated error. But are there better ways to let the LLM retrieve this structure from the data? Let's try another approach.</p><h2 id="2-pydantic-schema">2. Pydantic schema</h2><p>Before, we were giving the LLM an example JSON output that it could work with. But can we provide a more exact definition of our desired output? We can use it <a href="https://docs.pydantic.dev/"><code>pydantic</code></a> for that. Pydantic is a data validation library for Python, which has useful functions for serializing and deserializing JSON. We can define a class that describes the to-be-extracted properties:</p><pre><code class="language-python">from typing import Optional
+from pydantic import Field, BaseModel
+
+class HouseFeature(BaseModel):
+    was_extracted: bool = Field(..., description="Whether the feature was extracted")
+    quote: Optional[str] = Field(
+        default=None, description="Exact quote from the listing"
+    )
+    value: Optional[bool] = Field(
+        default=None, description="Whether the house has the feature"
+    )
+
+class HouseFeatures(BaseModel):
+    """Correctly extracted house listing features"""
+
+    is_pet_friendly: HouseFeature
+    has_garden: HouseFeature
+    has_parking_place: HouseFeature
+    is_suitable_for_couple: HouseFeature
+    has_balcony: HouseFeature
+</code></pre><p>So these two classes describe the information that we want to extract. Now we can utilise all of Pydantic's functionality to help formulate the prompt and parse the response afterwards. Pydantic lets us print an elaborate schema of the models using <code>HouseFeatures.model_json_schema()</code> like so:</p><pre><code class="language-python">output_template = HouseFeatures.model_json_schema()
+output_template_str = json.dumps(output_template)
+</code></pre><p>... where the <code>output_template_str</code> is now a JSON string containing all the details:</p><figure class="kg-card kg-image-card"><picture><source type="image/avif" srcset="https://jeroenoverschie.nl/content/images/size/w600/2026/11/dataset-enrichment-using-llms-pydantic-output-json-example.avif 600w, https://jeroenoverschie.nl/content/images/2026/11/dataset-enrichment-using-llms-pydantic-output-json-example.avif 808w" sizes="(min-width: 720px) 720px"><source type="image/webp" srcset="https://jeroenoverschie.nl/content/images/size/w600/2026/11/dataset-enrichment-using-llms-pydantic-output-json-example.webp 600w, https://jeroenoverschie.nl/content/images/2026/11/dataset-enrichment-using-llms-pydantic-output-json-example.webp 808w" sizes="(min-width: 720px) 720px"><img src="https://jeroenoverschie.nl/content/images/2026/11/dataset-enrichment-using-llms-pydantic-output-json-example.png" class="kg-image" alt="Pydantic output JSON example" loading="lazy" width="808" height="836" srcset="https://jeroenoverschie.nl/content/images/size/w600/2026/11/dataset-enrichment-using-llms-pydantic-output-json-example.png 600w, https://jeroenoverschie.nl/content/images/2026/11/dataset-enrichment-using-llms-pydantic-output-json-example.png 808w" sizes="(min-width: 720px) 720px"></picture></figure><p>That is very detailed information! The exact desired types of each of the attributes is defined, like <code>boolean</code>, <code>string</code> or <code>null</code>. We can now use this to formulate a new <strong>prompt</strong>:</p><pre><code class="language-md">A house listing will follow. Your task is to extract details from the house listing. Fill in the following template:
+# template
+{output_template_str}
+# house listing
+{str(house)}
+</code></pre><p>... here we are substituting the <code>output_template_str</code> for the Pydantic schema we just generated. Let's see what the LLM returns.</p><pre><code class="language-json">{
+  "is_pet_friendly": {
+    "was_extracted": false
+  },
+  "has_garden": {
+    "was_extracted": false
+  },
+  "has_parking_place": {
+    "was_extracted": true,
+    "value": true,
+    "quote": "Parking in front of the building is available through a permit system"
+  },
+  "is_suitable_for_couple": {
+    "was_extracted": true,
+    "value": true,
+    "quote": "preference for single household"
+  },
+  "has_balcony": {
+    "was_extracted": true,
+    "value": true,
+    "quote": "east-facing balcony (morning sun) spans the entire width of the apartment and overlooks the beautiful courtyard"
+  }
+}
+</code></pre><p>Perfect! That looks like a valid JSON. Now comes the fun part. To deserialize the JSON back into an instance of the Pydantic model, we can simply do:</p><pre><code class="language-python">house_features = HouseFeatures.model_validate_json(
+    response_text
+)
+</code></pre><p>And like that, we are in the Python world. Additionally, Pydantic can give descriptive errors in cases where parsing fails. We can then deploy the strategies described in the previous section to try to fix the parsing.</p><p>This is already a powerful technique. However, we are, of course, very curious about what else is possible. OpenAI has something in store for us.</p><h2 id="3-openai-function-calling">3. OpenAI Function Calling</h2><p>In June 2023, OpenAI announced support for function calling. This allows you to define functions that the LLM can choose to call as part of its response. GPT-3.5 and GPT-4 are finetuned to respond in a specific format when we provide functions. Actually calling the function code is still on your side, but the LLM can suggest which function to call and with which arguments. Think of use cases like retrieving the current weather, executing a SQL query, or sending a message to a recipient. But we can exploit the same for our use case: what if we define a function that has as arguments the properties that we want to extract? Let's find out together.</p><p>First, we define a function in the required OpenAI format:</p><pre><code class="language-json">functions = [
+  {
+    "name": "extract_house_features",
+    "type": "function",
+    "description": "Extract features and properties from a house listing text.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "is_pet_friendly": {
+          "type": "boolean",
+          "description": "Whether the house allows pets"
+        },
+        "has_garden": {
+          "type": "boolean",
+          "description": "Whether the house has a garden"
+        },
+        "has_parking_place": {
+          "type": "boolean",
+          "description": "Whether the house has a parking place"
+        },
+        "is_suitable_for_couple": {
+          "type": "boolean",
+          "description": "Whether the house is suitable for couples"
+        },
+        "has_balcony": {
+          "type": "boolean",
+          "description": "Whether the house has a balcony"
+        },
+      },
+      "required": [
+        "is_pet_friendly",
+        "has_garden",
+        "has_parking_place",
+        "is_suitable_for_couple",
+        "has_balcony"
+      ]
+    },
+  }
+]
+</code></pre><p>That elaborately describes the function, with all arguments, their types, and whether they are optional or required. We can now pass this <code>functions</code> object to the OpenAI <code>ChatCompletion</code> API:</p><pre><code class="language-python">response = openai.ChatCompletion.create(
+  model="gpt-3.5-turbo-0613",
+  deployment_id="gpt-35-turbo-us",
+  messages=messages,
+  functions=functions,
+  function_call={
+    "name": "extract_house_features”
+  },
+)
+</code></pre><p>Noteworthy here is the <code>function_call</code> parameter. This forces calling that function in every call, which is the desired functionality for our use case.</p><p>Additionally, we are going to provide the LLM with a different <strong>context</strong>:</p><pre><code>Assistant is a large language model designed to extract structured data from text.
+</code></pre><p>Also called the <em>system prompt</em>. See <a href="https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/function-calling-is-now-available-in-azure-openai-service/ba-p/3879241">this post</a>. The system prompt helps point the LLM more specifically toward its goal. We only need a <strong>prompt</strong>:</p><pre><code>{house}
+</code></pre><p>That just got super short! All instructions are already encapsulated inside the context and the function description. Let's see what the LLM returns:</p><pre><code class="language-json">{
+  "name": "extract_house_features",
+  "arguments": "{n "is_pet_friendly": false,n "has_garden": false,n "has_parking_place": true,n "is_suitable_for_couple": true,n "has_balcony": truen}"
+}
+</code></pre><p>That is a JSON formatted in a specific format. The format is such that it can directly be used to execute the function we defined earlier. In particular, the function is to be executed using certain values that the LLM has also defined for us: this is the data that we desired to extract. Note that for simplicity's sake we did not include the <code>quote</code> property in the function definition.</p><p>We can now parse this JSON and actually call the function:</p><pre><code class="language-python">function_call_args = json.loads(
+    function_call["arguments"]
+)
+extract_house_features(
+    **function_call_args
+)
+</code></pre><p>... which brings our data into the structured, Python world. That is great! There is even another way to make it even better. There is a library that makes the former process a bit easier.</p><h3 id="instructor-library">Instructor library</h3><p>The <a href="https://github.com/jxnl/instructor"><strong>GitHub instructor</strong></a> library provides some shortcuts for what we did above. Instead of meticulously defining our function definition in JSON like above, we can now use a Pydantic model to define which information we want. From this Pydantic model, we can <em>generate</em> the function definition. This works like so:</p><pre><code class="language-python">from instructor import OpenAISchema
+
+class HouseFeatures(OpenAISchema):
+  """Correctly extracted house listing features"""
+  is_pet_friendly: bool
+  has_garden: bool
+  has_parking_place: bool
+  is_suitable_for_couple: bool
+  has_balcony: bool
+</code></pre><p>If we now call <code>HouseFeatures.openai_schema</code> the schema will be printed, containing a function with the properties as arguments. We can now do the LLM call like so:</p><pre><code class="language-python">prompt = str(house)
+response = openai.ChatCompletion.create(
+  model="gpt-3.5-turbo-0613",
+  deployment_id="gpt-35-turbo-us",
+  functions=[HouseFeatures.openai_schema],
+  function_call={"name": HouseFeatures.openai_schema["name"]},
+  messages=[
+    {"role": "system", "content": "Assistant is a large language model designed to extract structured data from text."},
+    {"role": "user", "content": prompt}
+  ],
+)
+
+house_features = HouseFeatures.from_response(response)
+</code></pre><p>... where <code>house_features</code> now contains our structured data in a Pydantic model! Using the <code>instructor</code> library the process got even smoother ✨.</p><h2 id="conclusion">Conclusion</h2><p>Unstructured data, like text, can potentially contain very valuable information. LLMs can help us extract this information. There are three main approaches to do this:</p><ul><li><strong>JSON example</strong>. Provide the LLM with an example of the desired JSON output, instructing it to generate an output in the same format. This is straightforward, but it can be prone to producing outputs in the wrong format. Performance varies per LLM used.</li><li><strong>Pydantic schema</strong>. Using <code>pydantic</code> we can define a schema of the desired output. We can then use this schema to formulate a prompt. The LLM will then try to generate a JSON in the same format. Powerful technique, but no guarantees for better performance. Again, performance varies per LLM used.</li><li><strong>OpenAI Function Calling</strong>. Using OpenAI's Function Calling API, we can instruct the LLM to call a function with the desired properties as arguments. OpenAI's models are fine-tuned to produce a specifically formatted output that can easily be parsed. This can be a lot more robust than the former, but it is only usable with OpenAI's models.</li></ul><p>Try out different models to see which works best for your use case. Models from different providers or even Open-Source handle each method with varying performance. An experiment is justified to see which works best for you.</p><p>Great, you've been reading along &amp; good luck with your own use case!</p><blockquote>Code with examples available at: <a href="https://github.com/dunnkers/dataset-enrichment-with-llms">Dataset enrichment with llms</a><br><br>This content was also featured in a PyData talk! Check out the recording here: <a href="https://jeroenoverschie.nl/pydata-eindhoven-2023-dataset-enrichment-using-llms/">Jeroen Overschie - Dataset enrichment using LLM's ✨</a></blockquote>
     </div>
 
     <div class="gh-canvas">
@@ -216,7 +473,7 @@
                 <div class="author-list">
                         <div class="author-image-placeholder u-placeholder square">
                             <a href="/author/jeroen/" title="Jeroen Overschie">
-                                    <img class="author-image u-object-fit" src="https://www.gravatar.com/avatar/b37b136916ade32aada1f345482aafa4?s&#x3D;250&amp;r&#x3D;x&amp;d&#x3D;mp" width="150" height="150" alt="Jeroen Overschie" loading="lazy">
+                                    <picture><source type="image/avif" srcset="/content/images/size/w150/2026/11/b37b136916ade32aada1f345482aafa4.avif"><source type="image/webp" srcset="/content/images/size/w150/2026/11/b37b136916ade32aada1f345482aafa4.webp"><img class="author-image u-object-fit" src="/content/images/size/w150/2026/11/b37b136916ade32aada1f345482aafa4.jpeg" width="150" height="150" alt="Jeroen Overschie" loading="lazy"></picture>
                             </a>
                         </div>
                 </div>
@@ -436,7 +693,7 @@
 
         <a class="u-permalink" href="/the-genai-automation-potential-of-data-extraction-on-xebia-com/" aria-label="The GenAI automation potential of data extraction"></a>
 
-</article>                <article class="feed post" data-month="September 2024">
+</article>                <article class="feed post featured" data-month="September 2024">
 
     <div class="feed-calendar">
         <div class="feed-calendar-day">

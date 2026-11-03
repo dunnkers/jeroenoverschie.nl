@@ -66,7 +66,7 @@ Keen to know more?
 ## Posts
 ### Our internal AI agent for expenses: Bonbonnetje 🍬
 URL: https://jeroenoverschie.nl/our-internal-ai-agent-for-expenses-bonbonnetje/
-Last updated: 2026-10-29T15:22:31.000Z
+Last updated: 2026-11-03T17:07:55.000Z
 0:00 
 
 /0:12 
@@ -160,7 +160,7 @@ That was **super* cool ✓
 TEDXKE 2025\. Photos courtesy of [Xebia](https://xebia.com).
 ### From Nanyuki to Nairobi with Kenya Railways
 URL: https://jeroenoverschie.nl/taking-the-train-from-nanyuki-to-nairobi-with-kenya-railways/
-Last updated: 2026-09-08T14:04:42.000Z
+Last updated: 2026-11-03T17:07:55.000Z
 Kenya Railways operates a train between Nanyuki and Nairobi- driving North to Nanyuki every Friday and back South to Nairobi every Sunday. The train stops in many towns, making the total trip duration 8.5 hours. This is significantly longer than by road, but doesn't make the trip any less beautiful! This is what the Nanyuki to Nairobi by train experience is like ✓.
 
 ![](https://jeroenoverschie.nl/content/images/2025/10/Screenshot-2025-10-26-at-09.47.58.png)
@@ -216,7 +216,7 @@ Dusty tracks as we close in on Nairobi.
 Arriving at the [Nairobi Railway Station](https://maps.app.goo.gl/X9UZd8e9zdNbhSNL8), you will be located in the center of the city. From there it's easy to take a transport to your final destination. Happy travels!
 ### Fine-tuning LLMs yourself
 URL: https://jeroenoverschie.nl/fine-tuning-llms-yourself/
-Last updated: 2026-10-29T15:25:32.000Z
+Last updated: 2026-11-03T17:04:20.000Z
 ## Why fine-tune?
 
 Large Language Models (LLMs) are impressive generalists. They perform increasingly well on a wide range of tasks; achieving human-level or even superhuman-level performance on many benchmarks. However, being good at everything can come at a cost. These so-called Foundation models have billions of parameters and require a vast amount of GPUs to train- or run. Unaffordable for most - so we consume LLMs from APIs instead - which comes with its own considerations like cost, privacy, latency or vendor lock-in. This is not the only option. When only specialist capabilities are required, generalist capabilities can be sacrificed in favor of domain-specific knowledge, allowing us to get away with *smaller models*. Smaller models require less compute and can achieve similar- or even better performance than larger models on specific tasks \[1\]. With enough data available, we can specialise existing models ourselves. This is **fine-tuning**.
@@ -263,7 +263,7 @@ You can also use this [model size estimator](https://huggingface.co/docs/acceler
 
 For example, we cannot fine-tune a [DeepSeek V2](https://huggingface.co/deepseek-ai/DeepSeek-V2) model, because the memory usage is above 3 TB, as shown below:
 
-![deepseek_v2](https://xebia.com/media/2025/08/finetuning-llms-yourself-deepseek_v2.png)
+![deepseek_v2](https://jeroenoverschie.nl/content/images/2026/11/finetuning-llms-yourself-deepseek_v2.png)
 
 Based on the memory limit, we choose [Gemma-2-2B](https://huggingface.co/google/gemma-2-2b) to fine-tune and dip into the fine-tuning techniques.
 
@@ -421,7 +421,7 @@ Finetuning is definitely not always the right approach - but if it is - it can b
 1. [Singhal, K., Tu, T., Gottweis, J., Sayres, R., Wulczyn, E., Amin, M., ... & Natarajan, V. (2025). Toward expert-level medical question answering with large language models. Nature Medicine, 31(3), 943-950.](https://doi.org/10.1038/s41591-024-03423-7)
 ### Python Devcontainer with uv
 URL: https://jeroenoverschie.nl/python-devcontainer-with-uv/
-Last updated: 2026-10-29T15:23:05.000Z
+Last updated: 2026-11-03T17:07:55.000Z
 [uv](https://github.com/astral-sh/uv?tab=readme-ov-file#uv) is the new king in Python package manager land. It's fast, comprehensive and by now, well-adopted. [Devcontainers](https://containers.dev) provide a powerful way to create a reproducible development environment, by developing *inside* Docker containers. So, how do we combine the two? To find out, read along.
 
 ## How to create a Python + uv Devcontainer
@@ -568,7 +568,7 @@ That was an adventure. We set up a **Devcontainer** using a `devcontainer.json` 
 uv is a powerful tool and combining it with a Devcontainer gives us an easy and reproducible project setup. Good luck with your own Python/uv Devcontainer setup! 🍀
 ### Golden hour in Amsterdam
 URL: https://jeroenoverschie.nl/golden-hour-in-amsterdam/
-Last updated: 2026-09-08T14:02:09.000Z
+Last updated: 2026-11-03T17:07:54.000Z
 0:00 
 
 /0:05 
@@ -964,7 +964,7 @@ Let’s sum things up. To conclude, GenAI for data extraction is:
 Good luck with your own GenAI data extraction usecases 🍀♡.
 ### The Levels of RAG
 URL: https://jeroenoverschie.nl/the-levels-of-rag/
-Last updated: 2026-09-08T13:13:14.000Z
+Last updated: 2026-11-03T16:57:49.000Z
 ## Introduction
 
 LLM’s can be supercharged using a technique called RAG, allowing us to overcome dealbreaker problems like hallucinations or no access to internal data. RAG is gaining more industry momentum and is becoming rapidly more mature both in the open-source world and at major Cloud vendors. But what can we expect from RAG? What is the current state of the tech in the industry? What use cases work well and which are more challenging? Let’s find out together!
@@ -1295,7 +1295,7 @@ Talk held together with [Sander van Donkelaar](https://www.linkedin.com/in/sande
 [AI Community Day - UtrechtAI Community Day - Utrecht![](https://jeroenoverschie.nl/content/images/icon/favicon-426ad46f-65ec-4da5-a440-557b45488cc6.ico)Global AI Community![](https://jeroenoverschie.nl/content/images/thumbnail/9b378df37bd345979e402b05e90577eb-885c5e61-0cd0-4ba6-b8d3-dc5e016459f6.png)](https://globalai.community/e/1ommua5m)
 ### RAG on GCP: production-ready GenAI on Google Cloud Platform
 URL: https://jeroenoverschie.nl/rag-on-gcp-production-ready-genai-on-google-cloud-platform/
-Last updated: 2026-10-29T15:23:42.000Z
+Last updated: 2026-11-03T17:04:20.000Z
 ## Introduction
 
 Google Cloud Platform has an increasing set of managed services that can help you build production-ready *Retrieval-Augmented Generation* applications. Services like *Vertex AI Search & Conversation* and *Vertex AI Vector Search* give us scalability and ease of use. How can you best leverage them to build RAG applications? Let’s explore together. Read along!
@@ -1314,11 +1314,11 @@ Let’s first take a step back. How exactly can RAG benefit us? When we interact
 | GPT-3.5 turbo  | September 2021 [\[2\]](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models#gpt-35-turbo-model-availability) |
 | GPT-4          | September 2021 [\[3\]](https://openai.com/research/gpt-4)                                                                          |
 
-Knowledge cut-offs as of March 2024.
+Knowledge cut-offs as of March 2024. 
 
 Additionally, these publically offered models are trained on mostly *public* data. If you want to use company internal data, an option is to fine-tune or retrain the model, which can be expensive and time-consuming.
 
-![The limitations of LLM interactions without using RAG](https://xebia.com/wp-content/uploads/2024/04/rag-on-gcp-Slide1.png.webp)
+![The limitations of LLM interactions without using RAG](https://jeroenoverschie.nl/content/images/2026/11/rag-on-gcp-Slide1.png)
 
 The limitations of LLM interactions without using RAG.
 
@@ -1326,7 +1326,7 @@ This boils down to three main limitations: the models knowledge is outdated, the
 
 With RAG we can circumvent these limitations. Given the question a user has, information relevant to that question can be retrieved first to then be presented to the LLM.
 
-![How RAG can help an LLM provide more factual answers based on internal data](https://xebia.com/wp-content/uploads/2024/04/rag-on-gcp-Slide2.png.webp)
+![How RAG can help an LLM provide more factual answers based on internal data](https://jeroenoverschie.nl/content/images/2026/11/rag-on-gcp-Slide2.png)
 
 How RAG can help an LLM provide more factual answers based on internal data.
 
@@ -1338,7 +1338,7 @@ These benefits are great. So how do we actually build a RAG system?
 
 In a RAG system, there are two main steps: 1) *Document retrieval* and 2) *Answer generation*. Whereas the document retrieval is responsible for finding the most relevant information given the user’s question, the answer generation is responsible for generating a human-readable answer based on information found in the retrieval step. Let’s take a look at both in more detail.
 
-![The two main steps in a RAG system: Document retrieval and Answer generation](https://xebia.com/wp-content/uploads/2024/04/rag-on-gcp-Slide3.png.webp)
+![The two main steps in a RAG system: Document retrieval and Answer generation](https://jeroenoverschie.nl/content/images/2026/11/rag-on-gcp-Slide3.png)
 
 The two main steps in a RAG system: Document retrieval and Answer generation.
 
@@ -1346,13 +1346,13 @@ The two main steps in a RAG system: Document retrieval and Answer generation.
 
 First, **Document retrieval**. Documents are converted to plain text and [chunked](https://python.langchain.com/docs/modules/data%5Fconnection/document%5Ftransformers/). The chunks are then embedded and stored in a vector database. User questions are also embedded, enabling a *vector similarity search* to obtain the best matching documents. Optionally, a step can be added to extract document metadata like title, author, summary, keywords, etc, which can subsequently be used to perform a *keyword* search. This can all be illustrated like so:
 
-![Document retrieval step in a RAG system. Documents are converted to text and converted to embeddings. A user's question is converted to an embedding such that a vector similarity search can be performed.](https://xebia.com/wp-content/uploads/2024/03/rag-on-gcp-Slide4.jpg.webp)
+![Document retrieval step in a RAG system. Documents are converted to text and converted to embeddings. A user's question is converted to an embedding such that a vector similarity search can be performed.](https://jeroenoverschie.nl/content/images/2026/11/rag-on-gcp-Slide4.jpg)
 
 Document retrieval step in a RAG system. Documents are converted to text and converted to embeddings. A user’s question is converted to an embedding such that a vector similarity search can be performed.
 
 Neat. But what about GCP. We can map the former to GCP as follows:
 
-![Document retrieval using GCP services including Document AI, <code>textembedding-gecko</code> and Vertex AI Vector Search.](https://xebia.com/wp-content/uploads/2024/04/rag-on-gcp-Slide5.png.webp)
+![Document retrieval using GCP services including Document AI, textembedding-gecko and Vertex AI Vector Search.](https://jeroenoverschie.nl/content/images/2026/11/rag-on-gcp-Slide5.png)
 
 Document retrieval using GCP services including Document AI, `textembedding-gecko` and Vertex AI Vector Search.
 
@@ -1362,7 +1362,7 @@ Document retrieval using GCP services including Document AI, `textembedding-geck
 
 Then, **Answer generation**. We will need an LLM for this and instruct it to use the provided documents. We can illustrate this like so:
 
-![Answer generation step using Gemini, with an example prompt. Both the user's question and snippets of documents relevant to that question are inserted in the prompt.](https://xebia.com/wp-content/uploads/2024/04/rag-on-gcp-Slide6.png.webp)
+![Answer generation step using Gemini, with an example prompt. Both the user's question and snippets of documents relevant to that question are inserted in the prompt.](https://jeroenoverschie.nl/content/images/2026/11/rag-on-gcp-Slide6.png)
 
 Answer generation step using Gemini, with an example prompt. Both the user’s question and snippets of documents relevant to that question are inserted in the prompt.
 
@@ -1380,19 +1380,19 @@ Even though Vertex AI Search & Conversation is very powerful, there can be scena
 
 The easiest way to get started with RAG on GCP is to use **Search & Conversation**. The service can ingest documents from multiple sources like *Big Query* and *Google Cloud Storage*. Once those are ingested, it can generate answers backed by citations for you. This is simply illustrated like so:
 
-![Fully managed RAG using Search & Conversation for document retrieval and answer generation.](https://xebia.com/wp-content/uploads/2024/04/rag-on-gcp-Slide7.png.webp)
+![Fully managed RAG using Search & Conversation for document retrieval and answer generation.](https://jeroenoverschie.nl/content/images/2026/11/rag-on-gcp-Slide7.png)
 
 Fully managed RAG using Search & Conversation for document retrieval and answer generation.
 
 If you want more control, you can use **Gemini** for answer generation instead of letting Search & Conversation do it for us. This way, you can have more control to do any prompt engineering you like.
 
-![Partly managed RAG using Search & Conversation for document retrieval and Gemini for answer generation.](https://xebia.com/wp-content/uploads/2024/04/rag-on-gcp-Slide8.png.webp)
+![Partly managed RAG using Search & Conversation for document retrieval and Gemini for answer generation.](https://jeroenoverschie.nl/content/images/2026/11/rag-on-gcp-Slide8.png)
 
 Partly managed RAG using Search & Conversation for document retrieval and Gemini for answer generation.
 
 Lastly, you can have full control over the RAG system. This means you have to manage both the document retrieval and answer generation yourself. This does mean more manual work in engineering the system. Documents can be processed by *Document AI*, chunked, embedded and its vectors stored in *Vertex AI Vector Search*. Then *Gemini* can be used to generate the final answers.
 
-![Full control RAG. Manual document processing, embedding creation and vector database management.](https://xebia.com/wp-content/uploads/2024/04/rag-on-gcp-Slide9.png.webp)
+![Full control RAG. Manual document processing, embedding creation and vector database management.](https://jeroenoverschie.nl/content/images/2026/11/rag-on-gcp-Slide9.png)
 
 Full control RAG. Manual document processing, embedding creation and vector database management.
 
@@ -1428,8 +1428,471 @@ Jeroen Overschie presenting at PyCon Slovakia 2024 ([slides](https://jeroenovers
 That was cool! 🇸🇰
 ### Dataset enrichment using LLM’s ✨
 URL: https://jeroenoverschie.nl/dataset-enrichment-using-llms/
-Last updated: 2026-09-03T14:16:00.000Z
-_No content available._
+Last updated: 2026-11-03T17:07:45.000Z
+## Introduction
+
+Large Language Models (LLMs) have proven useful for numerous tasks. They can summarise text, generate text, classify text, or translate text. LLMs can also **convert unstructured data to structured data**.
+
+This can have huge benefits. Useful facts that were previously hidden inside a large piece of text can now be unveiled, allowing you to use properties of a dataset that could before not be directly accessed. LLMs come in useful to build such extraction tools quickly, cutting development time significantly. Though more importantly, with the power behind LLMs, the properties to be extracted can be more complex than what was previously possible with traditional methods.
+
+In this blog post, we will explore three strategies for using LLMs to extract structured data from a piece of text: 1) providing a JSON example, 2) defining a Pydantic schema (also see [this blog post](https://xebia.com/blog/archetype-llm-batch-use-case/)), and finally, 3) using OpenAI's Function Calling API. But before we dive into these strategies, let's first explore what a **naive approach** would look like.
+
+Follow along!
+
+## A first naive approach
+
+Let's start with a naive approach. We have a piece of text, and we want to extract some structured data from it. Let's take an example. We will consider a house ad for a rental house in Amsterdam. The ad is as follows (this is not a real ad):
+
+```md
+Title: Charming Amsterdam House with Balcony, Pet-Friendly for Couples
+
+Description:
+Welcome to this charming house in the heart of beautiful Amsterdam! This cozy and well-maintained property offers a delightful living space, complete with a private balcony, making it the perfect home for a couple seeking comfort and convenience.
+
+Key Features:
+
+- Balcony: Step out onto the balcony and enjoy your morning coffee or unwind with a glass of wine in the evening. The balcony offers a peaceful retreat where you can soak up the vibrant atmosphere of Amsterdam.
+- Pet-Friendly: We understand that pets are an important part of your family. This house gladly welcomes your furry companions, allowing you to create lasting memories with your beloved pets.
+- Ideal for Couples: With its intimate atmosphere and well-designed layout, this house is an ideal choice for couples. Whether you're enjoying a romantic dinner in the dining area or relaxing in the cozy living room, this house provides a comfortable and intimate space for you and your partner.
+- Central Location: Situated in the heart of Amsterdam, this house offers easy access to the city's most popular attractions, vibrant nightlife, and cultural hotspots. Explore the charming canals, visit world-renowned museums, or indulge in the diverse culinary scene – all just a stone's throw away from your doorstep.
+- Well-Maintained: This house has been meticulously cared for, ensuring a comfortable living experience. The property features modern amenities, including a fully equipped kitchen, a spacious bedroom, and a clean and functional bathroom.
+
+Additional Information:
+- The house is available for long-term rental.
+- Furnishings and appliances are included.
+- Utilities (electricity, water, internet) are not included in the rental price.
+- Public transportation options and amenities are easily accessible from the house.
+
+Don't miss out on this fantastic opportunity to make this charming Amsterdam house your home. Contact us today to schedule a viewing or to request further information.
+
+```
+
+There is, in fact, a lot of potentially useful information in there! The ad lists 'key features' which include a *Balcony*, *Pet friendliness*, *Ideal for Couples*, etc. If you have a pet, you will care about whether they are- or are not allowed in you rental appartment. Similar for the balcony: perhaps you have been going through many house ads to find your dream house with a balcony! That is time spent filtering the ads that could also have been automated. In a similar fashion, there can be a dozen other properties that can be very useful to anyone searching for a new home. Let's try to extract these properties using an LLM!
+
+![Information extraction example](https://jeroenoverschie.nl/content/images/2026/11/dataset-enrichment-using-llms-extraction-process-example.png)
+
+*Figure: overview of process. A piece of text is passed to the LLM, which outputs a structured version of the information. Note: the house ad on the left is not real.*
+
+Let's try a prompt to see if we can extract some information.
+
+```md
+A house listing will follow, as it appeared on a housing website. Please extract the following information from the listing:
+- Is pet friendly (yes/no/unknown, quote: "...")
+- Has a garden (yes/no/unknown, quote: "...")
+- Has a parking place (yes/no/unknown, quote: "...")
+- Is suitable for a couple (yes/no/unknown, quote: "...")
+- Has a balcony (yes/no/unknown, quote: "...")
+## House listing
+{house}
+
+```
+
+... where we are substituting `{house}` with the house ad above. Let's see what OpenAI's *GPT-3.5 turbo* outputs:
+
+```md
+From the house listing, the extracted information is as follows:
+- Is pet friendly: Yes (quote: "Pet-Friendly: We understand that pets are an important part of your family. This house gladly welcomes your furry companions, allowing you to create lasting memories with your beloved pets.")
+- Has a garden: Unknown (no mention of a garden in the listing)
+- Has a parking place: Unknown (no mention of a parking place in the listing)
+- Is suitable for a couple: Yes (quote: "Ideal for Couples: With its intimate atmosphere and well-designed layout, this house is an ideal choice for couples. Whether you're enjoying a romantic dinner in the dining area or relaxing in the cozy living room, this house provides a comfortable and intimate space for you and your partner.")
+- Has a balcony: Yes (quote: "Balcony: Step out onto the balcony and enjoy your morning coffee or unwind with a glass of wine in the evening. The balcony offers a peaceful retreat where you can soak up the vibrant atmosphere of Amsterdam.")
+
+```
+
+Not bad! It seems to have most properties right, including those that it could not determine (*Unknown*). It also provided a quote in cases where it could extract the information.
+
+We still, however, do not have the information in a **structured** format. That's a pity, because that's what we need to work with it. Let's try to retrieve the information in a structured format.
+
+## Going structured
+
+So our goal is to get the information in a structured manner. Structure can take many forms. There are many structured file formats, for example. Think of JSON, XML, CSV, etc. We will use JSON because it is a very common format and it is easy to work with in Python.
+
+We will explore different approaches to prompting the LLM. You can call this Prompt Engineering if you want. The goal is to determine which approaches work well with a chosen LLM model and which don't. Let's start.
+
+## 1\. JSON example
+
+We are going to ask the LLM to provide its output in JSON. Therefore, we should inform the LLM about the format in which it should return the JSON. For this, we can simply give the LLM an example of the desired JSON output. This will be our **prompt**:
+
+```md
+A house listing will follow, as it appeared on a housing website. Please extract the following information from the listing in a JSON response:
+
+```
+{
+    "is_pet_friendly": {
+        "value": ..., # yes/no/unknown
+        "quote": ..., # exact quote from listing
+    },
+    "has_garden": {
+        "value": ..., # yes/no/unknown
+        "quote": ..., # exact quote from listing
+    },
+    "has_parking_place": {
+        "value": ..., # yes/no/unknown
+        "quote": ..., # exact quote from listing
+    },
+    "is_suitable_for_couple": {
+        "value": ..., # yes/no/unknown
+        "quote": ..., # exact quote from listing
+    },
+    "has_balcony": {
+        "value": ..., # yes/no/unknown
+        "quote": ..., # exact quote from listing
+    },
+}
+```
+
+```
+
+... on which *GPT-3.5 turbo* has the following response:
+
+```json
+{
+  "is_pet_friendly": {
+    "value": "no",
+    "quote": "Pets not allowed"
+  },
+  "has_garden": {
+    "value": "unknown",
+    "quote": "-"
+  },
+  "has_parking_place": {
+    "value": "yes",
+    "quote": "Parking possibility: Private parking place outside"
+  },
+  "is_suitable_for_couple": {
+    "value": "unknown",
+    "quote": "-"
+  },
+  "has_balcony": {
+    "value": "yes",
+    "quote": "Balcony (facing South-West)"
+  }
+}
+
+```
+
+> Note: this response was generated on a different input example than in the previous section.
+
+That is cool! The LLM just returned a valid JSON. It provided the format that we desired, listing the properties as objects containing a `value` and a `quote`. We can parse this into Python using `json.loads`:
+
+```
+obj = json.loads(
+    response_text
+)
+
+```
+
+... where `response_text` is the text that the LLM returned. That is great. We can now use the data in a structured manner in Python.
+
+However, LLMs do not guarantee a certain output despite you asking for it. There can be cases, for example, when the house listing is so short that the LLM will hallucinate. Provided with too little input data, the LLM deviates from the asked-for format.
+
+Consider this output the LLM generated:
+
+```
+"House listing"
+{
+  "title": "Beautiful Modern House",
+  "description": "Spacious and modern house with stunning views. Perfect for a couple or small family.",
+  "location": "123 Main Street, Anytown, USA",
+  "price": "$500,000",
+  "is_pet_friendly": {
+    "value": "yes",
+    "quote": "Pets allowed with additional deposit."
+  },
+  "has_garden": {
+    "value": "yes",
+    "quote": "Large backyard garden with fruit trees."
+  },
+  "has_parking_place": {
+    "value": "yes",
+    "quote": "Two-car garage and additional street parking available."
+  },
+  "is_suitable_for_couple": {
+    "value": "yes",
+    "quote": "Perfect for a couple or small family."
+  },
+  "has_balcony": {
+    "value": "yes",
+    "quote": "Spacious balcony with beautiful views."
+  }
+}
+
+```
+
+That was created using the same prompt as before. Now, however, the LLM returned all sorts of properties not asked for, like `price`, `location`, `description` and `title`. Even worse, the string at the top `"House listing"` makes the output invalid JSON. Parsing this yields:
+
+```
+JSONDecodeError Traceback (most recent call last)
+……
+----> 1 obj = json.loads(
+2 response["choices"][0]["message"]["content"]
+3 )
+……
+JSONDecodeError: Extra data: line 2 column 1 (char 16)
+
+```
+
+... that's an error.
+
+To prevent this from happening, the input can be checked up front to check whether there's enough data to work with. Still, if we want to repair like this, there can be two strategies:
+
+- **Re-run the prompt**. Given that we set the `temperature` higher than 0.0, the LLM can generate another response. Perhaps it will generate a valid JSON this time.
+- **Show the LLM its own error**. Better yet, we can run another prompt but include the error itself. We will ask the LLM to consider the error and provide a valid JSON the next time.
+
+These methods can help us try to repair the previously generated error. But are there better ways to let the LLM retrieve this structure from the data? Let's try another approach.
+
+## 2\. Pydantic schema
+
+Before, we were giving the LLM an example JSON output that it could work with. But can we provide a more exact definition of our desired output? We can use it [pydantic](https://docs.pydantic.dev/) for that. Pydantic is a data validation library for Python, which has useful functions for serializing and deserializing JSON. We can define a class that describes the to-be-extracted properties:
+
+```python
+from typing import Optional
+from pydantic import Field, BaseModel
+
+class HouseFeature(BaseModel):
+    was_extracted: bool = Field(..., description="Whether the feature was extracted")
+    quote: Optional[str] = Field(
+        default=None, description="Exact quote from the listing"
+    )
+    value: Optional[bool] = Field(
+        default=None, description="Whether the house has the feature"
+    )
+
+class HouseFeatures(BaseModel):
+    """Correctly extracted house listing features"""
+
+    is_pet_friendly: HouseFeature
+    has_garden: HouseFeature
+    has_parking_place: HouseFeature
+    is_suitable_for_couple: HouseFeature
+    has_balcony: HouseFeature
+
+```
+
+So these two classes describe the information that we want to extract. Now we can utilise all of Pydantic's functionality to help formulate the prompt and parse the response afterwards. Pydantic lets us print an elaborate schema of the models using `HouseFeatures.model_json_schema()` like so:
+
+```python
+output_template = HouseFeatures.model_json_schema()
+output_template_str = json.dumps(output_template)
+
+```
+
+... where the `output_template_str` is now a JSON string containing all the details:
+
+![Pydantic output JSON example](https://jeroenoverschie.nl/content/images/2026/11/dataset-enrichment-using-llms-pydantic-output-json-example.png)
+
+That is very detailed information! The exact desired types of each of the attributes is defined, like `boolean`, `string` or `null`. We can now use this to formulate a new **prompt**:
+
+```md
+A house listing will follow. Your task is to extract details from the house listing. Fill in the following template:
+# template
+{output_template_str}
+# house listing
+{str(house)}
+
+```
+
+... here we are substituting the `output_template_str` for the Pydantic schema we just generated. Let's see what the LLM returns.
+
+```json
+{
+  "is_pet_friendly": {
+    "was_extracted": false
+  },
+  "has_garden": {
+    "was_extracted": false
+  },
+  "has_parking_place": {
+    "was_extracted": true,
+    "value": true,
+    "quote": "Parking in front of the building is available through a permit system"
+  },
+  "is_suitable_for_couple": {
+    "was_extracted": true,
+    "value": true,
+    "quote": "preference for single household"
+  },
+  "has_balcony": {
+    "was_extracted": true,
+    "value": true,
+    "quote": "east-facing balcony (morning sun) spans the entire width of the apartment and overlooks the beautiful courtyard"
+  }
+}
+
+```
+
+Perfect! That looks like a valid JSON. Now comes the fun part. To deserialize the JSON back into an instance of the Pydantic model, we can simply do:
+
+```python
+house_features = HouseFeatures.model_validate_json(
+    response_text
+)
+
+```
+
+And like that, we are in the Python world. Additionally, Pydantic can give descriptive errors in cases where parsing fails. We can then deploy the strategies described in the previous section to try to fix the parsing.
+
+This is already a powerful technique. However, we are, of course, very curious about what else is possible. OpenAI has something in store for us.
+
+## 3\. OpenAI Function Calling
+
+In June 2023, OpenAI announced support for function calling. This allows you to define functions that the LLM can choose to call as part of its response. GPT-3.5 and GPT-4 are finetuned to respond in a specific format when we provide functions. Actually calling the function code is still on your side, but the LLM can suggest which function to call and with which arguments. Think of use cases like retrieving the current weather, executing a SQL query, or sending a message to a recipient. But we can exploit the same for our use case: what if we define a function that has as arguments the properties that we want to extract? Let's find out together.
+
+First, we define a function in the required OpenAI format:
+
+```json
+functions = [
+  {
+    "name": "extract_house_features",
+    "type": "function",
+    "description": "Extract features and properties from a house listing text.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "is_pet_friendly": {
+          "type": "boolean",
+          "description": "Whether the house allows pets"
+        },
+        "has_garden": {
+          "type": "boolean",
+          "description": "Whether the house has a garden"
+        },
+        "has_parking_place": {
+          "type": "boolean",
+          "description": "Whether the house has a parking place"
+        },
+        "is_suitable_for_couple": {
+          "type": "boolean",
+          "description": "Whether the house is suitable for couples"
+        },
+        "has_balcony": {
+          "type": "boolean",
+          "description": "Whether the house has a balcony"
+        },
+      },
+      "required": [
+        "is_pet_friendly",
+        "has_garden",
+        "has_parking_place",
+        "is_suitable_for_couple",
+        "has_balcony"
+      ]
+    },
+  }
+]
+
+```
+
+That elaborately describes the function, with all arguments, their types, and whether they are optional or required. We can now pass this `functions` object to the OpenAI `ChatCompletion` API:
+
+```python
+response = openai.ChatCompletion.create(
+  model="gpt-3.5-turbo-0613",
+  deployment_id="gpt-35-turbo-us",
+  messages=messages,
+  functions=functions,
+  function_call={
+    "name": "extract_house_features”
+  },
+)
+
+```
+
+Noteworthy here is the `function_call` parameter. This forces calling that function in every call, which is the desired functionality for our use case.
+
+Additionally, we are going to provide the LLM with a different **context**:
+
+```
+Assistant is a large language model designed to extract structured data from text.
+
+```
+
+Also called the *system prompt*. See [this post](https://techcommunity.microsoft.com/t5/ai-azure-ai-services-blog/function-calling-is-now-available-in-azure-openai-service/ba-p/3879241). The system prompt helps point the LLM more specifically toward its goal. We only need a **prompt**:
+
+```
+{house}
+
+```
+
+That just got super short! All instructions are already encapsulated inside the context and the function description. Let's see what the LLM returns:
+
+```json
+{
+  "name": "extract_house_features",
+  "arguments": "{n "is_pet_friendly": false,n "has_garden": false,n "has_parking_place": true,n "is_suitable_for_couple": true,n "has_balcony": truen}"
+}
+
+```
+
+That is a JSON formatted in a specific format. The format is such that it can directly be used to execute the function we defined earlier. In particular, the function is to be executed using certain values that the LLM has also defined for us: this is the data that we desired to extract. Note that for simplicity's sake we did not include the `quote` property in the function definition.
+
+We can now parse this JSON and actually call the function:
+
+```python
+function_call_args = json.loads(
+    function_call["arguments"]
+)
+extract_house_features(
+    **function_call_args
+)
+
+```
+
+... which brings our data into the structured, Python world. That is great! There is even another way to make it even better. There is a library that makes the former process a bit easier.
+
+### Instructor library
+
+The [**GitHub instructor**](https://github.com/jxnl/instructor) library provides some shortcuts for what we did above. Instead of meticulously defining our function definition in JSON like above, we can now use a Pydantic model to define which information we want. From this Pydantic model, we can *generate* the function definition. This works like so:
+
+```python
+from instructor import OpenAISchema
+
+class HouseFeatures(OpenAISchema):
+  """Correctly extracted house listing features"""
+  is_pet_friendly: bool
+  has_garden: bool
+  has_parking_place: bool
+  is_suitable_for_couple: bool
+  has_balcony: bool
+
+```
+
+If we now call `HouseFeatures.openai_schema` the schema will be printed, containing a function with the properties as arguments. We can now do the LLM call like so:
+
+```python
+prompt = str(house)
+response = openai.ChatCompletion.create(
+  model="gpt-3.5-turbo-0613",
+  deployment_id="gpt-35-turbo-us",
+  functions=[HouseFeatures.openai_schema],
+  function_call={"name": HouseFeatures.openai_schema["name"]},
+  messages=[
+    {"role": "system", "content": "Assistant is a large language model designed to extract structured data from text."},
+    {"role": "user", "content": prompt}
+  ],
+)
+
+house_features = HouseFeatures.from_response(response)
+
+```
+
+... where `house_features` now contains our structured data in a Pydantic model! Using the `instructor` library the process got even smoother ✨.
+
+## Conclusion
+
+Unstructured data, like text, can potentially contain very valuable information. LLMs can help us extract this information. There are three main approaches to do this:
+
+- **JSON example**. Provide the LLM with an example of the desired JSON output, instructing it to generate an output in the same format. This is straightforward, but it can be prone to producing outputs in the wrong format. Performance varies per LLM used.
+- **Pydantic schema**. Using `pydantic` we can define a schema of the desired output. We can then use this schema to formulate a prompt. The LLM will then try to generate a JSON in the same format. Powerful technique, but no guarantees for better performance. Again, performance varies per LLM used.
+- **OpenAI Function Calling**. Using OpenAI's Function Calling API, we can instruct the LLM to call a function with the desired properties as arguments. OpenAI's models are fine-tuned to produce a specifically formatted output that can easily be parsed. This can be a lot more robust than the former, but it is only usable with OpenAI's models.
+
+Try out different models to see which works best for your use case. Models from different providers or even Open-Source handle each method with varying performance. An experiment is justified to see which works best for you.
+
+Great, you've been reading along & good luck with your own use case!
+
+> Code with examples available at: [Dataset enrichment with llms](https://github.com/dunnkers/dataset-enrichment-with-llms)  
+>  
+> This content was also featured in a PyData talk! Check out the recording here: [Jeroen Overschie - Dataset enrichment using LLM's ✨](https://jeroenoverschie.nl/pydata-eindhoven-2023-dataset-enrichment-using-llms/)
 ### Scaling up: bringing your Azure DevOps CI/CD setup to the next level 🚀
 URL: https://jeroenoverschie.nl/scaling-up-bringing-your-azure-devops-ci-cd-setup-to-the-next-level/
 Last updated: 2026-09-03T14:16:00.000Z
@@ -1961,7 +2424,7 @@ Excerpt of [slides](https://github.com/dunnkers/dataset-enrichment-with-llms/wik
 [GitHub - dunnkers/dataset-enrichment-with-llms: Excerpt of the original code put up for displayExcerpt of the original code put up for display. Contribute to dunnkers/dataset-enrichment-with-llms development by creating an account on GitHub.![](https://jeroenoverschie.nl/content/images/icon/favicon-ca143de7-284a-43c7-bedb-3064259b209a.svg)GitHubdunnkers![](https://jeroenoverschie.nl/content/images/thumbnail/dataset-enrichment-with-llms-0e7a171f-f34c-45e3-beb6-82ca59849262)](https://github.com/dunnkers/dataset-enrichment-with-llms)
 ### A sunrise in Hamburg
 URL: https://jeroenoverschie.nl/a-sunrise-in-hamburg/
-Last updated: 2026-09-08T13:55:41.000Z
+Last updated: 2026-11-03T17:07:45.000Z
 0:00 
 
 /0:27 
@@ -2012,7 +2475,7 @@ The fseval Python package allows benchmarking Feature Selection and Feature Rank
 [GitHub - dunnkers/fseval: Benchmarking framework for Feature Selection and Feature Ranking algorithms 🚀Benchmarking framework for Feature Selection and Feature Ranking algorithms 🚀 - dunnkers/fseval![](https://jeroenoverschie.nl/content/images/icon/favicon-4fe92b5f-5d17-4078-bdd1-056df7067dc5.png)GitHub![](https://jeroenoverschie.nl/content/images/2026/10/fseval-og.png)](https://github.com/dunnkers/fseval)
 ### How to create a Devcontainer for your Python project 🐳
 URL: https://jeroenoverschie.nl/how-to-create-a-devcontainer-for-your-python-project/
-Last updated: 2026-09-08T13:13:15.000Z
+Last updated: 2026-11-03T17:07:54.000Z
 Imagine the following scenario 💭.
 
 Your company uses Apache Spark to process data, and your team has pyspark set up in a Python project. The codebase is built on a specific Python version, using a certain Java installation, and an accompanying pyspark version that works with the former. To onboard a new member, you will need to pass a list of instructions the developer needs to follow carefully to get their setup working. But not everyone might run this on the same laptop environment: different hardware, and different operating systems. This is getting challenging.  
