@@ -1,0 +1,15 @@
+{{!--
+    PhotoSwipe v5, loaded by assets/js/lib/lightbox.js the first time an
+    image is hovered or clicked. <template> content is inert, so none of this
+    downloads with the page, but the asset URLs are still in the HTML for the
+    gssg static export's crawler to find and copy.
+--}}
+<template id="pswp"
+    data-dialog-label="{{t "Image viewer"}}"
+    data-close-title="{{t "Close (Esc)"}}"
+    data-zoom-title="{{t "Zoom in/out"}}"
+    data-arrow-prev-title="{{t "Previous (arrow left)"}}"
+    data-arrow-next-title="{{t "Next (arrow right)"}}">
+    <link rel="stylesheet" href="{{asset "built/photoswipe.css"}}">
+    <script type="module" src="{{asset "built/photoswipe.esm.min.js"}}"></script>
+</template>

@@ -1,0 +1,140 @@
+<article class="single {{post_class}}">
+
+    {{#match @page.show_title_and_feature_image}}
+        <header class="single-header gh-canvas">
+            {{#is "post"}}
+            <div class="single-meta">
+                <span class="single-meta-item single-meta-date">
+                    <time datetime="{{date format="YYYY-MM-DD"}}">
+                        {{date published_at format="DD MMM YYYY"}}
+                    </time>
+                </span>
+                <span class="single-meta-item single-meta-length">
+                    {{reading_time minute=(t "1 min read") minutes=(t "% min read")}}
+                </span>
+                {{#primary_tag}}
+                    <span class="single-meta-item single-meta-tag">
+                        <a class="post-tag post-tag-{{slug}}" href="{{url}}">{{name}}</a>
+                    </span>
+                {{/primary_tag}}
+            </div>
+            {{/is}}
+
+            <h1 class="single-title">
+                {{title}}
+                {{#has tag="#external-link"}}{{> "external-badge"}}{{/has}}
+            </h1>
+
+            {{#if custom_excerpt}}
+                <div class="single-excerpt">
+                    {{custom_excerpt}}
+                </div>
+            {{/if}}
+
+            {{#if @custom.show_share_links}}
+            <div class="gh-meta-share">
+                <div class="share">
+                    <a class="share-link share-link-x"
+                        href="https://x.com/intent/tweet?url={{url absolute="true"}}&text={{encode title}}"
+                        target="_blank" rel="noopener noreferrer">
+                        {{> icons/x}}
+                        Post
+                    </a>
+                    <a class="share-link share-link-linkedin"
+                        href="https://www.linkedin.com/shareArticle?mini=true&url={{url absolute="true"}}"
+                        target="_blank" rel="noopener noreferrer">
+                        {{> icons/linkedin}}
+                        Share
+                    </a>
+                    <a class="share-link share-link-facebook"
+                        href="https://www.facebook.com/sharer.php?u={{url absolute="true"}}"
+                        target="_blank" rel="noopener noreferrer">
+                        {{> icons/facebook}}
+                        Share
+                    </a>
+                </div>
+            </div>
+            {{/if}}
+
+            <div class="author-name" style="display: none;">{{authors}}</div>
+
+            {{#if feature_image}}
+            {{#unless no_image}}
+                <figure class="single-media kg-width-{{width}}">
+                    <img class="gh-feature-image" srcset="{{> "srcset"}}" sizes="(min-width: 1023px) 920px, calc(90vw)" src="{{img_url feature_image size="l"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" fetchpriority="high">
+                    {{#if feature_image_caption}}
+                        <figcaption>{{feature_image_caption}}</figcaption>
+                    {{/if}}
+                </figure>
+            {{/unless}}
+            {{/if}}
+        </header>
+    {{/match}}
+
+    {{#is "post"}}
+    {{#has tag="#external-link"}}
+        <div class="gh-canvas">
+            <div class="single-external-notice">
+                {{t "This article was originally published on"}}
+                <a class="single-external-notice-link" href="{{canonical_url}}" target="_blank" rel="noopener noreferrer" data-external-host="{{canonical_url}}">
+                    <span class="external-badge-label"></span>{{> "icons/external-link"}}
+                </a>
+            </div>
+        </div>
+    {{/has}}
+    {{/is}}
+
+    <div class="single-content gh-content gh-canvas">
+        {{content}}
+    </div>
+
+    {{#is "post"}}
+    <div class="gh-canvas">
+    <footer class="single-footer">
+
+        <div class="single-footer-left">
+            {{#prev_post}}
+            <div class="navigation navigation-previous">
+                <a class="navigation-link" href="{{url}}" aria-label="Previous post">
+                    <span class="navigation-icon">{{> "icons/arrow-left"}}</span>
+                </a>
+            </div>
+            {{/prev_post}}
+        </div>
+
+        <div class="single-footer-middle">
+            {{#if @custom.show_author}}
+            <div class="single-footer-top">
+                <h2 class="single-footer-title">Published by:</h2>
+                <div class="author-list">
+                    {{#foreach authors}}
+                        <div class="author-image-placeholder u-placeholder square">
+                            <a href="{{url}}" title="{{name}}">
+                                {{#if profile_image}}
+                                    <img class="author-image u-object-fit" src="{{img_url profile_image size="xs"}}" width="150" height="150" alt="{{name}}" loading="lazy">
+                                {{else}}
+                                    <span class="u-object-fit">{{> "icons/avatar"}}</span>
+                                {{/if}}
+                            </a>
+                        </div>
+                    {{/foreach}}
+                </div>
+            </div>
+            {{/if}}
+        </div>
+
+        <div class="single-footer-right">
+            {{#next_post}}
+            <div class="navigation navigation-next">
+                <a class="navigation-link" href="{{url}}" aria-label="Next post">
+                    <span class="navigation-icon">{{> "icons/arrow-right"}}</span>
+                </a>
+            </div>
+            {{/next_post}}
+        </div>
+
+    </footer>
+    </div>
+    {{/is}}
+
+</article>

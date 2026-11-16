@@ -1,0 +1,155 @@
+/* Custom bookmark-card styling (carried over from the pre-upstream-merge fork).
+   Note: with `card_assets: true`, Ghost also ships default Koenig card styles;
+   these rules override the thumbnail-on-the-right (row-reverse) look. */
+
+.kg-bookmark-card {
+    width: 100%;
+    position: relative;
+}
+
+.kg-bookmark-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    color: currentColor;
+    font-family: inherit;
+    text-decoration: none;
+    border: 1px solid var(--light-gray-color);
+}
+
+.kg-bookmark-container:hover {
+    text-decoration: none;
+}
+
+.kg-bookmark-content {
+    flex-basis: 0;
+    flex-grow: 999;
+    padding: 20px;
+    order: 1;
+}
+
+.kg-bookmark-title {
+    font-weight: 600;
+}
+
+.kg-bookmark-metadata,
+.kg-bookmark-description {
+    margin-top: .5em;
+}
+
+.kg-bookmark-metadata {
+    align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.kg-bookmark-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.kg-bookmark-icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: text-bottom;
+    margin-right: .5em;
+    margin-bottom: .05em;
+}
+
+.kg-bookmark-thumbnail {
+    display: flex;
+    flex-basis: 24rem;
+    flex-grow: 1;
+}
+
+.kg-bookmark-thumbnail img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: bottom;
+    object-fit: cover;
+}
+
+.kg-bookmark-author {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.kg-bookmark-publisher::before {
+    /* content: "•"; */
+    margin: 0 .5em;
+}
+
+/* The raw accent color fails WCAG AA contrast (4.5:1) for body text against
+   white and against the light-gray inline-code background — use --link-color
+   (darkened in light mode, the raw accent in dark mode; see basics.css) for
+   text specifically, while leaving --ghost-accent-color untouched for
+   buttons/borders/other UI elements. Selectors are deliberately more specific
+   than the upstream `.gh-content a` / `code` rules (rather than reusing them)
+   so cssnano's rule-merging can't collapse the override away.  */
+.single-content.gh-content a {
+    color: var(--link-color);
+}
+
+.single-content.gh-content code {
+    color: var(--link-color);
+}
+
+/* Restore the intentionally muted (dark, no-underline) caption-link style —
+   without this, the rule above (being more specific in class count than the
+   upstream `.gh-content figcaption a`) would repaint caption links pink. */
+.single-content.gh-content figcaption a {
+    color: var(--color-darker-gray);
+}
+
+/* The product-card "accent" button (white text on --ghost-accent-color) also
+   fails WCAG AA contrast (3.71:1 measured against the current accent) —
+   darken its background the same way the link/code rule above does, rather
+   than leaving buttons untouched as noted there.
+
+   Ghost core's own /public/cards.min.css (loaded after this stylesheet) sets
+   `.kg-product-card a.kg-product-card-btn-accent { background-color: var(--ghost-accent-color) }`
+   at specificity (0,2,1) — one class-count higher than plain
+   `.single-content .kg-product-card-btn-accent` (0,2,0), so it silently wins
+   the cascade and this override never actually applied live (Lighthouse
+   still measured the raw, unmixed accent color). Chain through
+   `.kg-product-card` too so this rule's class count (0,3,0) beats it. */
+.single-content .kg-product-card .kg-product-card-btn-accent {
+    background-color: color-mix(in srgb, var(--ghost-accent-color) 80%, black);
+}
+
+/* Upstream content.css/cta.css hard-code white for the table edge fades and
+   the fade above the members CTA, which would paint white bands over a dark
+   page. Same selectors, re-pointed at the page background. */
+.gh-content table:not(.gist table) td:first-child {
+    background-image: linear-gradient(to right, var(--white-color) 50%, transparent 100%);
+}
+
+.gh-content table:not(.gist table) td:last-child {
+    background-image: linear-gradient(to left, var(--white-color) 50%, transparent 100%);
+}
+
+.gh-cta-gradient {
+    background: linear-gradient(180deg, transparent, var(--white-color));
+}
+
+/* Several posts link their GitHub repo with a 32px GitHub logo uploaded as
+   github32-*.png. Show GitHub's own official mark instead (the "Invertocat",
+   unmodified from GitHub's logo package, in assets/images/): black in light
+   mode, white in dark mode. object-position pushes the uploaded PNG's pixels
+   out of its 32px box (the <img>, its size, alt text and link stay as they
+   are), and the official mark is painted as the box's background. */
+.gh-content img[src*="/github32"] {
+    object-position: -9999px 0;
+    background: url("../images/github-invertocat-black.svg") center / contain no-repeat;
+}
+
+@media (prefers-color-scheme: dark) {
+    .gh-content img[src*="/github32"] {
+        background-image: url("../images/github-invertocat-white.svg");
+    }
+}

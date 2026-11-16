@@ -1,7 +1,8 @@
 current
 versions
 content/logs
-content/themes
+content/themes/*
+!content/themes/dunnkers-theme-edition/
 .DS_Store
 .ghostpid
 static

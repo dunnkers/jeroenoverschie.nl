@@ -1,0 +1,156 @@
+body:not(.with-full-cover) .cover {
+    margin-top: 9vmin;
+}
+
+.with-full-cover .cover {
+    position: relative;
+    display: flex;
+    height: 100vh;
+    /* Small viewport units: the height with mobile browser toolbars shown, so
+       the cover neither hides behind them nor resizes while scrolling. */
+    height: 100svh;
+    overflow: hidden;
+}
+
+.with-full-cover .cover.half {
+    height: 60vh;
+    height: 60svh;
+}
+
+.with-full-cover .cover::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    content: "";
+    background-color: #000;
+    opacity: 0.3;
+    transition: opacity 1.5s ease;
+}
+
+.cover.image-loading::before {
+    opacity: 1;
+}
+
+.cover-image {
+    transition: transform 2s ease;
+}
+
+.cover.image-loading .cover-image {
+    transform: scale(1.02);
+}
+
+.cover-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: calc(450px + 8vw);
+    margin: auto;
+    text-align: center;
+}
+
+.cover-icon {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.cover-icon-caption {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.cover-description {
+    font-family: var(--gh-font-heading, var(--font-sans));
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    word-break: break-word;
+    margin-bottom: 3rem;
+}
+
+.has-serif-title:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .cover-description {
+    font-family: var(--gh-font-heading, var(--font-serif));
+}
+
+.with-full-cover .cover-description {
+    color: #fff;
+}
+
+.cover-cta {
+    display: flex;
+    margin-top: 2rem;
+}
+
+.cover-cta .button {
+    margin: 0 0.5rem;
+}
+
+.cover-form {
+    width: 100%;
+    max-width: 480px;
+    margin-top: 4.5rem;
+}
+
+.cover-form input {
+    height: 50px;
+}
+
+.with-full-cover .cover-form input {
+    background-color: var(--white-color);
+    border-color: transparent;
+}
+
+.cover-form .form-button {
+    min-width: 110px;
+}
+
+.cover-arrow {
+    display: none;
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    margin-left: -20px;
+}
+
+.with-full-cover .cover-arrow {
+    display: none;
+}
+
+.cover-arrow .icon {
+    width: 28px;
+    height: 28px;
+    color: #fff;
+}
+
+@media (max-width: 767px) {
+    .cover-description {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 991px) {
+    .menu-opened .cover {
+        margin-top: 0;
+    }
+}
+
+/* The site icon shown on the cover is single-color black line art (an SVG
+   with one #000 fill), which would vanish against the black dark-mode page.
+   invert(p) maps that black to a gray of lightness p: 0.64 gives #a3a3a3,
+   the dark-mode muted-text color, which is softer than pure white. Scoped to
+   SVG icons so a future photographic (PNG/JPEG/WebP) site icon isn't turned
+   into a negative. */
+@media (prefers-color-scheme: dark) {
+    body:not(.with-full-cover) .cover-icon-image[src$=".svg"] {
+        filter: invert(0.64);
+    }
+}
