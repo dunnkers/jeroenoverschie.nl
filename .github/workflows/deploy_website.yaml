@@ -11,7 +11,12 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Don't deploy a theme that fails gscan or has stale build output.
+  theme-check:
+    uses: ./.github/workflows/theme_check.yaml
+
   build-and-deploy:
+    needs: theme-check
     runs-on: ubuntu-latest
 
     steps:

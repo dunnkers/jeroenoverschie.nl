@@ -38,8 +38,9 @@ jobs:
             echo "Ghost's official theme scanner, checking \`content/themes/dunnkers-theme-edition\` against the Ghost version this site runs."
             echo ""
             echo '```'
-            npm ci --prefix content/themes/dunnkers-theme-edition --no-audit --no-fund >/dev/null 2>&1 \
-              && npm run --prefix content/themes/dunnkers-theme-edition test 2>&1 || true
+            # Same gscan version the theme pins, without installing its build toolchain.
+            gscan_version=$(node -p "require('./content/themes/dunnkers-theme-edition/package.json').devDependencies.gscan")
+            npx --yes "gscan@$gscan_version" ./content/themes/dunnkers-theme-edition 2>&1 || true
             echo '```'
             echo ""
           } >> "$GITHUB_STEP_SUMMARY"

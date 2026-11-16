@@ -3,7 +3,8 @@
 # has no `--restart` policy, so a LaunchAgent runs this at login and every few
 # minutes (see scripts/nl.jeroenoverschie.ghost.plist): it starts the
 # `container` services, creates the `ghost` container if missing, and starts
-# it if stopped. Safe to run repeatedly.
+# it if stopped. A container whose mounts no longer match is recreated.
+# Safe to run repeatedly.
 set -eu
 export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
 
@@ -12,7 +13,26 @@ REPO="/Users/dunnkers/git/dunnkers/jeroenoverschie.nl"
 
 container system status >/dev/null 2>&1 || container system start --enable-kernel-install
 
-state=$(container inspect ghost 2>/dev/null | python3 -c 'import json,sys; d=json.load(sys.stdin); print(d[0]["status"]["state"] if d else "")' 2>/dev/null || true)
+# Prints the container's state, plus "stale" when its mounts differ from the
+# single content mount below (e.g. a container created back when the theme
+# lived in a separate repo and was mounted over content/themes on its own).
+read -r state stale <<<"$(container inspect ghost 2>/dev/null | python3 -c '
+import json, sys
+d = json.load(sys.stdin)
+if not d:
+    sys.exit()
+mounts = {(m["source"].rstrip("/"), m["destination"].rstrip("/")) for m in d[0]["configuration"].get("mounts", [])}
+want = {(sys.argv[1] + "/content", "/var/lib/ghost/content")}
+print(d[0]["status"]["state"], "stale" if mounts != want else "ok")
+' "$REPO" 2>/dev/null || true)"
+
+if [[ "$stale" == "stale" ]]; then
+  # Recreate rather than keep serving outdated mounts. Content and the
+  # database live in the bind-mounted content/ folder, so nothing is lost.
+  container stop ghost >/dev/null 2>&1 || true
+  container delete ghost
+  state=""
+fi
 
 if [[ -z "$state" ]]; then
   container run -d --name ghost \

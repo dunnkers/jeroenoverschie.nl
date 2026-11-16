@@ -5,12 +5,26 @@ GitHub Pages (no live backend in production — see `.github/workflows/deploy_we
 The theme lives in `content/themes/dunnkers-theme-edition` (a fork of
 Ghost's Edition theme), mounted into Ghost as part of `content/`. It was
 imported from the old `dunnkers/ghost-dunnkers-theme-edition` repo
-(being archived) as a single commit; look there for its earlier history. Its CSS/JS
-is built with gulp (`npm run dev` / `npm run build` inside the theme
-folder) into `assets/built/`, which is committed — CI does not build the
-theme, so rebuilt assets must be committed alongside source changes.
-Its `package.json` is also Ghost's theme manifest (`config`,
-`card_assets`, custom settings), so it stays separate from the root one.
+(archived, read-only) as a single commit; look there for its earlier
+history, but make all theme changes here. Its `package.json` is also
+Ghost's theme manifest (`config`, `card_assets`, custom settings), so it
+stays separate from the root one.
+
+### Theme build
+
+Inside the theme folder, install with `npm ci` (its `package-lock.json`
+is committed; `npm install` can rewrite it) and build with gulp
+(`npm run dev` to watch, `npm run build` once). The build writes
+`assets/built/` and `locales/`, both committed and served as-is: the
+deploy never builds the theme. The Theme Check workflow
+(`.github/workflows/theme_check.yaml`) runs gscan and rebuilds the theme,
+failing if the committed build output differs. Deploy Website calls it
+first, so a theme change with stale build output or a fatal gscan error
+blocks the deploy. After any CSS/JS change, run `npm run build` and
+commit the rebuilt files with the source change.
+
+Upstream Edition changes are ported by hand (there is no upstream remote
+or shared history); compare against https://github.com/TryGhost/Edition.
 
 ## Local Ghost instance
 
