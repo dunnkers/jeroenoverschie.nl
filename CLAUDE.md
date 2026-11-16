@@ -37,13 +37,15 @@ go through the Admin API instead, see below).
 ## Ghost Admin API
 
 The API keys live in the macOS keychain, not in a `.env` file (there is
-none any more). Run `source scripts/ghost-env.sh` (in the same shell
-invocation as whatever uses them) to export:
+none any more). Run `source scripts/ghost-env.sh` from the repo root (in
+the same shell invocation as whatever uses them, chained with `&&`; it
+returns non-zero if a key is missing) to export:
 
 - `ADMIN_API_KEY` — format `<key_id>:<hex_secret>`, used to sign a JWT
 - `CONTENT_API_KEY` — read-only Content API key
-- `API_URL` — the local Ghost instance, `http://localhost:2368` (not
-  secret; set in `scripts/ghost-env.sh`)
+- `API_URL` — the local Ghost instance, defaulting to
+  `http://localhost:2368` in `scripts/ghost-env.sh` (not secret; an
+  `API_URL` already exported in your shell wins)
 
 Never print the key values (check presence with `${VAR:+set}` only);
 `scripts/ghost-env.sh` documents the keychain item names and how to
