@@ -16,7 +16,7 @@ npm run dev
 ```
 
 `npm run dev` rebuilds `assets/built/` on change; commit the rebuilt files, since the
-deploy serves them as-is. Its history before it moved here lives in the archived
+deploy serves them as-is. Its history before it moved here lives in the old
 [ghost-dunnkers-theme-edition](https://github.com/dunnkers/ghost-dunnkers-theme-edition) repo.
 
 ## Usage
@@ -31,6 +31,12 @@ npm run deploy
 Which will generate the website at `/static`, replace `localhost` with the website name, and upload it to GitHub pages 🙌🏻.
 
 ## Running Ghost locally
+
+> **Moving from the separate theme repo?** A container created before the theme moved
+> into this repo still mounts `../ghost-dunnkers-theme-edition` over
+> `content/themes/dunnkers-theme-edition`, so it keeps serving the old copy. Remove it once
+> (`docker rm -f <name>`, or `container stop ghost && container rm ghost`) and recreate it
+> with the command below (`scripts/ghost-container.sh` recreates the Apple one for you).
 
 Ghost runs in a container. Pick **one** runtime; both bind port 2368 and share
 the same `content` folder and sqlite DB, so don't run both at once.

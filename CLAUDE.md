@@ -4,8 +4,8 @@ Personal blog on Ghost CMS, statically exported via `gssg` and hosted on
 GitHub Pages (no live backend in production — see `.github/workflows/deploy_website.yaml`).
 The theme lives in `content/themes/dunnkers-theme-edition` (a fork of
 Ghost's Edition theme), mounted into Ghost as part of `content/`. It was
-imported from the now-archived `dunnkers/ghost-dunnkers-theme-edition`
-repo as a single commit; look there for its earlier history. Its CSS/JS
+imported from the old `dunnkers/ghost-dunnkers-theme-edition` repo
+(being archived) as a single commit; look there for its earlier history. Its CSS/JS
 is built with gulp (`npm run dev` / `npm run build` inside the theme
 folder) into `assets/built/`, which is committed — CI does not build the
 theme, so rebuilt assets must be committed alongside source changes.

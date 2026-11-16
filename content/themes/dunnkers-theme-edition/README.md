@@ -1,42 +1,36 @@
-# Edition
+# dunnkers-theme-edition
 
-The newsletter theme for [Ghost](https://github.com/TryGhost/Ghost). A beautiful way to share stories with your growing audience.
+The Ghost theme for [jeroenoverschie.nl](https://jeroenoverschie.nl), a fork of
+Ghost's [Edition](https://github.com/TryGhost/Edition) theme.
 
-**Demo: https://edition.ghost.io**
+Ghost loads it from this folder through the site's `content/` mount (see the
+[site README](../../../README.md)). `package.json` doubles as Ghost's theme
+manifest (`config`, `card_assets`, custom settings).
 
-# Instructions
+## Development
 
-1. [Download this theme](https://github.com/TryGhost/Edition/archive/main.zip)
-2. Log into Ghost, and go to the `Design` settings area to upload the zip file
-
-# Development
-
-Edition styles are compiled using Gulp/PostCSS to polyfill future CSS spec. You'll need [Node](https://nodejs.org/), [Yarn](https://yarnpkg.com/) and [Gulp](https://gulpjs.com) installed globally. After that, from the theme's root directory:
-
-```bash
-# Install
-yarn
-
-# Run build & watch for changes
-yarn dev
-```
-
-Now you can edit `/assets/css/` files, which will be compiled to `/assets/built/` automatically.
-
-The `zip` Gulp task packages the theme files into `dist/edition.zip`, which you can then upload to your site.
+CSS and JS are compiled with Gulp/PostCSS from `assets/css/` and `assets/js/`
+into `assets/built/`:
 
 ```bash
-yarn zip
+npm install
+npm run dev     # build and watch for changes
+npm run build   # one-off build
+npm test        # validate with gscan
 ```
 
-# Contribution
+`assets/built/` is committed and served as-is by the deploy, so commit it
+together with source changes. CI (`.github/workflows/theme_check.yaml`) fails
+when it is out of date.
 
-This repo is synced automatically with [TryGhost/Themes](https://github.com/TryGhost/Themes) monorepo. If you're looking to contribute or raise an issue, head over to the main repository [TryGhost/Themes](https://github.com/TryGhost/Themes) where our official themes are developed.
+## Upstream
 
-## Theme translations
+Changes from upstream Edition are ported by hand. History before the theme
+moved into the site repo lives in the old
+[ghost-dunnkers-theme-edition](https://github.com/dunnkers/ghost-dunnkers-theme-edition)
+repo.
 
-Please see the @Tryghost/Themes/theme-translations/README.md for how to edit or contribute translations.
+## License
 
-# Copyright & License
-
-Copyright (c) 2013-2026 Ghost Foundation - Released under the [MIT license](LICENSE).
+Based on Edition, copyright (c) 2013-2026 Ghost Foundation, released under the
+[MIT license](LICENSE).

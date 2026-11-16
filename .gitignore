@@ -1,11 +1,11 @@
-current
-versions
+/current
+/versions
 content/logs
 content/themes/*
 !content/themes/dunnkers-theme-edition/
 .DS_Store
 .ghostpid
-static
+/static
 .gh-pages-cache
 node_modules
 .env

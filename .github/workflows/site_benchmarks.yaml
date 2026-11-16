@@ -38,7 +38,8 @@ jobs:
             echo "Ghost's official theme scanner, checking \`content/themes/dunnkers-theme-edition\` against the Ghost version this site runs."
             echo ""
             echo '```'
-            npx --yes gscan ./content/themes/dunnkers-theme-edition || true
+            npm ci --prefix content/themes/dunnkers-theme-edition --no-audit --no-fund >/dev/null 2>&1 \
+              && npm run --prefix content/themes/dunnkers-theme-edition test 2>&1 || true
             echo '```'
             echo ""
           } >> "$GITHUB_STEP_SUMMARY"

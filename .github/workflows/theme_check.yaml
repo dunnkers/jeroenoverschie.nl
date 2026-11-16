@@ -1,7 +1,8 @@
 name: Theme Check
 
-# Runs Ghost's theme scanner (gscan) on the theme whenever it changes, and
-# fails on errors. Uses the gscan version pinned in the theme's package.json.
+# Runs Ghost's theme scanner (gscan) on the theme whenever it changes and
+# fails on errors, then rebuilds the theme's CSS/JS and fails if the
+# committed assets/built/ is out of date (the deploy serves it as-is).
 on:
   pull_request:
     paths:
@@ -33,9 +34,19 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version: 22
+          cache: npm
+          cache-dependency-path: content/themes/dunnkers-theme-edition/package-lock.json
 
       - name: Install dependencies
-        run: npm install --no-audit --no-fund
+        run: npm ci --no-audit --no-fund
 
       - name: Validate theme (gscan)
         run: npm run test:ci
+
+      - name: Check built assets are up to date
+        run: |
+          npm run build
+          if ! git diff --exit-code --stat -- assets/built; then
+            echo "::error::assets/built/ is out of date. Run 'npm run build' in content/themes/dunnkers-theme-edition and commit the result."
+            exit 1
+          fi
