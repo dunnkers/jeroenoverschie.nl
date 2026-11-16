@@ -15,10 +15,10 @@ Ghost exposes two separate REST APIs with very different auth models. Mixing the
 
 ## Getting credentials safely
 
-If credentials live in a `.env` file you've been told not to read directly, don't `Read`/`cat` it. Instead source it in a bash subshell so secrets never appear in tool output or the transcript:
+In this repo the credentials live in the macOS keychain (no `.env` file). Load them into the shell with the helper, so secrets never appear in tool output or the transcript:
 
 ```bash
-set -a && source .env && set +a
+source scripts/ghost-env.sh
 ```
 
 Confirm a var is present without ever printing its value:
@@ -53,7 +53,7 @@ The Admin API does **not** accept the key as a bearer token or query param. You 
 You don't need PyJWT for this — HS256 is simple enough to build with stdlib `hmac`, `hashlib`, `base64`, `json`. A ready-to-use implementation is bundled at `scripts/ghost_admin_request.py` — use it directly instead of re-deriving the JWT logic each time:
 
 ```bash
-set -a && source .env && set +a
+source scripts/ghost-env.sh
 python3 .claude/skills/ghost-api/scripts/ghost_admin_request.py GET /ghost/api/admin/site/
 ```
 

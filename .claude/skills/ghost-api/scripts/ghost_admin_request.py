@@ -5,9 +5,10 @@ Make an authenticated request to the Ghost Admin API.
 Builds the short-lived JWT Ghost's Admin API requires by hand (HS256, no
 third-party deps), so this works even when PyJWT isn't installed.
 
-Reads ADMIN_API_KEY and API_URL from the environment — source the .env file
-in the calling shell first (see SKILL.md for why: it keeps secrets out of
-tool output).
+Reads ADMIN_API_KEY and API_URL from the environment — run
+`source scripts/ghost-env.sh` in the calling shell first (it pulls the keys
+from the macOS keychain; see SKILL.md for why: it keeps secrets out of tool
+output).
 
 Usage:
     python3 ghost_admin_request.py GET /ghost/api/admin/site/

@@ -36,18 +36,26 @@ go through the Admin API instead, see below).
 
 ## Ghost Admin API
 
-`.env` (gitignored, never read its contents directly — it holds real
-secrets) provides:
+The API keys live in the macOS keychain, not in a `.env` file (there is
+none any more). Run `source scripts/ghost-env.sh` (in the same shell
+invocation as whatever uses them) to export:
 
 - `ADMIN_API_KEY` — format `<key_id>:<hex_secret>`, used to sign a JWT
-- `API_URL` — the local Ghost instance, e.g. `http://localhost:2368`
+- `CONTENT_API_KEY` — read-only Content API key
+- `API_URL` — the local Ghost instance, `http://localhost:2368` (not
+  secret; set in `scripts/ghost-env.sh`)
+
+Never print the key values (check presence with `${VAR:+set}` only);
+`scripts/ghost-env.sh` documents the keychain item names and how to
+re-store a key.
 
 To call the Admin API, write and run a throwaway Node script (Node 26 in
 this environment has built-in `fetch`/`FormData`/`crypto`, no deps
 needed) that:
 
-1. Parses `.env` at runtime into `process.env`-like values — never prints
-   or echoes the raw key/secret.
+1. Reads `ADMIN_API_KEY` / `API_URL` from `process.env` (run it after
+   `source scripts/ghost-env.sh`) — never prints or echoes the raw
+   key/secret.
 2. Builds an Admin API JWT: split `ADMIN_API_KEY` on `:` into `keyId` /
    `keySecret`; HS256-sign `{iat, exp: iat+300, aud: "/admin/"}` with
    `Buffer.from(keySecret, "hex")`, header `{alg: "HS256", typ: "JWT", kid: keyId}`;
