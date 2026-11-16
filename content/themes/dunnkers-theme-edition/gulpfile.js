@@ -1,0 +1,139 @@
+const {series, parallel, watch, src, dest} = require('gulp');
+const pump = require('pump');
+const fs = require('fs');
+const path = require('path');
+const order = require('ordered-read-streams');
+
+// gulp plugins and utils
+const livereload = require('gulp-livereload');
+const postcss = require('gulp-postcss');
+const concat = require('gulp-concat');
+const uglify = require('gulp-uglify');
+const beeper = require('beeper');
+const zip = require('gulp-zip');
+
+// postcss plugins
+const easyimport = require('postcss-easy-import');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
+
+// translations support
+const { mergeLocales } = require('@tryghost/theme-translations/build');
+const sharedThemeAssetsPath = path.dirname(require.resolve('@tryghost/shared-theme-assets/package.json'));
+const photoswipePath = path.dirname(require.resolve('photoswipe'));
+
+function serve(done) {
+    livereload.listen();
+    done();
+}
+
+function handleError(done) {
+    return function (err) {
+        if (err) {
+            beeper();
+        }
+        return done(err);
+    };
+};
+
+function hbs(done) {
+    pump([
+        src(['*.hbs', 'partials/**/*.hbs']),
+        livereload()
+    ], handleError(done));
+}
+
+function css(done) {
+    pump([
+        src('assets/css/screen.css', {sourcemaps: true}),
+        postcss([
+            easyimport,
+            autoprefixer(),
+            cssnano()
+        ]),
+        dest('assets/built/', {sourcemaps: '.'}),
+        livereload()
+    ], handleError(done));
+}
+
+function getJsFiles(version) {
+    const jsFiles = [
+        // PhotoSwipe v4 and its lightbox are replaced by assets/js/lib/lightbox.js
+        src([
+            `${sharedThemeAssetsPath}/assets/js/${version}/lib/**/*.js`,
+            `!${sharedThemeAssetsPath}/assets/js/${version}/lib/lightbox.js`,
+            `!${sharedThemeAssetsPath}/assets/js/${version}/lib/vendor/photoswipe*.js`,
+        ]),
+        src(`${sharedThemeAssetsPath}/assets/js/${version}/main.js`),
+    ];
+
+    if (fs.existsSync(`assets/js/lib`)) {
+        jsFiles.push(src(`assets/js/lib/*.js`));
+    }
+
+    jsFiles.push(src(`assets/js/main.js`));
+
+    return jsFiles;
+}
+
+function jsMain(done) {
+    pump([
+        order(getJsFiles('v1')),
+        concat('main.min.js'),
+        uglify(),
+        dest('assets/built/'),
+        livereload()
+    ], handleError(done));
+}
+
+// PhotoSwipe v5 is an ES module, lazy-loaded by assets/js/lib/lightbox.js
+// rather than concatenated into main.min.js
+function photoswipeJs(done) {
+    pump([
+        src(`${photoswipePath}/photoswipe.esm.min.js`),
+        dest('assets/built/')
+    ], handleError(done));
+}
+
+function photoswipeCss(done) {
+    pump([
+        src(`${photoswipePath}/photoswipe.css`),
+        postcss([cssnano()]),
+        dest('assets/built/')
+    ], handleError(done));
+}
+
+const photoswipe = parallel(photoswipeJs, photoswipeCss);
+
+function zipper(done) {
+    const filename = require('./package.json').name + '.zip';
+
+    pump([
+        src([
+            '**',
+            '!node_modules', '!node_modules/**',
+            '!dist', '!dist/**',
+            '!yarn-error.log'
+        ]),
+        zip(filename),
+        dest('dist/')
+    ], handleError(done));
+}
+
+function locales(done) {
+    mergeLocales({
+        local: './locales-local',
+        output: './locales'
+    })(done);
+}
+
+const localesWatcher = () => watch('./locales-local/**/*.json', locales);
+const hbsWatcher = () => watch(['*.hbs', 'partials/**/*.hbs'], hbs);
+const cssWatcher = () => watch('assets/css/**/*.css', css);
+const jsWatcher = () => watch('assets/js/**/*.js', jsMain);
+const watcher = parallel(hbsWatcher, cssWatcher, jsWatcher, localesWatcher);
+const build = series(css, jsMain, photoswipe, locales);
+
+exports.build = build;
+exports.zip = series(build, zipper);
+exports.default = series(build, serve, watcher);

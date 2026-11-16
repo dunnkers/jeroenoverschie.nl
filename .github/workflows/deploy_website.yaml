@@ -11,20 +11,17 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Don't deploy a theme that fails gscan or has stale build output.
+  theme-check:
+    uses: ./.github/workflows/theme_check.yaml
+
   build-and-deploy:
+    needs: theme-check
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
       uses: actions/checkout@v7
-
-    - name: Checkout theme
-      uses: actions/checkout@v7
-      with:
-        repository: dunnkers/ghost-dunnkers-theme-edition
-        path: content/themes/dunnkers-theme-edition
-        ref: master
-        persist-credentials: false
 
     - name: Cache Ghost Docker image
       id: cache-ghost-image

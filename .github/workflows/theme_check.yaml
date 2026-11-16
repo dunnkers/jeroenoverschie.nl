@@ -1,0 +1,58 @@
+name: Theme Check
+
+# Runs Ghost's theme scanner (gscan) on the theme whenever it changes and
+# fails on errors, then rebuilds the theme and fails if the committed build
+# output (assets/built/, locales/) is out of date, since the deploy serves it
+# as-is. Deploy Website also calls this workflow and only deploys if it passes.
+on:
+  pull_request:
+    paths:
+      - 'content/themes/dunnkers-theme-edition/**'
+      - '.github/workflows/theme_check.yaml'
+  push:
+    branches:
+      - master
+    paths:
+      - 'content/themes/dunnkers-theme-edition/**'
+      - '.github/workflows/theme_check.yaml'
+  workflow_call: {}
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  gscan:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: content/themes/dunnkers-theme-edition
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: content/themes/dunnkers-theme-edition/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Validate theme (gscan)
+        run: npm run test:ci
+
+      - name: Check build output is up to date
+        run: |
+          npm run build
+          # --porcelain also lists new (untracked) and deleted output files,
+          # which git diff would miss.
+          changes=$(git status --porcelain -- assets/built locales)
+          if [ -n "$changes" ]; then
+            echo "$changes"
+            echo "::error::The theme's build output is out of date. Run 'npm run build' in content/themes/dunnkers-theme-edition and commit assets/built/ and locales/."
+            exit 1
+          fi

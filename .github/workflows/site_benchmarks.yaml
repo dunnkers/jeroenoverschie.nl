@@ -24,13 +24,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
-      - name: Checkout theme
-        uses: actions/checkout@v7
-        with:
-          repository: dunnkers/ghost-dunnkers-theme-edition
-          path: theme
-          ref: master
-
       - name: Setup Node.js
         uses: actions/setup-node@v7
         with:
@@ -42,10 +35,12 @@ jobs:
           {
             echo "## Theme validation (gscan)"
             echo ""
-            echo "Ghost's official theme scanner, checking \`ghost-dunnkers-theme-edition\` against the Ghost version this site runs."
+            echo "Ghost's official theme scanner, checking \`content/themes/dunnkers-theme-edition\` against the Ghost version this site runs."
             echo ""
             echo '```'
-            npx --yes gscan ./theme || true
+            # Same gscan version the theme pins, without installing its build toolchain.
+            gscan_version=$(node -p "require('./content/themes/dunnkers-theme-edition/package.json').devDependencies.gscan")
+            npx --yes "gscan@$gscan_version" ./content/themes/dunnkers-theme-edition 2>&1 || true
             echo '```'
             echo ""
           } >> "$GITHUB_STEP_SUMMARY"

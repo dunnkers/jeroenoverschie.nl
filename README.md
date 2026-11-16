@@ -2,15 +2,23 @@
 
 My personal website, built with Ghost.
 
-## Install
+## Theme
 
-Clone the theme repo alongside this repo:
+The theme lives in [`content/themes/dunnkers-theme-edition`](content/themes/dunnkers-theme-edition),
+a fork of Ghost's [Edition](https://github.com/TryGhost/Edition) theme. Ghost picks it up
+through the `content` mount below, so there is nothing extra to clone or mount. To work on
+its CSS/JS:
 
 ```
-git clone https://github.com/dunnkers/ghost-dunnkers-theme-edition.git ../ghost-dunnkers-theme-edition
+cd content/themes/dunnkers-theme-edition
+npm ci
+npm run dev
 ```
 
-The Docker setup mounts it directly — no need to place it under `content/themes/`.
+`npm run dev` rebuilds `assets/built/` (and `locales/`) on change; commit the rebuilt
+files, since the deploy serves them as-is. The Theme Check workflow fails, and blocks the
+deploy, when they are out of date or gscan reports a fatal error. Its history before it moved here lives in the old
+[ghost-dunnkers-theme-edition](https://github.com/dunnkers/ghost-dunnkers-theme-edition) repo.
 
 ## Usage
 
@@ -25,6 +33,12 @@ Which will generate the website at `/static`, replace `localhost` with the websi
 
 ## Running Ghost locally
 
+> **Moving from the separate theme repo?** A container created before the theme moved
+> into this repo still mounts `../ghost-dunnkers-theme-edition` over
+> `content/themes/dunnkers-theme-edition`. For Apple container, `scripts/ghost-container.sh`
+> (and so the LaunchAgent) detects that and recreates the container on its next run. For
+> Docker, remove it once (`docker rm -f <name>`) and recreate it with the command below.
+
 Ghost runs in a container. Pick **one** runtime; both bind port 2368 and share
 the same `content` folder and sqlite DB, so don't run both at once.
 
@@ -35,7 +49,6 @@ docker run -d \
   --user $(id -u):$(id -g) \
   -p 2368:2368 \
   -v /Users/dunnkers/git/dunnkers/jeroenoverschie.nl/content:/var/lib/ghost/content \
-  -v /Users/dunnkers/git/dunnkers/ghost-dunnkers-theme-edition:/var/lib/ghost/content/themes/dunnkers-theme-edition \
   -e NODE_ENV=development \
   -e database__client=sqlite3 \
   -e database__connection__filename=/var/lib/ghost/content/data/ghost-local.db \
@@ -64,7 +77,6 @@ container run -d --name ghost \
   --user $(id -u):$(id -g) \
   -p 2368:2368 \
   -v /Users/dunnkers/git/dunnkers/jeroenoverschie.nl/content:/var/lib/ghost/content \
-  -v /Users/dunnkers/git/dunnkers/ghost-dunnkers-theme-edition:/var/lib/ghost/content/themes/dunnkers-theme-edition \
   -e NODE_ENV=development \
   -e database__client=sqlite3 \
   -e database__connection__filename=/var/lib/ghost/content/data/ghost-local.db \
