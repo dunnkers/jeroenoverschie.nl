@@ -2,15 +2,22 @@
 
 My personal website, built with Ghost.
 
-## Install
+## Theme
 
-Clone the theme repo alongside this repo:
+The theme lives in [`content/themes/dunnkers-theme-edition`](content/themes/dunnkers-theme-edition),
+a fork of Ghost's [Edition](https://github.com/TryGhost/Edition) theme. Ghost picks it up
+through the `content` mount below, so there is nothing extra to clone or mount. To work on
+its CSS/JS:
 
 ```
-git clone https://github.com/dunnkers/ghost-dunnkers-theme-edition.git ../ghost-dunnkers-theme-edition
+cd content/themes/dunnkers-theme-edition
+npm install
+npm run dev
 ```
 
-The Docker setup mounts it directly — no need to place it under `content/themes/`.
+`npm run dev` rebuilds `assets/built/` on change; commit the rebuilt files, since the
+deploy serves them as-is. Its history before it moved here lives in the archived
+[ghost-dunnkers-theme-edition](https://github.com/dunnkers/ghost-dunnkers-theme-edition) repo.
 
 ## Usage
 
@@ -35,7 +42,6 @@ docker run -d \
   --user $(id -u):$(id -g) \
   -p 2368:2368 \
   -v /Users/dunnkers/git/dunnkers/jeroenoverschie.nl/content:/var/lib/ghost/content \
-  -v /Users/dunnkers/git/dunnkers/ghost-dunnkers-theme-edition:/var/lib/ghost/content/themes/dunnkers-theme-edition \
   -e NODE_ENV=development \
   -e database__client=sqlite3 \
   -e database__connection__filename=/var/lib/ghost/content/data/ghost-local.db \
@@ -64,7 +70,6 @@ container run -d --name ghost \
   --user $(id -u):$(id -g) \
   -p 2368:2368 \
   -v /Users/dunnkers/git/dunnkers/jeroenoverschie.nl/content:/var/lib/ghost/content \
-  -v /Users/dunnkers/git/dunnkers/ghost-dunnkers-theme-edition:/var/lib/ghost/content/themes/dunnkers-theme-edition \
   -e NODE_ENV=development \
   -e database__client=sqlite3 \
   -e database__connection__filename=/var/lib/ghost/content/data/ghost-local.db \

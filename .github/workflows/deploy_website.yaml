@@ -18,14 +18,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v7
 
-    - name: Checkout theme
-      uses: actions/checkout@v7
-      with:
-        repository: dunnkers/ghost-dunnkers-theme-edition
-        path: content/themes/dunnkers-theme-edition
-        ref: master
-        persist-credentials: false
-
     - name: Cache Ghost Docker image
       id: cache-ghost-image
       uses: actions/cache@v6

@@ -9,7 +9,6 @@ export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
 
 GHOST_IMAGE="docker.io/library/ghost:6.73.0"
 REPO="/Users/dunnkers/git/dunnkers/jeroenoverschie.nl"
-THEME="/Users/dunnkers/git/dunnkers/ghost-dunnkers-theme-edition"
 
 container system status >/dev/null 2>&1 || container system start --enable-kernel-install
 
@@ -20,7 +19,6 @@ if [[ -z "$state" ]]; then
     --user "$(id -u):$(id -g)" \
     -p 2368:2368 \
     -v "$REPO/content:/var/lib/ghost/content" \
-    -v "$THEME:/var/lib/ghost/content/themes/dunnkers-theme-edition" \
     -e NODE_ENV=development \
     -e database__client=sqlite3 \
     -e database__connection__filename=/var/lib/ghost/content/data/ghost-local.db \

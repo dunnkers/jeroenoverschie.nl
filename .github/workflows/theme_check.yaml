@@ -1,0 +1,41 @@
+name: Theme Check
+
+# Runs Ghost's theme scanner (gscan) on the theme whenever it changes, and
+# fails on errors. Uses the gscan version pinned in the theme's package.json.
+on:
+  pull_request:
+    paths:
+      - 'content/themes/dunnkers-theme-edition/**'
+      - '.github/workflows/theme_check.yaml'
+  push:
+    branches:
+      - master
+    paths:
+      - 'content/themes/dunnkers-theme-edition/**'
+      - '.github/workflows/theme_check.yaml'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  gscan:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: content/themes/dunnkers-theme-edition
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Validate theme (gscan)
+        run: npm run test:ci
