@@ -82,6 +82,14 @@ body:not(.with-full-cover) .cover {
     text-align: left;
 }
 
+/* Same contrast fix as post bodies (see blog/content.css): the raw accent
+   fails WCAG AA (3.7:1) for 20px text on white, so links use --link-color.
+   Must stay above the .cover-more rule below, which overrides it with equal
+   specificity. */
+.cover-intro.gh-content a {
+    color: var(--link-color);
+}
+
 /* Caption-style link, added in the intro page as an HTML card:
    <p class="cover-more"><a href="/about/">About me →</a></p> */
 .cover-intro .cover-more {

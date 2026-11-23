@@ -8,7 +8,7 @@
 set -eu
 export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
 
-GHOST_IMAGE="docker.io/library/ghost:6.73.0"
+GHOST_IMAGE="docker.io/library/ghost:6.78.0"
 REPO="/Users/dunnkers/git/dunnkers/jeroenoverschie.nl"
 
 container system status >/dev/null 2>&1 || container system start --enable-kernel-install

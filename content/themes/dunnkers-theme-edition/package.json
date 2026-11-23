@@ -65,6 +65,31 @@
                 ],
                 "default": "Modern sans-serif"
             },
+            "goodreads_url": {
+                "type": "text",
+                "default": "",
+                "description": "Footer icon link; leave empty to hide"
+            },
+            "github_url": {
+                "type": "text",
+                "default": "",
+                "description": "Footer icon link; leave empty to hide"
+            },
+            "youtube_url": {
+                "type": "text",
+                "default": "",
+                "description": "Footer icon link (any YouTube URL, e.g. a playlist); leave empty to hide"
+            },
+            "unsplash_url": {
+                "type": "text",
+                "default": "",
+                "description": "Footer icon link; leave empty to hide"
+            },
+            "google_scholar_url": {
+                "type": "text",
+                "default": "",
+                "description": "Footer icon link; leave empty to hide"
+            },
             "publication_cover_style": {
                 "type": "select",
                 "options": [

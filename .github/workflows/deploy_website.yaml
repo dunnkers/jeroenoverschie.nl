@@ -28,15 +28,15 @@ jobs:
       uses: actions/cache@v6
       with:
         path: /tmp/ghost-image.tar
-        key: ghost-docker-image-6.73.0
+        key: ghost-docker-image-6.78.0
 
     - name: Load or pull Ghost Docker image
       run: |
         if [ "${{ steps.cache-ghost-image.outputs.cache-hit }}" = "true" ]; then
           docker load -i /tmp/ghost-image.tar
         else
-          docker pull ghost:6.73.0
-          docker save ghost:6.73.0 -o /tmp/ghost-image.tar
+          docker pull ghost:6.78.0
+          docker save ghost:6.78.0 -o /tmp/ghost-image.tar
         fi
 
     - name: Start Ghost Container
@@ -47,7 +47,7 @@ jobs:
           --env database__client=sqlite3 \
           --env database__connection__filename=/var/lib/ghost/content/data/ghost-local.db \
           --env url=http://localhost:2368 \
-          ghost:6.73.0
+          ghost:6.78.0
 
     - name: Setup Node.js
       uses: actions/setup-node@v7

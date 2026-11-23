@@ -23,6 +23,14 @@
     (sodo-search) can't reach the Content API at runtime. So there are no search
     buttons in the header, and Ghost's search script isn't loaded either. --}}
     {{ghost_head exclude="search"}}
+
+    {{!-- ghost_head sets the referrer policy to no-referrer-when-downgrade,
+    which sends the full page URL to every site a visitor follows a link to.
+    Restore the browser default, so other sites only see the origin
+    (jeroenoverschie.nl); same-site links keep the full URL. A meta tag because
+    GitHub Pages can't set a Referrer-Policy header; it must come after
+    ghost_head, as the browser applies the last referrer meta tag it sees. --}}
+    <meta name="referrer" content="strict-origin-when-cross-origin">
 </head>
 
 <body class="{{body_class}}{{{block "body_class"}}} is-head-{{#match @custom.navigation_layout "Logo on the left"}}left-logo{{else match @custom.navigation_layout "Logo in the middle"}}middle-logo{{else}}stacked{{/match}}{{#match @custom.title_font "=" "Elegant serif"}} has-serif-title{{/match}}{{#match @custom.body_font "=" "Elegant serif"}} has-serif-body{{/match}}{{^is "home"}}{{#if @site.cover_image}} is-head-brand{{/if}}{{/is}}">
@@ -43,7 +51,7 @@
                 <button class="gh-burger" aria-label="{{t "Toggle menu"}}"></button>
             </div>
 
-            <nav class="gh-head-menu">
+            <nav class="gh-head-menu" aria-label="{{t "Primary"}}">
                 {{navigation}}
             </nav>
 
@@ -77,27 +85,36 @@
         {{{body}}}
     </div>
 
-    <footer class="gh-foot{{#unless @site.secondary_navigation}} no-menu{{/unless}} gh-outer">
+    {{!-- Three columns: copyright | centre | spare. The centre column has
+         two sources, edited in two places in Ghost admin:
+         - "Elsewhere" icons: LinkedIn etc. from Settings > Social accounts, then
+           the services Ghost has no field for, from Design > Site-wide (theme
+           settings). Each link is named by visually hidden text.
+         - Below them: Settings > Navigation > Secondary.
+         The empty .gh-foot-col-extra keeps the right-hand column free. --}}
+    <footer class="gh-foot gh-outer">
         <div class="gh-foot-inner gh-inner">
-            <div class="gh-copyright">
-                {{@site.title}} © {{date format="YYYY"}}
-            </div>
+            <p class="gh-copyright">{{@site.title}} © {{date format="YYYY"}}</p>
             <div class="gh-foot-center">
-                <div class="gh-social-links">
-                    {{#social_accounts @site}}
-                        <a href="{{href}}" target="_blank" rel="noopener" aria-label="{{name}}">
-                            {{#> (concat "icons/" type)}}
-                                <span>{{name}}</span>
-                            {{/undefined}}
-                        </a>
-                    {{/social_accounts}}
-                </div>
+                <nav class="gh-foot-social" aria-label="{{t "Elsewhere"}}">
+                    <ul class="gh-social-links">
+                        {{#social_accounts @site}}
+                            {{> "foot-link" href=href name=name icon=type}}
+                        {{/social_accounts}}
+                        {{> "foot-link" href=@custom.goodreads_url name="Goodreads" icon="goodreads"}}
+                        {{> "foot-link" href=@custom.github_url name="GitHub" icon="github"}}
+                        {{> "foot-link" href=@custom.youtube_url name="YouTube" icon="youtube"}}
+                        {{> "foot-link" href=@custom.unsplash_url name="Unsplash" icon="unsplash"}}
+                        {{> "foot-link" href=@custom.google_scholar_url name="Google Scholar" icon="google-scholar"}}
+                    </ul>
+                </nav>
                 {{#if @site.secondary_navigation}}
-                    <nav class="gh-foot-menu">
+                    <nav class="gh-foot-menu" aria-label="{{t "Secondary"}}">
                         {{navigation type="secondary"}}
                     </nav>
                 {{/if}}
             </div>
+            <div class="gh-foot-col-extra"></div>
         </div>
     </footer>
 

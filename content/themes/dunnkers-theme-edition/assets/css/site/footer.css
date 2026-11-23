@@ -1,0 +1,36 @@
+/* Footer additions on top of the shared theme's footer.css, which already
+   lays it out as three columns (copyright | centre | spare) and stacks them
+   centred on mobile. */
+
+.gh-copyright {
+    margin: 0;
+}
+
+/* Icons stay 16px, but each link gets a 32px target (WCAG 2.5.8 asks for at
+   least 24px). With no gap between the links, the padding alone keeps the
+   icons 16px apart, as before. */
+.gh-social-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
+    padding: 0;
+    margin: -0.8rem 0;
+    list-style: none;
+}
+
+.gh-social-links a {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    min-inline-size: 3.2rem;
+    min-block-size: 3.2rem;
+    padding: 0.8rem;
+}
+
+/* The spare right-hand column is empty for now; on mobile it would only add
+   an empty row to the stack. */
+@media (max-width: 767px) {
+    .gh-foot-col-extra:empty {
+        display: none;
+    }
+}

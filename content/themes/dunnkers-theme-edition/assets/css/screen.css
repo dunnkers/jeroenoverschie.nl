@@ -24,6 +24,7 @@
 @import "site/layout.css";
 @import "site/header.css";
 @import "site/cover.css";
+@import "site/footer.css";
 @import "blog/feed.css";
 @import "blog/featured.css";
 @import "blog/pagination.css";

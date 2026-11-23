@@ -54,7 +54,7 @@ docker run -d \
   -e database__connection__filename=/var/lib/ghost/content/data/ghost-local.db \
   -e security__staffDeviceVerification=false \
   --restart always \
-  ghost:6.73.0
+  ghost:6.78.0
 ```
 
 ### Option 2: Apple container
@@ -81,7 +81,7 @@ container run -d --name ghost \
   -e database__client=sqlite3 \
   -e database__connection__filename=/var/lib/ghost/content/data/ghost-local.db \
   -e security__staffDeviceVerification=false \
-  docker.io/library/ghost:6.73.0
+  docker.io/library/ghost:6.78.0
 ```
 
 Stop it with `container stop ghost` (unload the LaunchAgent first with
