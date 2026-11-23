@@ -1,7 +1,8 @@
 {{#get "posts" filter="featured:true" limit="15" as |featured|}}
 {{#if featured}}
     <div class="gh-outer">
-    <section class="featured-wrapper gh-inner">
+    {{!-- id="posts" is the jump target for links like href="#posts" in the homepage intro. --}}
+    <section class="featured-wrapper gh-inner" id="posts">
 
         {{#if @custom.featured_title}}
             <h2 class="featured-title">{{@custom.featured_title}}</h2>

@@ -33,6 +33,15 @@
             </div>
         {{/if}}
 
+        {{!-- Longer intro text, edited in Ghost as the page with slug "intro". --}}
+        {{#get "pages" filter="slug:intro" limit="1"}}
+            {{#foreach pages}}
+                <div class="cover-intro gh-content">
+                    {{content}}
+                </div>
+            {{/foreach}}
+        {{/get}}
+
         {{#if @site.members_enabled}}
             {{#unless @site.members_invite_only}}
                 {{#unless @member}}

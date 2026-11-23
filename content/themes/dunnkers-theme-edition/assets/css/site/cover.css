@@ -82,6 +82,13 @@ body:not(.with-full-cover) .cover {
     color: #fff;
 }
 
+.cover-intro {
+    width: 100%;
+    margin-bottom: 3rem;
+    font-size: 2rem;
+    text-align: left;
+}
+
 .cover-cta {
     display: flex;
     margin-top: 2rem;
