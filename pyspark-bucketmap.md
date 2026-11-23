@@ -5,7 +5,7 @@
 # pyspark-bucketmap
 - URL: https://jeroenoverschie.nl/pyspark-bucketmap/
 - Published: 2022-10-22T10:01:09.000Z
-- Updated: 2026-09-08T08:04:55.000Z
+- Updated: 2026-11-23T13:54:29.000Z
 - Description: pyspark-bucketmap is a tiny module for pyspark which allows you to bucketize DataFrame rows and map their values easily.
 - Author: Jeroen Overschie
 - Tags: Software & Tooling

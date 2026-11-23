@@ -107,7 +107,7 @@
 
     </section>
 
-    <div class="post-feed expanded gh-feed gh-canvas">
+    <div class="post-feed expanded gh-feed gh-canvas" data-feed-meta>
             <article class="feed post tag-talks tag-life tag-hash-video" data-month="November 2025">
 
     <div class="feed-image u-placeholder rectangle">
@@ -541,38 +541,6 @@ Talk on Devcontainers. Motivating developer environment discrepancies, their con
 
 </main>
 
-<script>
-    // Excerpts are "<location> — <content>". Without a dash, the whole excerpt
-    // is the location, unless the template passes noDashIsContent=true.
-    var noDashIsContent = false;
-
-    document.querySelectorAll('.feed').forEach(function (article) {
-        var sourceEl = article.querySelector('.talk-meta-source');
-        if (!sourceEl) return;
-
-        var text = sourceEl.textContent;
-        var dashIndex = text.indexOf('—');
-        var location = dashIndex === -1 ? (noDashIsContent ? '' : text.trim()) : text.slice(0, dashIndex).trim();
-        var content = dashIndex === -1 ? (noDashIsContent ? text.trim() : '') : text.slice(dashIndex + 1).trim();
-
-        if (content) {
-            var nameEl = document.createElement('div');
-            nameEl.className = 'talk-name';
-            nameEl.textContent = content;
-            sourceEl.replaceWith(nameEl);
-        } else {
-            sourceEl.remove();
-        }
-
-        if (location) {
-            var dateEl = article.querySelector('.feed-date');
-            var confEl = document.createElement('div');
-            confEl.className = 'feed-conference';
-            confEl.textContent = location;
-            dateEl.insertAdjacentElement('afterend', confEl);
-        }
-    });
-</script>
 
     </div>
 
@@ -638,6 +606,7 @@ Talk on Devcontainers. Motivating developer environment discrepancies, their con
                 </nav>
                     <nav class="gh-foot-menu" aria-label="Secondary">
                         <ul class="nav">
+    <li class="nav-rss"><a href="https://jeroenoverschie.nl/rss/">RSS</a></li>
     <li class="nav-academic-research"><a href="https://jeroenoverschie.nl/tag/research/">Academic research</a></li>
     <li class="nav-privacy"><a href="https://jeroenoverschie.nl/privacy/">Privacy</a></li>
     <li class="nav-contact"><a href="https://jeroenoverschie.nl/contact/">Contact</a></li>
@@ -652,7 +621,7 @@ Talk on Devcontainers. Motivating developer environment discrepancies, their con
 </div>
 
 
-<script src="/assets/built/main.min.js?v=qAJHvZhTiI7BvuYg" defer></script>
+<script src="/assets/built/main.min.js?v=GUlVwYY4ToFbC7pG" defer></script>
 
 
 

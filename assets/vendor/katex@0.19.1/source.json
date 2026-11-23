@@ -1,0 +1,13 @@
+{
+  "package": "katex",
+  "version": "0.19.1",
+  "integrity": "sha512-jG8uKntjSEcm2EpQOh0XturpPuuC9r3Sq5HLHdsFdWZT27E672SF19QEi+of0/YeOy15lDgRhKvr5614uRrEfA==",
+  "tarball": "https://registry.npmjs.org/katex/-/katex-0.19.1.tgz",
+  "files": [
+    "dist/katex.min.css",
+    "dist/katex.min.js",
+    "dist/contrib/auto-render.min.js",
+    "dist/fonts"
+  ],
+  "vendored": "2026-11-23"
+}

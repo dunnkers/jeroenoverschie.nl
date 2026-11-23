@@ -2952,7 +2952,7 @@ Last updated: 2026-07-02T14:56:58.000Z
 [GitHub - godatadriven/python-devcontainer-template: Shows you how to use a Devcontainer for your Python project 🐳♡🐍Shows you how to use a Devcontainer for your Python project 🐳♡🐍 - godatadriven/python-devcontainer-template![](https://jeroenoverschie.nl/content/images/icon/pinned-octocat-093da3e6fa40-2651d6e4-7136-4011-888f-036f517d5187.svg)GitHubgodatadriven![](https://jeroenoverschie.nl/content/images/thumbnail/python-devcontainer-template-0051715c-e79a-495a-9b8c-9d3dd1a9a335)](https://github.com/godatadriven/python-devcontainer-template)
 ### pyspark-bucketmap
 URL: https://jeroenoverschie.nl/pyspark-bucketmap/
-Last updated: 2026-09-08T08:04:55.000Z
+Last updated: 2026-11-23T13:54:29.000Z
 Have you ever heard of pyspark's [Bucketizer](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.feature.Bucketizer.html)? It can be really useful! Although you perhaps won't need it for some simple transformation, it can be really useful for certain usecases.
 
 In this blogpost, we will:
@@ -3327,7 +3327,7 @@ Last updated: 2026-10-30T15:42:30.000Z
 ![](https://jeroenoverschie.nl/content/images/2024/11/PXL_20210923_142330260.MP.jpg)
 ### From Linear Regression to Neural Networks
 URL: https://jeroenoverschie.nl/from-linear-regression-to-neural-networks/
-Last updated: 2026-09-08T14:45:47.000Z
+Last updated: 2026-11-23T13:54:29.000Z
 These days there exists much hype around sophisticated machine learning methods such as Neural Networks — they are massively powerful models that allow us to fit very flexible models. However, we do not always require the full complexity of a Neural Network: sometimes, a simpler model will do the job just fine. In this project, we take a journey starting from the most fundamental statistical machinery to model data distributions, linear regression, to then explain the benefits of constructing more complex models, such as logistic regression or a Neural Network. In this way, this text aims to build a bridge from the statistical, analytical world to the more approximative world of Machine Learning. We will not shy away from the math, whilst still working with tangible examples at all times: we will work with real-world datasets and we will get to apply our models as we go on. Let's start!
 
 ## Linear Regression ([Code](https://dunnkers.com/linear-regression-to-neural-networks/linear-regression.html))

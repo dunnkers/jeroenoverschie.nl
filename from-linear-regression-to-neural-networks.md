@@ -5,7 +5,7 @@
 # From Linear Regression to Neural Networks
 - URL: https://jeroenoverschie.nl/from-linear-regression-to-neural-networks/
 - Published: 2021-04-17T22:00:00.000Z
-- Updated: 2026-09-08T14:45:47.000Z
+- Updated: 2026-11-23T13:54:29.000Z
 - Description: How are linear regression, logistic regression and neural networks related? What is overfitting and how do we fight it? In this post, we find answers to these questions in an interactive way by working with a real-world dataset on penguins.
 - Author: Jeroen Overschie
 - Tags: AI & ML
