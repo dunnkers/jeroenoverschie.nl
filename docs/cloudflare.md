@@ -60,11 +60,11 @@ These rules run in order, and the last `set` of a header wins:
 
 ### Content-Security-Policy
 
-**Status (2026-11-23):** proposed in
-[dunnkers/secretary#17](https://github.com/dunnkers/secretary/pull/17), first as
-`Content-Security-Policy-Report-Only`. Once it's verified, it changes to
-the enforcing `Content-Security-Policy`. Until then the header isn't on the
-site.
+**Status (2026-11-23):** applied as `Content-Security-Policy-Report-Only`
+from [dunnkers/secretary#17](https://github.com/dunnkers/secretary/pull/17),
+with no violations on the live site. The next step is switching
+`local.apex_csp_header` in secretary to the enforcing
+`Content-Security-Policy`.
 
 ```
 default-src 'none';
