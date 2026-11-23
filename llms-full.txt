@@ -1,11 +1,11 @@
 # Jeroen Overschie
-> I'm Jeroen 👋🏻
+> Thoughts on AI and ML at scale. Jeroen works as an AI Engineer and has built enterprise data solutions that run in production. 
 Public Ghost content for AI and LLM tooling. This file includes a bounded export of public pages first, then recent public posts.
 Append `.md` to any post or page URL to get the content in Markdown (for example, `/example-post.md`).
 ## Pages
-### About me
+### About
 URL: https://jeroenoverschie.nl/about/
-Last updated: 2026-10-30T16:07:52.000Z
+Last updated: 2026-11-23T12:17:48.000Z
 ![](https://jeroenoverschie.nl/content/images/2024/11/53736787113_96c46a9b94.jpg)
 
 ![](https://jeroenoverschie.nl/content/images/2024/11/53736920004_353ddecdd6.jpg)
@@ -32,9 +32,9 @@ I also like to share my enthusiasm. I do this by creating content, teaching prof
 Let's collaborate ✓  
   
 — [LinkedIn](http://www.linkedin.com/in/jeroenoverschie)
-### Freelance AI Engineer in Amsterdam — Jeroen Overschie
+### Freelance AI Engineer in Amsterdam - Jeroen Overschie
 URL: https://jeroenoverschie.nl/freelance-ai-engineer-in-amsterdam-jeroen-overschie/
-Last updated: 2026-10-19T15:20:32.000Z
+Last updated: 2026-11-23T12:17:56.000Z
 Hi!! Super nice to meet you – I'm Jeroen. I've worked in the software domain for over a decade and in Data & AI for about five years. First as a Data Scientist, then ML Engineer, now AI Engineer. Before that I spent about seven years doing freelance web development alongside my studies. I am currently available for freelance work! I am based in Amsterdam and work in Dutch or English.
 
 My work has tracked the field closely. I have done classical machine learning and MLOps at TMNL and Vattenfall, then a run of RAG and GenAI projects at NPO, Klaverblad, ING and DataSnipper. More recently Agentic systems and search: Agentspace at BCG, an Agentic ELT pipeline built with Agent Development Kit (ADK), and a hybrid search engine for FD Mediagroep that now serves millions of requests a year. Specializing on Google Cloud Platform, and specialized with getting something running in production rather than a recommendation. Find more elaborate [project descriptions on my LinkedIn](https://www.linkedin.com/in/jeroenoverschie/details/projects/).
@@ -71,6 +71,36 @@ Last updated: 2026-11-23T11:00:47.000Z
 a [Freelance AI Engineer](https://jeroenoverschie.nl/freelance-ai-engineer-in-amsterdam-jeroen-overschie/) working on bringing AI- and ML applications to production. Previously at Xebia, a global tech consultancy. I like learning, sharing knowledge through [blogposts](https://jeroenoverschie.nl/#posts) and [talking at conferences](https://jeroenoverschie.nl/tag/talks/). If you'd like to contact me, please do so through [LinkedIn](https://www.linkedin.com/in/jeroenoverschie). 
 
 [→ About me](https://jeroenoverschie.nl/about/)
+### Contact
+URL: https://jeroenoverschie.nl/contact/
+Last updated: 2026-11-23T12:16:41.000Z
+Contact me through [LinkedIn](https://linkedin.com/in/jeroenoverschie).
+### Privacy
+URL: https://jeroenoverschie.nl/privacy/
+Last updated: 2026-11-23T13:18:55.000Z
+I really like the web: the web is a free, open and decentralized place to share content and thoughts. It has been since its origins. However, we have since gotten a bit crazy with tracking and monitoring. Understanding how customers interact with your product or site is nice and valuable- but extending tracking reach beyond sufficient means is too much.
+
+This website has:
+
+- **0 tracking cookies**
+- **0 fingerprinting, session recording, keystroke logging**
+- **0 unsolicited browser storage uses**
+  - ... your browser can store *a lot* of information, just like cookies. There are concepts like `sessionStorage` and `localStorage` ([MDN Web Storage API](https://developer.mozilla.org/en-US/docs/Web/API/Web%5FStorage%5FAPI)) which act like key-values stores but in your browser, and there's even in-browser databases you can use like `IndexedDB` ([MDN IndexedDB](https://developer.mozilla.org/en-US/docs/Glossary/IndexedDB)).
+  - That said: these technologies are great. So let's use them for the right thing.
+- **1 third-party script**
+  - ... which is the: [Cloudflare Web Analytics beacon](https://www.cloudflare.com/web-analytics/). A privacy-first and lightweight solution for web analytics.
+
+Don't take my word for it. Check out these privacy reports for this website:
+
+- [HTTP Observatory (Mozilla, MDN)](https://developer.mozilla.org/en-US/observatory/analyze?host=jeroenoverschie.nl)
+- [Blacklight (The Markup, non-profit)](https://themarkup.org/blacklight?url=jeroenoverschie.nl)
+- [Webbkoll (5th of July Foundation, Sweden)](https://webbkoll.5july.net/en/check?url=jeroenoverschie.nl)
+
+And, as a matter of fact, the source of this website is openly accessible on [GitHub at dunnkers/jeroenoverschie.nl](https://github.com/dunnkers/jeroenoverschie.nl). Feel free to see how this website is built.
+
+Additionally, you might protect yourself against trackers by your own means. You can do so by using browser extensions like [1Blocker](https://1blocker.com/) (Safari), [StopTheMadness](https://underpassapp.com/StopTheMadness/) (Safari), changing [your browser settings itself](https://support.apple.com/guide/safari/prevent-cross-site-tracking-sfri40732/mac) (Safari). If you aren't on Safari, there should be [similar alternatives](https://www.privacyguides.org/en/browser-extensions/). by using a VPN that blocks trackers. VPNs can often also block ads, which you will get as a bonus 😛.
+
+Admittedly, a privacy page for a static blogging website like this is completely overkill: there are no user sign-ups, forms or data to protect and keep safe. So, besides informing you on the practices of this website, you can see this page as a *manifesto* too. *This* is how I would like to see the web- transparent and honest. So.. why not start with my own web presence to begin with? It is always easier to *say* than to *do*\- so let me do the latter.
 ## Posts
 ### Our internal AI agent for expenses: Bonbonnetje 🍬
 URL: https://jeroenoverschie.nl/our-internal-ai-agent-for-expenses-bonbonnetje/
