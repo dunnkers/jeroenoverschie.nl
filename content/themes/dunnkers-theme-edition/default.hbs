@@ -99,7 +99,7 @@
                 <nav class="gh-foot-social" aria-label="{{t "Elsewhere"}}">
                     <ul class="gh-social-links">
                         {{#social_accounts @site}}
-                            {{> "foot-link" href=href name=name icon=type}}
+                            {{> "foot-link" href=href name=name icon=type type=""}}
                         {{/social_accounts}}
                         {{> "foot-link" href=@custom.goodreads_url name="Goodreads" icon="goodreads"}}
                         {{> "foot-link" href=@custom.github_url name="GitHub" icon="github"}}
@@ -116,7 +116,7 @@
                     </nav>
                 {{/if}}
             </div>
-            <div class="gh-foot-col-extra" aria-hidden="true"><span class="gh-heart" title="Made with ♡ in the Netherlands"><span class="gh-heart-off">♡</span><span class="gh-heart-on">♥&#xFE0E;</span></span></div>
+            <div class="gh-foot-col-extra" aria-hidden="true"><span class="gh-heart" title="Made with ♡ in the Netherlands"><span class="gh-heart-off">♡</span><span class="gh-heart-on">♥</span></span></div>
         </div>
     </footer>
 
