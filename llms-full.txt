@@ -2952,7 +2952,7 @@ Last updated: 2026-07-02T14:56:58.000Z
 [GitHub - godatadriven/python-devcontainer-template: Shows you how to use a Devcontainer for your Python project 🐳♡🐍Shows you how to use a Devcontainer for your Python project 🐳♡🐍 - godatadriven/python-devcontainer-template![](https://jeroenoverschie.nl/content/images/icon/pinned-octocat-093da3e6fa40-2651d6e4-7136-4011-888f-036f517d5187.svg)GitHubgodatadriven![](https://jeroenoverschie.nl/content/images/thumbnail/python-devcontainer-template-0051715c-e79a-495a-9b8c-9d3dd1a9a335)](https://github.com/godatadriven/python-devcontainer-template)
 ### pyspark-bucketmap
 URL: https://jeroenoverschie.nl/pyspark-bucketmap/
-Last updated: 2026-11-23T13:54:29.000Z
+Last updated: 2026-11-23T14:35:04.000Z
 Have you ever heard of pyspark's [Bucketizer](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.feature.Bucketizer.html)? It can be really useful! Although you perhaps won't need it for some simple transformation, it can be really useful for certain usecases.
 
 In this blogpost, we will:

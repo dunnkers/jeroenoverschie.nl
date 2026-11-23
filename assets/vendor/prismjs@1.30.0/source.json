@@ -6,7 +6,9 @@
   "files": [
     "components/prism-core.min.js",
     "components/prism-python.min.js",
-    "themes/prism.min.css"
+    "themes/prism.min.css",
+    "themes/prism-tomorrow.min.css"
   ],
-  "vendored": "2026-11-23"
+  "vendored": "2026-11-23",
+  "updated": "2026-11-23"
 }
