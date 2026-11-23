@@ -60,7 +60,8 @@ These rules run in order, and the last `set` of a header wins:
 
 ### Content-Security-Policy
 
-**Status (2026-11-23):** proposed in dunnkers/secretary, first as
+**Status (2026-11-23):** proposed in
+[dunnkers/secretary#17](https://github.com/dunnkers/secretary/pull/17), first as
 `Content-Security-Policy-Report-Only`. Once it's verified, it changes to
 the enforcing `Content-Security-Policy`. Until then the header isn't on the
 site.
