@@ -65,7 +65,7 @@ Keen to know more?
 [Book an appointment](https://apt.mt/jeroenoverschie/book/)
 ### Intro
 URL: https://jeroenoverschie.nl/intro/
-Last updated: 2026-11-23T10:55:50.000Z
+Last updated: 2026-11-23T11:00:47.000Z
 ### **Hi there! 👋🏻 I am Jeroen**,
 
 a [Freelance AI Engineer](https://jeroenoverschie.nl/freelance-ai-engineer-in-amsterdam-jeroen-overschie/) working on bringing AI- and ML applications to production. Previously at Xebia, a global tech consultancy. I like learning, sharing knowledge through [blogposts](https://jeroenoverschie.nl/#posts) and [talking at conferences](https://jeroenoverschie.nl/tag/talks/). If you'd like to contact me, please do so through [LinkedIn](https://www.linkedin.com/in/jeroenoverschie). 
