@@ -129,6 +129,20 @@ edge (`cf-cache-status: DYNAMIC`). So files under those paths must be
 Zone defaults that also apply: `cache_level: aggressive`,
 `browser_cache_ttl: 14400`.
 
+**Known gap: error responses are cached for a year too.** The rule doesn't
+distinguish by status, so a 404 under these paths is stored at the edge and
+sent to browsers with `cache-control: max-age=31536000`. This bit on
+2026-11-23. Right after a deploy, GitHub Pages briefly 404'd the newly added
+`/assets/vendor/…` files, the edge cached those 404s, and the KaTeX and Prism
+posts broke until the URLs were purged. Until the rule is fixed, after a
+deploy that adds files under these paths:
+- check them with `curl -sI -H 'Accept-Encoding: br' <url>`
+- purge any that are stuck on 404, by URL: `POST /zones/<zone>/purge_cache`
+  with `{"files": [...]}`, at most 30 URLs per call on the Free plan
+
+Browsers that fetched the 404 in that window keep it until their cache is
+cleared.
+
 To restore it, take `rulesets.http_request_cache_settings.rules` from the
 snapshot without the `id` fields, then:
 `cf rulesets entrypoint update http_request_cache_settings -z <zone> --rules '<json array>'`.
