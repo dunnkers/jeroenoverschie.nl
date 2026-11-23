@@ -21,7 +21,7 @@
     </section>
     {{/tag}}
 
-    <div class="post-feed expanded gh-feed gh-canvas">
+    <div class="post-feed expanded gh-feed gh-canvas" data-feed-meta="no-dash-is-content">
         {{#foreach posts}}
             {{> "loop-talks"}}
         {{/foreach}}
@@ -31,4 +31,3 @@
 
 </main>
 
-{{> "feed-meta-script" noDashIsContent=true}}

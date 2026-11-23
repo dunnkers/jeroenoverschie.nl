@@ -6,11 +6,13 @@ featured();
 portalButton();
 pagination(false, function () {
     // "Load more" fetches and appends post cards without a full page
-    // reload, so re-run this to label the newly-added external badges.
+    // reload, so re-run these on the newly-added post cards.
     labelExternalHosts();
+    feedMeta();
 });
 fixNavMoreToggleA11y();
 labelExternalHosts();
+feedMeta();
 fixGalleryLightbox();
 
 function prefersReducedMotion() {
@@ -105,6 +107,46 @@ function labelExternalHosts() {
             if (el.hasAttribute('hidden')) el.hidden = false;
         } catch (e) {
             // Malformed canonical_url: leave the badge hidden/empty rather than showing "undefined".
+        }
+    });
+}
+
+function feedMeta() {
+    'use strict';
+    // Talk/research feeds (tag-talks.hbs, tag-research.hbs) mark their
+    // .post-feed with data-feed-meta. Excerpts there are
+    // "<location> — <content>". Without a dash, the whole excerpt is the
+    // location, unless data-feed-meta="no-dash-is-content".
+    // Lives here rather than as an inline <script> so the site's
+    // Content-Security-Policy can forbid inline scripts.
+    var feed = document.querySelector('[data-feed-meta]');
+    if (!feed) return;
+    var noDashIsContent = feed.getAttribute('data-feed-meta') === 'no-dash-is-content';
+
+    feed.querySelectorAll('.feed').forEach(function (article) {
+        var sourceEl = article.querySelector('.talk-meta-source');
+        if (!sourceEl) return; // already processed, or no excerpt
+
+        var text = sourceEl.textContent;
+        var dashIndex = text.indexOf('—');
+        var location = dashIndex === -1 ? (noDashIsContent ? '' : text.trim()) : text.slice(0, dashIndex).trim();
+        var content = dashIndex === -1 ? (noDashIsContent ? text.trim() : '') : text.slice(dashIndex + 1).trim();
+
+        if (content) {
+            var nameEl = document.createElement('div');
+            nameEl.className = 'talk-name';
+            nameEl.textContent = content;
+            sourceEl.replaceWith(nameEl);
+        } else {
+            sourceEl.remove();
+        }
+
+        if (location) {
+            var dateEl = article.querySelector('.feed-date');
+            var confEl = document.createElement('div');
+            confEl.className = 'feed-conference';
+            confEl.textContent = location;
+            dateEl.insertAdjacentElement('afterend', confEl);
         }
     });
 }
