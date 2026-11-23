@@ -53,8 +53,14 @@ beacon. So:
   `.js`/`.css` under `/content/files` as `text/plain` with `nosniff`, and
   browsers then refuse to run them.
 - `/assets/*` is cached for a year at Cloudflare and in browsers, so
-  vendored folders and page scripts are immutable. Vendor a new version,
-  or add `<name>.<n+1>.js`, never edit in place.
+  vendored files and page scripts are immutable. Vendor a new version,
+  or add `<name>.<n+1>.js`, never edit in place. `scripts/vendor.sh` may
+  add *new* files to an existing version folder (it refuses to overwrite).
+- The site follows the system light/dark setting (`prefers-color-scheme`),
+  so a library stylesheet with a light look needs a dark counterpart,
+  each `<link>` carrying `media="(prefers-color-scheme: light|dark)"`. For
+  example, `pyspark-bucketmap` pairs Prism's `prism.min.css` with
+  `prism-tomorrow.min.css`.
 - `npm run build` copies both folders into `static/assets/` after the gssg
   crawl. That way files a library loads at runtime (code-split chunks,
   WASM) ship even though wget never saw them.
