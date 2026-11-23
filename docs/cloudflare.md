@@ -60,11 +60,12 @@ These rules run in order, and the last `set` of a header wins:
 
 ### Content-Security-Policy
 
-**Status (2026-11-23):** applied as `Content-Security-Policy-Report-Only`
-from [dunnkers/secretary#17](https://github.com/dunnkers/secretary/pull/17),
-with no violations on the live site. The next step is switching
-`local.apex_csp_header` in secretary to the enforcing
-`Content-Security-Policy`.
+**Status (2026-11-23):** enforcing (`Content-Security-Policy`). It ran as
+`Content-Security-Policy-Report-Only` first
+([dunnkers/secretary#17](https://github.com/dunnkers/secretary/pull/17)) with
+no violations on the live site, then was switched by
+[dunnkers/secretary#18](https://github.com/dunnkers/secretary/pull/18).
+To roll back, revert that commit in secretary and apply.
 
 ```
 default-src 'none';
