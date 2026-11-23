@@ -1,0 +1,409 @@
+{
+  "zone": "jeroenoverschie.nl",
+  "zone_id": "bf84d2c33781e394c08b1730aed45601",
+  "changed_from_default": [
+    "always_use_https",
+    "ipv6",
+    "replace_insecure_js",
+    "rocket_loader",
+    "security_header",
+    "ssl"
+  ],
+  "settings": {
+    "0rtt": {
+      "value": "on",
+      "modified_on": null
+    },
+    "advanced_ddos": {
+      "value": "on",
+      "modified_on": null
+    },
+    "always_online": {
+      "value": "off",
+      "modified_on": null
+    },
+    "always_use_https": {
+      "value": "on",
+      "modified_on": "2026-11-03T11:07:39.673939Z"
+    },
+    "automatic_https_rewrites": {
+      "value": "on",
+      "modified_on": null
+    },
+    "brotli": {
+      "value": "on",
+      "modified_on": null
+    },
+    "browser_cache_ttl": {
+      "value": 14400,
+      "modified_on": null
+    },
+    "browser_check": {
+      "value": "on",
+      "modified_on": null
+    },
+    "cache_level": {
+      "value": "aggressive",
+      "modified_on": null
+    },
+    "challenge_ttl": {
+      "value": 1800,
+      "modified_on": null
+    },
+    "ciphers": {
+      "value": [],
+      "modified_on": null
+    },
+    "cname_flattening": {
+      "value": "flatten_at_root",
+      "modified_on": null
+    },
+    "development_mode": {
+      "value": "off",
+      "modified_on": null
+    },
+    "early_hints": {
+      "value": "on",
+      "modified_on": null
+    },
+    "ech": {
+      "value": "on",
+      "modified_on": null
+    },
+    "edge_cache_ttl": {
+      "value": 7200,
+      "modified_on": null
+    },
+    "email_obfuscation": {
+      "value": "on",
+      "modified_on": null
+    },
+    "filter_logs_to_cloudflare": {
+      "value": "off",
+      "modified_on": null
+    },
+    "hotlink_protection": {
+      "value": "off",
+      "modified_on": null
+    },
+    "http2": {
+      "value": "on",
+      "modified_on": null
+    },
+    "http3": {
+      "value": "on",
+      "modified_on": null
+    },
+    "ip_geolocation": {
+      "value": "on",
+      "modified_on": null
+    },
+    "ipv6": {
+      "value": "on",
+      "modified_on": "2026-09-08T07:57:22.322413Z"
+    },
+    "log_to_cloudflare": {
+      "value": "on",
+      "modified_on": null
+    },
+    "long_lived_grpc": {
+      "value": "off",
+      "modified_on": null
+    },
+    "max_upload": {
+      "value": 100,
+      "modified_on": null
+    },
+    "min_tls_version": {
+      "value": "1.2",
+      "modified_on": null
+    },
+    "minify": {
+      "value": {
+        "css": "off",
+        "html": "off",
+        "js": "off"
+      },
+      "modified_on": null
+    },
+    "mirage": {
+      "value": "off",
+      "modified_on": null
+    },
+    "mobile_redirect": {
+      "value": {
+        "status": "off",
+        "mobile_subdomain": null,
+        "strip_uri": false
+      },
+      "modified_on": null
+    },
+    "opportunistic_encryption": {
+      "value": "on",
+      "modified_on": null
+    },
+    "opportunistic_onion": {
+      "value": "on",
+      "modified_on": null
+    },
+    "orange_to_orange": {
+      "value": "off",
+      "modified_on": null
+    },
+    "origin_error_page_pass_thru": {
+      "value": "off",
+      "modified_on": null
+    },
+    "polish": {
+      "value": "off",
+      "modified_on": null
+    },
+    "pq_keyex": {
+      "value": "on",
+      "modified_on": null
+    },
+    "prefetch_preload": {
+      "value": "off",
+      "modified_on": null
+    },
+    "privacy_pass": {
+      "value": "on",
+      "modified_on": null
+    },
+    "proxy_read_timeout": {
+      "value": "125",
+      "modified_on": null
+    },
+    "pseudo_ipv4": {
+      "value": "off",
+      "modified_on": null
+    },
+    "replace_insecure_js": {
+      "value": "on",
+      "modified_on": "2026-09-08T08:01:35.365266Z"
+    },
+    "response_buffering": {
+      "value": "off",
+      "modified_on": null
+    },
+    "rocket_loader": {
+      "value": "off",
+      "modified_on": "2026-11-03T16:39:36.215681Z"
+    },
+    "rum": {
+      "value": "on",
+      "modified_on": null
+    },
+    "security_header": {
+      "value": {
+        "strict_transport_security": {
+          "enabled": true,
+          "max_age": 15552000,
+          "include_subdomains": true,
+          "preload": false,
+          "nosniff": true
+        }
+      },
+      "modified_on": "2026-11-03T11:07:42.700408Z"
+    },
+    "security_level": {
+      "value": "medium",
+      "modified_on": null
+    },
+    "server_side_exclude": {
+      "value": "on",
+      "modified_on": null
+    },
+    "sort_query_string_for_cache": {
+      "value": "off",
+      "modified_on": null
+    },
+    "speed_brain": {
+      "value": "on",
+      "modified_on": null
+    },
+    "ssl": {
+      "value": "full",
+      "modified_on": "2026-11-23T11:42:55.170726Z"
+    },
+    "tls_1_2_only": {
+      "value": "off",
+      "modified_on": null
+    },
+    "tls_1_3": {
+      "value": "zrt",
+      "modified_on": null
+    },
+    "tls_client_auth": {
+      "value": "off",
+      "modified_on": null
+    },
+    "true_client_ip_header": {
+      "value": "off",
+      "modified_on": null
+    },
+    "visitor_ip": {
+      "value": "on",
+      "modified_on": null
+    },
+    "waf": {
+      "value": "off",
+      "modified_on": null
+    },
+    "webp": {
+      "value": "off",
+      "modified_on": null
+    },
+    "websockets": {
+      "value": "on",
+      "modified_on": null
+    }
+  },
+  "rulesets": {
+    "http_request_cache_settings": {
+      "id": "5e4d80da37f549b78c3153c7df4ceefb",
+      "name": "default",
+      "phase": "http_request_cache_settings",
+      "rules": [
+        {
+          "id": "c9876b91bc1f4e64a16de59cea168b87",
+          "description": "Ghost content",
+          "expression": "(http.request.uri.path wildcard r\"/content/*\") or (http.request.uri.path wildcard r\"/assets/*\") or (http.request.uri.path wildcard r\"/public/*\")",
+          "action": "set_cache_settings",
+          "action_parameters": {
+            "browser_ttl": {
+              "default": 31536000,
+              "mode": "override_origin"
+            },
+            "cache": true,
+            "edge_ttl": {
+              "default": 31536000,
+              "mode": "override_origin"
+            }
+          },
+          "enabled": true
+        }
+      ]
+    },
+    "http_response_headers_transform": {
+      "id": "371da37c33f44246a3dc6617457c3744",
+      "name": "default",
+      "phase": "http_response_headers_transform",
+      "rules": [
+        {
+          "id": "8a079838061043179bfb46d5d9710fd7",
+          "description": "Security headers",
+          "expression": "true",
+          "action": "rewrite",
+          "action_parameters": {
+            "headers": {
+              "Permissions-Policy": {
+                "operation": "set",
+                "value": "camera=(), microphone=(), geolocation=()"
+              },
+              "Referrer-Policy": {
+                "operation": "set",
+                "value": "strict-origin-when-cross-origin"
+              },
+              "X-Content-Type-Options": {
+                "operation": "set",
+                "value": "nosniff"
+              },
+              "X-Frame-Options": {
+                "operation": "set",
+                "value": "SAMEORIGIN"
+              },
+              "X-XSS-Protection": {
+                "operation": "set",
+                "value": "0"
+              }
+            }
+          },
+          "enabled": true
+        },
+        {
+          "id": "a8a8e9a354ac4d9296f498bf0c9d936b",
+          "description": "newsletters: Referrer-Policy no-referrer",
+          "expression": "(http.host eq \"newsletters.jeroenoverschie.nl\")",
+          "action": "rewrite",
+          "action_parameters": {
+            "headers": {
+              "Referrer-Policy": {
+                "operation": "set",
+                "value": "no-referrer"
+              }
+            }
+          },
+          "enabled": true
+        }
+      ]
+    }
+  },
+  "page_rules": [],
+  "dns_apex": [
+    {
+      "type": "A",
+      "name": "jeroenoverschie.nl",
+      "content": "185.199.108.153",
+      "proxied": true,
+      "ttl": 1
+    },
+    {
+      "type": "A",
+      "name": "jeroenoverschie.nl",
+      "content": "185.199.109.153",
+      "proxied": true,
+      "ttl": 1
+    },
+    {
+      "type": "A",
+      "name": "jeroenoverschie.nl",
+      "content": "185.199.110.153",
+      "proxied": true,
+      "ttl": 1
+    },
+    {
+      "type": "A",
+      "name": "jeroenoverschie.nl",
+      "content": "185.199.111.153",
+      "proxied": true,
+      "ttl": 1
+    },
+    {
+      "type": "CNAME",
+      "name": "www.jeroenoverschie.nl",
+      "content": "dunnkers.github.io",
+      "proxied": true,
+      "ttl": 1
+    }
+  ],
+  "dnssec": {
+    "status": "active"
+  },
+  "ssl_universal": {
+    "enabled": true,
+    "certificate_authority": "google"
+  },
+  "bot_management": {
+    "enable_js": false,
+    "fight_mode": false,
+    "ai_bots_protection": "disabled",
+    "content_bots_protection": "disabled",
+    "crawler_protection": "disabled",
+    "ai_training": "disabled",
+    "ai_search": "disabled",
+    "ai_user": "disabled",
+    "ai_agents": {
+      "anthropic_agent": "disabled",
+      "google_agent": "disabled",
+      "instinct": "disabled",
+      "muse": "disabled",
+      "openai_agent": "disabled"
+    },
+    "is_robots_txt_managed": false,
+    "bot_preference_sync_enabled": false,
+    "cf_robots_variant": "policy_only",
+    "ai_bots_migration_opt_out": false,
+    "using_latest_model": true
+  }
+}

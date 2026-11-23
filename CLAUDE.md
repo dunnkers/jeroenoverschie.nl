@@ -26,6 +26,42 @@ commit the rebuilt files with the source change.
 Upstream Edition changes are ported by hand (there is no upstream remote
 or shared history); compare against https://github.com/TryGhost/Edition.
 
+## Cloudflare, CSP and page libraries
+
+Cloudflare sits in front of GitHub Pages. `docs/cloudflare.md` describes
+the apex configuration and who owns which part.
+`scripts/cloudflare-snapshot.sh` (read-only) refreshes
+`docs/cloudflare-state.json`, so drift shows up in `git diff`. The
+response-header rules, including this site's Content-Security-Policy,
+live in **dunnkers/secretary's Terraform**, not here: change them by PR
+there, never in the dashboard.
+
+The CSP allows scripts only from `'self'`, plus Cloudflare's analytics
+beacon. So:
+
+- No inline `<script>` and no `on*=` attributes, either in the theme or in
+  a post's code injection. Put the code in a file. JSON-LD
+  (`type="application/ld+json"`) is fine.
+- To use a library on a page, vendor it rather than linking a CDN:
+  `scripts/vendor.sh <name>@<exact-version> <paths in package…>` copies
+  the files unchanged into the theme at `assets/vendor/<name>@<version>/`.
+  Reference them from the post's code injection as
+  `/assets/vendor/<name>@<version>/…`. Page-specific glue code goes in
+  `assets/page-scripts/<name>.<n>.js`. For example, the KaTeX post uses
+  `render-math.1.js`.
+- These live in the theme, not `content/files/`, because Ghost serves
+  `.js`/`.css` under `/content/files` as `text/plain` with `nosniff`, and
+  browsers then refuse to run them.
+- `/assets/*` is cached for a year at Cloudflare and in browsers, so
+  vendored folders and page scripts are immutable. Vendor a new version,
+  or add `<name>.<n+1>.js`, never edit in place.
+- `npm run build` copies both folders into `static/assets/` after the gssg
+  crawl. That way files a library loads at runtime (code-split chunks,
+  WASM) ship even though wget never saw them.
+- External APIs (`connect-src`), new iframe hosts (`frame-src`) and
+  WebAssembly (`'wasm-unsafe-eval'`) do need a CSP change. See
+  `docs/cloudflare.md`.
+
 ## Local Ghost instance
 
 A Ghost Docker container runs locally for content editing and as the
@@ -83,12 +119,17 @@ If a PUT to `/posts/:id/` (even a single trivial field) fails with `500
 Database error, cannot edit post` / `attempt to write a readonly
 database`, this is *not* caused by the request — it's the local Ghost
 container's SQLite connection wedged, most likely a stale lock from
-Docker Desktop's bind-mount filesystem. Do **not** attempt to diagnose or
+the container's bind-mount filesystem. Do **not** attempt to diagnose or
 fix this by touching `ghost-local.db` directly (not even read-only
-`PRAGMA`/`sqlite3` checks via `docker exec`) — go through the Admin API
-only, always. The fix is `docker restart <ghost-container-name>` (find it
-with `docker ps`; the container has no fixed name), then retry the same
+`PRAGMA`/`sqlite3` checks via `container exec`) — go through the Admin API
+only, always. The fix is to restart the container, then retry the same
 Admin API request — no data is lost, this just resets the DB connection.
+The container runs under Apple's `container` CLI (id `ghost`; see
+`scripts/ghost-container.sh`), not Docker:
+`container stop ghost && container start ghost`. The error can also
+surface as `UPDATE_RELATION` / "Unable to update nested relation"; the
+container log (`container logs ghost`) then shows the readonly-database
+cause.
 
 ## Build pipeline
 
