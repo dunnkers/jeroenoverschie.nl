@@ -63,6 +63,10 @@ I'm available from September 2026, based in Amsterdam, remote or on-site in the 
 Keen to know more?
 
 [Book an appointment](https://apt.mt/jeroenoverschie/book/)
+### Intro
+URL: https://jeroenoverschie.nl/intro/
+Last updated: 2026-11-23T09:57:16.000Z
+[Freelance AI Engineer](https://jeroenoverschie.nl/freelance-ai-engineer-in-amsterdam-jeroen-overschie/), working on bringing AI- and ML applications to production. Previously at Xebia, a global tech consultancy. I like learning, sharing knowledge through [blogposts](https://jeroenoverschie.nl/#posts) and [talking at conferences](https://jeroenoverschie.nl/tag/talks/). If you'd like to contact me, please do so through [LinkedIn](https://www.linkedin.com/in/jeroenoverschie).
 ## Posts
 ### Our internal AI agent for expenses: Bonbonnetje 🍬
 URL: https://jeroenoverschie.nl/our-internal-ai-agent-for-expenses-bonbonnetje/
