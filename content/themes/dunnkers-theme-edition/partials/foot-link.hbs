@@ -7,7 +7,7 @@
      that name resolves to Ghost's {{url}} helper instead of the parameter. --}}
 {{#if href}}
     <li>
-        <a href="{{href}}" target="_blank" rel="{{#if rel}}{{rel}}{{else}}me noopener{{/if}}"{{#if type}} type="{{type}}"{{/if}}>
+        <a href="{{href}}" title="{{name}}" target="_blank" rel="{{#if rel}}{{rel}}{{else}}me noopener{{/if}}"{{#if type}} type="{{type}}"{{/if}}>
             {{#> (concat "icons/" icon)}}{{/undefined}}
             <span class="visually-hidden">{{name}} ({{t "opens in a new tab"}})</span>
         </a>

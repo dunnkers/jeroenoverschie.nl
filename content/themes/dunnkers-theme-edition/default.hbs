@@ -91,10 +91,10 @@
            the services Ghost has no field for, from Design > Site-wide (theme
            settings). Each link is named by visually hidden text.
          - Below them: Settings > Navigation > Secondary.
-         The empty .gh-foot-col-extra keeps the right-hand column free. --}}
+         The right-hand .gh-foot-col-extra holds a decorative ♡. --}}
     <footer class="gh-foot gh-outer">
         <div class="gh-foot-inner gh-inner">
-            <p class="gh-copyright">{{@site.title}} © {{date format="YYYY"}}</p>
+            <p class="gh-copyright">{{@site.title}} © <time datetime="{{date format="YYYY-MM-DDTHH:mm:ssZ"}}" title="Website last built {{date format="D MMM YYYY, HH:mm [UTC]Z"}}">{{date format="YYYY"}}</time></p>
             <div class="gh-foot-center">
                 <nav class="gh-foot-social" aria-label="{{t "Elsewhere"}}">
                     <ul class="gh-social-links">
@@ -116,7 +116,7 @@
                     </nav>
                 {{/if}}
             </div>
-            <div class="gh-foot-col-extra"></div>
+            <div class="gh-foot-col-extra" aria-hidden="true"><span class="gh-heart" title="Made with ♡ in the Netherlands"><span class="gh-heart-off">♡</span><span class="gh-heart-on">♥&#xFE0E;</span></span></div>
         </div>
     </footer>
 

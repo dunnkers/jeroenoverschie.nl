@@ -150,6 +150,9 @@ see the `ensureStaticCopy` function). `scripts/add-image-dimensions.js`
 runs right after it, adding explicit `width`/`height` to any `<img>`
 still missing them (theme-rendered header/feed images, since Ghost's
 handlebars API exposes no intrinsic dimensions for those).
+`scripts/stamp-build-info.js` runs last and appends `repo@commit` (from
+`GITHUB_SHA`/`GITHUB_REPOSITORY`, else git) to the footer year's "Website
+last built" tooltip; the theme itself only knows the build time.
 
 ### Upstream CLS bug: native video cards (fix shipped by ghost:6.73.0)
 

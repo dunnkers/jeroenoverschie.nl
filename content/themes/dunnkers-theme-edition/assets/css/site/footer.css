@@ -6,6 +6,21 @@
     margin: 0;
 }
 
+/* The year carries a "website last built" tooltip; hint at it on hover only,
+   so the footer stays plain at rest. */
+.gh-copyright time {
+    cursor: help;
+    text-decoration: underline dotted transparent;
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.15s;
+}
+
+@media (hover: hover) {
+    .gh-copyright time:hover {
+        text-decoration-color: currentColor;
+    }
+}
+
 /* Icons stay 16px, but each link gets a 32px target (WCAG 2.5.8 asks for at
    least 24px). With no gap between the links, the padding alone keeps the
    icons 16px apart, as before. */
@@ -27,10 +42,42 @@
     padding: 0.8rem;
 }
 
-/* The spare right-hand column is empty for now; on mobile it would only add
-   an empty row to the stack. */
+/* The right-hand column holds a decorative heart, pushed to the right edge
+   on desktop. On mobile the columns stack and the shared CSS centres them. */
+.gh-foot-col-extra {
+    justify-self: end;
+}
+
+/* Two stacked glyphs: the outline heart at rest, the filled one in soft red
+   on hover. The outline one keeps the width, so nothing shifts. */
+.gh-heart {
+    position: relative;
+    display: inline-block;
+    cursor: default;
+}
+
+.gh-heart-on {
+    position: absolute;
+    inset: 0;
+    color: #e0556b;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+@media (hover: hover) {
+    .gh-heart:hover .gh-heart-on {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gh-heart-on {
+        transition: none;
+    }
+}
+
 @media (max-width: 767px) {
-    .gh-foot-col-extra:empty {
-        display: none;
+    .gh-foot-col-extra {
+        justify-self: center;
     }
 }
