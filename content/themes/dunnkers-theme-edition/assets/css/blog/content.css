@@ -133,10 +133,6 @@
     background-image: linear-gradient(to left, var(--white-color) 50%, transparent 100%);
 }
 
-.gh-cta-gradient {
-    background: linear-gradient(180deg, transparent, var(--white-color));
-}
-
 /* Several posts link their GitHub repo with a 32px GitHub logo uploaded as
    github32-*.png. Show GitHub's own official mark instead (the "Invertocat",
    unmodified from GitHub's logo package, in assets/images/): black in light

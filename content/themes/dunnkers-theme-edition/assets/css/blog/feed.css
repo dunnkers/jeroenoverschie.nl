@@ -216,10 +216,6 @@
     margin-left: 1rem;
 }
 
-.feed-visibility-public {
-    display: none;
-}
-
 .feed-visibility .icon {
     width: 14px;
     height: 14px;
@@ -311,32 +307,6 @@
 .feed-icon .icon {
     width: 16px;
     height: 16px;
-}
-
-.feed-group::after {
-    display: block;
-    height: 4.5vmin;
-    content: "";
-}
-
-.feed-month {
-    position: sticky;
-    top: 0;
-    z-index: 30;
-    width: inherit;
-    padding: 1rem 1.5rem;
-    margin: 0 -1.5rem;
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--darker-gray-color);
-    text-transform: uppercase;
-    letter-spacing: 0.05rem;
-    background-color: color-mix(in srgb, var(--white-color) 80%, transparent);
-    backdrop-filter: blur(3px);
-}
-
-.feed-group:first-child .feed-month {
-    display: none;
 }
 
 @media (max-width: 575px) {

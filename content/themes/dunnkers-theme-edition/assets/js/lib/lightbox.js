@@ -73,6 +73,12 @@ function loadPhotoSwipe() {
 function lightbox(trigger) {
     'use strict';
 
+    // The shared main.js selectors expect the <img> to be a direct child of
+    // the card, but current Ghost core renders image cards as
+    // <picture><source>...<img></picture> (AVIF/WebP negotiation), one level
+    // deeper, so they match nothing. Add the selectors that reach through it.
+    trigger += ', .kg-image-card > picture > .kg-image[width][height], .kg-gallery-image > picture > img';
+
     // Ghost only sets width/height on content images; for the rest (feature
     // images) derive the size from the largest srcset candidate and the
     // aspect ratio of what the browser already loaded, so zooming isn't

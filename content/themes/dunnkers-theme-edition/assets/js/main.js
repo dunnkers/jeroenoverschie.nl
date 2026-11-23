@@ -13,7 +13,6 @@ pagination(false, function () {
 fixNavMoreToggleA11y();
 labelExternalHosts();
 feedMeta();
-fixGalleryLightbox();
 
 function prefersReducedMotion() {
     'use strict';
@@ -52,11 +51,6 @@ function cover() {
 
     imagesLoaded(cover, function () {
         cover.classList.remove('image-loading');
-    });
-
-    document.querySelector('.cover-arrow').addEventListener('click', function () {
-        var element = cover.nextElementSibling;
-        element.scrollIntoView({behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'start'});
     });
 }
 
@@ -149,22 +143,6 @@ function feedMeta() {
             dateEl.insertAdjacentElement('afterend', confEl);
         }
     });
-}
-
-function fixGalleryLightbox() {
-    'use strict';
-    // @tryghost/shared-theme-assets' bundled main.js already calls
-    // lightbox('.kg-image-card > .kg-image[width][height], .kg-gallery-image > img, .gh-feature-image')
-    // on load (see node_modules/@tryghost/shared-theme-assets/assets/js/v1/main.js).
-    // Those content-image selectors require the <img> to be a direct child,
-    // but current Ghost core now renders image cards as
-    // `<picture><source>...<img></picture>` for AVIF/WebP negotiation — one
-    // DOM level deeper — so they no longer match anything. `lightbox` is a
-    // plain global function (our PhotoSwipe v5 one in assets/js/lib/lightbox.js,
-    // concatenated into the same script as this file), so just call it again
-    // with selectors that reach through the <picture> wrapper.
-    if (typeof lightbox !== 'function') return;
-    lightbox('.kg-image-card > picture > .kg-image[width][height], .kg-gallery-image > picture > img');
 }
 
 function featured() {

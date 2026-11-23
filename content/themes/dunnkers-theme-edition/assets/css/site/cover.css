@@ -107,15 +107,6 @@ body:not(.with-full-cover) .cover {
     text-decoration: underline;
 }
 
-.cover-cta {
-    display: flex;
-    margin-top: 2rem;
-}
-
-.cover-cta .button {
-    margin: 0 0.5rem;
-}
-
 .cover-form {
     width: 100%;
     max-width: 480px;
@@ -135,27 +126,6 @@ body:not(.with-full-cover) .cover {
     min-width: 110px;
 }
 
-.cover-arrow {
-    display: none;
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    z-index: 10;
-    width: 40px;
-    height: 40px;
-    margin-left: -20px;
-}
-
-.with-full-cover .cover-arrow {
-    display: none;
-}
-
-.cover-arrow .icon {
-    width: 28px;
-    height: 28px;
-    color: #fff;
-}
-
 /* Stacked: photo full width on top (matches the img sizes attribute). */
 @media (max-width: 767px) {
     .cover-content {
@@ -172,11 +142,5 @@ body:not(.with-full-cover) .cover {
     .cover-text {
         padding-top: 0;
         border-top: none;
-    }
-}
-
-@media (max-width: 991px) {
-    .menu-opened .cover {
-        margin-top: 0;
     }
 }

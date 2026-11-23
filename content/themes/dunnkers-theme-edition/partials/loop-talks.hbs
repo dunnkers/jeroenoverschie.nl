@@ -44,9 +44,11 @@
                     </div>
                 {{/has}}
             </div>
+            {{^has visibility="public"}}
             <div class="feed-visibility feed-visibility-{{visibility}}">
                 {{> "icons/star"}}
             </div>
+            {{/has}}
             <div class="feed-icon">
                 {{> "icons/chevron-right"}}
             </div>

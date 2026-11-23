@@ -49,9 +49,11 @@
             <time class="feed-date" datetime="{{date format="YYYY-MM-DD"}}">
                 {{date published_at format="DD MMM YYYY"}}
             </time>
+            {{^has visibility="public"}}
             <div class="feed-visibility feed-visibility-{{visibility}}">
                 {{> "icons/star"}}
             </div>
+            {{/has}}
             {{#if reading_time}}
                 <div class="feed-length">
                     {{reading_time minute=(t "1 min read") minutes=(t "% min read")}}

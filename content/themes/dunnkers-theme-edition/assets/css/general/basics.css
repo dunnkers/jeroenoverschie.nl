@@ -12,9 +12,7 @@
     --dark-gray-color: #444;
     --darker-gray-color: #1a1a1a;
     --black-color: #000;
-    --green-color: #28a745;
     --orange-color: #ffc107;
-    --red-color: #dc3545;
     --facebook-color: #3b5998;
     --twitter-color: #1da1f2;
     --linkedin-color: #0B66C3;
@@ -24,11 +22,9 @@
     --tiktok-color: #000000;
     --youtube-color: #ff0000;
     --instagram-color: #000000;
-    --rss-color: #f26522;
     --animation-base: ease-in-out;
     --font-sans: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
     --font-serif: Times, serif;
-    --navbar-height: 80px;
     --content-font-size: 1.7rem;
     --header-spacing: 6vmin;
 
