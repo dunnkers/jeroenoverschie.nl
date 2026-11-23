@@ -106,6 +106,8 @@
                         {{> "foot-link" href=@custom.youtube_url name="YouTube" icon="youtube"}}
                         {{> "foot-link" href=@custom.unsplash_url name="Unsplash" icon="unsplash"}}
                         {{> "foot-link" href=@custom.google_scholar_url name="Google Scholar" icon="google-scholar"}}
+                        {{!-- The site's own feed, so no theme setting: it always exists. --}}
+                        {{> "foot-link" href=(concat @site.url "/rss/") name="RSS feed" icon="rss" rel="alternate noopener" type="application/rss+xml"}}
                     </ul>
                 </nav>
                 {{#if @site.secondary_navigation}}

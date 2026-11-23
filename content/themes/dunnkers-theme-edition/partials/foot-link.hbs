@@ -1,11 +1,13 @@
 {{!-- One icon link in the footer's "Elsewhere" list. The icon is decorative
      (aria-hidden); the visually hidden text is the link's accessible name.
      Renders nothing when `href` is empty, so clearing a theme setting hides it.
-     Params: href, name, icon (partial name under icons/). Not `url`: that
-     name resolves to Ghost's {{url}} helper instead of the parameter. --}}
+     Params: href, name, icon (partial name under icons/), and optionally
+     rel/type (default rel "me noopener", for profiles elsewhere; the RSS
+     link passes rel="alternate" type="application/rss+xml"). Not `url`:
+     that name resolves to Ghost's {{url}} helper instead of the parameter. --}}
 {{#if href}}
     <li>
-        <a href="{{href}}" target="_blank" rel="me noopener">
+        <a href="{{href}}" target="_blank" rel="{{#if rel}}{{rel}}{{else}}me noopener{{/if}}"{{#if type}} type="{{type}}"{{/if}}>
             {{#> (concat "icons/" icon)}}{{/undefined}}
             <span class="visually-hidden">{{name}} ({{t "opens in a new tab"}})</span>
         </a>
